@@ -1,0 +1,19 @@
+server:
+  port: 8091
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp    
+  datasource: # Mybatis dataSource 연결
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://weallridingdb.cwphiqxgn2ap.us-west-2.rds.amazonaws.com/?characterEncoding=utf-8
+    username: admin
+    password: weallriding
+  
+  devtools: # 서버 자동 시작
+    livereload:
+      enabled: true
+ 
+mybatis: 
+  type-aliases-package: com.yosi.myapp.vo #mybatis에서 팩키지 생략 할 수 있도록 설정
