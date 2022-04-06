@@ -22,7 +22,7 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
-	//ºäÆäÀÌÁö JSP »ç¿ëÇÏ±â À§ÇÑ ÇÁ·¹ÀÓ ¿öÅ©
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ JSP ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©
 	//1)JSTL :  https://mvnrepository.com/artifact/javax.servlet/jstl
 	implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
 	
