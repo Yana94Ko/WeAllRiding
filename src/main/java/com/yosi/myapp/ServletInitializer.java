@@ -1,9 +1,5 @@
 package com.yosi.myapp;
-
-
 import java.util.Collections;
-
-
 import org.apache.catalina.Context;
 import org.apache.tomcat.util.descriptor.web.JspConfigDescriptorImpl;
 import org.apache.tomcat.util.descriptor.web.JspPropertyGroup;
@@ -13,11 +9,9 @@ import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerF
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-
 @Component
 //@Slf4j
 public class ServletInitializer extends SpringBootServletInitializer {
-
     @Bean
     public ConfigurableServletWebServerFactory configurableServletWebServerFactory ( ) {
         return new TomcatServletWebServerFactory() {
