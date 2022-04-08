@@ -27,7 +27,7 @@ public class MemberController {
     public ModelAndView loginOk(MemberVO vo, HttpSession session) throws ParseException {
         MemberVO vo2 = service.loginCheck(vo);
         ModelAndView mav = new ModelAndView();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date suspendDate = formatter.parse(vo2.getSuspendDate()); // DB에 있는 정지 기간을 Date 객체로 파싱
         if (suspendDate.compareTo(new Date()) <= 0) { // 현재 날짜와 비교해서 이전이면 로그인
             session.setAttribute("logId", vo2.getUserId());
