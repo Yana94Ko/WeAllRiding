@@ -7,6 +7,23 @@ public class MemberVO {
     private String userTel;
     private String userTel1;
     private String userTel2;
+
+    public String getUserTel1() {
+        return userTel1;
+    }
+
+    public void setUserTel1(String userTel1) {
+        this.userTel1 = userTel1;
+    }
+
+    public String getUserTel2() {
+        return userTel2;
+    }
+
+    public void setUserTel2(String userTel2) {
+        this.userTel2 = userTel2;
+    }
+
     private String birth;
     private String nickname;
     private String suspendDate;
