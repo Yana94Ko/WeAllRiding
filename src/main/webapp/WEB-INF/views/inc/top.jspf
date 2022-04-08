@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="url" value="<%=request.getContextPath()%>"/>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>WeAllRiding</title>
+	<!-- Pavicon -->
+	<link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
+	<link rel="stylesheet" href="${url}/css/topBottomStyle.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="${url}/js/topBottomScript.js"></script>
+</head>
+<body>
+<header>
+	<div class='top'>
+		<c:if test="${logStatus !='Y'}">
+			<a href ="${url}/member/loginForm">로그인</a>
+		</c:if>
+		<c:if test="${logStatus =='Y'}">
+			<a href ="${url}/member/">
+				<img src =""/>
+				${logName}님
+			</a>
+			<a href ="${url}/member/logout">로그아웃</a>
+		</c:if>
+	</div>
+	<nav class='nav'>
+		<div class='logo'>
+			<a href="${url}/">
+				<img src="${url}/images/logo.png"/>
+			</a>
+		</div>
+		<div class='mainMenu'>
+			<ul>
+				<li onmouseenter="topMenuOver(1)" onmouseleave="topMenuOut(1)">코스
+					<ul id="topMenu1">
+						<li><a href="${url}/course/">추천 코스</a></li>
+						<li><a href="${url}/course/">코스 만들기</a></li>
+					</ul>	
+				</li>
+				<li onmouseenter="topMenuOver(2)" onmouseleave="topMenuOut(2)">라이딩
+					<ul id="topMenu2">
+						<li><a href="${url}/riding/">라이딩 리스트</a></li>
+						<li><a href="${url}/riding/">my 라이딩</a></li>
+					</ul>
+				</li>	
+				<li><a href="${url}/shop">정비샵</a></li>
+				<li><a href="${url}/comunity">커뮤니티</a></li>
+				<c:if test="${logId == 'admin'}">
+					<li><a href="${url}/admin">관리자</a></li>
+				</c:if>
+				<c:if test="${logStatus =='N'}">
+				</c:if>
+			</ul>
+		</div>
+	</nav>
+</header>
