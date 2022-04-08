@@ -1,3 +1,81 @@
+
+//--> 처음 실행시 주변 자전거샵 위치 표시해주기
+
+setTimeout(function(){
+	gps_tracking();
+	setTimeout(function(){searchPlacesNearBy();},200);
+	},200);
+	
+function searchPlacesNearBy() {
+	// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+	ps.keywordSearch(" 자전거 판매", placesSearchCB,{
+		size:10,//리스트에 표시될 장소 갯수
+		location:new kakao.maps.LatLng(gps_lat,gps_lng),//현재 
+		radius:3000
+	});
+	map.setLevel(5);
+}
+// 처음 실행시 주변 자전거샵 위치 표시해주기 <--
+
+
+//-->  현재 위치 반환 관련 함수 모음
+var gps_use = null; //gps의 사용가능 여부
+var gps_lat = null; // 위도
+var gps_lng = null; // 경도
+var gps_position; // gps 위치 객체
+
+gps_check();
+// gps가 이용가능한지 체크하는 함수이며, 이용가능하다면 show location 함수를 불러온다.
+// 만약 작동되지 않는다면 경고창을 띄우고, 에러가 있다면 errorHandler 함수를 불러온다.
+// timeout을 통해 시간제한을 둔다.
+function gps_check(){
+    if (navigator.geolocation) {
+        var options = {timeout:60000};
+        navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+    } else {
+        alert("GPS_추적이 불가합니다.");
+        gps_use = false;
+    }
+}
+
+
+// gps 이용 가능 시, 위도와 경도를 반환하는 showlocation함수.
+function showLocation(position) {
+    gps_use = true;
+    gps_lat = position.coords.latitude;
+    gps_lng = position.coords.longitude;
+}
+
+// error발생 시 에러의 종류를 알려주는 함수.
+function errorHandler(error) {
+    if(error.code == 1) {
+        alert("접근차단");
+    } else if( err.code == 2) {
+        alert("위치를 반환할 수 없습니다.");
+    }
+    gps_use = false;
+}
+
+function gps_tracking(){
+    if (gps_use) {
+        map.panTo(new kakao.maps.LatLng(gps_lat,gps_lng));
+        var gps_content = '<div><img class="pulse" draggable="false" unselectable="on" src="https://ssl.pstatic.net/static/maps/m/pin_rd.png" alt=""></div>';
+        var currentOverlay = new kakao.maps.CustomOverlay({
+            position: new kakao.maps.LatLng(gps_lat,gps_lng),
+            content: gps_content,
+            map: map
+        });
+        currentOverlay.setMap(map);
+        searchPlacesNearBy();
+    } else {
+      alert("접근차단하신 경우 새로고침, 아닌 경우 잠시만 기다려주세요.");
+      gps_check();
+    }
+}
+
+//현재 위치 반환 관련 <--
+
+
 // 마커를 담을 배열입니다
 var markers = [];
 
@@ -18,25 +96,18 @@ var infowindow = new kakao.maps.InfoWindow({
 	zIndex: 1
 });
 
-// 키워드로 장소를 검색합니다
-searchPlaces();
-
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
-
 	var keyword = document.getElementById('keyword').value;
-
 	if (!keyword.replace(/^\s+|\s+$/g, '')) {
 		alert('키워드를 입력해주세요!');
 		return false;
 	}
-
 	// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-	ps.keywordSearch(keyword, placesSearchCB,{
-		size:7
+	ps.keywordSearch(keyword+" 자전거 판매", placesSearchCB,{//자전거 판매점이 자동으로 검색되도록 키워드 설정
+		size:10 //한 페이징 리스트에 표시될 장소 갯수
 	});
 }
-
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
 	if (status === kakao.maps.services.Status.OK) {
@@ -220,3 +291,5 @@ function removeAllChildNods(el) {
 		el.removeChild(el.lastChild);
 	}
 }
+
+
