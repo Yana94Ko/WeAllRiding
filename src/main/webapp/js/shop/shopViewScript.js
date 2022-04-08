@@ -7,6 +7,8 @@ setTimeout(function(){
 	},200);
 	
 function searchPlacesNearBy() {
+
+
 	// 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
 	ps.keywordSearch(" 자전거 판매", placesSearchCB,{
 		size:10,//리스트에 표시될 장소 갯수
@@ -159,25 +161,15 @@ function displayPlaces(places) {
 		// 마커와 검색결과 항목에 mouseover 했을때
 		// 해당 장소에 인포윈도우에 장소명을 표시합니다
 		// mouseout 했을 때는 인포윈도우를 닫습니다
-		(function(marker, title) {
-			kakao.maps.event.addListener(marker, 'mouseover',
-				function() {
-					displayInfowindow(marker, title);
-				});
-
-			kakao.maps.event.addListener(marker, 'mouseout',
-				function() {
-					infowindow.close();
-				});
-
-			itemEl.onmouseover = function() {
-				displayInfowindow(marker, title);
+		(function(marker, places) {
+			// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+			kakao.maps.event.addListener(marker, 'click', function() {
+				displayOverlay(marker,places);
+			});
+			itemEl.onclick = function() {
+				displayOverlay(marker,places);
 			};
-
-			itemEl.onmouseout = function() {
-				infowindow.close();
-			};
-		})(marker, places[i].place_name);
+		})(marker, places[i]);
 
 		fragment.appendChild(itemEl);
 	}
@@ -200,14 +192,13 @@ function getListItem(index, places) {
 		+ '   <h5>' + places.place_name + '</h5>';
 
 	if (places.road_address_name) {
-		itemStr += '    <span>' + places.road_address_name + '</span>'
-			+ '   <span class="jibun gray">' + places.address_name
-			+ '</span>';
+		itemStr += '    <span>' + places.road_address_name + '</span>';//도로명 주소가 있는 경우 지번 주소는 띄우지 않게함.
 	} else {
 		itemStr += '    <span>' + places.address_name + '</span>';
 	}
 
-	itemStr += '  <span class="tel">' + places.phone + '</span>'
+	itemStr += '  <span class="tel">' + places.phone + '</span>';
+	itemStr += '<a href ="https://map.kakao.com/link/to/'+places.id+'"target="_blank"><button> 길찾기 </button></a>'
 		+ '</div>';
 
 	el.innerHTML = itemStr;
@@ -275,16 +266,6 @@ function displayPagination(pagination) {
 	paginationEl.appendChild(fragment);
 }
 
-// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
-// 인포윈도우에 장소명을 표시합니다
-function displayInfowindow(marker, title) {
-	var content = '<div style="padding:5px;z-index:1;">' + title
-		+ '</div>';
-
-	infowindow.setContent(content);
-	infowindow.open(map, marker);
-}
-
 // 검색결과 목록의 자식 Element를 제거하는 함수입니다
 function removeAllChildNods(el) {
 	while (el.hasChildNodes()) {
@@ -292,4 +273,48 @@ function removeAllChildNods(el) {
 	}
 }
 
+var overlay;
+function displayOverlay(marker,places) {
+	//기존에 열려있는 커스텀 오버레이 제거
+	if(overlay){
+		closeOverlay();
+	} 
+	
+	
+	// 커스텀 오버레이에 표시할 컨텐츠 입니다
+	// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
+	// 별도의 이벤트 메소드를 제공하지 않습니다 
+	var content = '<div class="wrap">' +
+		'    <div class="infoOverlay">' +
+		'        <div class="title">' + places.place_name +
+		'            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+		'        </div>' +
+		'        <div class="body">' +
+		'            <div class="img">' +
+		'                <img src="https://cdn.shopify.com/s/files/1/0773/9113/files/icons-28_1600x.png?v=1636390832" width="73" height="70">' +
+		'           </div>' +
+		'            <div class="desc">' +
+		'                <div class="ellipsis">'+places.road_address_name+'</div>' +
+		'                <div class="jibun ellipsis">'+places.address_name+'</div>' +
+		'                <div class="tel">' + places.phone + '</div>'+
+		'                <div><a href="https://map.kakao.com/link/to/'+places.id+'" target="_blank" class="link">길찾기</a></div>' +
+		'            </div>' +
+		'        </div>' +
+		'    </div>' +
+		'</div>';
+	// 마커 위에 커스텀오버레이를 표시합니다
+	// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+	overlay = new kakao.maps.CustomOverlay({
+		content: content,
+		map: map,
+		position: marker.getPosition(),
+		zIndex: 0
+	});
+	overlay.setMap(map);
+}
+
+// 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+function closeOverlay() {
+	overlay.setMap(null);
+}
 
