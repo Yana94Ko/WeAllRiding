@@ -22,13 +22,15 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
-	//ºäÆäÀÌÁö JSP »ç¿ëÇÏ±â À§ÇÑ ÇÁ·¹ÀÓ ¿öÅ©
+	//ë·°í˜ì´ì§€ JSP ì‚¬ìš©í•˜ê¸° ìœ„í•œ í”„ë ˆì„ ì›Œí¬
 	//1)JSTL :  https://mvnrepository.com/artifact/javax.servlet/jstl
 	implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
 	
 	//2)Tomcat Embed Jasper : https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
 	implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.60'
 	
+	// https://mvnrepository.com/artifact/javax.inject/javax.inject
+	implementation 'javax.inject:javax.inject:1'
 }
 
 tasks.named('test') {
