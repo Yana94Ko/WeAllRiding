@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yosi.myapp.member.MemberDAO">
+    <select id="loginCheck" resultType="com.yosi.myapp.member.MemberVO">
+        select userId, nickname, suspendDate, isAdmin from member
+        where userId=#{userId} and userPwd=#{userPwd}
+    </select>
+    <insert id="memberInsert">
+        insert into member(userId, userPwd, userName, userTel, userEmail, birth, nickname, gender, experience, bicycleType)
+        values(#{userId}, #{userPwd}, #{userName}, #{userTel}, #{userEmail}, #{birth}, #{nickname}, #{gender}, #{experience}, #{bicycleType})
+    </insert>
+</mapper>
