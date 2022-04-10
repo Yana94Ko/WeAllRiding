@@ -6,13 +6,15 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.yosi.myapp.PagingVO;
+
 @Service
 public class ComtyServiceImpl implements ComtyService {
 	@Inject
 	ComtyDAO dao;
 	@Override
-	public List<ComtyVO> allSelect() {
-		return dao.allSelect();
+	public List<ComtyVO> allSelect(PagingVO pVO) {
+		return dao.allSelect(pVO);
 	}
 	@Override
 	public int comtyInsert(ComtyVO vo) {
@@ -34,6 +36,10 @@ public class ComtyServiceImpl implements ComtyService {
 	@Override
 	public void cntHit(int comtyNo) {
 		dao.cntHit(comtyNo);
+	}
+	@Override
+	public int totalRecord(PagingVO pVO) {
+		return dao.totalRecord(pVO);
 	}
 
 }

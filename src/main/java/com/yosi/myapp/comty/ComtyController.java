@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yosi.myapp.PagingVO;
+
 @RestController
 public class ComtyController {
 	@Autowired
@@ -25,17 +27,23 @@ public class ComtyController {
 	@Inject
 	ComtyService service;
 	@GetMapping("/comty/comtyList")
-	public ModelAndView allSelect() {
+	public ModelAndView allSelect(PagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("lst", service.allSelect());
+		
+		// 총 레코드 수
+		pVO.setTotalRecord(service.totalRecord(pVO));
+		
+		mav.addObject("lst", service.allSelect(pVO));
+		mav.addObject("pVO", pVO);
+		
 		mav.setViewName("comty/comtyList");
 		return mav;
 	}
 	
 	@GetMapping("/comty/comtyWrite")
-	public ModelAndView comtywrite() {
+	public ModelAndView comtyWrite(PagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("lst", service.allSelect());
+		mav.addObject("lst", service.allSelect(pVO));
 		mav.setViewName("comty/comtyWrite");
 		return mav;
 	}

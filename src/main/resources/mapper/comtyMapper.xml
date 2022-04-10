@@ -5,8 +5,19 @@
 	
 <mapper namespace = "com.yosi.myapp.comty.ComtyDAO">
 	<select id="allSelect" resultType="comtyVO">
-		select comtyNo, comtySubject, nickname, comtyHit, comtyWriteDate from comty
-		order by ComtyNo desc
+		select comtyNo, comtySubject, nickname, comtyHit, date_format(comtyWriteDate, '%m-%d %H:%i') comtyWriteDate
+		from comty
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by comtyNo desc
+		limit ${onePageRecord} offset ${offsetIndex}
+	</select>
+	<select id="totalRecord" resultType="int">
+		select count(comtyNo) as cnt from comty
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
 	</select>
 	<insert	id="comtyInsert">
 		insert into comty(nickname, comtySubject, comtyContent)
