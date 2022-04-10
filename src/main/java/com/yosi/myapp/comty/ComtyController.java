@@ -100,6 +100,7 @@ public class ComtyController {
 		return entity;
 				
 	}
+	// 글 삭제
 	@GetMapping("/comty/comtyDel")
 	public ModelAndView comtyDel(int comtyNo, HttpSession session, ModelAndView mav) {
 		String nickname = (String)session.getAttribute("logId");
