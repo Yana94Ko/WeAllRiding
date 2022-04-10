@@ -165,9 +165,11 @@ function displayPlaces(places) {
 			// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 			kakao.maps.event.addListener(marker, 'click', function() {
 				displayOverlay(marker,places);
+				map.setCenter(marker.getPosition());
 			});
 			itemEl.onclick = function() {
 				displayOverlay(marker,places);
+				map.setCenter(marker.getPosition());
 			};
 		})(marker, places[i]);
 
@@ -290,14 +292,15 @@ function displayOverlay(marker,places) {
 		'            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
 		'        </div>' +
 		'        <div class="body">' +
-		'            <div class="img">' +
-		'                <img src="https://cdn.shopify.com/s/files/1/0773/9113/files/icons-28_1600x.png?v=1636390832" width="73" height="70">' +
-		'           </div>' +
 		'            <div class="desc">' +
 		'                <div class="ellipsis">'+places.road_address_name+'</div>' +
 		'                <div class="jibun ellipsis">'+places.address_name+'</div>' +
 		'                <div class="tel">' + places.phone + '</div>'+
-		'                <div><a href="https://map.kakao.com/link/to/'+places.id+'" target="_blank" class="link">길찾기</a></div>' +
+		'                <div><a href="${url}/shopEdit?placeId='+places.id+
+													  '&placeName='+places.place_name+
+													  '&placeRoadAddress='+places.road_address_name+
+													  '&placePhone='+places.phone+
+						'" target="_blank" class="link">공임비 정보 업데이트</a></div>' +
 		'            </div>' +
 		'        </div>' +
 		'    </div>' +
@@ -308,7 +311,8 @@ function displayOverlay(marker,places) {
 		content: content,
 		map: map,
 		position: marker.getPosition(),
-		zIndex: 0
+		zIndex: 0,
+		
 	});
 	overlay.setMap(map);
 }
