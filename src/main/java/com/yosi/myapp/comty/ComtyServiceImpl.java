@@ -31,5 +31,9 @@ public class ComtyServiceImpl implements ComtyService {
 
 		return dao.comtyDelete(comtyNo, nickname);
 	}
+	@Override
+	public void cntHit(int comtyNo) {
+		dao.cntHit(comtyNo);
+	}
 
 }

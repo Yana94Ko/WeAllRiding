@@ -12,7 +12,9 @@
 		insert into comty(nickname, comtySubject, comtyContent)
 		values(#{nickname}, #{comtySubject}, #{comtyContent})
 	</insert>
-	
+	<update id="cntHit" parameterType="int">
+		update comty set comtyHit = comtyHit+1 where comtyNo=#{param1}
+	</update>
 	<select id="comtySelect" resultType="ComtyVO">
 		select comtyNo, nickname, comtySubject, comtyContent, comtyHit, comtyWriteDate from comty where comtyNo=${param1}
 	</select>
