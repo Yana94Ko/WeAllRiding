@@ -3,11 +3,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 	.comtyContainer {
-		padding: 50px;
+		width: 80%;
+		margin: 0 auto;
+		padding: 0 auto;
 	}
 	#comtyFrm{
-		color:black;
-		float: right;
+		background-color: rgba(234, 234, 234); 
+		width:100%;
+		height:25px;
+		color: black;
+		text-align:right;
+		padding: 10px 0 10px;	
+	
 	}
 	#comtyViewContent {
 		min-height:400px;
@@ -46,15 +53,13 @@
 <main>
 	<div class="comtyContainer">
 		<h2>${vo.comtySubject }</h2>
-		<hr/>
 		<li id="comtyFrm">
 			글 번호 : ${vo.comtyNo }&nbsp;&nbsp;&nbsp;&nbsp;
 			작성자 : ${vo.nickname }&nbsp;&nbsp;&nbsp;&nbsp;
 			작성일 : ${vo.comtyWriteDate }&nbsp;&nbsp;&nbsp;&nbsp;
-			조회수 : ${vo.comtyHit }&nbsp;&nbsp;
+			조회수 : ${vo.comtyHit }&nbsp;&nbsp;&nbsp;
 		</li> 
 		<br/>
-		<hr/>
 		<li id="comtyViewContent">${vo.comtyContent }</li>
 		
 		<c:if test="${logId == vo.nickname }">

@@ -61,8 +61,10 @@
 				<li id="comtyWD">${vo.comtyWriteDate }</li>
 			</c:forEach>
 		</ul>
-		<div id="writeBTN">
-			<button id="writeBtn" onclick="location.href='/comty/comtyWrite' ">글 작성하기</button>
-		</div>
+		<c:if test="${logId != null && logId != ''}">
+			<div id="writeBTN">
+				<button id="writeBtn" onclick="location.href='/comty/comtyWrite' ">글 작성하기</button>
+			</div>
+		</c:if>
 	</div>
 </main>
