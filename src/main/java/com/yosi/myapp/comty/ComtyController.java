@@ -64,6 +64,7 @@ public class ComtyController {
 	@RequestMapping("/comty/comtyView")
 	public ModelAndView comtyView(@RequestParam("comtyNo") int comtyNo) {
 		 ModelAndView mav = new ModelAndView();
+		 
 		 mav.addObject("vo", service.comtySelect(comtyNo));
 		 mav.setViewName("comty/comtyView");
 		 return mav;
@@ -89,7 +90,7 @@ public class ComtyController {
 		try {
 			service.comtyUpdate(vo);
 			
-			String msg="<script>alert('글이 수정되었습니다.');location.href='/comty/comtyView?no="+vo.getComtyNo()+"';</script>";
+			String msg="<script>alert('글이 수정되었습니다.');location.href='/comty/comtyView?comtyNo="+vo.getComtyNo()+"';</script>";
 			entity=new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 			
 		}catch (Exception e) {
@@ -117,4 +118,5 @@ public class ComtyController {
 		
 		return mav;
 	}
+	
 }
