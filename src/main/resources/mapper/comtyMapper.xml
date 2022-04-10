@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace = "com.yosi.myapp.comty.ComtyDAO">
-	<select id="allSelect" resultType="comtyVO">
+	<select id="allSelect" resultType="ComtyVO">
 		select comtyNo, comtySubject, nickname, comtyHit, comtyWriteDate from comty
 		order by ComtyNo desc
 	</select>

@@ -1,6 +1,7 @@
 package com.yosi.myapp.comty;
 
 import java.nio.charset.Charset;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class ComtyController {
 	@Inject
 	ComtyService service;
+	
+	@Inject
+	ComtyReplyService replyService;
+	
 	@GetMapping("/comty/comtyList")
 	public ModelAndView allSelect() {
 		ModelAndView mav = new ModelAndView();
@@ -67,6 +73,8 @@ public class ComtyController {
 		 
 		 mav.addObject("vo", service.comtySelect(comtyNo));
 		 mav.setViewName("comty/comtyView");
+		 
+		 
 		 return mav;
 	}
 	
@@ -118,5 +126,6 @@ public class ComtyController {
 		
 		return mav;
 	}
+	
 	
 }
