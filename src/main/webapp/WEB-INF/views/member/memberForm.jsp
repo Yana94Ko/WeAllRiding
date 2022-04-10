@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script src="${url}/js/topBottomScript.js"></script>
+<script src="${url}/js/member.js"></script>
 <style>
     .container{
         width:1000px;
@@ -32,7 +32,7 @@
                 <li><input type="text" name="nickname" id="nickname" placeholder="" /></li>
                 <li>연락처</li>
                 <li>
-                    <select name="userTel1">
+                    <select id="userTel1" name="userTel1">
                         <option value="010">010</option>
                         <option value="02">02</option>
                         <option value="031">031</option>
@@ -40,6 +40,10 @@
                     </select> -
                     <input type="text" name="userTel2" id="userTel2" />
                 </li>
+                <button id="phoneChk" class="phoneChk" type="button" onclick="SendPhoneCheck()">인증번호 보내기</button></br>
+                <input id="certNo" type="text" name="certNo" title="인증번호 입력"/>
+                <button id="certChk" class="certChk" type="button" onclick="CheckCode()">본인인증</button>
+                <span id="statePhoneChk" class="statePhoneChk">휴대폰 번호 입력 후 인증번호 보내기를 해주십시오.</span>
                 <li>성별</li>
                 <input type="radio" name="gender" value="남">남
                 <input type="radio" name="gender" value="여">여
