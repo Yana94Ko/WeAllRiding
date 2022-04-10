@@ -22,7 +22,7 @@
                     <div class="bottom-menu">
                         <a href ="${url}#">아이디 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                         <a href ="${url}#">비밀번호 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                        <a href ="${url}/member/memberForm">회원가입</a>
+                        <a href ="${url}/member/memberForm">회원가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                 </form>
             </div>

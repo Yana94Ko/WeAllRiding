@@ -6,19 +6,16 @@ main{
     align-items: center;
     height: 100vh;
     background-image: url("/images/loginFormBackground.png");
+    background-position: bottom;
+    background-position: left;
 }
 
 .loginForm{
     width: 430px;
     height: 360px;
-    position: relative;
-    z-index: 2;
     align-items: center;
     margin-top: 150px;
-    -webkit-backdrop-filter: blur(30px);
-    backdrop-filter: blur(60px);
-    border-radius: 15px;
-    background: rgba(0, 183, 255, 0.7%);
+
 }
 
 .loginForm h1{
@@ -80,7 +77,7 @@ main{
     cursor: pointer;
     float: left;
     margin-bottom: 10px;
-    margin-left: 40px;
+    margin-left: 30px;
 }
 
 .bottom-menu{
@@ -92,26 +89,4 @@ main{
     font-size: 15px;
     color: black;
     text-decoration: none;
-}
-
-.cloud{
-    overflow: hidden;
-}
-
-.cloud image{
-    animation: cld calc(8s * var(--i)) linear infinite;
-    opacity: 0.6;
-    max-width: 100%;
-    position: absolute;
-    width: 100px;
-    height: 300px;
-}
-
-@keyframes cld{
-    0%{
-        transform: translateX(-100%);
-    }
-    100%{
-        transform: translate(100%)
-    }
 }

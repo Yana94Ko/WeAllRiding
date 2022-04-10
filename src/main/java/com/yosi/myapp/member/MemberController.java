@@ -1,6 +1,9 @@
 package com.yosi.myapp.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,26 +29,33 @@ public class MemberController {
     }
 
     @PostMapping("loginOk")
-    public ModelAndView loginOk(MemberVO vo, HttpSession session) throws ParseException {
-        MemberVO vo2 = service.loginCheck(vo);
-        ModelAndView mav = new ModelAndView();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date suspendDate = new Date();
-        if (!(vo2.getSuspendDate() == null)) {
-            suspendDate = formatter.parse(vo2.getSuspendDate()); // 정지일이 있다면 파싱해서 Date 객체에 넣어준다
+    public ResponseEntity<String> loginOk(MemberVO vo, HttpSession session) throws ParseException {
+        ResponseEntity<String> entity = null;
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "text/html; charset=utf-8");
+        try {
+            MemberVO rVO = service.loginCheck(vo);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date suspendDate = rVO.getSuspendDate() == null ? new Date() : formatter.parse(rVO.getSuspendDate());
+            if (suspendDate.compareTo(new Date()) <= 0) {
+                session.setAttribute("logId", rVO.getUserId());
+                session.setAttribute("logName", rVO.getNickname());
+                session.setAttribute("logStatus", "Y");
+                session.setAttribute("isAdmin", rVO.getIsAdmin()); // 운영자인 경우 1, 아닌 경우 0
+                String msg="<script>location.href='/';</script>";
+                entity = new ResponseEntity<String> (msg, headers, HttpStatus.OK);
+            } else if (suspendDate.compareTo(new Date()) > 0) {
+                String msg="<script>alert('정지된 회원입니다');location.href='/';</script>";
+            } else {
+                throw new Exception();
+            }
         }
-        if (suspendDate.compareTo(new Date()) <= 0) { // 현재 날짜와 비교해서 이전이면 로그인
-            session.setAttribute("logId", vo2.getUserId());
-            session.setAttribute("logName", vo2.getNickname());
-            session.setAttribute("logStatus", "Y");
-            session.setAttribute("isAdmin", vo2.getIsAdmin()); // 운영자인 경우 1, 아닌 경우 0
-            mav.setViewName("redirect:/");
-        } else if (suspendDate.compareTo(new Date()) > 0){ //정지 기간이 남아있으면 memberSuspended 페이지로 이동시키고, alert를 띄운다
-            mav.setViewName("redirect:memberSuspended");
-        } else {
-            mav.setViewName("redirect:loginForm"); // vo가 null인 경우 다시 로그인폼으로 돌아가기
+        catch(Exception e) {
+            e.printStackTrace();
+            String msg="<script>alert('로그인 실패');history.go(-1);</script>";
+            entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
         }
-        return mav;
+        return entity;
     }
     @GetMapping("logout")
     public ModelAndView logout(HttpSession session) {
