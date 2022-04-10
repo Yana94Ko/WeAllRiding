@@ -159,7 +159,7 @@
 	left: 0;
 	bottom: 40px;
 	width: 288px;
-	height: 120px;
+	height: 400px;
 	margin-left: -144px;
 	text-align: left;
 	overflow: hidden;
@@ -173,7 +173,7 @@
 }
 .wrap .infoOverlay {
 	width: 286px;
-	height: 120px;
+	height: 400px;
 	border-radius: 5px;
 	border-bottom: 2px solid #ccc;
 	border-right: 1px solid #ccc;
@@ -205,6 +205,7 @@
 	cursor: pointer;
 }
 .infoOverlay .body {
+	height:300px;
 	position: relative;
 	overflow: hidden;
 }
@@ -232,16 +233,6 @@
 	border: 1px solid #ddd;
 	color: #888;
 	overflow: hidden;
-}
-.infoOverlay:after {
-	content: '';
-	position: absolute;
-	margin-left: -12px;
-	left: 50%;
-	bottom: 0;
-	width: 22px;
-	height: 12px;
-	background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png');
 }
 .infoOverlay .link {
 	color: #5085BB;
