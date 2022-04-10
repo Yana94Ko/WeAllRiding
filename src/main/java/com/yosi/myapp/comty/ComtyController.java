@@ -17,13 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.yosi.myapp.service.comtyService;
-import com.yosi.myapp.vo.comtyVO;
-
 @RestController
-public class comtyController {
+public class ComtyController {
 	@Inject
-	comtyService service;
+	ComtyService service;
 	@GetMapping("/comty/comtyList")
 	public ModelAndView allSelect() {
 		ModelAndView mav = new ModelAndView();
@@ -41,7 +38,7 @@ public class comtyController {
 	}
 	
 	@PostMapping("/comty/comtyWriteOk")
-    public ResponseEntity<String> comtyWriteOk(comtyVO vo, HttpServletRequest request){
+    public ResponseEntity<String> comtyWriteOk(ComtyVO vo, HttpServletRequest request){
 		vo.setNickname((String)request.getSession().getAttribute("logId"));
 		ResponseEntity<String> entity = null;
         HttpHeaders headers = new HttpHeaders();
@@ -82,7 +79,7 @@ public class comtyController {
 	}
 	
 	@PostMapping("/comty/comtyEditOk")
-	public ResponseEntity<String> comtyEditOk(comtyVO vo, HttpSession session) {
+	public ResponseEntity<String> comtyEditOk(ComtyVO vo, HttpSession session) {
 		vo.setNickname((String)session.getAttribute("logId"));
 		
 		ResponseEntity<String> entity =null;

@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace = "com.yosi.myapp.dao.comtyDAO">
+<mapper namespace = "com.yosi.myapp.comty.ComtyDAO">
 	<select id="allSelect" resultType="comtyVO">
 		select comtyNo, comtySubject, nickname, comtyHit, comtyWriteDate from comty
 		order by ComtyNo desc
@@ -13,7 +13,7 @@
 		values(#{nickname}, #{comtySubject}, #{comtyContent})
 	</insert>
 	
-	<select id="comtySelect" resultType="comtyVO">
+	<select id="comtySelect" resultType="ComtyVO">
 		select comtyNo, nickname, comtySubject, comtyContent, comtyHit, comtyWriteDate from comty where comtyNo=${param1}
 	</select>
 	<update id="comtyUpdate">
