@@ -18,20 +18,26 @@ function MemberCheck() {
         userpwd.focus();
         return false;
     }
-    const username = document.querySelector("#username");
+    const username = document.getElementById("userName")
     if(!username.value){
         alert("이름을 입력하세요");
         username.focus();
         return false;
     }
-    const tel2 = document.querySelector("#userTel2");
-    const regExp = /^[0-9]{7,8}$/;
-    if(!regExp.test(tel2.value)){
-        alert("연락처를 입력하세요");
-        tel2.focus();
+    const nickname = document.getElementById("nickname")
+    if(!nickname.value){
+        alert("닉네임을 입력하세요");
+        nickname.focus();
         return false;
     }
-    if(certPass){
+    const usertel2 = document.getElementById("userTel2")
+    const regExp = /^[0-9]{7,8}$/;
+    if(!regExp.test(usertel2.value)){
+        alert("연락처를 입력하세요");
+        usertel2.focus();
+        return false;
+    }
+    if(!certPass){
         alert("본인인증을 완료해주세요");
         return false;
     }
@@ -52,7 +58,7 @@ function SendPhoneCheck() {
 }
 function CheckCode () {
     const certNo = document.getElementById("certNo").value;
-    if(certNo == code) {
+    if(certNo == code && code!="") {
         document.getElementById("statePhoneChk").innerText = "인증번호가 일치합니다";
         certPass = true; //입력된 인증번호가 서버에서 받은 인증번호와 일치할시 회원가입이 가능하게 한다.
         document.getElementById("certNo").readOnly = true;

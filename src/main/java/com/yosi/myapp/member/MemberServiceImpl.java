@@ -33,7 +33,6 @@ public class MemberServiceImpl implements MemberService {
         SingleMessageSentResponse response = messageService.sendOne(new SingleMessageSendingRequest(message));
         System.out.println(response);
 
-
     }
 
 }
