@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,10 +27,11 @@ public class ShopController {
 	@GetMapping("/shopView")
 	public ModelAndView shopView() {
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("shopVO", service.shopSelect(0));
 		mav.setViewName("/shop/shopView");
 		return mav;
 	}
-
+	
 	// 정비샵 정보 존재 유무 확인
 	@GetMapping("/shopCheck")
 	public ModelAndView shopCheck(int shopId, String shopName, String shopRoadAddress, String shopPhone)
@@ -123,4 +125,9 @@ public class ShopController {
 		return entity;
 	}
 
+	// 정비샵 정보 불러오기
+	@RequestMapping("/shopInfoLoad")
+	public ShopVO shopInfoLoad(int shopId) {
+		return service.shopSelect(shopId);
+	}
 }

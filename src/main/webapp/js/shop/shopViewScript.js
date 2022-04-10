@@ -164,6 +164,10 @@ function displayPlaces(places) {
 		(function(marker, places) {
 			// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
 			kakao.maps.event.addListener(marker, 'click', function() {
+				
+				
+				
+				
 				displayOverlay(marker,places);
 				map.setCenter(marker.getPosition());
 			});
@@ -282,6 +286,23 @@ function displayOverlay(marker,places) {
 		closeOverlay();
 	} 
 	
+	var url = "/shopInfoLoad";
+	var params = "shopId="+places.id;
+	
+	$.ajax({
+		url:url,
+		data:params,
+		success:function(result){
+			var shopInfo = result.shopInfo;
+			var shopAuthors= result.shopAuthors;
+			$(".shopInfo").html(shopInfo);
+			if(shopAuthors!=null){
+				$(".shopAuthors").html("작성자 : "+shopAuthors);	
+			}
+		}, error:function(e){
+			console.log(e.responseText);
+		}
+	});
 	
 	// 커스텀 오버레이에 표시할 컨텐츠 입니다
 	// 커스텀 오버레이는 아래와 같이 사용자가 자유롭게 컨텐츠를 구성하고 이벤트를 제어할 수 있기 때문에
@@ -296,8 +317,8 @@ function displayOverlay(marker,places) {
 		'                <div class="ellipsis">'+places.road_address_name+'</div>' +
 		'                <div class="jibun ellipsis">'+places.address_name+'</div>' +
 		'                <div class="tel">' + places.phone + '</div>'+		
-		'                <div class="shopInfo">${shopVO.shopInfo}</div>'+
-		'                <div class="shopAuthors">${shopVO.shopAuthors}</div>'+
+		'                <div class="shopInfo">등록된 정비샵 정보가 없어요</div>'+
+		'                <div class="shopAuthors">정보를 등록해주세요!</div>'+
 		'                <div><a href="/shopCheck?shopId='+places.id+
 													  '&shopName='+places.place_name+
 													  '&shopRoadAddress='+places.road_address_name+
