@@ -1,5 +1,8 @@
 package com.yosi.myapp.shop;
 
-public interface shopService {
-	public int shopCheck(int placeId);
+public interface ShopService {
+	public int shopCheck(int shopId);
+	public int shopInsert(ShopVO shopVO);
+	public ShopVO shopSelect(int shopId);
+	public int shopUpdate(ShopVO shopVO);
 }

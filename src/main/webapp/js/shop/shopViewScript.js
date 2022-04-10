@@ -295,12 +295,14 @@ function displayOverlay(marker,places) {
 		'            <div class="desc">' +
 		'                <div class="ellipsis">'+places.road_address_name+'</div>' +
 		'                <div class="jibun ellipsis">'+places.address_name+'</div>' +
-		'                <div class="tel">' + places.phone + '</div>'+
-		'                <div><a href="${url}/shopEdit?placeId='+places.id+
-													  '&placeName='+places.place_name+
-													  '&placeRoadAddress='+places.road_address_name+
-													  '&placePhone='+places.phone+
-						'" target="_blank" class="link">공임비 정보 업데이트</a></div>' +
+		'                <div class="tel">' + places.phone + '</div>'+		
+		'                <div class="shopInfo">${shopVO.shopInfo}</div>'+
+		'                <div class="shopAuthors">${shopVO.shopAuthors}</div>'+
+		'                <div><a href="/shopCheck?shopId='+places.id+
+													  '&shopName='+places.place_name+
+													  '&shopRoadAddress='+places.road_address_name+
+													  '&shopPhone='+places.phone+
+						'" class="link">공임비 정보 업데이트</a></div>' +
 		'            </div>' +
 		'        </div>' +
 		'    </div>' +
