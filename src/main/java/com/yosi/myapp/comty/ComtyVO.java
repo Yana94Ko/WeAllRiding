@@ -1,6 +1,6 @@
-package com.yosi.myapp.vo;
+package com.yosi.myapp.comty;
 
-public class comtyVO {
+public class ComtyVO {
 	private int comtyNo;
 	private String nickname;
 	private String comtySubject;

@@ -1,4 +1,4 @@
-package com.yosi.myapp.service;
+package com.yosi.myapp.comty;
 
 import java.util.List;
 
@@ -6,26 +6,24 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.yosi.myapp.dao.comtyDAO;
-import com.yosi.myapp.vo.comtyVO;
 @Service
-public class comtyServiceImpl implements comtyService {
+public class ComtyServiceImpl implements ComtyService {
 	@Inject
-	comtyDAO dao;
+	ComtyDAO dao;
 	@Override
-	public List<comtyVO> allSelect() {
+	public List<ComtyVO> allSelect() {
 		return dao.allSelect();
 	}
 	@Override
-	public int comtyInsert(comtyVO vo) {
+	public int comtyInsert(ComtyVO vo) {
 		return dao.comtyInsert(vo);
 	}
 	@Override
-	public comtyVO comtySelect(int comtyNo) {
+	public ComtyVO comtySelect(int comtyNo) {
 		return dao.comtySelect(comtyNo);
 	}
 	@Override
-	public int comtyUpdate(comtyVO vo) {
+	public int comtyUpdate(ComtyVO vo) {
 		return dao.comtyUpdate(vo);
 	}
 	@Override

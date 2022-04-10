@@ -7,3 +7,4 @@
   		<mapper resource="mapper/memberMapper.xml"></mapper>
   	</mappers>
   </configuration>
+
