@@ -56,6 +56,7 @@ header>img{
 	transition-property:background, height;
   	transition-duration:0.3s;
   	transition-timing-function:ease-in-out;
+
 }
 .nav.active{
 	top:0;
@@ -114,7 +115,7 @@ ul[id^=topMenu]>li{
 /* -> main*/
 main{
 	min-height: 800px;
-	padding-top:200px;
+	padding-top: 165px;/*상단 메뉴와 컨텐츠가 겹치지 않게 padding부여*/
 }
 /* main <-*/
 
