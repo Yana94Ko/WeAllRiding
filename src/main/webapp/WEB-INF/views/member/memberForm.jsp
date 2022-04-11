@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script src="${url}/js/member.js"></script>
 <link rel="stylesheet" href="/css/memberForm.css" type="text/css"/>
-
 <main>
     <section class="memberForm">
         <h1>회원가입</h1>
@@ -34,14 +33,14 @@
                 <label><input type="radio" name="gender" value="여" required>여</label>
             </div>
             <div>
-                <select name="userTel1" class="userTel1">
+                <select id="userTel1" name="userTel1" class="userTel1">
                     <option value="010">010</option>
                     <option value="02">02</option>
                     <option value="031">031</option>
                     <option value="041">041</option>
                 </select>
                 <div class="tel">
-                    <input type="text" name="userTel2" id="userTel2"  required/>
+                    <input type="text" name="userTel2" id="userTel2" maxlength="9" required/>
                     <label>연락처</label>
                     <button id="phoneChk" class="phoneChk" type="button" onclick="SendPhoneCheck()">인증번호 보내기</button></br>
                     <input id="certNo" type="text" name="certNo" title="인증번호 입력"/>

@@ -1,42 +1,33 @@
 let certPass = false; // 본인인증을 위한 변수
 function MemberCheck() {
-   //아이디 체크
+    //아이디 체크
     const userid = document.getElementById("userId");
     var idCheck =  /^[A-za-z0-9]{6,15}$/g;
-
     if(!userid.value){
         alert("아이디를 입력하세요..");
         userid.focus();
         return false;
     }
-
     if(!idCheck.test(userid.value)){
         alert("아이디는 영문, 숫자 조합 6~15자를 입력해야 합니다.");
         userid.focus();
         return false;
     }
     //-----------------------아이디 체크 끝
-
-
     //비밀번호 체크
     const userpwd = document.getElementById("userPwd");
     const userpwd2 = document.getElementById("userPwd2")
     var pwdCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
-
-
     if(!userpwd.value || !userpwd2.value){
         alert("비밀번호를 입력하세요");
         userpwd.focus();
         return false;
     }
-
     if(userpwd.value!=userpwd2.value){
         alert("비밀번호가 일치하지 않습니다.");
         userpwd.focus();
         return false;
     }
-
-
     if(!pwdCheck.test(userpwd.value)){
         alert("비밀번호는 영문, 숫자, 특수기호를 조합으로 8~25자를 입력해야합니다.");
         userpwd.focus();
@@ -47,7 +38,6 @@ function MemberCheck() {
     //이름 체크
     const username = document.getElementById("userName")
     var nameCheck = /^[가-힣]{2,4}$/;
-
     if(!username.value){
         alert("이름을 입력하세요");
         username.focus();
@@ -59,16 +49,12 @@ function MemberCheck() {
         return false;
     }
     //--------------------------------------------------이름 끝
-
-    //닉네임 확인
     const nickname = document.getElementById("nickname")
     if(!nickname.value){
         alert("닉네임을 입력하세요");
         nickname.focus();
         return false;
     }
-    //------------------------------------------------닉네임 끝
-
     //연락처 체크
     const usertel2 = document.getElementById("userTel2")
     var regExp = /^[0-9]{7,8}$/;
@@ -88,11 +74,8 @@ function MemberCheck() {
         alert("본인인증을 완료해주세요");
         return false;
     }
-    //------------------------------------------------연락처 끝
-
-    //이메일 확인
     const userEmail = document.getElementById("userEmail")
-    var emailCheck = /^[a-z0-9\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
+    var emailCheck = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
 
     if(!userEmail.value){
         alert("이메일을 입력해주세요.");
@@ -100,15 +83,12 @@ function MemberCheck() {
         return false;
     }
 
-    if(!emailCheck.test(userEmail.value)){
+    if(!emailCheck.test(userEmail.value)) {
         alert("이메일 형식으로 입력해주세요.")
         userEmail.focus();
         return false;
     }
-    //------------------------------------------------이메일 끝
 }
-//------------------------------------------------function MemberCheck() 끝
-
 let code = ""; // 서버에서 받게될 인증번호
 function SendPhoneCheck() {
     alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호를 확인해주십시오.");
@@ -125,14 +105,14 @@ function SendPhoneCheck() {
 }
 function CheckCode () {
     const certNo = document.getElementById("certNo").value;
-    if (certNo == code && code != "") {
+    if(certNo == code && code!="") {
         document.getElementById("statePhoneChk").innerText = "인증번호가 일치합니다";
         certPass = true; //입력된 인증번호가 서버에서 받은 인증번호와 일치할시 회원가입이 가능하게 한다.
         document.getElementById("certNo").readOnly = true;
         document.getElementById("userTel1").readOnly = true;
         document.getElementById("userTel2").readOnly = true; // 재입력 방지
-    } else {
+    }
+    else{
         document.getElementById("statePhoneChk").innerText = "인증번호가 일치하지 않습니다";
     }
-
 }
