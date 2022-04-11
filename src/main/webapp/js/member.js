@@ -59,13 +59,15 @@ function MemberCheck() {
         return false;
     }
     //--------------------------------------------------이름 끝
+
+    //닉네임 확인
     const nickname = document.getElementById("nickname")
     if(!nickname.value){
         alert("닉네임을 입력하세요");
         nickname.focus();
         return false;
     }
-
+    //------------------------------------------------닉네임 끝
 
     //연락처 체크
     const usertel2 = document.getElementById("userTel2")
@@ -77,7 +79,7 @@ function MemberCheck() {
         return false;
     }
 
-    if(!usertel2.value)){
+    if(!usertel2.value){
         alert("연락처를 입력하세요");
         usertel2.focus();
         return false;
@@ -86,8 +88,11 @@ function MemberCheck() {
         alert("본인인증을 완료해주세요");
         return false;
     }
+    //------------------------------------------------연락처 끝
+
+    //이메일 확인
     const userEmail = document.getElementById("userEmail")
-    var emailCheck = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
+    var emailCheck = /^[a-z0-9\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
 
     if(!userEmail.value){
         alert("이메일을 입력해주세요.");
@@ -99,8 +104,11 @@ function MemberCheck() {
         alert("이메일 형식으로 입력해주세요.")
         userEmail.focus();
         return false;
-
+    }
+    //------------------------------------------------이메일 끝
 }
+//------------------------------------------------function MemberCheck() 끝
+
 let code = ""; // 서버에서 받게될 인증번호
 function SendPhoneCheck() {
     alert("인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호를 확인해주십시오.");
@@ -117,14 +125,13 @@ function SendPhoneCheck() {
 }
 function CheckCode () {
     const certNo = document.getElementById("certNo").value;
-    if(certNo == code && code!="") {
+    if (certNo == code && code != "") {
         document.getElementById("statePhoneChk").innerText = "인증번호가 일치합니다";
         certPass = true; //입력된 인증번호가 서버에서 받은 인증번호와 일치할시 회원가입이 가능하게 한다.
         document.getElementById("certNo").readOnly = true;
         document.getElementById("userTel1").readOnly = true;
         document.getElementById("userTel2").readOnly = true; // 재입력 방지
-    }
-    else{
+    } else {
         document.getElementById("statePhoneChk").innerText = "인증번호가 일치하지 않습니다";
     }
 

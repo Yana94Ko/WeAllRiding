@@ -41,7 +41,7 @@
                     <option value="041">041</option>
                 </select>
                 <div class="tel">
-                    <input type="text" name="userTel2" id="userTel2" maxlength="9" required/>
+                    <input type="text" name="userTel2" id="userTel2"  required/>
                     <label>연락처</label>
                     <button id="phoneChk" class="phoneChk" type="button" onclick="SendPhoneCheck()">인증번호 보내기</button></br>
                     <input id="certNo" type="text" name="certNo" title="인증번호 입력"/>
