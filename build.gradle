@@ -29,6 +29,8 @@ dependencies {
 	//2)Tomcat Embed Jasper : https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
 	implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.60'
 	
+	//3)@Inject 어노테이션 사용하기 위한 javax dependency impl
+	implementation 'javax.inject:javax.inject:1'
 }
 
 tasks.named('test') {
