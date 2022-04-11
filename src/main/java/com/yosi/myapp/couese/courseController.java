@@ -12,4 +12,12 @@ public class courseController {
 		mav.setViewName("/course/courseCreate");
 		return mav;
 	}
+	
+	// 추천 코스 페이지
+	@GetMapping("/courseRecommend")
+	public ModelAndView courseRecommend() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/course/courseRecommend");
+		return mav;
+	}
 }
