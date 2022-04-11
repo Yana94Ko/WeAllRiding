@@ -22,7 +22,7 @@
 		<c:if test="${logStatus =='Y'}">
 			<a href ="${url}/member/">
 				<img src =""/>
-				${logName}님
+				${nickName}님
 			</a>
 			<a href ="${url}/member/logout">로그아웃</a>
 		</c:if>
