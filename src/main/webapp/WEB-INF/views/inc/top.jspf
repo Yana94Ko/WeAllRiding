@@ -48,7 +48,7 @@
 					</ul>
 				</li>	
 				<li><a href="${url}/shopView">정비샵</a></li>
-				<li><a href="${url}/comunity">커뮤니티</a></li>
+				<li><a href="${url}/comty/comtyList">커뮤니티</a></li>
 				<c:if test="${logId == 'admin'}">
 					<li><a href="${url}/admin">관리자</a></li>
 				</c:if>

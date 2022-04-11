@@ -9,7 +9,3 @@
 		dfdfdffff
 	</div>
 </main>
-<<<<<<< HEAD
-
-=======
->>>>>>> 83123d890abfbad6430b3ee217e7851f714454fe
