@@ -70,13 +70,13 @@
 					$result.each(function(idx, vo){
 						tag += "<li><div>"+vo.nickname;
 						tag += "("+vo.comtyReplyWriteDate+")";
-						if(vo.nickname=='${logId}'){
+						if(vo.nickname=='${userId}'){
 							tag += "<input type='button' value='Edit'/>";
 							tag += "<input type='button' value='Del' title='"+vo.comtyReplyNo+"'/>";
 						}
 						
 						tag += "<br/><br/>"+vo.comtyReplyComent+"</div>";
-						if(vo.userid=='${logId}'){
+						if(vo.userid=='${userId}'){
 							tag += "<div style='display:none;'><form method='post'>";
 							tag += "<input type='hidden' name = 'replyno' value='"+vo.comtyReplyNo+"'/>";
 							tag += "<textarea name='coment' style='width:400px;'>"+vo.comtyReplyComent+"</textarea>";
@@ -108,7 +108,7 @@
 				var params = $("#replyFrm").serialize();
 			
 				$.ajax({
-					url:'/comty/reply/writeOk',
+					url:'/reply/writeOk',
 					data:params,
 					type:'POST',
 					success:function(r){//결과물이 r에 담김
@@ -182,7 +182,7 @@
 		<ul>
 			<li id="comtyViewContent">${vo.comtyContent }</li>
 		</ul>
-		<c:if test="${logId == vo.nickname }">
+		<c:if test="${userId == vo.nickname }">
 			<div id="viewBTN">
 				<button id="editBtn" onclick="javascript:edit()">글 수정</button>
 				<button id="delBtn" onclick="javascript:del()">글 삭제</button>

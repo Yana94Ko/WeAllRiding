@@ -2,9 +2,11 @@ package com.yosi.myapp.comty;
 
 import java.util.List;
 
+import com.yosi.myapp.PagingVO;
+
 
 public interface ComtyService {
-	public List<ComtyVO> allSelect();
+	public List<ComtyVO> allSelect(PagingVO pVO);
 	public int comtyInsert(ComtyVO vo); 
 	public ComtyVO comtySelect(int comtyNo);
 	public int comtyUpdate(ComtyVO vo);
@@ -14,4 +16,7 @@ public interface ComtyService {
 
 	
 	public void cntHit (int comtyNo);
+	
+	//총레코드수
+	public int totalRecord(PagingVO pVO);
 }

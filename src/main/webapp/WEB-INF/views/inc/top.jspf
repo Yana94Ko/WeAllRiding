@@ -46,9 +46,9 @@
 						<li><a href="${url}/riding/">라이딩 리스트</a></li>
 						<li><a href="${url}/riding/">my 라이딩</a></li>
 					</ul>
-				</li>
-				<li><a href="${url}/comty/comtyList">커뮤니티</a></li>
+				</li>	
 				<li><a href="${url}/shopView">정비샵</a></li>
+				<li><a href="${url}/comty/comtyList">커뮤니티</a></li>
 				<c:if test="${logId == 'admin'}">
 					<li><a href="${url}/admin">관리자</a></li>
 				</c:if>

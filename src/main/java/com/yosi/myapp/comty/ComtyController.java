@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.yosi.myapp.PagingVO;
+
 @RestController
 public class ComtyController {
 	@Autowired
@@ -31,24 +33,30 @@ public class ComtyController {
 	ComtyReplyService replyService;
 	
 	@GetMapping("/comty/comtyList")
-	public ModelAndView allSelect() {
+	public ModelAndView allSelect(PagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("lst", service.allSelect());
+		
+		// 총 레코드 수
+		pVO.setTotalRecord(service.totalRecord(pVO));
+		
+		mav.addObject("lst", service.allSelect(pVO));
+		mav.addObject("pVO", pVO);
+		
 		mav.setViewName("comty/comtyList");
 		return mav;
 	}
 	
 	@GetMapping("/comty/comtyWrite")
-	public ModelAndView comtywrite() {
+	public ModelAndView comtyWrite(PagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("lst", service.allSelect());
+		mav.addObject("lst", service.allSelect(pVO));
 		mav.setViewName("comty/comtyWrite");
 		return mav;
 	}
 	
 	@PostMapping("/comty/comtyWriteOk")
     public ResponseEntity<String> comtyWriteOk(ComtyVO vo, HttpServletRequest request){
-		vo.setNickname((String)request.getSession().getAttribute("logId"));
+		vo.setNickname((String)request.getSession().getAttribute("userId"));
 		ResponseEntity<String> entity = null;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("text", "html",Charset.forName("UTF-8")));
@@ -94,7 +102,7 @@ public class ComtyController {
 	
 	@PostMapping("/comty/comtyEditOk")
 	public ResponseEntity<String> comtyEditOk(ComtyVO vo, HttpSession session) {
-		vo.setNickname((String)session.getAttribute("logId"));
+		vo.setNickname((String)session.getAttribute("userId"));
 		
 		ResponseEntity<String> entity =null;
 		HttpHeaders headers = new HttpHeaders();
@@ -117,7 +125,7 @@ public class ComtyController {
 	// 글 삭제
 	@GetMapping("/comty/comtyDel")
 	public ModelAndView comtyDel(int comtyNo, HttpSession session, ModelAndView mav) {
-		String nickname = (String)session.getAttribute("logId");
+		String nickname = (String)session.getAttribute("userId");
 		int result = service.comtyDelete(comtyNo, nickname);
 		if(result>0) {
 			//삭제됨
