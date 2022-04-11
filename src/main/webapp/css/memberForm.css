@@ -72,7 +72,7 @@ main{
 .date{
     position: relative;
     left:385px;
-    bottom:23px;
+    bottom:50px;
     font-size: 15px;
     color: #999999;
 }
@@ -80,7 +80,7 @@ main{
 .userTel1{
     position: relative;
     left: 49px;
-    top: 6px;
+    bottom: 110px;
 }
 
 .tel{
