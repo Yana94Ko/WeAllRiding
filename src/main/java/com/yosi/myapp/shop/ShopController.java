@@ -23,7 +23,7 @@ public class ShopController {
 	@Inject
 	ShopService service;
 
-	// Á¤ºñ¼¥ °Ë»ö
+	// ì •ë¹„ìƒµ ê²€ìƒ‰
 	@GetMapping("/shopView")
 	public ModelAndView shopView() {
 		ModelAndView mav = new ModelAndView();
@@ -31,8 +31,8 @@ public class ShopController {
 		mav.setViewName("/shop/shopView");
 		return mav;
 	}
-	
-	// Á¤ºñ¼¥ Á¤º¸ Á¸Àç À¯¹« È®ÀÎ
+
+	// ì •ë¹„ìƒµ ì •ë³´ ì¡´ì¬ ìœ ë¬´ í™•ì¸
 	@GetMapping("/shopCheck")
 	public ModelAndView shopCheck(int shopId, String shopName, String shopRoadAddress, String shopPhone)
 			throws UnsupportedEncodingException {
@@ -55,7 +55,7 @@ public class ShopController {
 		return mav;
 	}
 
-	// Á¤ºñ¼¥ Ãß°¡½Ã Á¤º¸¸¦ ÀÔ·Â¹ŞÀ» ÆäÀÌÁö
+	// ì •ë¹„ìƒµ ì¶”ê°€ì‹œ ì •ë³´ë¥¼ ì…ë ¥ë°›ì„ í˜ì´ì§€
 	@GetMapping("/shopWrite")
 	public ModelAndView shopWrite(int shopId, String shopName, String shopRoadAddress, String shopPhone, Model model) {
 		ModelAndView mav = new ModelAndView();
@@ -67,7 +67,7 @@ public class ShopController {
 		return mav;
 	}
 
-	// shopWrite¿¡¼­ ÀÔ·Â¹ŞÀº Á¤º¸ shop DB¿¡ Ãß°¡
+	// shopWriteì—ì„œ ì…ë ¥ë°›ì€ ì •ë³´ shop DBì— ì¶”ê°€
 	@PostMapping("/shopWriteOk")
 	public ResponseEntity<String> shopWriteOk(ShopVO shopVO, HttpServletRequest request) {
 		shopVO.setShopAuthors((String) request.getSession().getAttribute("nickName"));
@@ -76,19 +76,19 @@ public class ShopController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
 
-		try {// Á¤ºñ¼¥ Á¤º¸ µî·Ï ¼º°ø
+		try {// ì •ë¹„ìƒµ ì •ë³´ ë“±ë¡ ì„±ê³µ
 			service.shopInsert(shopVO);
-			String msg = "<script>alert('Á¤ºñ¼¥ Á¤º¸°¡ µî·ÏµÇ¾ú½À´Ï´Ù.');location.href='/shopView';</script>";
+			String msg = "<script>alert('ì •ë¹„ìƒµ ì •ë³´ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.');location.href='/shopView';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-		} catch (Exception e) {// Á¤ºñ¼¥ Á¤º¸ µî·Ï ½ÇÆĞ
+		} catch (Exception e) {// ì •ë¹„ìƒµ ì •ë³´ ë“±ë¡ ì‹¤íŒ¨
 			e.printStackTrace();
-			String msg = "<script>alert('Á¤ºñ¼¥ Á¤º¸ µî·ÏÀ» ½ÇÆĞÇÏ¿´½À´Ï´Ù.');history.back();</script>";
+			String msg = "<script>alert('ì •ë¹„ìƒµ ì •ë³´ ë“±ë¡ì„ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.');history.back();</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
 
-	// Á¤ºñ¼¥ Ãß°¡½Ã Á¤º¸¸¦ ÀÔ·Â¹ŞÀ» ÆäÀÌÁö
+	// ì •ë¹„ìƒµ ì¶”ê°€ì‹œ ì •ë³´ë¥¼ ì…ë ¥ë°›ì„ í˜ì´ì§€
 	@GetMapping("/shopUpdate")
 	public ModelAndView shopUpdate(int shopId, String shopName, String shopRoadAddress, String shopPhone, Model model) {
 		ModelAndView mav = new ModelAndView();
@@ -103,7 +103,7 @@ public class ShopController {
 		return mav;
 	}
 
-	// shopWrite¿¡¼­ ÀÔ·Â¹ŞÀº Á¤º¸ shop DB¿¡ Ãß°¡
+	// shopWriteì—ì„œ ì…ë ¥ë°›ì€ ì •ë³´ shop DBì— ì¶”ê°€
 
 	@PostMapping("/shopUpdateOk")
 	public ResponseEntity<String> shopUpdateOk(ShopVO shopVO, HttpServletRequest request) {
@@ -113,19 +113,19 @@ public class ShopController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
 
-		try {// Á¤ºñ¼¥ Á¤º¸ ¾÷µ¥ÀÌÆ® ¼º°ø 
+		try {// ì •ë¹„ìƒµ ì •ë³´ ì—…ë°ì´íŠ¸ ì„±ê³µ
 			service.shopUpdate(shopVO);
-			String msg = "<script>alert('Á¤ºñ¼¥ Á¤º¸°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.');location.href='/shopView';</script>";
+			String msg = "<script>alert('ì •ë¹„ìƒµ ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.');location.href='/shopView';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-		} catch (Exception e) {// Á¤ºñ¼¥ Á¤º¸ µî·Ï ½ÇÆĞ 
+		} catch (Exception e) {// ì •ë¹„ìƒµ ì •ë³´ ë“±ë¡ ì‹¤íŒ¨
 			e.printStackTrace();
-			String msg = "<script>alert('Á¤ºñ¼¥ Á¤º¸ ¼öÁ¤¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.');history.back();</script>";
+			String msg = "<script>alert('ì •ë¹„ìƒµ ì •ë³´ ìˆ˜ì •ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.');history.back();</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}
 
-	// Á¤ºñ¼¥ Á¤º¸ ºÒ·¯¿À±â
+	// ì •ë¹„ìƒµ ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸°
 	@RequestMapping("/shopInfoLoad")
 	public ShopVO shopInfoLoad(int shopId) {
 		return service.shopSelect(shopId);

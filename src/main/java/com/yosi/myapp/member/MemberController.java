@@ -25,6 +25,7 @@ public class MemberController {
     public String loginForm() {
         return "member/loginForm";
     }
+
     @PostMapping("loginOk")
     public ResponseEntity<String> loginOk(MemberVO vo, HttpSession session) throws ParseException {
         ResponseEntity<String> entity = null;
@@ -65,6 +66,7 @@ public class MemberController {
     public String memberForm() {
         return "member/memberForm";
     }
+
     @PostMapping("memberOk")
     public String memberFormOk(MemberVO vo, Model model) {
         int cnt = service.memberInsert(vo);

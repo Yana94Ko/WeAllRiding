@@ -100,7 +100,7 @@ function SendPhoneCheck() {
         .catch((error) => {
             alert("휴대폰 번호가 올바르지 않습니다.");
         })
-    }
+}
 function CheckCode () {
     const certNo = document.getElementById("certNo").value;
     if(certNo == code && code!="") {

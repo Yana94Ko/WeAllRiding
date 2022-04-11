@@ -55,6 +55,7 @@ header>img{
 	transition-property:background, height;
   	transition-duration:0.3s;
   	transition-timing-function:ease-in-out;
+
 }
 .nav.active{
 	top:0;
