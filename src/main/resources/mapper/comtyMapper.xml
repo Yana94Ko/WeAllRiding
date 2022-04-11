@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace = "com.yosi.myapp.comty.ComtyDAO">
+	<select id="allSelect" resultType="comtyVO">
+		select comtyNo, comtySubject, nickname, comtyHit, date_format(comtyWriteDate, '%m-%d %H:%i') comtyWriteDate
+		from comty
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by comtyNo desc
+		limit ${onePageRecord} offset ${offsetIndex}
+	</select>
+	<select id="totalRecord" resultType="int">
+		select count(comtyNo) as cnt from comty
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	<insert	id="comtyInsert">
+		insert into comty(nickname, comtySubject, comtyContent)
+		values(#{nickname}, #{comtySubject}, #{comtyContent})
+	</insert>
+	<update id="cntHit" parameterType="int">
+		update comty set comtyHit = comtyHit+1 where comtyNo=#{param1}
+	</update>
+	<select id="comtySelect" resultType="ComtyVO">
+		select comtyNo, nickname, comtySubject, comtyContent, comtyHit, comtyWriteDate from comty where comtyNo=${param1}
+	</select>
+	<update id="comtyUpdate">
+		update comty set comtySubject=#{comtySubject}, comtyContent=#{comtyContent} where comtyNo=#{comtyNo} and nickname=#{nickname}
+		
+	</update>
+	<delete id="comtyDelete">
+		delete from comty where comtyNo=#{param1} and nickname=#{param2}
+	</delete>
+	<update id="hitCount">
+      update comty set comtyHit = comtyHit+1 where comtyNo=#{param1}
+   </update>
+</mapper>

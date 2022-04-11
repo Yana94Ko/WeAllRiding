@@ -7,7 +7,7 @@ spring:
       suffix: .jsp    
   datasource: # Mybatis dataSource 연결
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://weallridingdb.cwphiqxgn2ap.us-west-2.rds.amazonaws.com:3306/WeAllRiding?characterEncoding=utf-8 #포트번호와 DB이름 수정했습니다.
+    url: jdbc:mysql://weallridingdb.cwphiqxgn2ap.us-west-2.rds.amazonaws.com:3306/WeAllRiding?characterEncoding=utf-8
     username: admin
     password: weallriding
   
@@ -15,5 +15,9 @@ spring:
     livereload:
       enabled: true
  
-mybatis:
-  mapper-locations: mapper/*Mapper.xml
+mybatis: 
+  type-aliases-package: com.yosi.myapp #mybatis에서 팩키지 생략 할 수 있도록 설정
+
+  mapper-locations: mapper/*Mapper.xml 
+  configuration-map-underscore-to-camel-case: true
+
