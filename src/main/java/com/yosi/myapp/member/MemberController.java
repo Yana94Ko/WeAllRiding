@@ -34,15 +34,9 @@ public class MemberController {
         try {
             MemberVO rVO = service.loginCheck(vo);
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-<<<<<<< HEAD
-            Date suspendDate = rVO.getSuspendDate() == null ? new Date() : formatter.parse(rVO.getSuspendDate());
-            if (suspendDate.compareTo(new Date()) <= 0) {
-                session.setAttribute("UserId", rVO.getUserId());
-=======
             Date suspendDate = rVO.getSuspendDate() == null ? new Date() : formatter.parse(rVO.getSuspendDate()); //정지일이 없으면 현재 날짜, 있으면 DB에 등록된 정지일을 파싱해서 넣는다.
             if (suspendDate.compareTo(new Date()) <= 0) { // 정지일 <= 현재날짜 로그인
                 session.setAttribute("userId", rVO.getUserId());
->>>>>>> 165c3a088a720b35c68d2b5aa23640f41f016287
                 session.setAttribute("nickName", rVO.getNickname());
                 session.setAttribute("logStatus", "Y");
                 session.setAttribute("isAdmin", rVO.getIsAdmin()); // 운영자인 경우 1, 아닌 경우 0
