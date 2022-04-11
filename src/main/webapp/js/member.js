@@ -58,13 +58,11 @@ function MemberCheck() {
     //연락처 체크
     const usertel2 = document.getElementById("userTel2")
     var regExp = /^[0-9]{7,8}$/;
-
     if(!regExp.test(usertel2.value)){
         alert("연락처 형식에 맞게 작성해주세요.");
         usertel2.focus();
         return false;
     }
-
     if(!usertel2.value){
         alert("연락처를 입력하세요");
         usertel2.focus();
