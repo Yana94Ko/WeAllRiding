@@ -12,7 +12,7 @@
 }
 
 #comtyFrm li {
-	margin:0px;
+	margin: 0px;
 	padding: 10px 5px;
 }
 #editBtn {
@@ -29,7 +29,7 @@
 	$(function() {
 		CKEDITOR.replace("comtyContent",
 				{ 
-					height:'400px'
+					height: '400px'
 				}
 		);
 

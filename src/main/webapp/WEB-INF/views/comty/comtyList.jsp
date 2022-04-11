@@ -5,8 +5,8 @@
 .comtyContainer {
 	margin: 0 auto;
 	padding: 0 auto;
-	width:80%;
-	height:100%;
+	width: 80%;
+	height: 100%;
 }
 #cList {
 	overflow: auto;
@@ -45,8 +45,8 @@
 /*paging*/
 .paging {
 	margin: 0px auto;
-	padding:0px 50%;
-	width:100%;
+	padding: 0px 50%;
+	width: 100%;
 	height: 30px;
 }
 
@@ -107,7 +107,7 @@
 				<li id="comtyWD">${vo.comtyWriteDate }</li>
 			</c:forEach>
 		</ul>
-		<c:if test="${logId != null && logId != ''}">
+		<c:if test="${f != null && userId != ''}">
 			<div id="writeBTN">
 				<button id="writeBtn" onclick="location.href='/comty/comtyWrite' ">글 작성하기</button>
 			</div>

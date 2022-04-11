@@ -1,6 +1,7 @@
 package com.yosi.myapp.comty;
 
 import java.nio.charset.Charset;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +28,10 @@ public class ComtyController {
 	ComtyService ComtyService;
 	@Inject
 	ComtyService service;
+	
+	@Inject
+	ComtyReplyService replyService;
+	
 	@GetMapping("/comty/comtyList")
 	public ModelAndView allSelect(PagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
@@ -50,7 +56,7 @@ public class ComtyController {
 	
 	@PostMapping("/comty/comtyWriteOk")
     public ResponseEntity<String> comtyWriteOk(ComtyVO vo, HttpServletRequest request){
-		vo.setNickname((String)request.getSession().getAttribute("logId"));
+		vo.setNickname((String)request.getSession().getAttribute("userId"));
 		ResponseEntity<String> entity = null;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("text", "html",Charset.forName("UTF-8")));
@@ -75,11 +81,13 @@ public class ComtyController {
 	@RequestMapping("/comty/comtyView")
 	public ModelAndView comtyView(@RequestParam("comtyNo") int comtyNo) {
 		 ModelAndView mav = new ModelAndView();
-		 
+
 		 service.cntHit(comtyNo); // 조회수 증가
 		 
 		 mav.addObject("vo", service.comtySelect(comtyNo));
 		 mav.setViewName("comty/comtyView");
+		 
+		 
 		 return mav;
 	}
 	
@@ -94,7 +102,7 @@ public class ComtyController {
 	
 	@PostMapping("/comty/comtyEditOk")
 	public ResponseEntity<String> comtyEditOk(ComtyVO vo, HttpSession session) {
-		vo.setNickname((String)session.getAttribute("logId"));
+		vo.setNickname((String)session.getAttribute("userId"));
 		
 		ResponseEntity<String> entity =null;
 		HttpHeaders headers = new HttpHeaders();
@@ -117,7 +125,7 @@ public class ComtyController {
 	// 글 삭제
 	@GetMapping("/comty/comtyDel")
 	public ModelAndView comtyDel(int comtyNo, HttpSession session, ModelAndView mav) {
-		String nickname = (String)session.getAttribute("logId");
+		String nickname = (String)session.getAttribute("userId");
 		int result = service.comtyDelete(comtyNo, nickname);
 		if(result>0) {
 			//삭제됨
@@ -131,4 +139,6 @@ public class ComtyController {
 		
 		return mav;
 	}
+	
+	
 }

@@ -11,6 +11,9 @@ public interface ComtyService {
 	public ComtyVO comtySelect(int comtyNo);
 	public int comtyUpdate(ComtyVO vo);
 	public int comtyDelete(int comtyNo, String nickname);
+
+	public void hitCount(int comtyNo);
+
 	
 	public void cntHit (int comtyNo);
 	
