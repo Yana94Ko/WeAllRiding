@@ -18,4 +18,4 @@ spring:
 mybatis: 
   type-aliases-package: com.yosi.myapp #mybatis에서 팩키지 생략 할 수 있도록 설정
   mapper-locations: mapper/*Mapper.xml 
-
+  configuration-map-underscore-to-camel-case: true

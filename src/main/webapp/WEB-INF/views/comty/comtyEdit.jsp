@@ -1,18 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <style>
+.comtyContainer{
+	width: 80%;
+	margin: 0 auto;
+	padding: 0 auto;
+}
 #comtySubject {
-	width: 98%;
+	width: 99%;
+	height: 30px;
 }
 
 #comtyFrm li {
+	margin:0px;
 	padding: 10px 5px;
+}
+#editBtn {
+	background-color: rgba(255, 217, 102);
+	padding: 10px 50px;
+	margin: 0px;
+	border-radius: 6px;
+	border-color: rgba(204, 204, 204);
+	float: right;
 }
 </style>
 <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
-<script>
+<script type="text/javascript">
 	$(function() {
-		CKEDITOR.replace("comtyContent");
+		CKEDITOR.replace("comtyContent",
+				{ 
+					height:'400px'
+				}
+		);
 
 		$("#comtyFrm").submit(function() {
 			if ($("#comtySubject").val() == '') {
@@ -28,14 +47,15 @@
 </script>
 <main>
 <div class="comtyContainer">
-	<h1>글수정 폼</h1>
 	<form method="post" action="/comty/comtyEditOk" id="comtyFrm">
 		<input type="hidden" name="comtyNo" value="${vo.comtyNo }"/>
 		<ul>
-			<li>제목</li>
+			<h1>글 수정</h1>
 			<li><input type="text" name="comtySubject" id="comtySubject" value="${vo.comtySubject}" /></li>
 			<li><textarea name="comtyContent" id="comtyContent">${vo.comtyContent }</textarea></li>
-			<li><input type="submit" value="수정" /></li>
+			<li id="editBTN">
+				<button id="editBtn">글 수정</button>
+			</li>
 		</ul>
 	</form>
 </div>

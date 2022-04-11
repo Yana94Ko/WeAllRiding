@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,6 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class ComtyController {
+	@Autowired
+	ComtyService ComtyService;
 	@Inject
 	ComtyService service;
 	
@@ -70,6 +73,8 @@ public class ComtyController {
 	@RequestMapping("/comty/comtyView")
 	public ModelAndView comtyView(@RequestParam("comtyNo") int comtyNo) {
 		 ModelAndView mav = new ModelAndView();
+
+		 service.cntHit(comtyNo); // 조회수 증가
 		 
 		 mav.addObject("vo", service.comtySelect(comtyNo));
 		 mav.setViewName("comty/comtyView");

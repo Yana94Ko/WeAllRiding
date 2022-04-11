@@ -34,7 +34,9 @@ public class ComtyServiceImpl implements ComtyService {
 	@Override
 	public void hitCount(int comtyNo) {
 		// TODO Auto-generated method stub
-		
+	}
+	public void cntHit(int comtyNo) {
+		dao.cntHit(comtyNo);
 	}
 
 }
