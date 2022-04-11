@@ -1,0 +1,152 @@
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180vh;
+    background-image: url("/images/memberFromBackground.jpg");
+    background-position: top;
+}
+
+.memberForm{
+    width: 700px;
+    height: 640px;
+    align-items: center;
+    margin-top: 10px;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.memberForm h1{
+    text-align: center;
+}
+
+.member-input{
+    width: 250px;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.member-input:first-child{
+    margin-top: 0;
+}
+
+.member-input input{
+    width: 100%;
+    padding: 20px 10px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 12px;
+    color: #fff;
+    outline: none;
+}
+
+.member-input label{
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    font-size: 12px;
+    color: #999;
+    transition: all .5s ease;
+}
+
+.member-input input:focus + label,
+.member-input input:valid + label{
+    top: -2px;
+    font-size: 7px;
+    color: #166cea;
+}
+
+.radio{
+    font-size: 15px;
+    color: #999999;
+    position: relative;
+    left:385px;
+    bottom:20px;
+    margin-right: 9px;
+}
+
+.date{
+    position: relative;
+    left:385px;
+    bottom:23px;
+    font-size: 15px;
+    color: #999999;
+}
+
+.userTel1{
+    position: relative;
+    left: 49px;
+    top: 6px;
+}
+
+.tel{
+    width: 200px;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.tel:first-child{
+    margin-top: 0;
+}
+
+.tel input{
+    width: 100%;
+    padding: 20px 10px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 12px;
+    color: #fff;
+    outline: none;
+}
+
+.tel label{
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    font-size: 12px;
+    color: #999;
+    transition: all .5s ease;
+}
+
+.tel input:focus + label,
+.tel input:valid + label{
+    top: -2px;
+    font-size: 7px;
+    color: #166cea;
+}
+
+.bikeType{
+    font-size: 12px;
+    color: #999999;
+    position: relative;
+    left: 58px;
+    top: 60px;
+}
+
+.join-btn{
+    margin-top: 30px;
+    margin-left: 50px;
+    position: relative;
+    top: 80px;
+}
+
+.join-btn button{
+    width: 80%;
+    height: 50px;
+    background: dodgerblue;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 30px;
+}
