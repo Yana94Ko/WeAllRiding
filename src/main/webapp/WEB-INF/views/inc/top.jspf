@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="${url}/css/topBottomStyle.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="${url}/js/topBottomScript.js"></script>
-</head>
+	</head>
 <body>
 <header>
 	<div class='top'>
@@ -37,7 +37,7 @@
 				<li onmouseenter="topMenuOver(1)" onmouseleave="topMenuOut(1)">코스
 					<ul id="topMenu1">
 						<li><a href="${url}/course/">추천 코스</a></li>
-						<li><a href="${url}/course/">코스 만들기</a></li>
+						<li><a href="${url}/courseCreate">코스 만들기</a></li>
 					</ul>	
 				</li>
 				<li onmouseenter="topMenuOver(2)" onmouseleave="topMenuOut(2)">라이딩
@@ -46,7 +46,7 @@
 						<li><a href="${url}/riding/">my 라이딩</a></li>
 					</ul>
 				</li>	
-				<li><a href="${url}/shop">정비샵</a></li>
+				<li><a href="${url}/shopView">정비샵</a></li>
 				<li><a href="${url}/comty/comtyList">커뮤니티</a></li>
 				<c:if test="${logId == 'admin'}">
 					<li><a href="${url}/admin">관리자</a></li>

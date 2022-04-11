@@ -37,8 +37,8 @@ public class MemberController {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date suspendDate = rVO.getSuspendDate() == null ? new Date() : formatter.parse(rVO.getSuspendDate());
             if (suspendDate.compareTo(new Date()) <= 0) {
-                session.setAttribute("logId", rVO.getUserId());
-                session.setAttribute("logName", rVO.getNickname());
+                session.setAttribute("UserId", rVO.getUserId());
+                session.setAttribute("nickName", rVO.getNickname());
                 session.setAttribute("logStatus", "Y");
                 session.setAttribute("isAdmin", rVO.getIsAdmin()); // 운영자인 경우 1, 아닌 경우 0
                 String msg="<script>location.href='/';</script>";
