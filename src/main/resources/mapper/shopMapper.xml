@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yosi.myapp.shop.ShopDAO">
+	<select id="shopCheck" resultType="int">
+		SELECT COUNT(*)
+		FROM shop
+		WHERE shopId=${param1}
+	</select>
+	<insert id="shopInsert">
+		INSERT INTO shop(shopId, shopInfo, shopAuthors)
+		VALUES (#{shopId}, #{shopInfo}, #{shopAuthors});
+	</insert>
+	<select id="shopSelect" resultType="ShopVO">
+		SELECT shopId, shopInfo, shopAuthors FROM shop WHERE shopId=${param1}
+	</select>
+	<update id="shopUpdate">
+		UPDATE shop SET shopInfo = #{shopInfo}, shopAuthors = #{shopAuthors} 
+		WHERE shopId = #{shopId}
+	</update>
+</mapper>
