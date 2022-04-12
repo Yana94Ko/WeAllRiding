@@ -7,6 +7,7 @@
         <mapper resource="mapper/memberMapper.xml"></mapper>
         <mapper resource="mapper/shopMapper.xml"></mapper>
         <mapper resource="mapper/comtyMapper.xml"></mapper>
+    	<mapper resource="mapper/comtyReplyMapper.xml"></mapper>
     </mappers>
   </configuration>
 

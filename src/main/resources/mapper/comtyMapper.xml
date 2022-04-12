@@ -36,7 +36,4 @@
 	<delete id="comtyDelete">
 		delete from comty where comtyNo=#{param1} and nickname=#{param2}
 	</delete>
-	<update id="hitCount">
-      update comty set comtyHit = comtyHit+1 where comtyNo=#{param1}
-   </update>
 </mapper>

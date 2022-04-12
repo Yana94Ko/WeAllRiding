@@ -8,7 +8,6 @@
 	margin: 0 auto;
 	padding: 0 auto;
 }
-
 #comtyFrm {
 	background-color: rgba(234, 234, 234);
 	width: 100%;
@@ -17,13 +16,11 @@
 	text-align: right;
 	padding: 10px 0 10px;
 }
-
 #comtyViewContent {
 	min-height: 400px;
 	height: 100%;
 	color: black;
 }
-
 #editBtn {
 	background-color: rgba(255, 217, 102);
 	padding: 10px 50px;
@@ -32,7 +29,6 @@
 	border-color: rgba(204, 204, 204);
 	float: right;
 }
-
 #delBtn {
 	background-color: rgba(231, 76, 60);
 	padding: 10px 50px;
@@ -53,9 +49,80 @@
 			location.href = "/comty/comtyEdit?comtyNo=${vo.comtyNo}";
 		}
 	}
+	
+	// 댓글----------------
+	$(function(){
+		//2. 댓글 목록을 가져오는 함수
+		function replyListAll(){//현재 글의 댓글을 모두 가져오기
+			var url = "/comty/comtyReplyList";
+			var params = "no=${vo.no}";
+			$.ajax({
+				url:url,
+				data:params,
+				success:function(result){
+					var $result = $(result);//vo,vo,vo....
+					
+					var tag="<hr/><ul>";
+					
+					$result.each(function(idx, vo){
+						tag += "<li><div>"+vo.userid;
+						tag += "("+vo.writedate+")";
+						if(vo.userid=='${logId}'){
+							tag += "<input type='button' value='Edit'/>";
+							tag += "<input type='button' value='Del' title='"+vo.replyno+"'/>";
+						}
+						
+						tag += "<br/><br/>"+vo.coment+"</div>";
+						if(vo.userid=='${logId}'){
+							tag += "<div style='display:none;'><form method='post'>";
+							tag += "<input type='hidden' name = 'replyno' value='"+vo.replyno+"'/>";
+							tag += "<textarea name='coment' style='width:400px;'>"+vo.coment+"</textarea>";
+							tag += "<input type='submit' value='수정'/>";
+							tag += "</form></div>"
+						}
+						
+						tag += "<hr/></li>";
+					});
+					
+					tag+="</ul>";
+					
+					$("#replyList").html(tag);
+					
+				},error:function(e){
+					console.log(e.responseText);
+				}
+			});
+			
+		}
+		// 댓글등록
+		$("#comtyReplyFrm").submit(function(){
+			event.preventDefault();//form 기본 이벤트 제거
+			if($("#comtyReplyComent").val()==""){//댓글 안쓴경우
+				alert("댓글을 입력후 등록하세요");
+				return;
+			}else{//댓글 입력한경우
+				var params = $("#comtyReplyFrm").serialize();
+				
+				$.ajax({
+					url:'/comty/comtyReplyWriteOk',
+					data:params,
+					type:'POST',
+					success:function(){
+						//폼을초기화
+						$("#comtyReplyComent").val("");
+						//댓글 목록 refresh되어야 한다.
+					},error:function(e){
+						console.log(e.responseText);
+					}
+				});
+			}
+		});
+		// 현재글의 댓글
+	});
+	
+	
 </script>
 <main>
-
 	<div class="comtyContainer">
 		<h2>${vo.comtySubject }</h2>
 		<ul>
@@ -64,7 +131,6 @@
 				${vo.comtyWriteDate }&nbsp;&nbsp;&nbsp;&nbsp; 조회수 : ${vo.comtyHit }&nbsp;&nbsp;&nbsp;
 			</li>
 		</ul>
-
 		<ul>
 			<li id="comtyViewContent">${vo.comtyContent }</li>
 		</ul>
@@ -74,7 +140,18 @@
 				<button id="delBtn" onclick="javascript:del()">글 삭제</button>
 			</div>
 		</c:if>
+		
+		<hr/>
+		<!-- 댓글 쓰기 폼 -->
+		<c:if test="${logStatus=='Y' }">
+			<form method='post' id="comtyReplyFrm">
+				<input type="hidden" name="comtyNo" value="${vo.comtyNo }"/>
+				<textarea name="comtyReplyComent" id="comtyReplyComent" style="width:500px; height:100px;"></textarea>
+				<input type="submit" value="댓글등록">
+			</form>
+		</c:if>
+		<!-- 댓글 목록 나올 자리 -->
+		<div id="replyList"></div>
+		
 	</div>
-	
-	<hr />
 </main>
