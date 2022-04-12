@@ -8,9 +8,13 @@
 	margin: 0 auto;
 	padding: 0 auto;
 }
-
+ul{
+	margin: 0px;
+	padding: 0px;
+}
 #comtyFrm {
 	background-color: rgba(234, 234, 234);
+	font-size:0.8em;
 	width: 100%;
 	height: 25px;
 	color: black;
@@ -43,17 +47,20 @@
 }
 
 #replyBtn {
-	background-color: rgba(71, 200, 62);
+	background-color: rgba(234, 234, 234);
 	padding: 10px 50px;
 	border-radius: 6px;
 	border-color: rgba(204, 204, 204);
 	float: center;
 	width: 100%;
 }
-#comtyReplyList {
-	color:	Black;
-	background-color: rgba(213, 213, 213);
-	
+#comtyReplyList ul{
+	padding: 10px;
+	margin: 0px auto;
+	padding-bottom: 50px;
+}
+#comtyReplyList ul>li {
+	color: black;
 }
 #comtyReplyList input {
 	background-color: none;
@@ -64,7 +71,26 @@
 	size: 20px;
 	margin: 1px;
 }
-
+#comtyReplyListEdit {
+	background-color: rgba(255, 255, 255);
+	padding: 10px 50px;
+	margin: 0px;
+	border: none;
+	float: right;
+}
+#comtyReplyListDel {
+	background-color: rgba(255, 255, 255);
+	padding: 10px 50px;
+	margin: 0px;
+	border: none;
+	float: right;
+}
+#NN {
+	font-weight: bold;
+}
+#CRWD {
+	font-size: 0.5em;
+}
 </style>
 <script>
 	function del() {
@@ -95,18 +121,18 @@
 
 							$result
 									.each(function(idx, vo) {
-										tag += "<li><div>" + vo.nickname;
-										tag += " (" + vo.comtyReplyWriteDate
-												+ ") ";
+										tag += "<li><div><div id='NN'>" + vo.nickname + "</div>";
 
 										// 	 'goguma'== goguma
 										if (vo.nickname == '${nickName}') {
-											tag += "<input type='button' value='수정'/>";
-											tag += "<input type='button' value='삭제' title='"+vo.comtyReplyNo+"' />";
+											tag += "<input type='button' value='삭제' id='comtyReplyListDel' title='"+vo.comtyReplyNo+"' />";
+											tag += "<input type='button' value='수정' id='comtyReplyListEdit'/>";
 										}
-										tag += "<br/>" + vo.comtyReplyComent
+										tag += "<br/><div>" + vo.comtyReplyComent
 												+ "</div>";
-
+										tag += "<div id='CRWD' style='color:lightgray;'>" + vo.comtyReplyWriteDate
+												+ "</div></div>";
+										
 										//본인글일때 수정폼이 있어야 한다.
 										if (vo.nickname == '${nickName}') {
 											tag += "<div style='display:none'><form method='post'>";
@@ -117,7 +143,7 @@
 											tag += "<input type='submit' value='수정'/>";
 											tag += "</form></div>";
 										}
-										tag += "</li><hr/>";
+										tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
 									});
 							tag += "</ul>";
 
@@ -221,13 +247,11 @@
 		<hr>
 		<c:if test="${userId == vo.nickname }">
 			<div id="viewBTN">
-				<button id="editBtn" onclick="javascript:edit()">글 수정</button>
 				<button id="delBtn" onclick="javascript:del()">글 삭제</button>
+				<button id="editBtn" onclick="javascript:edit()">글 수정</button>
 			</div>
 		</c:if>
-		<br>
-		<br>
-		<hr>
+		<br/><br/><br/><br/>
 
 		<!-- 댓글 쓰기 폼 -->
 		<c:if test="${logStatus=='Y' }">
