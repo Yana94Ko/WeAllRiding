@@ -89,10 +89,15 @@
 			}
 		});
 	}
+	
+	
+	
 </script>
 <main>
 	<div class="comtyContainer">
 		<h1 style="margin:0 auto; padding:40px;">커뮤니티</h1>
+		<button type="button" onclick="location.href='/comty/comtyHit" >조회순</button>
+		<button type="button" onclick="location.href='/comty/comtyList'">최신순</button>
 		<ul id="cList">
 			<li id="cListFirst">번호</li>
 			<li id="cListFirst">제목</li>

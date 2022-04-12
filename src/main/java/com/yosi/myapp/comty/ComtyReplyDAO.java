@@ -20,4 +20,5 @@ public interface ComtyReplyDAO {
 	
 	// 댓글 삭제
 	public int comtyReplyDel(int comtyReplyNo, String nickname);
+
 }
