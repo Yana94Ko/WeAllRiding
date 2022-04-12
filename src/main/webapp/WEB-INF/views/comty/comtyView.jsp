@@ -56,6 +56,49 @@
 	
 	// 댓글----------------
 	$(function(){
+		//댓글목록을 가져오는 함수
+		function comtyReplyListAll(){	//현재글의 댓글을 모두 가져오기
+			var url = "/comty/comtyReplyList";
+			var params = "comtyNo=${vo.comtyNo}";		// 31번 글이면 no=31이 된다.
+			$.ajax({
+				url:url,
+				data:params,
+				success:function(result){
+					var $result = $(result);	// vo, vo, vo, ,,,
+					
+					var tag = "<ul>";
+					
+					$result.each(function(idx, vo){
+						tag += "<li><div>"+ vo.nickname;
+						tag += " ("+ vo.comtyReplyWriteDate + ") ";
+						
+						// 	 'goguma'== goguma
+						if(vo.nickname == '${nickName}'){
+							tag += "<input type='button' value='Edit'/>";
+							tag += "<input type='button' value='Del' title='"+vo.comtyReplyNo+"' />";
+						}		
+						tag += "<br/>" + vo.comtyReplyComent+ "</div>";
+						
+						//본인글일때 수정폼이 있어야 한다.
+						if(vo.nickname=='${nickName}'){
+							tag += "<div style='display:none'><form method='post'>";
+							tag += "<input type='hidden' name='comtyReplyNo' value='"+vo.comtyReplyNo+"'/>";
+							tag += "<textarea name='comtyReplyComent' style='width:500px; height:50px;'>"+vo.comtyReplyComent+"</textarea>";
+							tag += "<input type='submit' value='수정'/>";
+							tag += "</form></div>";
+						}
+						tag += "</li><hr/>";
+					});
+					tag += "</ul>";
+					
+					$("#comtyReplyList").html(tag);
+					
+				},error:function(e){
+					console.log(e.responseText)
+				}
+			});
+		}
+
 		// 댓글등록
 		$("#comtyReplyFrm").submit(function(){
 			event.preventDefault();//form 기본 이벤트 제거
@@ -73,13 +116,61 @@
 						//폼을초기화
 						$("#comtyReplyComent").val("");
 						//댓글 목록 refresh되어야 한다.
+						comtyReplyListAll();
 					},error:function(e){
 						console.log(e.responseText);
 					}
 				});
 			}
 		});
+		
+		// 댓글 수정(Edit)버튼 선택 시 해당폼 보여주기
+		$(document).on('click','#comtyReplyList input[value=Edit]',function(){
+			$(this).parent().css("display","none");	//숨기기
+			//보여주기
+			$(this).parent().next().css("display","block");
+			
+		});
+		
+		// 댓글 수정(DB)
+		$(document).on('submit','#comtyReplyList form',function(){
+			event.preventDefault();
+			//데이터 준비
+			var params = $(this).serialize();
+			var url = '/comty/comtyReplyEditOk';
+			$.ajax({
+				url:url,
+				data:params,
+				type:'POST',
+				success:function(result){
+					console.log(result);
+					comtyReplyListAll();
+				},error:function(){
+					console.log('수정에러발생');
+				}
+			});
+		});
+		
+		// 댓글 삭제
+		$(document).on('click','#comtyReplyList input[value=Del]', function(){
+			if(confirm('댓글을 삭제하시겠습니까?')){
+				var params = "comtyReplyNo=" +$(this).attr("title");
+				$.ajax({
+					url:'/comty/comtyReplyDel',
+					data:params,
+					success:function(result){
+						console.log(result);
+						comtyReplyListAll();
+					},error:function(){
+						console.log("댓글삭제에러발생")
+					}
+				});
+			}
+		});
+		
+		
 		// 현재글의 댓글
+		comtyReplyListAll();
 	});
 	
 	
@@ -112,7 +203,8 @@
 				<input type="submit" value="댓글등록">
 			</form>
 		</c:if>
-		
+		<!-- 댓글목록이 나올 자리 -->
+		<div id="comtyReplyList"></div>
 		
 	</div>
 </main>
