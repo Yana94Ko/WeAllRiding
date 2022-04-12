@@ -8,13 +8,16 @@
 		insert into comtyReply(comtyNo, nickname, comtyReplyComent)
 		values (#{comtyNo}, #{nickname}, #{comtyReplyComent})
 	</insert>
-	<select id="comtyReplyList">
-	
+	<select id="comtyReplyList" resultType="ComtyReplyVO">
+		select comtyReplyNo, nickname, comtyReplyComent from comtyReply 
+		where comtyNo=${param1}
+		order by comtyReplyNo desc
 	</select>
 	<update id="comtyReplyEdit">
-	
+		update comtyReply set comtyReplyComent=#{comtyReplyComent} 
+		where comtyReplyNo=${comtyReplyNo} and nickname=#{nickname}
 	</update>
 	<delete id="comtyReplyDel">
-	
+		delete from comtyReply where comtyReplyNo=#{param1} and nickname=#{param2}
 	</delete>
 </mapper>
