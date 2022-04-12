@@ -34,4 +34,19 @@ public class MemberServiceImpl implements MemberService {
 
     }
 
+    @Override
+    public MemberVO findUserId(MemberVO vo) {
+        return dao.findUserId(vo);
+    }
+
+    @Override
+    public MemberVO isValidEmail(MemberVO vo) {
+        return dao.isValidEmail(vo);
+    }
+
+    @Override
+    public int findUserPwd(MemberVO vo) {
+        return dao.findUserPwd(vo);
+    }
+
 }

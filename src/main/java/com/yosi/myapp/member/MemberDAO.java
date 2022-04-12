@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface MemberDAO {
     public MemberVO loginCheck(MemberVO vo);
     public int memberInsert(MemberVO vo);
+    public MemberVO findUserId(MemberVO vo);
+    public MemberVO isValidEmail(MemberVO vo);
+    public int findUserPwd(MemberVO vo);
+
 }

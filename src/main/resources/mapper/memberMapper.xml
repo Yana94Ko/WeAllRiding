@@ -11,4 +11,16 @@
         insert into member(userId, userPwd, userName, userTel, userEmail, birth, nickname, gender, experience, bicycleType)
         values(#{userId}, #{userPwd}, #{userName}, #{userTel}, #{userEmail}, #{birth}, #{nickname}, #{gender}, #{experience}, #{bicycleType})
     </insert>
+    <select id="findUserId" resultType="com.yosi.myapp.member.MemberVO">
+        select userId from member
+        where userName=#{userName} and userTel=#{userTelP}
+    </select>
+    <select id="isValidEmail" resultType="com.yosi.myapp.member.MemberVO">
+        select userId from member
+        where userId=#{userId} and userEmail=#{userEmail}
+    </select>
+    <update id="findUserPwd">
+        update member set userPwd=#{userPwd}
+        where userId=#{userId} and userEmail=#{userEmail}
+    </update>
 </mapper>
