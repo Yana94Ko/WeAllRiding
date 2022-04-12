@@ -44,6 +44,7 @@ public class MemberController {
                 entity = new ResponseEntity<String> (msg, headers, HttpStatus.OK);
             } else if (suspendDate.compareTo(new Date()) > 0) { // 정지일 > 현재날짜 로그인 실패
                 String msg="<script>alert('정지된 회원입니다');location.href='/';</script>";
+                entity = new ResponseEntity<String> (msg, headers, HttpStatus.BAD_REQUEST);
             } else { // 일치하는 ID, PWD가 없다면 예외 발생
                 throw new Exception();
             }
@@ -65,6 +66,11 @@ public class MemberController {
     @GetMapping("memberForm")
     public String memberForm() {
         return "member/memberForm";
+    }
+
+    @GetMapping("memberFind")
+    public String memberFind() {
+        return "member/memberFind";
     }
 
     @PostMapping("memberOk")

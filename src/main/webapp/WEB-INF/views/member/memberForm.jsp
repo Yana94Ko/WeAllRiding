@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script src="${url}/js/member.js"></script>
-<link rel="stylesheet" href="/css/memberForm.css" type="text/css"/>
+<link rel="stylesheet" href="/css/member/memberForm.css" type="text/css"/>
 <main>
     <section class="memberForm">
         <h1>회원가입</h1>
