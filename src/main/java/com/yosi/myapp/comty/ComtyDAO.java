@@ -16,7 +16,6 @@ public interface ComtyDAO {
 	public int comtyUpdate(ComtyVO vo);
 	public int comtyDelete(int comtyNo, String nickname);
 
-	public void hitCount(int comtyNo);
 	public void cntHit (int comtyNo);
 
 	//총레코드수

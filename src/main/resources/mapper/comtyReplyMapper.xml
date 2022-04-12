@@ -2,23 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
 <mapper namespace="com.yosi.myapp.comty.ComtyReplyDAO">
-<!-- 댓글 조회 -->
-	<select id="comtyReplyList" resultType="ComtyReplyVO">
-		select comtyReplyNo, nickname, comtyReplyComent, comtyReplyWriteDate from comtyReply 
-		where comtyNo=${param1} 
-		order by comtyReplyNo desc;
-	</select>
 	<insert id="comtyReplyWrite">
-		INSERT INTO comtyReply(comtyNo, nickname, comtyReplyComent) 
-		VALUES (#{comtyNo}, #{nickname}, #{comtyReplyComent})
+		insert into comtyReply(comtyNo, nickname, comtyReplyComent)
+		values (#{comtyNo}, #{nickname}, #{comtyReplyComent})
 	</insert>
+	<select id="comtyReplyList">
+	
+	</select>
 	<update id="comtyReplyEdit">
-
-		UPDATE comtyReply SET comtyReplyComent = #{comtyReplyComent} 
-		WHERE comtyReplyNo = #{comtyReplyNo} and nickname=#{nickname}
+	
 	</update>
-	<delete id="deleteReply" parameterType="int">
-		DELETE FROM comtyReply WHERE comtyReplyNo = #{comtyReplyNo} and nickname=#{param2}
+	<delete id="comtyReplyDel">
+	
 	</delete>
 </mapper>
