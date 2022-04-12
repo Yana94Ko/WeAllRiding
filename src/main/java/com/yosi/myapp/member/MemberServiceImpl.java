@@ -1,6 +1,5 @@
 package com.yosi.myapp.member;
 
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;

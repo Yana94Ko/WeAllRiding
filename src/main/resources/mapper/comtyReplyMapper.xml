@@ -3,22 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yosi.myapp.comty.ComtyReplyDAO">
-<!-- 댓글 조회 -->
-	<select id="comtyReplyList" resultType="ComtyReplyVO">
-		select comtyReplyNo, nickname, comtyReplyComent, comtyReplyWriteDate from comtyReply 
-		where comtyNo=${param1} 
-		order by comtyReplyNo desc;
-	</select>
-	<insert id="comtyReplyWrite">
-		INSERT INTO comtyReply(comtyNo, nickname, comtyReplyComent) 
-		VALUES (#{comtyNo}, #{nickname}, #{comtyReplyComent})
+	<insert id="insertReply">
+		<!-- 댓글을 추가 (댓글번호, 글번호, 댓글내용, 댓글작성자를 추가 댓글번호는 시퀀스로 추가 -->
+		insert into comtyReply (comtyNo,comtyReplyComent,nickname) values
+		(#{comtyNo}, #{comtyReplyComent}, #{nickname} )
 	</insert>
-	<update id="comtyReplyEdit">
 
-		UPDATE comtyReply SET comtyReplyComent = #{comtyReplyComent} 
-		WHERE comtyReplyNo = #{comtyReplyNo} and nickname=#{nickname}
-	</update>
-	<delete id="deleteReply" parameterType="int">
-		DELETE FROM comtyReply WHERE comtyReplyNo = #{comtyReplyNo} and nickname=#{param2}
-	</delete>
+	<select id="listReply"
+		resultType="com.yosi.myapp.comty.ComtyReplyVO">
+		<!-- 댓글의 작성자와 회원 아이디가 같고, 글번호가 같을 경우에 댓글 리스트를 검색 (내림차순으로) -->
+		select comtyReplyNo,comtyNo,nickname,comtyReplyComent
+		from comtyReply r, member m
+		where r.nickname=m.userId and comtyNo=#{comtyNo}
+		order by comtyReplyNo
+	</select>
+	<!-- 댓글 조회 -->
+	<!-- <select id="comtyReplyList" resultType="ComtyReplyVO"> select comtyReplyNo, 
+		nickname, comtyReplyComent, comtyReplyWriteDate from comtyReply where comtyNo=${param1} 
+		order by comtyReplyNo desc; </select> <insert id="comtyReplyWrite"> INSERT 
+		INTO comtyReply(comtyNo, nickname, comtyReplyComent) VALUES (#{comtyNo}, 
+		#{nickname}, #{comtyReplyComent}) </insert> <update id="comtyReplyEdit"> 
+		UPDATE comtyReply SET comtyReplyComent = #{comtyReplyComent} WHERE comtyReplyNo 
+		= #{comtyReplyNo} and nickname=#{nickname} </update> <delete id="deleteReply" 
+		parameterType="int"> DELETE FROM comtyReply WHERE comtyReplyNo = #{comtyReplyNo} 
+		and nickname=#{param2} </delete> -->
 </mapper>
