@@ -93,11 +93,9 @@
 
 							var tag = "<ul>";
 
-							$result
-									.each(function(idx, vo) {
+							$result.each(function(idx, vo) {
 										tag += "<li><div>" + vo.nickname;
-										tag += " (" + vo.comtyReplyWriteDate
-												+ ") ";
+										tag += " (" + vo.comtyReplyWriteDate + ") ";
 
 										// 	 'goguma'== goguma
 										if (vo.nickname == '${nickName}') {

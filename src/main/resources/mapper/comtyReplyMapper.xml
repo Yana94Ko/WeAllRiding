@@ -9,7 +9,7 @@
 		values (#{comtyNo}, #{nickname}, #{comtyReplyComent})
 	</insert>
 	<select id="comtyReplyList" resultType="ComtyReplyVO">
-		select comtyReplyNo, nickname, comtyReplyComent from comtyReply 
+		select comtyReplyNo, nickname, comtyReplyComent, comtyReplyWriteDate from comtyReply 
 		where comtyNo=${param1}
 		order by comtyReplyNo desc
 	</select>
