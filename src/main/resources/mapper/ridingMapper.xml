@@ -5,7 +5,7 @@
 	
 <mapper namespace = "com.yosi.myapp.riding.RidingDAO">
 	<select id="ridingList" resultType="RidingVO">
-		select nickname, ridingSubject, applyUser, courseLevel, maxUser ,startDate, endDate, ridingContent
+		select nickname, ridingKeyword, ridingSubject, applyUser, courseLevel, maxUser ,startDate, endDate, ridingContent
 		from ridingBoard
 		<if test='searchWord != null'>
 			where ${searchKey} like '%${searchWord}%'
@@ -19,9 +19,10 @@
 			where ${searchKey} like '%${searchWord}%'
 		</if>
 	</select>
+	<!-- ridingWrite -->
 	<insert	id="ridingInsert">
-		insert into ridingBoard(nickname, ridingSubject, ridingContent)
-		values(#{nickname}, #{ridingSubject}, #{ridingContent})
+		insert into ridingBoard(nickname, ridingSubject, ridingContent, startDate, endDate, maxUser, applyUser, courseLevel, ridingKeyword)
+		values(#{nickname}, #{ridingSubject}, #{ridingContent}, #{startDate}, #{endDate}, #{maxUser}, 0 ,#{courseLevel}, #{ridingKeyword});
 	</insert>
 	<update id="cntHit" parameterType="int">
 		update ridingBoard set ridingHit = ridingHit+1 where ridingNo=#{param1}

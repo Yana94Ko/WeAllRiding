@@ -19,7 +19,7 @@ public class RidingSerivceImpl implements RidingService {
 	}
 	@Override
 	public int ridingInsert(RidingVO vo) {
-		return dao.ridinInsert(vo);
+		return dao.ridingInsert(vo);
 	}
 	@Override
 	public RidingVO ridingSelect(int ridingNo) {

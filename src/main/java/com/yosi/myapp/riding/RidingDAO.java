@@ -11,7 +11,7 @@ import com.yosi.myapp.PagingVO;
 @Repository
 public interface RidingDAO {
 	public List<RidingVO> ridingList(PagingVO pVO);
-	public int ridinInsert(RidingVO vo); 
+	public int ridingInsert(RidingVO vo); 
 	public RidingVO ridingSelect(int ridingNo);
 	public int ridingUpdate(RidingVO vo);
 	public int ridingDelete(int ridingNo, String nickname);
