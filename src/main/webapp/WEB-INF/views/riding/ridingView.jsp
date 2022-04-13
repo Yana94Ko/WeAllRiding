@@ -1,88 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<style>
-.ridingContainer {
-	width: 80%;
-	margin: 0 auto;
-	padding: 0 auto;
-}
-
-#ridingFrm {
-	background-color: rgba(234, 234, 234);
-	width: 100%;
-	height: 25px;
-	color: black;
-	text-align: right;
-	padding: 10px 0 10px;
-}
-
-#ridingViewContent {
-	min-height: 400px;
-	height: 100%;
-	color: black;
-}
-
-#ridingeditBtn {
-	background-color: rgba(255, 217, 102);
-	padding: 10px 50px;
-	margin: 0px;
-	border-radius: 6px;
-	border-color: rgba(204, 204, 204);
-	float: right;
-}
-
-#ridingdelBtn {
-	background-color: rgba(231, 76, 60);
-	padding: 10px 50px;
-	margin: 0px 20px;
-	border-radius: 6px;
-	border-color: rgba(204, 204, 204);
-	float: right;
-}
-</style>
-<script>
-	function del() {
-		if (confirm('글을 삭제시겠습니까?')) {
-			location.href = "/riding/ridingDel?ridingNo=${vo.ridingNo}";
-		}
-	}
-	function edit() {
-		if (confirm('글을 수정하시겠습니까?')) {
-			location.href = "/riding/ridingEdit?ridingNo=${vo.ridingNo}";
-		}
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
+<script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
+<script type="text/javascript">
+	function input(){
+		const sDate = document.querySelector("#startDate").value;
 	}
 </script>
 <main>
-	<div class="ridingContainer">
-		<h2>${vo.comtySubject }</h2>
-		<ul>
-			<li id="ridingFrm">글 번호 : ${vo.ridingNo }&nbsp;&nbsp;&nbsp;&nbsp;
-				작성자 : ${vo.nickname }&nbsp;&nbsp;&nbsp;&nbsp; 작성일 :
-				${vo.ridingWriteDate }&nbsp;&nbsp;&nbsp;&nbsp; 조회수 : ${vo.ridingHit }&nbsp;&nbsp;&nbsp;
-			</li>
-		</ul>
-		<ul>
-			<li id="ridingViewContent">${vo.ridingContent }</li>
-		</ul>
-		<c:if test="${userId == vo.nickname }">
-			<div id="ridingviewBTN">
-				<button id="ridingeditBtn" onclick="javascript:edit()">글 수정</button>
-				<button id="ridingdelBtn" onclick="javascript:del()">글 삭제</button>
-			</div>
-		</c:if>
-		
-		<!-- 댓글쓰기 -->
-	<c:if test="${logStatus=='Y'}">
-		<form method='post' id='ridingreplyFrm'>
-			<input type="hidden" name="ridingNo" value="${vo.ridingNo}"/>
-			<textarea name="coment" id='coment'style='width:500px;height:80px;'></textarea>
-			<input type="submit" value="댓글등록"/>
-		</form>
-	</c:if>
-	<hr/>
-	<!-- 댓글 목록 나올 자리 -->
-	<div id="replyList">
-	</div>
+
+<div class="ridingContainer">
+   <form>
+      <ul>
+         <h1 style="font-size: 1.5em;">라이딩 뷰</h1><br><br>
+         <h2 style="font-size: 1.3em;">${vo.ridingSubject }</h2><br>
+         <h2>키워드</h2>
+         <li style="color: black;">${vo.ridingKeyword }</li><br>
+         
+         <h2>코스</h2>
+         <li style="height:400px; color:black;">코스가 나올 공간입니다.</li>
+         
+         <li id="dateAll" style="color:black;">
+         <h2>일정</h2>
+    	 ${vo.startDate } - <input type="date" name="endDate" id="endDate" value="${vo.endDate }" readonly>
+         </li>
+         
+         <li id=courseLevel style="color:black">
+         <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;난이도</h2>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.courseLevel }
+         </li>
+         
+         <li id="maxUser" style="color:black">
+         <h2>참가인원</h2>
+         ${vo.maxUser }
+         </li>
+         <br><br><br><br>
+         <h2>내용</h2>
+         <li><textarea name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;" readonly>${vo.ridingContent }</textarea></li>
+         
+         <li id="ridingwriteBTN">
+            <button id="ridingwriteBtn">글 등록</button>
+         </li>
+      </ul>
+   </form>
+</div>
 </main>

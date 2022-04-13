@@ -5,7 +5,7 @@
 	
 <mapper namespace = "com.yosi.myapp.riding.RidingDAO">
 	<select id="ridingList" resultType="RidingVO">
-		select nickname, ridingKeyword, ridingSubject, applyUser, courseLevel, maxUser ,startDate, endDate, ridingContent
+		select ridingNo, nickname, ridingKeyword, ridingSubject, ridingContent, applyUser, courseLevel, maxUser , startDate, endDate
 		from ridingBoard
 		<if test='searchWord != null'>
 			where ${searchKey} like '%${searchWord}%'
@@ -22,16 +22,20 @@
 	<!-- ridingWrite -->
 	<insert	id="ridingInsert">
 		insert into ridingBoard(nickname, ridingSubject, ridingContent, startDate, endDate, maxUser, applyUser, courseLevel, ridingKeyword)
-		values(#{nickname}, #{ridingSubject}, #{ridingContent}, #{startDate}, #{endDate}, #{maxUser}, 0 ,#{courseLevel}, #{ridingKeyword});
+		values(#{nickname}, #{ridingSubject}, #{ridingContent}, #{startDate}, #{endDate}, #{maxUser}, 0 ,#{courseLevel}, #{ridingKeyword})
 	</insert>
 	<update id="cntHit" parameterType="int">
 		update ridingBoard set ridingHit = ridingHit+1 where ridingNo=#{param1}
 	</update>
 	<select id="ridingSelect" resultType="RidingVO">
-		select ridingNo, nickname, ridingSubject, ridingContent, ridingHit, ridingWriteDate from ridingBoard where ridingNo=${param1}
+		select ridingNo, nickname, ridingSubject, ridingKeyword,
+		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate, 
+		courseLevel, maxUser, applyUser, ridingContent, ridingHit, ridingWriteDate 
+		from ridingBoard where ridingNo=${param1}
 	</select>
 	<update id="ridingUpdate">
-		update ridingBoard set ridingSubject=#{ridingSubject}, ridingContent=#{ridingContent} where ridingNo=#{ridingNo} and nickname=#{nickname}
+		update ridingBoard set ridingSubject=#{ridingSubject}, ridingContent=#{ridingContent} 
+		where ridingNo=#{ridingNo} and nickname=#{nickname}
 		
 	</update>
 	<delete id="ridingDelete">
