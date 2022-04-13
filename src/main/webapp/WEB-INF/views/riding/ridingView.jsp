@@ -6,22 +6,40 @@
 		const sDate = document.querySelector("#startDate").value;
 	}
 </script>
+<script>
+	function ridingViewDel() {
+		if (confirm('글을 삭제시겠습니까?')) {
+			location.href = "/riding/ridingDel?ridingNo=${vo.ridingNo}";
+		}
+	}
+	function ridingViewEdit() {
+		if (confirm('글을 수정하시겠습니까?')) {
+			location.href = "/riding/ridingEdit?ridingNo=${vo.ridingNo}";
+		}
+	}
+</script>
 <main>
 
-<div class="ridingContainer">
+<div class="ridingViewContainer">
    <form>
       <ul>
-         <h1 style="font-size: 1.5em;">라이딩 뷰</h1><br><br>
-         <h2 style="font-size: 1.3em;">${vo.ridingSubject }</h2><br>
-         <h2>키워드</h2>
+         <h1 id="ridingViewTitle">라이딩 뷰</h1><br><br>
+         <h2 id="ridingViewTitle">${vo.ridingSubject }</h2><br>
+         <ul>
+			<li id="ridingViewFrm">글 번호 : ${vo.ridingNo }&nbsp;&nbsp;&nbsp;&nbsp;
+				작성자 : ${vo.nickname }&nbsp;&nbsp;&nbsp;&nbsp; 작성일 :
+				${vo.ridingWriteDate }&nbsp;&nbsp;&nbsp;&nbsp; 조회수 : ${vo.ridingHit }&nbsp;&nbsp;&nbsp;
+			</li>
+		</ul><br>
+         <h2 id="ridingViewTitle">키워드</h2>
          <li style="color: black;">${vo.ridingKeyword }</li><br>
          
-         <h2>코스</h2>
+         <h2 id="ridingViewTitle">코스</h2>
          <li style="height:400px; color:black;">코스가 나올 공간입니다.</li>
          
          <li id="dateAll" style="color:black;">
-         <h2>일정</h2>
-    	 ${vo.startDate } - <input type="date" name="endDate" id="endDate" value="${vo.endDate }" readonly>
+         <h2 id="ridingViewTitle">일정</h2>
+    	 ${vo.startDate } - <input type="date" name="endDate" id="endDate" value="${vo.endDate }" >
          </li>
          
          <li id=courseLevel style="color:black">
@@ -34,12 +52,17 @@
          ${vo.maxUser }
          </li>
          <br><br><br><br>
-         <h2>내용</h2>
-         <li><textarea name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;" readonly>${vo.ridingContent }</textarea></li>
-         
-         <li id="ridingwriteBTN">
-            <button id="ridingwriteBtn">글 등록</button>
-         </li>
+         <h2 id="ridingViewTitle">내용</h2>
+         <li><textarea name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;">${vo.ridingContent }</textarea></li>
+         <hr>
+         <c:if test="${userId == vo.nickname }">
+         	<li id="ridingViewBTN">
+	            <!-- <button id="ridingwriteBtn">글 수정</button> -->
+	            <button id="ridingViewDelBtn" onclick="javascript:ridingViewDel()">글 삭제</button>
+				<button id="ridingViewEditBtn" onclick="javascript:ridingViewEdit()">글 수정</button>
+			
+         	</li>
+         </c:if>
       </ul>
    </form>
 </div>

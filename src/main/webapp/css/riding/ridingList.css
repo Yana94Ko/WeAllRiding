@@ -260,5 +260,20 @@ h1 {
 }
 
 /* ridingView */
-
-
+.ridingViewContainer {
+	width: 80%;
+	margin: 0 auto;
+	padding: 0 auto;
+}
+#ridingViewFrm {
+	background-color: rgba(234, 234, 234);
+	font-size:0.8em;
+	width: 100%;
+	height: 25px;
+	color: black;
+	text-align: right;
+	padding: 10px 0 10px;
+}
+#ridingViewTitle {
+	font-size: 1.2em;
+}

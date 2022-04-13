@@ -94,7 +94,7 @@ public class RidingController {
 	
 	//글 수정
 	@GetMapping("/riding/ridingEdit")
-	public ModelAndView ridingEdit( int ridingNo) {
+	public ModelAndView ridingEdit(@RequestParam("ridingNo")int ridingNo) {
 		ModelAndView mav = new ModelAndView();
 		 mav.addObject("vo", service.ridingSelect(ridingNo));
 		 mav.setViewName("riding/ridingEdit");
