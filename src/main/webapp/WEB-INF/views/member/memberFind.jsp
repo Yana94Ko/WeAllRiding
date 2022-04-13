@@ -50,7 +50,7 @@
                             <div class="userEmail">
                                 <label for="userEmail"">이메일</label>
                                 <input type="text" name="userEmail" id="userEmail" autocomplete="off" required>
-                                <button type="button" value="비밀번호 찾기" onclick="IsValidEmail()">비밀번호 찾기</button>
+                                <button id="findPwdButton" type="button" value="비밀번호 찾기" onclick="IsValidEmail()">비밀번호 찾기</button>
                             </div>
                             <div class="showStateFindPwd">
                                 <span id="showStateFindPwd">가입시 입력한 아이디와 이메일을 입력해주세요</span>

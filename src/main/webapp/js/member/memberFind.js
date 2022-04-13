@@ -1,3 +1,11 @@
+axios.interceptors.request.use((request) => { //ajax interceptor
+    document.getElementById("showStateFindPwd").innerText = "요청을 서버에 전송중입니다...";
+    document.getElementById("findPwdButton").disabled = true; //요청을 가로채서 요청 버튼을 disabled하고 메세지 출력
+    return request;
+}, function (error) {
+    return Promise.reject(error);
+});
+
 function FindUserId() {
     const userName = document.getElementById("userName");
     const userTel = document.getElementById("userTel")
@@ -21,6 +29,8 @@ function FindUserId() {
                 const encryptionUserId = res.data.userId.replace(/(?<=.{3})./gi, "*");
                 document.getElementById("showStateFindId").innerText = `찾으시는 아이디는 ${encryptionUserId} 입니다`
             }
+            document.getElementById("showStateFindPwd").innerText = "가입시 입력한 아이디와 이메일을 입력해주세요";
+            document.getElementById("findPwdButton").disabled = false;
         })
         .catch((res) => {
             console.log("error");
@@ -47,6 +57,7 @@ function IsValidEmail() {
         .then((res) =>{
             if(res.data ==='') {
                 document.getElementById("showStateFindPwd").innerText = "유효하지 않은 회원정보입니다";
+                document.getElementById("findPwdButton").disabled = false;
             } else {
                 FindUserPwd();
             }
