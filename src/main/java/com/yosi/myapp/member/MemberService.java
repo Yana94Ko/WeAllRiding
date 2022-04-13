@@ -7,4 +7,7 @@ public interface MemberService {
     public MemberVO findUserId(MemberVO vo);
     public MemberVO isValidEmail(MemberVO vo);
     public int findUserPwd(MemberVO vo);
+    public MemberVO memberSelect(String userId);
+    public int memberUpdate(MemberVO vo);
+    public int memberDelete(MemberVO vo);
 }

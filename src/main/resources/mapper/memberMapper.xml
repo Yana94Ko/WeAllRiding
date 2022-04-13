@@ -23,4 +23,16 @@
         update member set userPwd=#{userPwd}
         where userId=#{userId} and userEmail=#{userEmail}
     </update>
+    <select id="memberSelect" resultType="com.yosi.myapp.member.MemberVO">
+        select * from member
+        where userId=#{param1}
+    </select>
+    <update id="memberUpdate">
+        update member set nickname=#{nickname}, userEmail=#{userEmail}, userPwd=#{userPwd}, experience=#{experience}, bicycleType=#{bicycleType}
+        where userId=#{userId}
+    </update>
+    <delete id="memberDelete">
+        delete from member
+        where userId=#{userId} and userPwd=#{userPwd}
+    </delete>
 </mapper>

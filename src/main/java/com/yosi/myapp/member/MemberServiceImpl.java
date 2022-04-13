@@ -49,4 +49,19 @@ public class MemberServiceImpl implements MemberService {
         return dao.findUserPwd(vo);
     }
 
+    @Override
+    public MemberVO memberSelect(String UserId) {
+        return dao.memberSelect(UserId);
+    }
+
+    @Override
+    public int memberUpdate(MemberVO vo) {
+        return dao.memberUpdate(vo);
+    }
+
+    @Override
+    public int memberDelete(MemberVO vo) {
+        return dao.memberDelete(vo);
+    }
+
 }
