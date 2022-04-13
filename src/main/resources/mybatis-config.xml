@@ -6,6 +6,7 @@
   	<mappers>
         <mapper resource="mapper/memberMapper.xml"></mapper>
         <mapper resource="mapper/shopMapper.xml"></mapper>
+		<mapper resource="mapper/recommendMapper.xml"></mapper>
         <mapper resource="mapper/comtyMapper.xml"></mapper>
     </mappers>
   </configuration>

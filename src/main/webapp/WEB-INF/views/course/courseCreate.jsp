@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="${url}/css/course/courseCreateStyle.css">
-<!-- Home -->
+<!-- parallax START -->
 <div class="home">
-	<div class="homeBackground parallax-window" data-parallax="scroll"
-		data-image-src="${url}/images/home_background7.png"></div>
+	<div class="homeBackground parallaxWindow" data-parallax="scroll" 
+		 data-image-src="${url}/images/home_background.png"></div> <!-- 배경 이미지 -->
 	<div class="homeContent">
-		<div class="homeTitle">코스 만들기</div>
+		<div class="homeTitle">코스 만들기</div> <!-- 페이지 타이틀 -->
 	</div>
 </div>
+<!-- parallax END -->
 <main>
 	<!-- kakao map API 불러오기(키 입력) -->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>

@@ -83,7 +83,7 @@ main {
 /* 출발지 도착지 입력 폼 <--*/
 
 #map{
-	width:100%;
+	width:80%;
 	height:100%;
 	position:relative; 
 	left : 300px; 
