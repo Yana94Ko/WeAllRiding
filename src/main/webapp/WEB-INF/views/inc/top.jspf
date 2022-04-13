@@ -41,7 +41,7 @@
 			<ul>
 				<li onmouseenter="topMenuOver(1)" onmouseleave="topMenuOut(1)">코스
 					<ul id="topMenu1">
-						<li><a href="${url}/courseRecommend">추천 코스</a></li>
+						<li><a href="${url}/recommendView">추천 코스</a></li>
 						<li><a href="${url}/courseCreate">코스 만들기</a></li>
 					</ul>	
 				</li>

@@ -20,3 +20,4 @@
 		WHERE shopId = #{shopId}
 	</update>
 </mapper>
+
