@@ -21,13 +21,11 @@ ul{
 	text-align: right;
 	padding: 10px 0 10px;
 }
-
 #comtyViewContent {
 	min-height: 400px;
 	height: 100%;
 	color: black;
 }
-
 #editBtn {
 	background-color: rgba(255, 217, 102);
 	padding: 10px 50px;
@@ -36,7 +34,6 @@ ul{
 	border-color: rgba(204, 204, 204);
 	float: right;
 }
-
 #delBtn {
 	background-color: rgba(231, 76, 60);
 	padding: 10px 50px;
@@ -45,7 +42,6 @@ ul{
 	border-color: rgba(204, 204, 204);
 	float: right;
 }
-
 #replyBtn {
 	background-color: rgba(234, 234, 234);
 	padding: 10px 50px;
@@ -103,7 +99,6 @@ ul{
 			location.href = "/comty/comtyEdit?comtyNo=${vo.comtyNo}";
 		}
 	}
-
 	// 댓글----------------
 	$(function() {
 		//댓글목록을 가져오는 함수
@@ -116,19 +111,10 @@ ul{
 						data : params,
 						success : function(result) {
 							var $result = $(result); // vo, vo, vo, ,,,
-
 							var tag = "<ul>";
-
-<<<<<<< HEAD
-							$result.each(function(idx, vo) {
-										tag += "<li><div>" + vo.nickname;
-										tag += " (" + vo.comtyReplyWriteDate + ") ";
-=======
 							$result
 									.each(function(idx, vo) {
 										tag += "<li><div><div id='NN'>" + vo.nickname + "</div>";
->>>>>>> cd714b866f81749695e799a3ca34ab4e4d06aeee
-
 										// 	 'goguma'== goguma
 										if (vo.nickname == '${nickName}') {
 											tag += "<input type='button' value='삭제' id='comtyReplyListDel' title='"+vo.comtyReplyNo+"' />";
@@ -152,9 +138,7 @@ ul{
 										tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
 									});
 							tag += "</ul>";
-
 							$("#comtyReplyList").html(tag);
-
 						},
 						error : function(e) {
 							console.log(e.responseText)
@@ -169,7 +153,6 @@ ul{
 				return;
 			} else {//댓글 입력한경우
 				var params = $("#comtyReplyFrm").serialize();
-
 				$.ajax({
 					url : '/comty/comtyReplyWriteOk',
 					data : params,
@@ -186,16 +169,13 @@ ul{
 				});
 			}
 		});
-
 		// 댓글 수정(Edit)버튼 선택 시 해당폼 보여주기
 		$(document).on('click', '#comtyReplyList input[value=수정]',
 				function() {
 					$(this).parent().css("display", "none"); //숨기기
 					//보여주기
 					$(this).parent().next().css("display", "block");
-
 				});
-
 		// 댓글 수정(DB)
 		$(document).on('submit', '#comtyReplyList form', function() {
 			event.preventDefault();
@@ -215,7 +195,6 @@ ul{
 				}
 			});
 		});
-
 		// 댓글 삭제
 		$(document).on('click', '#comtyReplyList input[value=삭제]', function() {
 			if (confirm('댓글을 삭제하시겠습니까?')) {
@@ -233,7 +212,6 @@ ul{
 				});
 			}
 		});
-
 		// 현재글의 댓글
 		comtyReplyListAll();
 	});
