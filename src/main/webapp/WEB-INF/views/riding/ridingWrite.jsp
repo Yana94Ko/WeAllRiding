@@ -12,6 +12,7 @@
 				alert("글내용을 입력하세요");
 				return false;
 			}
+			const sDate = document.querySelector("#startDate").value;
 		});
 	});
 </script>

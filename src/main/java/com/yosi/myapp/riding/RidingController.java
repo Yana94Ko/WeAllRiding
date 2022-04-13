@@ -82,7 +82,8 @@ public class RidingController {
 	@RequestMapping("/riding/ridingView")
 	public ModelAndView ridingView(@RequestParam("ridingNo") int ridingNo) {
 		 ModelAndView mav = new ModelAndView();
-
+		 
+		 
 		 service.cntHit(ridingNo); // 조회수 증가
 		 
 		 mav.addObject("vo", service.ridingSelect(ridingNo));
