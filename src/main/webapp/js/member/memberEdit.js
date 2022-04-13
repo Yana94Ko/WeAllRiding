@@ -47,8 +47,12 @@ function MemberDelete(){
     if(confirm("정말로 탈퇴하시겠습니까?")) {
         axios.post("/member/MemberDelete", body)
             .then((res) => {
-                alert("이용해주셔서 감사합니다");
-                window.location="/member/logout";
+                if(res.data===0){
+                    alert("비밀번호를 확인해주세요")
+                } else {
+                    alert("이용해주셔서 감사합니다");
+                    window.location="/member/logout";
+                }
             })
             .catch((res) => {
                 alert(res);
