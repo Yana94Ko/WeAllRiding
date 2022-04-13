@@ -13,6 +13,16 @@ public class RidingVO {
 	private String ridingContent;
 	private int ridingHit;
 	
+	private String ridingKeyword;
+	
+	
+	
+	public String getRidingKeyword() {
+		return ridingKeyword;
+	}
+	public void setRidingKeyword(String ridingKeyword) {
+		this.ridingKeyword = ridingKeyword;
+	}
 	public int getRidingNo() {
 		return ridingNo;
 	}
