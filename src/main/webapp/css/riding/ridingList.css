@@ -61,11 +61,11 @@ table {
 	background-repeat: no-repeat;	
 }
 
-.card:hover .card-header  {
+/* .card:hover .card-header  {
 	opacity: 0.8;
 	height: 100px;
 }
-
+ */
 .card-header-is_closed{
     background-color: #EF5A31 ;
     color: #FFF ;
@@ -89,21 +89,21 @@ h1 {
 	margin: 10px 20px 0px 20px;
 }
 
-.card-body-description  {
+/* .card-body-description  {
     opacity: 0;
     color: #757B82;
     line-height: 25px;
-    -webkit-transition: .2s ease-in-out; /*사파리&크롬*/
-    -moz-transition: .2s ease-in-out; /*파이어폭스*/
-    -ms-transition: .2s ease-in-out; /*익스플로러*/
-    -o-transition: .2s ease-in-out; /*오페라*/
+    -webkit-transition: .2s ease-in-out; 사파리&크롬
+    -moz-transition: .2s ease-in-out; 파이어폭스
+    -ms-transition: .2s ease-in-out; 익스플로러
+    -o-transition: .2s ease-in-out; 오페라
     transition : .2s ease-in-out;
     overflow: hidden;
 	height: 180px;
 	margin: 5px 20px;
-}
+} */
 
-.card:hover .card-body-description {
+/* .card:hover .card-body-description {
     opacity: 1;
     -webkit-transition: .5s ease-in-out;
     -moz-transition: .5s ease-in-out;
@@ -111,7 +111,7 @@ h1 {
     -o-transition: .5s ease-in-out;
     transition : .5s ease-in-out;
     overflow: scroll;
-}
+} */
 .card-body-hashtag {
 	color: #2478FF;
 	font-style: italic;

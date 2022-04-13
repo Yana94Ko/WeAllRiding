@@ -5,7 +5,7 @@
 	
 <mapper namespace = "com.yosi.myapp.riding.RidingDAO">
 	<select id="ridingList" resultType="RidingVO">
-		select ridingNo, ridingSubject, nickname, ridingHit, date_format(ridingWriteDate, '%m-%d %H:%i') ridingWriteDate
+		select nickname, ridingSubject, applyUser, courseLevel, maxUser ,startDate, endDate, ridingContent
 		from ridingBoard
 		<if test='searchWord != null'>
 			where ${searchKey} like '%${searchWord}%'
