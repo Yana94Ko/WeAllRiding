@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.yosi.myapp.riding.RidingMemberDAO">
+	<insert id="ridingMemberWrite">
+		insert into ridingMember(ridingNo, userId, nickname, gender, ridingCount, userScore, applyUser)
+		values (#{ridingNo}, #{userId}, #{nickname}, #{gender}, #{ridingCount}, #{userScore}, 0)
+	</insert>
+	<select id="ridingMemberList" resultType="RidingMemberVO">
+		select ridingMemberNo, nickname, gender, ridingCount, userScore from ridingMember 
+		where ridingNo=${param1}
+		order by ridingMemberNo desc
+	</select>
+	<delete id="ridingMemberDel">
+		delete from ridingMember where ridingMemberNo=#{param1} and nickname=#{param2}
+	</delete>
+</mapper>

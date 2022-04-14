@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.yosi.myapp.PagingVO;
 
 @Service
-public class RidingSerivceImpl implements RidingService {
+public class RidingServiceImpl implements RidingService {
 
 	@Inject
 	RidingDAO dao;

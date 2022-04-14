@@ -6,7 +6,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,16 +18,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.yosi.myapp.PagingVO;
-
 @RestController
 public class ComtyController {
 	@Autowired
 	ComtyService ComtyService;
 	@Inject
 	ComtyService service;
-	
+
+	@Inject
+	ComtyReplyService replyService;
+
 	@GetMapping("/comty/comtyList")
 	public ModelAndView allSelect(PagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
@@ -50,7 +50,7 @@ public class ComtyController {
 		mav.setViewName("comty/comtyWrite");
 		return mav;
 	}
-	
+
 	@PostMapping("/comty/comtyWriteOk")
     public ResponseEntity<String> comtyWriteOk(ComtyVO vo, HttpServletRequest request){
 		vo.setNickname((String)request.getSession().getAttribute("userId"));
@@ -80,14 +80,14 @@ public class ComtyController {
 		 ModelAndView mav = new ModelAndView();
 
 		 service.cntHit(comtyNo); // 조회수 증가
-		 
+
 		 mav.addObject("vo", service.comtySelect(comtyNo));
 		 mav.setViewName("comty/comtyView");
-		 
-		 
+
+
 		 return mav;
 	}
-	
+
 	//글 수정
 	@GetMapping("/comty/comtyEdit")
 	public ModelAndView comtyEdit( int comtyNo) {
@@ -96,11 +96,11 @@ public class ComtyController {
 		 mav.setViewName("comty/comtyEdit");
 		 return mav;
 	}
-	
+
 	@PostMapping("/comty/comtyEditOk")
 	public ResponseEntity<String> comtyEditOk(ComtyVO vo, HttpSession session) {
 		vo.setNickname((String)session.getAttribute("userId"));
-		
+
 		ResponseEntity<String> entity =null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/html; charset=UTF-8");
@@ -133,9 +133,9 @@ public class ComtyController {
 			mav.addObject("comtyNo", comtyNo);
 			mav.setViewName("redirect:comtyView");
 		}
-		
+
 		return mav;
 	}
-	
-	
+
+
 }
