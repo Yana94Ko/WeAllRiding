@@ -235,7 +235,6 @@ ul{
 			</div>
 		</c:if>
 		<br/><br/><br/><br/>
-
 		<!-- 댓글 쓰기 폼 -->
 		<c:if test="${logStatus=='Y' }">
 			<form method='post' id="comtyReplyFrm">

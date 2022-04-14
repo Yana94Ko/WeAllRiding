@@ -63,7 +63,7 @@
          </li>
          <br><br><br><br>
          <h2>내용</h2>
-         <li><textarea name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;"></textarea></li>
+         <li><input type="text" name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;"></input></li>
          
          <li id="ridingwriteBTN">
             <button id="ridingwriteBtn">글 등록</button>
