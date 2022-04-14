@@ -12,7 +12,6 @@
 				alert("글내용을 입력하세요");
 				return false;
 			}
-			const sDate = document.querySelector("#startDate").value;
 		});
 	});
 </script>
@@ -41,7 +40,7 @@
          
          <li id=courseLevel>
          <h2>난이도</h2>
-         <select id="courseLevelsel" name="courseLevel" class="courseLevelsel">
+         <select id="courseLevel" name="courseLevel" class="courseLevel">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -52,7 +51,7 @@
          
          <li id="maxUser">
          <h2>참가인원</h2>
-         <select id="maxUsersel" name="maxUser" class="maxUsersel">
+         <select id="maxUser" name="maxUser" class="maxUser">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>

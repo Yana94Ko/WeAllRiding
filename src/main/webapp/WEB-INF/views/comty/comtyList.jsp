@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 .comtyContainer {
@@ -11,7 +10,6 @@
 #cList {
 	overflow: auto;
 }
-
 #cList>li {
 	float: left;
 	height: 40px;
@@ -20,7 +18,6 @@
 	width: 10%;
 	color: black;
 }
-
 #cList>li:nth-child(5n+2) {
 	width: 50%;
 	white-space: nowrap; /*줄 안바꿈*/
@@ -33,7 +30,6 @@
 #cListFirst {
 	background-color: rgba(234, 234, 234);
 }
-
 #writeBtn {
 	background-color: rgba(255, 217, 102);
 	padding: 10px 50px;
@@ -49,36 +45,29 @@
 	width: 100%;
 	height: 30px;
 }
-
 .paging>li {
 	float: left;
 	width: 30px;
 	text-align: center;
 	color: black;
-
 }
-
 /*search*/
 #searchFrm {
 	padding: 20px 200px;
 	text-align: center;
 }
-
 #searchWord {
 	height: 24px;
 	border-radius: 6px;
 }
-
 #searchKey {
 	height: 30px;
 	border-radius: 6px;
 }
-
 #searchBtn {
 	height: 30px;
 	border-radius: 6px;
 }
-
 </style>
 <script>
 	$(function() {
@@ -89,15 +78,10 @@
 			}
 		});
 	}
-	
-	
-	
 </script>
 <main>
 	<div class="comtyContainer">
 		<h1 style="margin:0 auto; padding:40px;">커뮤니티</h1>
-		<button type="button" onclick="location.href='/comty/comtyHit" >조회순</button>
-		<button type="button" onclick="location.href='/comty/comtyList'">최신순</button>
 		<ul id="cList">
 			<li id="cListFirst">번호</li>
 			<li id="cListFirst">제목</li>
@@ -119,7 +103,6 @@
 		</c:if>
 		<br/>
 		<!-- 페이징 -->
-
 		<ul class="paging">
 			<!--  이전페이지 -->
 			<c:if test="${pVO.pageNum==1}">
@@ -170,7 +153,6 @@
 				</select> 
 				<input type="text" name="searchWord" id="searchWord"> 
 				<button id="searchBtn">검색</button>
-
 			</form>
 		</div>
 	</div>

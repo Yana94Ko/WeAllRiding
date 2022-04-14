@@ -5,8 +5,7 @@
 	function input(){
 		const sDate = document.querySelector("#startDate").value;
 	}
-</script>
-<script>
+
 	function ridingViewDel() {
 		console.log(${vo.ridingNo})
 		if (confirm('글을 삭제시겠습니까?')) {
@@ -55,14 +54,13 @@
          </li>
          <br><br><br><br>
          <h2 id="ridingViewTitle">내용</h2>
-         <%-- <li><input type="text" name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;" ${vo.ridingContent }></input></li>
-          --%><li style="color:black;">${vo.ridingContent }</li>
+      	 <li style="color:black;">${vo.ridingContent }</li>
          <hr>
          <c:if test="${userId == vo.nickname }">
          	<li id="ridingViewBTN">
 	            <!-- <button id="ridingwriteBtn">글 수정</button> -->
-	            <button id="ridingViewDelBtn" onclick="ridingViewDel()">글 삭제</button>
-				<button id="ridingViewEditBtn" onclick="ridingViewEdit()">글 수정</button>
+	            <input type="button" id="ridingViewDelBtn" onclick="ridingViewDel()" value="글 삭제"/>
+				<input type="button" id="ridingViewEditBtn" onclick="ridingViewEdit()" value="글 수정"/>
 			
          	</li>
          </c:if>
