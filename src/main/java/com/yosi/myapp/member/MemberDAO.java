@@ -14,5 +14,7 @@ public interface MemberDAO {
     public MemberVO memberSelect(String userId);
     public int memberUpdate(MemberVO vo);
     public int memberDelete(MemberVO vo);
-
+    public MemberVO checkId(MemberVO vo);
+    public MemberVO checkNick(MemberVO vo);
+    public MemberVO checkTel(MemberVO vo);
 }

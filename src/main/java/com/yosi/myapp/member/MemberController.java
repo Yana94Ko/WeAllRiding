@@ -166,4 +166,19 @@ public class MemberController {
     public int memberDelete(@RequestBody MemberVO vo) {
         return service.memberDelete(vo);
     }
+    @PostMapping("checkId")
+    @ResponseBody
+    public MemberVO checkId (@RequestBody MemberVO vo) {
+        return service.checkId(vo);
+    }
+    @PostMapping("checkNick")
+    @ResponseBody
+    public MemberVO checkNick (@RequestBody MemberVO vo) {
+        return service.checkNick(vo);
+    }
+    @PostMapping("checkTel")
+    @ResponseBody
+    public MemberVO checkTel (@RequestBody MemberVO vo) {
+        return service.checkTel(vo);
+    }
 }

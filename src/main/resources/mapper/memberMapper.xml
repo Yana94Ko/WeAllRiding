@@ -35,4 +35,16 @@
         delete from member
         where userId=#{userId} and userPwd=#{userPwd}
     </delete>
+    <select id="checkId" resultType="com.yosi.myapp.member.MemberVO">
+        select userId from member
+        where userId=#{userId}
+    </select>
+    <select id="checkNick" resultType="com.yosi.myapp.member.MemberVO">
+        select nickname from member
+        where nickname=#{nickname}
+    </select>
+    <select id="checkTel" resultType="com.yosi.myapp.member.MemberVO">
+        select userTel from member
+        where userTel=#{userTel}
+    </select>
 </mapper>

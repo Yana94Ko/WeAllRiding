@@ -64,4 +64,19 @@ public class MemberServiceImpl implements MemberService {
         return dao.memberDelete(vo);
     }
 
+    @Override
+    public MemberVO checkId(MemberVO vo) {
+        return dao.checkId(vo);
+    }
+
+    @Override
+    public MemberVO checkNick(MemberVO vo) {
+        return dao.checkNick(vo);
+    }
+
+    @Override
+    public MemberVO checkTel(MemberVO vo) {
+        return dao.checkTel(vo);
+    }
+
 }
