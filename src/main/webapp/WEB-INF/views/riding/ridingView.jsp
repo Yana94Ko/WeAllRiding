@@ -8,11 +8,13 @@
 </script>
 <script>
 	function ridingViewDel() {
+		console.log(${vo.ridingNo})
 		if (confirm('글을 삭제시겠습니까?')) {
 			location.href = "/riding/ridingDel?ridingNo=${vo.ridingNo}";
 		}
 	}
 	function ridingViewEdit() {
+		console.log(${vo.ridingNo})
 		if (confirm('글을 수정하시겠습니까?')) {
 			location.href = "/riding/ridingEdit?ridingNo=${vo.ridingNo}";
 		}
@@ -39,7 +41,7 @@
          
          <li id="dateAll" style="color:black;">
          <h2 id="ridingViewTitle">일정</h2>
-    	 ${vo.startDate } - <input type="date" name="endDate" id="endDate" value="${vo.endDate }" >
+    	 ${vo.startDate } - ${vo.endDate }
          </li>
          
          <li id=courseLevel style="color:black">
@@ -53,13 +55,14 @@
          </li>
          <br><br><br><br>
          <h2 id="ridingViewTitle">내용</h2>
-         <li><textarea name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;">${vo.ridingContent }</textarea></li>
+         <%-- <li><input type="text" name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;" ${vo.ridingContent }></input></li>
+          --%><li style="color:black;">${vo.ridingContent }</li>
          <hr>
          <c:if test="${userId == vo.nickname }">
          	<li id="ridingViewBTN">
 	            <!-- <button id="ridingwriteBtn">글 수정</button> -->
-	            <button id="ridingViewDelBtn" onclick="javascript:ridingViewDel()">글 삭제</button>
-				<button id="ridingViewEditBtn" onclick="javascript:ridingViewEdit()">글 수정</button>
+	            <button id="ridingViewDelBtn" onclick="ridingViewDel()">글 삭제</button>
+				<button id="ridingViewEditBtn" onclick="ridingViewEdit()">글 수정</button>
 			
          	</li>
          </c:if>

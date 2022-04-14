@@ -41,7 +41,7 @@
          
          <li id=courseLevel>
          <h2>난이도</h2>
-         <select id="courseLevelsel" name="courseLevelsel" class="courseLevelsel">
+         <select id="courseLevelsel" name="courseLevel" class="courseLevelsel">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -52,7 +52,7 @@
          
          <li id="maxUser">
          <h2>참가인원</h2>
-         <select id="maxUesrsel" name="maxUesrsel" class="maxUesrsel">
+         <select id="maxUsersel" name="maxUser" class="maxUsersel">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -64,7 +64,7 @@
          </li>
          <br><br><br><br>
          <h2>내용</h2>
-         <li><textarea name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;"></textarea></li>
+         <li><input type="text" name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;"></input></li>
          
          <li id="ridingwriteBTN">
             <button id="ridingwriteBtn">글 등록</button>

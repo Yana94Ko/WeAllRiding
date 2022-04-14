@@ -80,7 +80,7 @@ public class RidingController {
 	
 	//글 보기
 	@RequestMapping("/riding/ridingView")
-	public ModelAndView ridingView(@RequestParam("ridingNo") int ridingNo) {
+	public ModelAndView ridingView(@RequestParam(value="ridingNo", required=false) int ridingNo) {
 		 ModelAndView mav = new ModelAndView();
 		 
 		 
@@ -94,7 +94,8 @@ public class RidingController {
 	
 	//글 수정
 	@GetMapping("/riding/ridingEdit")
-	public ModelAndView ridingEdit(@RequestParam("ridingNo")int ridingNo) {
+	public ModelAndView ridingEdit(int ridingNo) {
+		System.out.println(ridingNo);
 		ModelAndView mav = new ModelAndView();
 		 mav.addObject("vo", service.ridingSelect(ridingNo));
 		 mav.setViewName("riding/ridingEdit");
@@ -134,6 +135,7 @@ public class RidingController {
 			
 		} else {
 			//삭제 안됨
+			System.out.println("삭제가 안됬어요");
 			mav.addObject("ridingNo", ridingNo);
 			mav.setViewName("redirect:ridingView");
 		}
