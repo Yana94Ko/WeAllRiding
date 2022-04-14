@@ -96,7 +96,7 @@
 				<li id="comtyWD">${vo.comtyWriteDate }</li>
 			</c:forEach>
 		</ul>
-		<c:if test="${f != null && userId != ''}">
+		<c:if test="${userId != null && userId != ''}">
 			<div id="writeBTN">
 				<button id="writeBtn" onclick="location.href='/comty/comtyWrite' ">글 작성하기</button>
 			</div>
