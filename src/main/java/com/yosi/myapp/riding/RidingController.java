@@ -57,7 +57,7 @@ public class RidingController {
 	
 	@PostMapping("/riding/ridingWriteOk")
     public ResponseEntity<String> ridingWriteOk(RidingVO vo, HttpServletRequest request){
-		vo.setNickname((String)request.getSession().getAttribute("userId"));
+		vo.setNickname((String)request.getSession().getAttribute("nickName"));
 		ResponseEntity<String> entity = null;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("text", "html",Charset.forName("UTF-8")));
@@ -104,8 +104,7 @@ public class RidingController {
 	
 	@PostMapping("/riding/ridingEditOk")
 	public ResponseEntity<String> ridingEditOk(RidingVO vo, HttpSession session) {
-		vo.setNickname((String)session.getAttribute("userId"));
-		
+		vo.setNickname((String)session.getAttribute("nickName"));
 		ResponseEntity<String> entity =null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/html; charset=UTF-8");
@@ -127,7 +126,7 @@ public class RidingController {
 	// 글 삭제
 	@GetMapping("/riding/ridingDel")
 	public ModelAndView ridingDel(int ridingNo, HttpSession session, ModelAndView mav) {
-		String nickname = (String)session.getAttribute("userId");
+		String nickname = (String)session.getAttribute("nickName");
 		int result = service.ridingDelete(ridingNo, nickname);
 		if(result>0) {
 			//삭제됨

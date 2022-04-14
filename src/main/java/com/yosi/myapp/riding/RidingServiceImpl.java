@@ -13,6 +13,7 @@ public class RidingServiceImpl implements RidingService {
 
 	@Inject
 	RidingDAO dao;
+	
 	@Override
 	public List<RidingVO> ridingList(PagingVO pVO) {
 		return dao.ridingList(pVO);

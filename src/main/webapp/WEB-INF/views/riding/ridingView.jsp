@@ -2,18 +2,13 @@
 <link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
 <script type="text/javascript">
-	function input(){
-		const sDate = document.querySelector("#startDate").value;
-	}
 
 	function ridingViewDel() {
-		console.log(${vo.ridingNo})
 		if (confirm('글을 삭제시겠습니까?')) {
 			location.href = "/riding/ridingDel?ridingNo=${vo.ridingNo}";
 		}
 	}
 	function ridingViewEdit() {
-		console.log(${vo.ridingNo})
 		if (confirm('글을 수정하시겠습니까?')) {
 			location.href = "/riding/ridingEdit?ridingNo=${vo.ridingNo}";
 		}
@@ -56,7 +51,7 @@
          <h2 id="ridingViewTitle">내용</h2>
       	 <li style="color:black;">${vo.ridingContent }</li>
          <hr>
-         <c:if test="${userId == vo.nickname }">
+         <c:if test="${nickName == vo.nickname }">
          	<li id="ridingViewBTN">
 	            <!-- <button id="ridingwriteBtn">글 수정</button> -->
 	            <input type="button" id="ridingViewDelBtn" onclick="ridingViewDel()" value="글 삭제"/>

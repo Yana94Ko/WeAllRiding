@@ -31,7 +31,7 @@
 		select ridingNo, nickname, ridingSubject, ridingKeyword,
 		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate, 
 		courseLevel, maxUser, applyUser, ridingContent, ridingHit, ridingWriteDate 
-		from ridingBoard where ridingNo=${param1}
+		from ridingBoard where ridingNo=#{param1}
 	</select>
 	<update id="ridingUpdate">
 		update ridingBoard set ridingSubject=#{ridingSubject}, ridingContent=#{ridingContent}, 
