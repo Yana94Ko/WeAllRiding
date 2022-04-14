@@ -36,7 +36,6 @@ div, h1,p, a, i {
 	width: 100%;
 	height: 270px;
 	border-radius: 15px 15px 0 0;
-	background-image: url("images/korea.jpeg");
 	background-size: 100% 280px;
 	background-repeat: no-repeat;
 }

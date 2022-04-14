@@ -18,21 +18,30 @@
 			<form>
 				<div class="fromWrap"> <img src="${url}/images/fromIcon.png">
 					<input id = "startPoint" type="text" placeholder="출발지를 입력하세요" class="placeInfoInsert"/>
+					<input id = "startCoordinate" type ="hidden">
+					<input id = "startAddr" type ="hidden">
 				</div>
 				<button type ="button" class="changeFromTo"><img src="${url}/images/swap.png"></button>
 				<div class="waypoints"></div>
 				<div class="toWrap">
 					<img src="${url}/images/toIcon.png">
 					<input id = "endPoint" type="text" placeholder="도착지를 입력하세요"/>	
+					<input id = "endCoordinate" type ="hidden">
+					<input id = "endAddr" type ="hidden">
 				</div>
 				<button type ="button" class ="hihi"><img src="${url}/images/addIcon.png" class ="btnAddWaypoint" onclick="addWaypoint()"></button>
 				<button type ="button" class ="hihi"><img src="${url}/images/delete.png" onclick="deleteAllWaypoint()"></button>
-				<br/><button type="button">경로 탐색하기</button>
+				<br/><button type="button" onclick="searchCourse()">경로 탐색하기</button>
 			</form>
 		</div>
 		
     	<div id="map"></div>
-    	
+    	<input type="checkbox"id="chkBicycle" onclick="setOverlayMapTypeId()" /> 
+		<span class="grayTxt">자전거도로 정보 보기</span>
+		<select name="preference" class="selectBox" style='width: 180px'>
+        	<option value="recommended" selected>추천 경로</option>
+            <option value="shortest">최단 거리</option>
+        </select>
     	<div id="menu_wrap" class="bg_white">
         	<div class="option">
             	<div>
