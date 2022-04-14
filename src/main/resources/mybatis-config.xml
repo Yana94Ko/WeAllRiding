@@ -9,6 +9,7 @@
         <mapper resource="mapper/comtyMapper.xml"></mapper>
     	<mapper resource="mapper/comtyReplyMapper.xml"></mapper>
     	<mapper resource="mapper/ridingMapper.xml"></mapper>
+    	<mapper resource="mapper/ridingReplyMapper.xml"></mapper>
     </mappers>
   </configuration>
 

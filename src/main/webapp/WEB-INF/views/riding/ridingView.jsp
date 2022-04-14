@@ -13,53 +13,160 @@
 			location.href = "/riding/ridingEdit?ridingNo=${vo.ridingNo}";
 		}
 	}
+	
+	function ridingStart() {
+		if (confirm('참가 신청하시겠습니까? 신청 후 취소는 어려우니 신중히 생각해주세요.')){
+			location.href = "/riding/ridingMember?ridingNo=${vo.ridingNo}";
+		}
+	}
+	
+	// 댓글----------------
+	function ridingReplyListAll() { //현재글의 댓글을 모두 가져오기
+			var url = "/riding/ridingReplyList";
+			var params = "ridingNo=${vo.ridingNo}"; // 31번 글이면 no=31이 된다.
+				
+				$.ajax({
+						url : url,
+						data : params,
+						success : function(result) {
+							var $result = $(result); // vo, vo, vo, ,,,
+							var tag = "<ul>";
+							$result
+									.each(function(idx, vo) {
+										tag += "<li><div><div id='NN'>" + vo.nickname + "</div>";
+										// 	 'goguma'== goguma
+										if (vo.nickname == '${nickName}') {
+											tag += "<input type='button' value='삭제' id='ridingReplyListDel' title='"+vo.ridingReplyNo+"' />";
+											tag += "<input type='button' value='수정' id='ridingReplyListEdit'/>";
+										}
+										tag += "<br/><div>" + vo.ridingReplyComent
+												+ "</div>";
+										tag += "<div id='CRWD' style='color:lightgray;'>" + vo.ridingReplyWriteDate
+												+ "</div></div>";
+										
+										//본인글일때 수정폼이 있어야 한다.
+										if (vo.nickname == '${nickName}') {
+											tag += "<div style='display:none'><form method='post'>";
+											tag += "<input type='hidden' name='ridingReplyNo' value='"+vo.ridingReplyNo+"'/>";
+											tag += "<textarea name='ridingReplyComent' style='width:500px; height:50px;'>"
+													+ vo.ridingReplyComent
+													+ "</textarea>";
+											tag += "<input type='submit' value='수정'/>";
+											tag += "</form></div>";
+										}
+										tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
+									});
+							tag += "</ul>";
+							$("#ridingReplyList").html(tag);
+						},
+						error : function(e) {
+							console.log(e.responseText)
+						}
+					});
+		}
+
+	
+	// 댓글등록
+	function ridingReplyFrm(){
+		console.log("왔냐ddddddddddddddddddddddddddddddddddddddddddddd?");
+		event.preventDefault();//form 기본 이벤트 제거
+		if ($("#ridingReplyComent").val() == "") {//댓글 안쓴경우
+			alert("댓글을 입력후 등록하세요");
+			return;
+		} else {//댓글 입력한경우
+			var params = $("#ridingReplyFrm").serialize();
+			$.ajax({
+				url : '/riding/ridingReplyWriteOk',
+				data : params,
+				type : 'POST',
+				success : function() {
+					//폼을초기화
+					$("#ridingReplyComent").val("");
+					//댓글 목록 refresh되어야 한다.
+					//ridingReplyListAll();
+				},
+				error : function(e) {
+					console.log(e.responseText);
+				}
+			});
+		}
+	}
+	
+	
 </script>
 <main>
 
-<div class="ridingViewContainer">
-   <form>
-      <ul>
-         <h1 id="ridingViewTitle">라이딩 뷰</h1><br><br>
-         <h2 id="ridingViewTitle">${vo.ridingSubject }</h2><br>
-         <ul>
-			<li id="ridingViewFrm">글 번호 : ${vo.ridingNo }&nbsp;&nbsp;&nbsp;&nbsp;
-				작성자 : ${vo.nickname }&nbsp;&nbsp;&nbsp;&nbsp; 작성일 :
-				${vo.ridingWriteDate }&nbsp;&nbsp;&nbsp;&nbsp; 조회수 : ${vo.ridingHit }&nbsp;&nbsp;&nbsp;
-			</li>
-		</ul><br>
-         <h2 id="ridingViewTitle">키워드</h2>
-         <li style="color: black;">${vo.ridingKeyword }</li><br>
-         
-         <h2 id="ridingViewTitle">코스</h2>
-         <li style="height:400px; color:black;">코스가 나올 공간입니다.</li>
-         
-         <li id="dateAll" style="color:black;">
-         <h2 id="ridingViewTitle">일정</h2>
-    	 ${vo.startDate } - ${vo.endDate }
-         </li>
-         
-         <li id=courseLevel style="color:black">
-         <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;난이도</h2>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.courseLevel }
-         </li>
-         
-         <li id="maxUser" style="color:black">
-         <h2>참가인원</h2>
-         ${vo.maxUser }
-         </li>
-         <br><br><br><br>
-         <h2 id="ridingViewTitle">내용</h2>
-      	 <li style="color:black;">${vo.ridingContent }</li>
-         <hr>
-         <c:if test="${nickName == vo.nickname }">
-         	<li id="ridingViewBTN">
-	            <!-- <button id="ridingwriteBtn">글 수정</button> -->
-	            <input type="button" id="ridingViewDelBtn" onclick="ridingViewDel()" value="글 삭제"/>
-				<input type="button" id="ridingViewEditBtn" onclick="ridingViewEdit()" value="글 수정"/>
-			
-         	</li>
-         </c:if>
-      </ul>
-   </form>
-</div>
+	<div class="ridingViewContainer">
+		<form method='post' id="ridingStart">
+			<ul>
+				<h1 id="ridingViewTitle">라이딩 뷰</h1>
+				<br>
+				<br>
+				<h2 id="ridingViewTitle">${vo.ridingSubject }</h2>
+				<br>
+				<ul>
+					<li id="ridingViewFrm">글 번호 : ${vo.ridingNo }&nbsp;&nbsp;&nbsp;&nbsp;
+						작성자 : ${vo.nickname }&nbsp;&nbsp;&nbsp;&nbsp; 작성일 :
+						${vo.ridingWriteDate }&nbsp;&nbsp;&nbsp;&nbsp; 조회수 :
+						${vo.ridingHit }&nbsp;&nbsp;&nbsp;</li>
+				</ul>
+				<br>
+				<h2 id="ridingViewTitle">키워드</h2>
+				<li style="color: black;">${vo.ridingKeyword }</li>
+				<br>
+
+				<h2 id="ridingViewTitle">코스</h2>
+				<li style="height: 400px; color: black;">코스가 나올 공간입니다.</li>
+
+				<li id="dateAll" style="color: black;">
+					<h2 id="ridingViewTitle">일정</h2> ${vo.startDate } - ${vo.endDate }
+				</li>
+
+				<li id=courseLevel style="color: black">
+					<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;난이도</h2>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.courseLevel }
+				</li>
+
+				<li id="maxUser" style="color: black"></li>
+				<h2>참가인원</h2>
+				<li id="mList"></li>
+				<li id="mListFirst">번호</li>
+				<li id="mListFirst">유저 닉네임</li>
+				<li id="mListFirst">성별</li>
+				<li id="mListFirst">모임 횟수</li>
+				<li id="mListFirst">유저 레벨</li>
+
+				
+				<br><br><br><br>
+				<h2 id="ridingViewTitle">내용</h2>
+				<li style="color: black;">${vo.ridingContent }</li>
+				<hr>
+				<c:if test="${nickName == vo.nickname }">
+					<li id="ridingViewBTN">
+						<!-- <button id="ridingwriteBtn">글 수정</button> --> <input
+						type="button" id="ridingViewDelBtn" onclick="ridingViewDel()"
+						value="글 삭제" /> <input type="button" id="ridingViewEditBtn"
+						onclick="ridingViewEdit()" value="글 수정" />
+					</li>
+				</c:if>
+				<c:if test="${nickName != vo.nickname && nickName != null && nickName != ''}">
+					<li><input type="button" id="ridingStartBtn"
+						onclick="ridingStart()" value="라이딩 신청하기" /></li>
+				</c:if>
+				<li><input type="text" id="ridingReview"
+					value="후기 자리 (라이딩 신청 멤버만 가능)" /></li>
+			</ul>
+		</form>
+		<!-- 댓글 쓰기 폼 -->
+		<c:if test="${logStatus=='Y' }">
+			<form method='post' id="ridingReplyFrm">
+				<input type="hidden" name="ridingNo" value="${vo.ridingNo }" />
+				<textarea name="ridingReplyComent" id="ridingReplyComent"
+					style="width: 100%; height: 100px;"></textarea>
+				<br> <input type="button" value="댓글등록" id="replyBtn" onclick="ridingReplyFrm()">
+			</form>
+		</c:if>
+		<!-- 댓글목록이 나올 자리 -->
+		<div id="ridingReplyList"></div>
+	</div>
 </main>
