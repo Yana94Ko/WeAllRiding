@@ -22,48 +22,48 @@
 	
 	// 댓글----------------
 	function ridingReplyListAll() { //현재글의 댓글을 모두 가져오기
-			var url = "/riding/ridingReplyList";
-			var params = "ridingNo=${vo.ridingNo}"; // 31번 글이면 no=31이 된다.
+		var url = "/riding/ridingReplyList";
+		var params = "ridingNo=${vo.ridingNo}"; // 31번 글이면 no=31이 된다.
 				
-				$.ajax({
-						url : url,
-						data : params,
-						success : function(result) {
-							var $result = $(result); // vo, vo, vo, ,,,
-							var tag = "<ul>";
-							$result
-									.each(function(idx, vo) {
-										tag += "<li><div><div id='NN'>" + vo.nickname + "</div>";
-										// 	 'goguma'== goguma
-										if (vo.nickname == '${nickName}') {
-											tag += "<input type='button' value='삭제' id='ridingReplyListDel' title='"+vo.ridingReplyNo+"' />";
-											tag += "<input type='button' value='수정' id='ridingReplyListEdit'/>";
-										}
-										tag += "<br/><div>" + vo.ridingReplyComent
-												+ "</div>";
-										tag += "<div id='CRWD' style='color:lightgray;'>" + vo.ridingReplyWriteDate
-												+ "</div></div>";
-										
-										//본인글일때 수정폼이 있어야 한다.
-										if (vo.nickname == '${nickName}') {
-											tag += "<div style='display:none'><form method='post'>";
-											tag += "<input type='hidden' name='ridingReplyNo' value='"+vo.ridingReplyNo+"'/>";
-											tag += "<textarea name='ridingReplyComent' style='width:500px; height:50px;'>"
-													+ vo.ridingReplyComent
-													+ "</textarea>";
-											tag += "<input type='submit' value='수정'/>";
-											tag += "</form></div>";
-										}
-										tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
-									});
-							tag += "</ul>";
-							$("#ridingReplyList").html(tag);
-						},
-						error : function(e) {
-							console.log(e.responseText)
-						}
-					});
-		}
+		$.ajax({
+			url : url,
+			data : params,
+			success : function(result) {
+				var $result = $(result); // vo, vo, vo, ,,,
+				var tag = "<ul>";
+				$result.each(function(idx, vo) {
+					tag += "<li><div><div id='NN'>" + vo.nickname + "</div>";
+						
+					// 	 'goguma'== goguma
+					if (vo.nickname == '${nickName}') {
+						tag += "<input type='button' value='삭제' id='ridingReplyListDel' title='"+vo.ridingReplyNo+"' onclick='ridingReplyListDel' />";
+						tag += "<input type='button' value='수정' id='ridingReplyListEdit' onclick='ridingReplyListEdit'/>";
+					}
+					tag += "<br/><div>" + vo.ridingReplyComent + "</div>";
+					tag += "<div id='CRWD' style='color:lightgray;'>" + vo.ridingReplyWriteDate
+							+ "</div></div>";
+								
+					//본인글일때 수정폼이 있어야 한다.
+					if (vo.nickname == '${nickName}') {
+						tag += "<div style='display:none'><form method='post'>";
+						tag += "<input type='hidden' name='ridingReplyNo' value='"+vo.ridingReplyNo+"'/>";
+						tag += "<textarea name='ridingReplyComent' style='width:500px; height:50px;'>"
+								+ vo.ridingReplyComent
+								+ "</textarea>";
+						tag += "<input type='button' value='수정' id='ridingReplyListEditOk' onclick='ridingReplyListEditOk'/>";
+						tag += "</form></div>";
+					}
+					tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
+				});
+				tag += "</ul>";
+				$("#ridingReplyList").html(tag);
+			},
+			error : function(e) {
+				console.log(e.responseText)
+			}
+			
+		});
+	}
 
 	
 	// 댓글등록
@@ -91,11 +91,56 @@
 			});
 		}
 	}
+
+	// 댓글 수정(Edit)버튼 선택 시 해당폼 보여주기
+	function ridingReplyListEdit() {
+		$(this).parent().css("display", "none"); //숨기기
+		//보여주기
+		$(this).parent().next().css("display", "block");
+	};
+	
+	// 댓글 수정(DB)
+	function ridingReplyListEditOk() {
+		event.preventDefault();
+		//데이터 준비
+		var params = $(this).serialize();
+		var url = '/riding/ridingReplyEditOk';
+		$.ajax({
+			url : url,
+			data : params,
+			type : 'POST',
+			success : function(result) {
+				console.log(result);
+				ridingReplyListAll();
+			},
+			error : function() {
+				console.log('수정에러발생');
+			}
+		});
+	};
+	
+	// 댓글 삭제
+	function ridingReplyListDel() {
+		if (confirm('댓글을 삭제하시겠습니까?')) {
+			var params = "ridingReplyNo=" + $(this).attr("title");
+			$.ajax({
+				url : '/riding/ridingReplyDel',
+				data : params,
+				success : function(result) {
+					console.log(result);
+					ridingReplyListAll();
+				},
+				error : function() {
+					console.log("댓글삭제에러발생")
+				}
+			});
+		}
+	};
+	
 	
 	ridingReplyListAll();
 </script>
 <main>
-
 	<div class="ridingViewContainer">
 		<form method='post' id="ridingStart">
 			<ul>
@@ -157,6 +202,7 @@
 					value="후기 자리 (라이딩 신청 멤버만 가능)" /></li>
 			</ul>
 		</form>
+		
 		<!-- 댓글 쓰기 폼 -->
 		<c:if test="${logStatus=='Y' }">
 			<form method='post' id="ridingReplyFrm">
@@ -167,7 +213,6 @@
 			</form>
 		</c:if>
 		<!-- 댓글목록이 나올 자리 -->
-
-		<div id="ridingReplyList" onclick="ridingReplyListAll()"></div>
+		<div id="ridingReplyList"></div>
 	</div>
 </main>

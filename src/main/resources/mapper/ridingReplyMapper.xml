@@ -8,7 +8,7 @@
 		insert into ridingReply(ridingNo, nickname, ridingReplyComent)
 		values (#{ridingNo}, #{nickname}, #{ridingReplyComent})
 	</insert>
-	<select id="ridingReplyList" resultType="ComtyReplyVO">
+	<select id="ridingReplyList" resultType="RidingReplyVO">
 		select ridingReplyNo, nickname, ridingReplyComent, ridingReplyWriteDate from ridingReply 
 		where ridingNo=${param1}
 		order by ridingReplyNo desc
