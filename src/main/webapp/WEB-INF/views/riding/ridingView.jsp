@@ -31,8 +31,7 @@
 						success : function(result) {
 							var $result = $(result); // vo, vo, vo, ,,,
 							var tag = "<ul>";
-							$result
-									.each(function(idx, vo) {
+							$result.each(function(idx, vo) {
 										tag += "<li><div><div id='NN'>" + vo.nickname + "</div>";
 										// 	 'goguma'== goguma
 										if (vo.nickname == '${nickName}') {
@@ -83,7 +82,7 @@
 					//폼을초기화
 					$("#ridingReplyComent").val("");
 					//댓글 목록 refresh되어야 한다.
-					//ridingReplyListAll();
+					ridingReplyListAll();
 				},
 				error : function(e) {
 					console.log(e.responseText);

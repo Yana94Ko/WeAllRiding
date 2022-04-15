@@ -104,45 +104,39 @@ ul{
 		function comtyReplyListAll() { //현재글의 댓글을 모두 가져오기
 			var url = "/comty/comtyReplyList";
 			var params = "comtyNo=${vo.comtyNo}"; // 31번 글이면 no=31이 된다.
-			$
-					.ajax({
-						url : url,
-						data : params,
-						success : function(result) {
-							var $result = $(result); // vo, vo, vo, ,,,
-							var tag = "<ul>";
-							$result
-									.each(function(idx, vo) {
-										tag += "<li><div><div id='NN'>" + vo.nickname + "</div>";
-										// 	 'goguma'== goguma
-										if (vo.nickname == '${nickName}') {
-											tag += "<input type='button' value='삭제' id='comtyReplyListDel' title='"+vo.comtyReplyNo+"' />";
-											tag += "<input type='button' value='수정' id='comtyReplyListEdit'/>";
-										}
-										tag += "<br/><div>" + vo.comtyReplyComent
-												+ "</div>";
-										tag += "<div id='CRWD' style='color:lightgray;'>" + vo.comtyReplyWriteDate
-												+ "</div></div>";
+			$.ajax({
+				url : url,
+				data : params,
+				success : function(result) {
+				var $result = $(result); // vo, vo, vo, ,,,
+				var tag = "<ul>";
+				$result.each(function(idx, vo) {
+					tag += "<li><div><div id='NN'>" + vo.nickname + "</div>";
+					// 	 'goguma'== goguma
+					if (vo.nickname == '${nickName}') {
+						tag += "<input type='button' value='삭제' id='comtyReplyListDel' title='"+vo.comtyReplyNo+"' />";
+						tag += "<input type='button' value='수정' id='comtyReplyListEdit'/>";
+					}
+						tag += "<br/><div>" + vo.comtyReplyComent + "</div>";
+						tag += "<div id='CRWD' style='color:lightgray;'>" + vo.comtyReplyWriteDate + "</div></div>";
 										
-										//본인글일때 수정폼이 있어야 한다.
-										if (vo.nickname == '${nickName}') {
-											tag += "<div style='display:none'><form method='post'>";
-											tag += "<input type='hidden' name='comtyReplyNo' value='"+vo.comtyReplyNo+"'/>";
-											tag += "<textarea name='comtyReplyComent' style='width:500px; height:50px;'>"
-													+ vo.comtyReplyComent
-													+ "</textarea>";
-											tag += "<input type='submit' value='수정'/>";
-											tag += "</form></div>";
-										}
-										tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
-									});
-							tag += "</ul>";
-							$("#comtyReplyList").html(tag);
-						},
-						error : function(e) {
-							console.log(e.responseText)
-						}
-					});
+					//본인글일때 수정폼이 있어야 한다.
+					if (vo.nickname == '${nickName}') {
+						tag += "<div style='display:none'><form method='post'>";
+						tag += "<input type='hidden' name='comtyReplyNo' value='"+vo.comtyReplyNo+"'/>";
+						tag += "<textarea name='comtyReplyComent' style='width:500px; height:50px;'>" + vo.comtyReplyComent + "</textarea>";
+						tag += "<input type='submit' value='수정'/>";
+						tag += "</form></div>";
+					}
+					tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
+				});
+					tag += "</ul>";
+					$("#comtyReplyList").html(tag);
+					},
+					error : function(e) {
+						console.log(e.responseText)
+					}
+			});
 		}
 		// 댓글등록
 		$("#comtyReplyFrm").submit(function() {
