@@ -83,7 +83,7 @@
 					//폼을초기화
 					$("#ridingReplyComent").val("");
 					//댓글 목록 refresh되어야 한다.
-					//ridingReplyListAll();
+					ridingReplyListAll();
 				},
 				error : function(e) {
 					console.log(e.responseText);
@@ -92,7 +92,7 @@
 		}
 	}
 	
-	
+	ridingReplyListAll();
 </script>
 <main>
 
@@ -167,6 +167,7 @@
 			</form>
 		</c:if>
 		<!-- 댓글목록이 나올 자리 -->
-		<div id="ridingReplyList"></div>
+
+		<div id="ridingReplyList" onclick="ridingReplyListAll()"></div>
 	</div>
 </main>
