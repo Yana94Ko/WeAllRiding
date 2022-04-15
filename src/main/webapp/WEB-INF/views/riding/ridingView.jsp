@@ -31,7 +31,7 @@
 				var $result = $(result); // vo, vo, vo, ,,,
 				var tag = "<ul>";
 				$result.each(function(idx, vo) {
-					tag += "<li><div id='dddd'><div id='NN'>" + vo.nickname + "</div>";
+					tag += "<li><div id='dddd' style='color:black;'><div id='NN'>" + vo.nickname + "</div>";
 						
 					// 	 'goguma'== goguma
 					if (vo.nickname == '${nickName}') {
@@ -49,7 +49,7 @@
 						tag += "<textarea name='ridingReplyComent' style='width:500px; height:50px;'>"
 								+ vo.ridingReplyComent
 								+ "</textarea>";
-						tag += "<input type='button' value='수정' id='ridingReplyListEditOk'/>";
+						tag += "<input type='submit' value='수정' id='ridingReplyListEditOk'/>";
 						tag += "</form></div>";
 					}
 					tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
