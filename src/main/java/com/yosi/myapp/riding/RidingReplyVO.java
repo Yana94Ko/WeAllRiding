@@ -5,7 +5,7 @@ public class RidingReplyVO {
 	private int ridingNo;
 	private String nickname;
 	private String ridingReplyComent;
-	private String WriteDate;
+	private String ridingReplyWriteDate;
 
 	
 	public int getRidingReplyNo() {
@@ -32,12 +32,13 @@ public class RidingReplyVO {
 	public void setRidingReplyComent(String ridingReplyComent) {
 		this.ridingReplyComent = ridingReplyComent;
 	}
-	public String getWriteDate() {
-		return WriteDate;
+	public String getRidingReplyWriteDate() {
+		return ridingReplyWriteDate;
 	}
-	public void setWriteDate(String writeDate) {
-		WriteDate = writeDate;
+	public void setRidingReplyWriteDate(String ridingReplyWriteDate) {
+		this.ridingReplyWriteDate = ridingReplyWriteDate;
 	}
+	
 	
 	
 }
