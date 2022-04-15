@@ -24,6 +24,6 @@
         nickname = #{nickname},
         experience = #{experience},
         bicycleType = #{bicyleType}
-
+        WHERE userId = #{userId}
     </update>
 </mapper>
