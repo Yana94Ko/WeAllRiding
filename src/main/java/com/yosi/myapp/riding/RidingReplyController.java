@@ -16,21 +16,18 @@ public class RidingReplyController {
 	// 댓글 등록
 	@RequestMapping(value="/riding/ridingReplyWriteOk", method=RequestMethod.POST)
 	public int ridingReplyWriteOk (RidingReplyVO vo, HttpSession session) {
-		System.out.println("ridingReplyWriteOk");
 		vo.setNickname((String)session.getAttribute("nickName"));
 		return service.ridingReplyWrite(vo);
 	}
 	// 댓글목록
 	@RequestMapping("/riding/ridingReplyList")
 	public List<RidingReplyVO> ridingReplyList(int ridingNo) {
-		System.out.println("ridingReplyList");
 		return service.ridingReplyList(ridingNo);
 	}
 
 	// 댓글수정
 	@PostMapping("/riding/ridingReplyEditOk")
 	public int ridingReplyEditOk(RidingReplyVO vo, HttpSession session) {
-		System.out.println("ridingReplyEditOk");
 		vo.setNickname((String) session.getAttribute("nickName"));
 		return service.ridingReplyEdit(vo);
 	}
@@ -38,7 +35,6 @@ public class RidingReplyController {
 	// 댓글삭제
 	@GetMapping("/riding/ridingReplyDel")
 	public int ridingReplyDelOk(int ridingReplyNo, HttpSession session) {
-		System.out.println("ridingReplyDel");
 		return service.ridingReplyDel(ridingReplyNo, (String) session.getAttribute("nickName"));
 	}
 }

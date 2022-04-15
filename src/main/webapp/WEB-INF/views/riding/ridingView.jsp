@@ -109,7 +109,6 @@
 	
 	// 댓글등록
 	function ridingReplyFrm(){
-		console.log("왔냐ddddddddddddddddddddddddddddddddddddddddddddd?");
 		event.preventDefault();//form 기본 이벤트 제거
 		if ($("#ridingReplyComent").val() == "") {//댓글 안쓴경우
 			alert("댓글을 입력후 등록하세요");
