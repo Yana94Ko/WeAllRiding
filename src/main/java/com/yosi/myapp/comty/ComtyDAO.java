@@ -21,4 +21,3 @@ public interface ComtyDAO {
 	//관리자 페이지 커뮤니티 글 목록
 	public List<ComtyVO> comtyList();
 }
-

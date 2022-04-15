@@ -2,7 +2,6 @@
 <link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
 <script type="text/javascript">
-
 	function ridingViewDel() {
 		if (confirm('글을 삭제시겠습니까?')) {
 			location.href = "/riding/ridingDel?ridingNo=${vo.ridingNo}";
@@ -106,9 +105,7 @@
 		         });
 		      }
 		   });
-
 	}
-
 	
 	// 댓글등록
 	function ridingReplyFrm(){
@@ -134,7 +131,6 @@
 			});
 		}
 	}
-
 	ridingReplyListAll();
 	
 </script>
