@@ -7,6 +7,7 @@ public class MemberVO {
     private String userTel;
     private String userTel1;
     private String userTel2;
+    private String userTelP;
 
     public String getUserTel1() {
         return userTel1;
@@ -149,5 +150,13 @@ public class MemberVO {
 
     public void setUserScore(String userScore) {
         this.userScore = userScore;
+    }
+
+    public String getUserTelP() {
+        return userTelP;
+    }
+
+    public void setUserTelP(String userTelP) {
+        this.userTelP = userTelP;
     }
 }

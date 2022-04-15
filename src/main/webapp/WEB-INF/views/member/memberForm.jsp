@@ -12,11 +12,13 @@
         <h1>회원가입</h1>
         <form method="post" action="/member/memberOk" id="mFrm" onsubmit="return MemberCheck()">
             <div class="member-input">
-                <input type="text" name="userId" id="userId" required/>
+                <input type="text" name="userId" id="userId" onkeyup="CheckId()" required/>
+                <span id="stateIdChk" class="stateIdChk">아이디를 입력하세요</span>
                 <label>아이디</label>
             </div>
             <div class="member-input">
-                <input type="text" name="nickname" id="nickname" required/>
+                <input type="text" name="nickname" id="nickname" onkeyup="CheckNick()" required/>
+                <span id="stateNickChk" class="stateNickChk">닉네임을 입력하세요</span>
                 <label>닉네임</label>
             </div>
             <div class="member-input">
@@ -47,7 +49,7 @@
                     <input type="text" name="userTel2" id="userTel2" maxlength="9" required/>
                     <label>연락처</label>
 
-                    <button id="phoneChk" class="phoneChk" type="button" onclick="SendPhoneCheck()">인증번호 보내기</button>
+                    <button id="phoneChk" class="phoneChk" type="button" onclick="CheckTel()">인증번호 보내기</button>
 
                     <input id="certNo" type="text" name="certNo" title="인증번호 입력"/>
                     <button id="certChk" class="certChk" type="button" onclick="CheckCode()">본인인증</button>

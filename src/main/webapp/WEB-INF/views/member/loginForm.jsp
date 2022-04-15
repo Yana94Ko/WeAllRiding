@@ -20,8 +20,7 @@
                     <button type="button" value="로그인" onclick="LogFormCheck()">Login</button>
                 </div>
                 <div class="bottom-menu">
-                    <a href ="${url}/member/memberFind">아이디 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a href ="${url}#">비밀번호 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a href ="${url}/member/memberFind">아이디/비밀번호 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;
                     <a href ="${url}/member/memberForm">회원가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </form>
