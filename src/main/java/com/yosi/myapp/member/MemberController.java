@@ -147,7 +147,6 @@ public class MemberController {
     public ModelAndView memberEdit(HttpSession session) {
         String userId = (String)session.getAttribute("userId");
         MemberVO vo = service.memberSelect(userId);
-        System.out.println(vo);
         ModelAndView mav = new ModelAndView();
         mav.addObject("vo", vo);
         mav.setViewName("member/memberEdit");

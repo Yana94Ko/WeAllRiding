@@ -1,5 +1,8 @@
 package com.yosi.myapp.member;
 
+import java.util.List;
+import java.util.Map;
+
 public interface MemberService {
     public MemberVO loginCheck(MemberVO vo);
     public int memberInsert(MemberVO vo);
@@ -13,4 +16,6 @@ public interface MemberService {
     public MemberVO checkId(MemberVO vo);
     public MemberVO checkNick(MemberVO vo);
     public MemberVO checkTel(MemberVO vo);
+    public List<Map<String,String>> genderCount();
+    public Map<String,String> ageCount();
 }

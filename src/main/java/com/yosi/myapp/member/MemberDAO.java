@@ -3,6 +3,9 @@ package com.yosi.myapp.member;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
 @Mapper
 @Repository
 public interface MemberDAO {
@@ -17,4 +20,6 @@ public interface MemberDAO {
     public MemberVO checkId(MemberVO vo);
     public MemberVO checkNick(MemberVO vo);
     public MemberVO checkTel(MemberVO vo);
+    public List<Map<String,String>> genderCount();
+    public Map<String,String> ageCount();
 }

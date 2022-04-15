@@ -47,4 +47,23 @@
         select userTel from member
         where userTel=#{userTel}
     </select>
+    <select id="genderCount" resultMap="genderMap">
+        select gender, count(*) from member group by gender;
+    </select>
+    <resultMap id="genderMap" type="map">
+        <result column="gender" property="gender"/>
+        <result column="count(*)" property="count"/>
+    </resultMap>
+    <select id="ageCount" resultMap="ageMap">
+        select
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 0 and 19 , 1, 0)) as under_20,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 20 and 29 , 1, 0)) as age_20,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 30 and 39 , 1, 0)) as age_30,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 40 and 49 , 1, 0)) as age_40,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 50 and 59 , 1, 0)) as age_50,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 60 and 69 , 1, 0)) as over_60
+        from member
+    </select>
+    <resultMap id="ageMap" type="map">
+    </resultMap>
 </mapper>

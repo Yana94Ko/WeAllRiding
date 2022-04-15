@@ -8,6 +8,9 @@ import net.nurigo.sdk.message.service.DefaultMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 @Service
 public class MemberServiceImpl implements MemberService {
     @Autowired
@@ -77,6 +80,16 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public MemberVO checkTel(MemberVO vo) {
         return dao.checkTel(vo);
+    }
+
+    @Override
+    public List<Map<String,String>> genderCount() {
+        return dao.genderCount();
+    }
+
+    @Override
+    public Map<String,String> ageCount() {
+        return dao.ageCount();
     }
 
 }
