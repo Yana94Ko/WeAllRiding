@@ -119,8 +119,7 @@ ul{
 											tag += "<input type='button' value='삭제' id='comtyReplyListDel' title='"+vo.comtyReplyNo+"' />";
 											tag += "<input type='button' value='수정' id='comtyReplyListEdit'/>";
 										}
-										tag += "<br/><div>" + vo.comtyReplyComent
-												+ "</div>";
+										tag += "<br/><div>" + vo.comtyReplyComent + "</div>";
 										tag += "<div id='CRWD' style='color:lightgray;'>" + vo.comtyReplyWriteDate
 												+ "</div></div>";
 										
