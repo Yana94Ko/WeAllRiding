@@ -18,5 +18,7 @@ public interface ComtyDAO {
 	//총레코드수
 	public int totalRecord(PagingVO pVO);
 
-
+	//관리자 페이지 커뮤니티 글 목록
+	public List<ComtyVO> comtyList();
 }
+
