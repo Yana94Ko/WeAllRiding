@@ -38,4 +38,10 @@ public class ComtyServiceImpl implements ComtyService {
 	public int totalRecord(PagingVO pVO) {
 		return dao.totalRecord(pVO);
 	}
+
+	//관리자 페이지 커뮤니티 글 목록
+	@Override
+	public List<ComtyVO> comtyList() {
+		return dao.comtyList();
+	}
 }

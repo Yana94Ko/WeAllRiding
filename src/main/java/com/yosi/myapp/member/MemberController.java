@@ -40,7 +40,12 @@ public class MemberController {
                 session.setAttribute("nickName", rVO.getNickname());
                 session.setAttribute("logStatus", "Y");
                 session.setAttribute("isAdmin", rVO.getIsAdmin()); // 운영자인 경우 1, 아닌 경우 0
-                String msg="<script>location.href='/';</script>";
+                String msg = "";
+                if(rVO.getIsAdmin().equals(("1"))) {
+                    msg="<script>location.href='/admin/adminMain';</script>";
+                } else {
+                    msg = "<script>location.href='/';<script>";
+                }
                 entity = new ResponseEntity<String> (msg, headers, HttpStatus.OK);
             } else if (suspendDate.compareTo(new Date()) > 0) { // 정지일 > 현재날짜 로그인 실패
                 String msg="<script>alert('정지된 회원입니다');location.href='/';</script>";
@@ -66,6 +71,11 @@ public class MemberController {
     @GetMapping("memberForm")
     public String memberForm() {
         return "member/memberForm";
+    }
+
+    @GetMapping("memberFind")
+    public String memberFind() {
+        return "member/memberFind";
     }
 
     @PostMapping("memberOk")
