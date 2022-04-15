@@ -39,4 +39,10 @@
 	<update id="hitCount">
       update comty set comtyHit = comtyHit+1 where comtyNo=#{param1}
    </update>
+	<!-- 관리자 페이지 커뮤니티 글 목록 -->
+	<select id="comtyList" resultType="com.yosi.myapp.comty.ComtyVO">
+		SELECT comtyNO, comtySubject, nickname, comtyHit, comtyWriteDate
+		FROM comty
+		ORDER BY comtyWriteDate
+	</select>
 </mapper>

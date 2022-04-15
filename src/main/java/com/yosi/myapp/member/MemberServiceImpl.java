@@ -8,10 +8,14 @@ import net.nurigo.sdk.message.service.DefaultMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+
 @Service
 public class MemberServiceImpl implements MemberService {
     @Autowired
     MemberDAO dao;
+
     @Override
     public MemberVO loginCheck(MemberVO vo) {
         return dao.loginCheck(vo);
@@ -31,7 +35,14 @@ public class MemberServiceImpl implements MemberService {
         message.setText("[WeAllRiding] 인증번호는 " +randomNumber+ "입니다.");
         SingleMessageSentResponse response = messageService.sendOne(new SingleMessageSendingRequest(message));
         System.out.println(response);
-
     }
+
+    // 관리자 페이지 회원 목록
+    @Override
+    public List<MemberVO> memberList() {
+        return dao.memberList();
+    }
+
+
 
 }

@@ -11,4 +11,19 @@
         insert into member(userId, userPwd, userName, userTel, userEmail, birth, nickname, gender, experience, bicycleType)
         values(#{userId}, #{userPwd}, #{userName}, #{userTel}, #{userEmail}, #{birth}, #{nickname}, #{gender}, #{experience}, #{bicycleType})
     </insert>
+    <!-- 관리자 메뉴 회원 목록 -->
+    <select id = "memberList" resultType="com.yosi.myapp.member.MemberVO">
+        SELECT userId, userpwd, username, useremail, joindate FROM member
+        ORDER BY joinDate ASC
+    </select>
+    <!-- 회원정보 수정 -->
+    <update id="memberUpdate">
+        UPDATE member SET
+        userPwd = #{userPwd},
+        userEmail = #{userEmail},
+        nickname = #{nickname},
+        experience = #{experience},
+        bicycleType = #{bicyleType}
+
+    </update>
 </mapper>
