@@ -21,4 +21,5 @@ public interface MemberService {
     public MemberVO checkTel(MemberVO vo);
     public List<Map<String,String>> genderCount();
     public Map<String,String> ageCount();
+
 }

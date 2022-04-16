@@ -43,6 +43,7 @@ public class MemberServiceImpl implements MemberService {
         return dao.memberList();
     }
 
+    @Override
     public MemberVO findUserId(MemberVO vo) {
         return dao.findUserId(vo);
     }

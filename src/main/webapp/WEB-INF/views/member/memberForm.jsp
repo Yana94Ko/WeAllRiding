@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <script src="${url}/js/member/member.js"></script>
+
 <link rel="stylesheet" href="/css/member/memberForm.css" type="text/css"/>
 <main>
     <section class="memberForm">
@@ -45,7 +46,9 @@
                 <div class="tel">
                     <input type="text" name="userTel2" id="userTel2" maxlength="9" required/>
                     <label>연락처</label>
+
                     <button id="phoneChk" class="phoneChk" type="button" onclick="CheckTel()">인증번호 보내기</button>
+
                     <input id="certNo" type="text" name="certNo" title="인증번호 입력"/>
                     <button id="certChk" class="certChk" type="button" onclick="CheckCode()">본인인증</button>
                     <span id="statePhoneChk" class="statePhoneChk">휴대폰 번호 입력 후 인증번호 보내기를 해주십시오.</span>

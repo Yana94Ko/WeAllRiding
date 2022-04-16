@@ -44,4 +44,5 @@ public class ComtyServiceImpl implements ComtyService {
 	public List<ComtyVO> comtyList() {
 		return dao.comtyList();
 	}
+
 }

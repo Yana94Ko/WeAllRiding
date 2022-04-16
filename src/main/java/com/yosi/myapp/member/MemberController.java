@@ -58,6 +58,7 @@ public class MemberController {
                 }
                 else { // 일반회원
                     msg="<script>location.href='/';</script>";
+
                 }
                 entity = new ResponseEntity<String> (msg, headers, HttpStatus.OK);
             } else if (suspendDate.compareTo(new Date()) > 0) { // 정지일 > 현재날짜 로그인 실패
