@@ -58,5 +58,19 @@ public class RidingServiceImpl implements RidingService {
 		return dao.ridingMemberShow(ridingMemberNo);
 	}
 	
+	
+	@Override
+	public List<RidingVO> myRidingJoinList(RidingVO vo) {
+		return dao.myRidingJoinList(vo);
+	}
+	@Override
+	public List<RidingVO> myRidingEndList(RidingVO vo) {
+		return dao.myRidingEndList(vo);
+	}
+	@Override
+	public List<RidingVO> myRidingMadeList(RidingVO vo) {
+		return dao.myRidingMadeList(vo);
+	}
+	
 
 }

@@ -19,6 +19,28 @@
 			where ${searchKey} like '%${searchWord}%'
 		</if>
 	</select>
+	
+	<!-- myRiding -->
+	<select id="myRidingJoinList" resultType="RidingVO">
+		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit, A.startDate, A.endDate 
+		FROM ridingBoard A
+		INNER JOIN ridingMember B
+		ON A.ridingNo = B.ridingNo WHERE B.nickname=#{nickname};
+	</select>
+	<select id="myRidingEndList" resultType="RidingVO">
+		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit, A.startDate, A.endDate 
+		FROM ridingBoard A
+		INNER JOIN ridingMember B
+		ON A.ridingNo = B.ridingNo WHERE (B.nickname=#{nickname} and now() > A.endDate) or 
+		(A.nickname=#{nickname} and now() > A.endDate);
+	</select>
+	<select id="myRidingMadeList" resultType="RidingVO">
+		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit, A.startDate, A.endDate 
+		FROM ridingBoard A
+		INNER JOIN ridingMember B
+		ON B.nickname=A.nickname WHERE B.nickname=#{nickname};
+	</select>
+	
 	<!-- ridingWrite -->
 	<insert	id="ridingInsert">
 		insert into ridingBoard(nickname, ridingSubject, ridingContent, startDate, endDate, maxUser, applyUser, courseLevel, ridingKeyword)
@@ -60,6 +82,6 @@
 	<!-- view페이지에 보여주기 -->
 	<select id="ridingMemberShow" resultType="ridingVO">
 		select ridingMemberNo, nickname, gender, ridingCount, userScore
-		from ridingMember
+		from ridingMember where ridingNo=#{ridingNo}
 	</select>
 </mapper>

@@ -25,4 +25,10 @@ public interface RidingDAO {
 	public int ridingMemberUpdate(RidingVO vo);
 	public List<RidingVO> ridingMemberShow(int ridingMemberNo);
 	
+	//마이라이딩
+	public List<RidingVO> myRidingJoinList(RidingVO vo);
+	public List<RidingVO> myRidingEndList(RidingVO vo);
+	public List<RidingVO> myRidingMadeList(RidingVO vo);
+	
+	
 }
