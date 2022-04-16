@@ -13,9 +13,10 @@
 		}
 	}
 	
-	function ridingStart() {
-		if (confirm('참가 신청하시겠습니까? 신청 후 취소는 어려우니 신중히 생각해주세요.')){
-			location.href = "/riding/ridingMember?ridingNo=${vo.ridingNo}";
+	function ridingMember() {
+		event.preventDefault();//form 기본 이벤트 제거
+		if (confirm('참가 신청하시겠습니까? \n 신청 후 취소는 어려우니 신중히 생각해주세요. \n ※단, 라이딩은 개설자에 의해 취소될 수 있습니다.※')){
+			location.href = "/riding/ridingMemberOk?ridingNo=${vo.ridingNo}";
 		}
 	}
 	
@@ -136,12 +137,13 @@
 </script>
 <main>
 	<div class="ridingViewContainer">
-		<form method='post' id="ridingStart">
+		<form method='post'>
 			<ul>
 				<h1 id="ridingViewTitle">라이딩 뷰</h1>
 				<br>
 				<br>
-				<h2 id="ridingViewTitle">${vo.ridingSubject }</h2>
+				<h2 id="ridingViewTitle"><input type="hidden" name="ridingSubject" value="${vo.ridingSubject }">${vo.ridingSubject }</h2>
+				
 				<br>
 				<ul>
 					<li id="ridingViewFrm">글 번호 : ${vo.ridingNo }&nbsp;&nbsp;&nbsp;&nbsp;
@@ -158,7 +160,9 @@
 				<li style="height: 400px; color: black;">코스가 나올 공간입니다.</li>
 
 				<li id="dateAll" style="color: black;">
-					<h2 id="ridingViewTitle">일정</h2> ${vo.startDate } - ${vo.endDate }
+					<h2 id="ridingViewTitle">일정</h2> 
+					<input type="hidden" name="startDate" value="${vo.startDate }">${vo.startDate } - 
+					<input type="hidden" name="endDate" value="${vo.endDate }">${vo.endDate }
 				</li>
 
 				<li id=courseLevel style="color: black">
@@ -189,8 +193,9 @@
 					</li>
 				</c:if>
 				<c:if test="${nickName != vo.nickname && nickName != null && nickName != ''}">
-					<li><input type="button" id="ridingStartBtn"
-						onclick="ridingStart()" value="라이딩 신청하기" /></li>
+					<li><input type="button" id="ridingMemberBtn"
+						onclick="ridingMember()" value="라이딩 신청하기"/></li>
+						<a href="/riding/ridingMemberOk?ridingNo=${vo.ridingNo}">라이딩 신청하기</a>
 				</c:if>
 				<li><input type="text" id="ridingReview"
 					value="후기 자리 (라이딩 신청 멤버만 가능)" /></li>

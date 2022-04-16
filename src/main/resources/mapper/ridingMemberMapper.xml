@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace = "com.yosi.myapp.riding.RidingMemberDAO">
+	<!-- 라이딩 참가 신청 -->
+	<insert	id="ridingMemberInsert">
+		insert into ridingMember(nickname, ridingNo, ridingSubject, 
+			ridingHit, startDate, endDate, gender, userScore, ridingCount, ridingState)
+		values(#{nickname}, #{ridingNo}, #{ridingSubject}, #{ridingHit}, 
+			#{startDate}, #{endDate}, #{gender} ,3, 0, 1)
+	</insert>
+</mapper>
