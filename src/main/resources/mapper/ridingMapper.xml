@@ -41,4 +41,25 @@
 	<delete id="ridingDelete">
 		delete from ridingBoard where ridingNo=#{param1} and nickname=#{param2}
 	</delete>
+	
+	<!-- 라이딩 참가 신청 -->
+	<insert id="ridingMemberInsert">
+		insert into ridingMember (ridingNo, nickname) 
+		values(#{ridingNo}, #{nickname})
+	</insert>
+	
+	<!-- 테이블 합치기 -->
+	<update id="ridingMemberUpdate">
+		UPDATE ridingMember rm
+		JOIN member m
+		ON rm.nickname = m.nickName
+		SET rm.gender = m.gender
+		WHERE rm.nickname = m.nickname;
+	</update>
+	
+	<!-- view페이지에 보여주기 -->
+	<select id="ridingMemberShow" resultType="ridingVO">
+		select ridingMemberNo, nickname, gender, ridingCount, userScore
+		from ridingMember
+	</select>
 </mapper>

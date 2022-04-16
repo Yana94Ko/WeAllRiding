@@ -31,6 +31,7 @@ public class RidingController {
 	@Inject
 	RidingService service;
 	
+	
 	/*
 	 * @Inject RidingReplyService replyService;
 	 */
@@ -80,19 +81,50 @@ public class RidingController {
 		return entity;
 	}
 	
+	@GetMapping("/riding/ridingMemberOk")
+    public ResponseEntity<String> ridingMemberOk(RidingVO vo, HttpServletRequest request) {
+        vo.setNickname((String)request.getSession().getAttribute("nickName"));
+
+        // DB작업
+        ResponseEntity<String> entity = null; // 데이터와 처리상태를 가진다.
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.add("Content-Type", "text/html; charset=utf-8");
+        try {
+            service.ridingMemberInsert(vo);
+            service.ridingMemberUpdate(vo);
+            String msg = "<script>";
+            msg += "alert('글이 등록되었습니다');";
+            msg += "location.href='/riding/ridingList';";
+            msg += "</script>";
+            entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            // 등록안됨
+            String msg = "<script>";
+            msg += "alert('글등록이 실패하였습니다');";
+            msg += "history.back();";
+            msg += "</script>";
+            entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
+        }
+
+        return entity;
+    }
+	
 	//글 보기
-	@RequestMapping("/riding/ridingView")
-	public ModelAndView ridingView(@RequestParam(value="ridingNo", required=false) int ridingNo) {
-		 ModelAndView mav = new ModelAndView();
-		 
-		 
-		 service.cntHit(ridingNo); // 조회수 증가
-		 
-		 mav.addObject("vo", service.ridingSelect(ridingNo));
-		 mav.setViewName("riding/ridingView");
-		 
-		 return mav;
-	}
+	@GetMapping("/riding/ridingView")
+    public ModelAndView ridingView(int ridingNo) {
+        ModelAndView mav = new ModelAndView();
+        service.cntHit(ridingNo); // 조회수 증가
+        
+        mav.addObject("vo", service.ridingSelect(ridingNo));
+        mav.addObject("lst2", service.ridingMemberShow(ridingNo));
+        mav.setViewName("riding/ridingView");
+        return mav;
+    }
 	
 	//글 수정
 	@GetMapping("/riding/ridingEdit")

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.yosi.myapp.PagingVO;
 
+
 public interface RidingService {
 	public List<RidingVO> ridingList(PagingVO pVO);
 	public int ridingInsert(RidingVO vo); 
@@ -14,5 +15,9 @@ public interface RidingService {
 		
 	//총레코드수
 	public int totalRecord(PagingVO pVO);
+	
+	public int ridingMemberInsert(RidingVO vo);
+	public int ridingMemberUpdate(RidingVO vo);
+	public List<RidingVO> ridingMemberShow(int ridingMemberNo);
 	
 }

@@ -170,15 +170,7 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vo.courseLevel }
 				</li>
 
-				<li id="maxUser" style="color: black"></li>
-				<h2>참가인원</h2>
-				<li id="mList"></li>
-				<li id="mListFirst">번호</li>
-				<li id="mListFirst">유저 닉네임</li>
-				<li id="mListFirst">성별</li>
-				<li id="mListFirst">모임 횟수</li>
-				<li id="mListFirst">유저 레벨</li>
-
+				
 				
 				<br><br><br><br>
 				<h2 id="ridingViewTitle">내용</h2>
@@ -192,10 +184,28 @@
 						onclick="ridingViewEdit()" value="글 수정" />
 					</li>
 				</c:if>
+				
+				<h1 style="margin:0 auto; padding:40px;">라이딩 참가자</h1>
+				<ul id="mList">
+					<li id="mListFirst">번호</li>
+					<li id="mListFirst">닉네임</li>
+					<li id="mListFirst">성별</li>
+					<li id="mListFirst">모임 횟수</li>
+					<li id="mListFirst">유저 레벨</li>
+					<c:forEach var="vo" items="${lst2 }">
+						<li>${vo.ridingMemberNo }</li>
+						<li>${vo.nickname }</li>
+						<li>${vo.gender }</li>
+						<li>${vo.ridingCount }</li>
+						<li>${vo.userScore }</li>
+					</c:forEach>
+				</ul>
+				<br><br><br>
 				<c:if test="${nickName != vo.nickname && nickName != null && nickName != ''}">
 					<li><input type="button" id="ridingMemberBtn"
 						onclick="ridingMember()" value="라이딩 신청하기"/></li>
-						<a href="/riding/ridingMemberOk?ridingNo=${vo.ridingNo}">라이딩 신청하기</a>
+						<a href="/riding/ridingMemberOk">라이딩 신청하기</a>
+						${vo.ridingNo },${vo.nickname },${vo.gender }
 				</c:if>
 				<li><input type="text" id="ridingReview"
 					value="후기 자리 (라이딩 신청 멤버만 가능)" /></li>

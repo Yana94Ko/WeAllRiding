@@ -14,7 +14,9 @@ html, body, div, span, applet, object, iframes, h1, h2, h3, h4, h5, h6,
 	do: inherit;
 	vertical-align: baseline;
 }
-
+li {
+	color: black;
+}
 article, aside, details, figcaption, figure, footer, header, hgroup,
 	menu, nav, section {
 	display: block;
@@ -260,6 +262,7 @@ h1 {
 }
 
 /* ridingView */
+
 .ridingViewContainer {
 	width: 80%;
 	margin: 0 auto;
@@ -276,4 +279,27 @@ h1 {
 }
 #ridingViewTitle {
 	font-size: 1.2em;
+}
+#mList {
+	overflow: auto;
+}
+#mList>li {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	width: 10%;
+	color: black;
+}
+#mList>li:nth-child(5n+2) {
+	width: 50%;
+	white-space: nowrap; /*줄 안바꿈*/
+	overflow: hidden; /*넘친내용 숨기기*/
+	text-overflow: ellipsis; /*넘침시 ...표시*/
+}
+#mList>li:nth-child(5n) {
+	width: 20%;
+}
+#mListFirst {
+	background-color: rgba(234, 234, 234);
 }
