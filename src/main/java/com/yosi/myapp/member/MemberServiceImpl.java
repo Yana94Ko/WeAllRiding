@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+import java.util.Map;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -43,6 +43,58 @@ public class MemberServiceImpl implements MemberService {
         return dao.memberList();
     }
 
+    public MemberVO findUserId(MemberVO vo) {
+        return dao.findUserId(vo);
+    }
 
+    @Override
+    public MemberVO isValidEmail(MemberVO vo) {
+        return dao.isValidEmail(vo);
+    }
+
+    @Override
+    public int findUserPwd(MemberVO vo) {
+        return dao.findUserPwd(vo);
+    }
+
+    @Override
+    public MemberVO memberSelect(String UserId) {
+        return dao.memberSelect(UserId);
+    }
+
+    @Override
+    public int memberUpdate(MemberVO vo) {
+        return dao.memberUpdate(vo);
+    }
+
+    @Override
+    public int memberDelete(MemberVO vo) {
+        return dao.memberDelete(vo);
+    }
+
+    @Override
+    public MemberVO checkId(MemberVO vo) {
+        return dao.checkId(vo);
+    }
+
+    @Override
+    public MemberVO checkNick(MemberVO vo) {
+        return dao.checkNick(vo);
+    }
+
+    @Override
+    public MemberVO checkTel(MemberVO vo) {
+        return dao.checkTel(vo);
+    }
+
+    @Override
+    public List<Map<String,String>> genderCount() {
+        return dao.genderCount();
+    }
+
+    @Override
+    public Map<String,String> ageCount() {
+        return dao.ageCount();
+    }
 
 }

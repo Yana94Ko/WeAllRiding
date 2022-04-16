@@ -20,7 +20,7 @@
 			<a href ="${url}/member/loginForm">로그인</a>
 		</c:if>
 		<c:if test="${logStatus =='Y'}">
-			<a href ="${url}/member/">
+			<a href ="${url}/member/memberEdit">
 				<img src =""/>
 				${nickName}님
 			</a>
