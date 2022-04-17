@@ -164,8 +164,8 @@ public class RidingController {
 	
 	@GetMapping("/riding/ridingStateOk")
     public ResponseEntity<String> ridingStateOk(RidingVO vo, HttpServletRequest request) {
-        vo.setNickname((String)request.getSession().getAttribute("nickName"));
-
+        vo.setNickname(vo.getRidingStartMember());     
+        System.out.println(vo.getNickname());
         // DB작업
         ResponseEntity<String> entity = null; // 데이터와 처리상태를 가진다.
 
@@ -210,7 +210,7 @@ public class RidingController {
 	//글 수정
 	@GetMapping("/riding/ridingEdit")
 	public ModelAndView ridingEdit(int ridingNo, RidingVO vo) {
-		System.out.println(ridingNo+"diq");
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("lst2", service.ridingMemberShow(ridingNo));
 		mav.addObject("vo", service.ridingSelect(ridingNo));

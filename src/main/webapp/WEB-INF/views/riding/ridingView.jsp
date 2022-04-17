@@ -187,13 +187,15 @@
 				
 				<h1 style="margin:0 auto; padding:40px;">라이딩 참가자</h1>
 				
-				<ul id="mList">
-					<li id="mListFirst">번호</li>
-					<li id="mListFirst">닉네임</li>
-					<li id="mListFirst">성별</li>
-					<li id="mListFirst">모임 횟수</li>
-					<li id="mListFirst">유저 레벨</li>
-					
+				<ul id="eList">
+					<li id="eListFirst">번호</li>
+					<li id="eListFirst">닉네임</li>
+					<li id="eListFirst">성별</li>
+					<li id="eListFirst">모임 횟수</li>
+					<li id="eListFirst">유저 레벨</li>
+					<c:if test="${nickName == vo.nickname }">
+						<li id="eListFirst">승낙/거절</li>
+					</c:if>
 					<c:forEach var="vo" items="${lst2 }">
 						<c:if test="${vo.ridingNo == vo.ridingNo}">
 							<li>${vo.ridingMemberNo }</li>
@@ -201,10 +203,22 @@
 							<li>${vo.gender }</li>
 							<li>${vo.ridingCount }</li>
 							<li>${vo.userScore }</li>
+							<c:if test="${nickName == nickName }">
+								<li><input type='button' id="ridingStateUpdateBtn" 
+						 			class="applicantSave" value="승낙하기">${vo.nickname }></li>
+							</c:if>
 							
 						</c:if>
 					</c:forEach>
 				</ul>
+				<script>
+					$(".applicantSave").on("click", function(event) {
+						$('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
+					});
+				</script>
+				<form>
+		         	<input type="text" name="applicantNickName" id="applicantNickName" >
+		         </form>
 				<ul><li>ridingNo ${ridingNo }&nbsp;vo.ridingNo ${vo.ridingNo }&nbsp;vo.userScore  ${vo.userScore }&nbsp;${vo.ridingMemberNo }</li></ul>
 				<br><br><br>
 				<c:if test="${nickName != vo.nickname && nickName != null && nickName != ''}">

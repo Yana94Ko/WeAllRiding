@@ -25,6 +25,7 @@ public interface RidingDAO {
 	public int ridingMemberUpdate(RidingVO vo);
 	public List<RidingVO> ridingMemberShow(int ridingMemberNo);
 	public int ridingMemberDelete(RidingVO vo);
+	
 	public int ridingStateUpdate(RidingVO vo);
 	
 	//마이라이딩

@@ -29,9 +29,10 @@
 	function ridingStateUpdate() {
 		event.preventDefault();//form 기본 이벤트 제거
 		if (confirm('승낙하시겠습니까? \n 승낙 후 취소는 어려우니 신중히 생각해주세요.')){
-			location.href = "/riding/ridingStateUpdate?ridingNo=${vo.ridingNo}";
+			location.href = "/riding/ridingStateOk?ridingNo=${vo.ridingNo}";
 		}
 	}	
+	
 </script>
 <main>
 <div class="ridingViewContainer">
@@ -98,11 +99,20 @@
 					<li>${vo.ridingCount }</li>
 					<li>${vo.userScore }</li>
 					<li><input type="button" id="ridingStateUpdateBtn" 
-						onclick="ridingStateUpdate()" value="승낙하기">
+						 class="applicantSave" value="승낙하기">${vo.nickname }
+						
 						<a href="/riding/ridingStateOk">승낙하기</a></li>		
 				</c:if>
 			</c:forEach>
 		</ul>
+		<script>
+			$(".applicantSave").on("click", function(event) {
+				$('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
+			});
+		</script>
+         <form>
+         	<input type="text" name="applicantNickName" >
+         </form>
          <hr>
          <li id="ridingEditBTN">
           <input type="submit" id="ridingwriteBtn" value="글 수정"/>

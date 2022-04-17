@@ -17,12 +17,15 @@ public class RidingVO {
 	private int ridingMemberNo;
 	private int ridingState;
 	private int ridingCount;
+	private String ridingStartMember;
 	
 	
-	
-	
-		
-
+	public String getRidingStartMember() {
+		return ridingStartMember;
+	}
+	public void setRidingStartMember(String ridingStartMember) {
+		this.ridingStartMember = ridingStartMember;
+	}
 	public int getRidingCount() {
 		return ridingCount;
 	}

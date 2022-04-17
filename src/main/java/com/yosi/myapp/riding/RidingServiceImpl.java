@@ -64,7 +64,7 @@ public class RidingServiceImpl implements RidingService {
 	}
 	@Override
 	public int ridingStateUpdate(RidingVO vo) {
-		return dao.ridingUpdate(vo);
+		return dao.ridingStateUpdate(vo);
 	}
 	
 	
