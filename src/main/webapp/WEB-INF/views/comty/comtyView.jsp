@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 .comtyContainer {
@@ -42,6 +41,51 @@ ul{
 	border-color: rgba(204, 204, 204);
 	float: right;
 }
+#replyBtn {
+	background-color: rgba(234, 234, 234);
+	padding: 10px 50px;
+	border-radius: 6px;
+	border-color: rgba(204, 204, 204);
+	float: center;
+	width: 100%;
+}
+#comtyReplyList ul{
+	padding: 10px;
+	margin: 0px auto;
+	padding-bottom: 50px;
+}
+#comtyReplyList ul>li {
+	color: black;
+}
+#comtyReplyList input {
+	background-color: none;
+	padding: 2px 2px;
+	border-radius: 6px;
+	border-color: rgba(204, 204, 204);
+	float: right;
+	size: 20px;
+	margin: 1px;
+}
+#comtyReplyListEdit {
+	background-color: rgba(255, 255, 255);
+	padding: 10px 50px;
+	margin: 0px;
+	border: none;
+	float: right;
+}
+#comtyReplyListDel {
+	background-color: rgba(255, 255, 255);
+	padding: 10px 50px;
+	margin: 0px;
+	border: none;
+	float: right;
+}
+#NN {
+	font-weight: bold;
+}
+#CRWD {
+	font-size: 0.5em;
+}
 </style>
 <script>
 	function del() {
@@ -75,8 +119,7 @@ ul{
 											tag += "<input type='button' value='삭제' id='comtyReplyListDel' title='"+vo.comtyReplyNo+"' />";
 											tag += "<input type='button' value='수정' id='comtyReplyListEdit'/>";
 										}
-										tag += "<br/><div>" + vo.comtyReplyComent
-												+ "</div>";
+										tag += "<br/><div>" + vo.comtyReplyComent + "</div>";
 										tag += "<div id='CRWD' style='color:lightgray;'>" + vo.comtyReplyWriteDate
 												+ "</div></div>";
 										

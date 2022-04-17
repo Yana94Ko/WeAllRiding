@@ -28,7 +28,7 @@
 			<a href ="${url}/member/loginForm">로그인</a>
 		</c:if>
 		<c:if test="${logStatus =='Y'}">
-			<a href ="${url}/member/">
+			<a href ="${url}/member/memberEdit">
 				<img src =""/>
 				${nickName}님
 			</a>
@@ -52,8 +52,8 @@
 				</li>
 				<li onmouseenter="topMenuOver(2)" onmouseleave="topMenuOut(2)">라이딩
 					<ul id="topMenu2">
-						<li><a href="${url}/riding/">라이딩 리스트</a></li>
-						<li><a href="${url}/riding/">my 라이딩</a></li>
+						<li><a href="${url}/riding/ridingList">라이딩 리스트</a></li>
+						<li><a href="${url}/riding/myRidingList">my 라이딩</a></li>
 					</ul>
 				</li>	
 				<li><a href="${url}/shopView">정비샵</a></li>

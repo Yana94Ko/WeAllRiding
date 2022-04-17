@@ -9,10 +9,11 @@ import org.springframework.stereotype.Service;
 import com.yosi.myapp.PagingVO;
 
 @Service
-public class RidingSerivceImpl implements RidingService {
+public class RidingServiceImpl implements RidingService {
 
 	@Inject
 	RidingDAO dao;
+	
 	@Override
 	public List<RidingVO> ridingList(PagingVO pVO) {
 		return dao.ridingList(pVO);
@@ -42,5 +43,34 @@ public class RidingSerivceImpl implements RidingService {
 	public int totalRecord(PagingVO pVO) {
 		return dao.totalRecord(pVO);
 	}
+	
+	
+	@Override
+	public int ridingMemberInsert(RidingVO vo) {
+		return dao.ridingMemberInsert(vo);
+	}
+	@Override
+	public int ridingMemberUpdate(RidingVO vo) {
+		return dao.ridingMemberUpdate(vo);
+	}
+	@Override
+	public List<RidingVO> ridingMemberShow(int ridingMemberNo) {
+		return dao.ridingMemberShow(ridingMemberNo);
+	}
+	
+	
+	@Override
+	public List<RidingVO> myRidingJoinList(RidingVO vo) {
+		return dao.myRidingJoinList(vo);
+	}
+	@Override
+	public List<RidingVO> myRidingEndList(RidingVO vo) {
+		return dao.myRidingEndList(vo);
+	}
+	@Override
+	public List<RidingVO> myRidingMadeList(RidingVO vo) {
+		return dao.myRidingMadeList(vo);
+	}
+	
 
 }

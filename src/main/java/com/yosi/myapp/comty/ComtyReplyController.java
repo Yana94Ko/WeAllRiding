@@ -1,7 +1,5 @@
 package com.yosi.myapp.comty;
-
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 @RestController
 public class ComtyReplyController {
 	@Inject
@@ -28,7 +25,7 @@ public class ComtyReplyController {
 	public List<ComtyReplyVO> comtyReplyList(int comtyNo) {
 		return service.comtyReplyList(comtyNo);
 	}
-	
+
 	// 댓글수정
 	@PostMapping("/comty/comtyReplyEditOk")
 	public int comtyReplyEditOk(ComtyReplyVO vo, HttpSession session) {

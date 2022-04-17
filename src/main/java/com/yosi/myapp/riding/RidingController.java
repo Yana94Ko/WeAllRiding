@@ -14,7 +14,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,6 +28,7 @@ public class RidingController {
 	RidingService RidingService;
 	@Inject
 	RidingService service;
+	
 	
 	/*
 	 * @Inject RidingReplyService replyService;
@@ -45,6 +48,18 @@ public class RidingController {
 		return mav;
 	}
 	
+	@GetMapping("/riding/myRidingList")
+	public ModelAndView myRidingList(RidingVO vo, HttpSession session) {
+		vo.setNickname((String)session.getAttribute("nickName"));
+		System.out.println(vo.getNickname());
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("myRidingJoinList", service.myRidingJoinList(vo));
+		mav.addObject("myRidingEndList", service.myRidingEndList(vo));
+		mav.addObject("myRidingMadeList", service.myRidingMadeList(vo));
+		mav.setViewName("riding/myRidingList");
+		return mav;
+	}
+	
 	@GetMapping("/riding/ridingWrite")
 	public ModelAndView ridingWrite(PagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
@@ -55,7 +70,7 @@ public class RidingController {
 	
 	@PostMapping("/riding/ridingWriteOk")
     public ResponseEntity<String> ridingWriteOk(RidingVO vo, HttpServletRequest request){
-		vo.setNickname((String)request.getSession().getAttribute("userId"));
+		vo.setNickname((String)request.getSession().getAttribute("nickName"));
 		ResponseEntity<String> entity = null;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("text", "html",Charset.forName("UTF-8")));
@@ -76,19 +91,50 @@ public class RidingController {
 		return entity;
 	}
 	
+	@GetMapping("/riding/ridingMemberOk")
+    public ResponseEntity<String> ridingMemberOk(RidingVO vo, HttpServletRequest request) {
+        vo.setNickname((String)request.getSession().getAttribute("nickName"));
+
+        // DB작업
+        ResponseEntity<String> entity = null; // 데이터와 처리상태를 가진다.
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.add("Content-Type", "text/html; charset=utf-8");
+        try {
+            service.ridingMemberInsert(vo);
+            service.ridingMemberUpdate(vo);
+            String msg = "<script>";
+            msg += "alert('글이 등록되었습니다');";
+            msg += "location.href='/riding/ridingList';";
+            msg += "</script>";
+            entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            // 등록안됨
+            String msg = "<script>";
+            msg += "alert('글등록이 실패하였습니다');";
+            msg += "history.back();";
+            msg += "</script>";
+            entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
+        }
+
+        return entity;
+    }
+	
 	//글 보기
-	@RequestMapping("/riding/ridingView")
-	public ModelAndView ridingView(@RequestParam(value="ridingNo", required=false) int ridingNo) {
-		System.out.println("ridingView"); 
-		ModelAndView mav = new ModelAndView();
-		 		 
-		 service.cntHit(ridingNo); // 조회수 증가
-		 
-		 mav.addObject("vo", service.ridingSelect(ridingNo));
-		 mav.setViewName("riding/ridingView");
-		 
-		 return mav;
-	}
+	@GetMapping("/riding/ridingView")
+    public ModelAndView ridingView(int ridingNo) {
+        ModelAndView mav = new ModelAndView();
+        service.cntHit(ridingNo); // 조회수 증가
+        
+        mav.addObject("vo", service.ridingSelect(ridingNo));
+        mav.addObject("lst2", service.ridingMemberShow(ridingNo));
+        mav.setViewName("riding/ridingView");
+        return mav;
+    }
 	
 	//글 수정
 	@GetMapping("/ridingEdit")
@@ -103,9 +149,7 @@ public class RidingController {
 	
 	@PostMapping("/riding/ridingEditOk")
 	public ResponseEntity<String> ridingEditOk(RidingVO vo, HttpSession session) {
-		System.out.println("ridingDelOk");
-		vo.setNickname((String)session.getAttribute("userId"));
-		
+		vo.setNickname((String)session.getAttribute("nickName"));
 		ResponseEntity<String> entity =null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/html; charset=UTF-8");
@@ -127,8 +171,7 @@ public class RidingController {
 	// 글 삭제
 	@GetMapping("/ridingDel")
 	public ModelAndView ridingDel(int ridingNo, HttpSession session, ModelAndView mav) {
-		System.out.println("ridingDel");
-		String nickname = (String)session.getAttribute("userId");
+		String nickname = (String)session.getAttribute("nickName");
 		int result = service.ridingDelete(ridingNo, nickname);
 		if(result>0) {
 			//삭제됨
@@ -143,6 +186,5 @@ public class RidingController {
 		
 		return mav;
 	}
-	
 	
 }

@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <style>
 .comtyContainer{
 	width: 80%;
@@ -10,7 +9,6 @@
 	width: 99%;
 	height: 30px;
 }
-
 #comtyFrm li {
 	margin: 0px;
 	padding: 10px 5px;
@@ -32,7 +30,6 @@
 					height: '400px'
 				}
 		);
-
 		$("#comtyFrm").submit(function() {
 			if ($("#comtySubject").val() == '') {
 				alert("글 제목을 입력하세요");
