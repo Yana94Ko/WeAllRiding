@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mysql.cj.Session;
 import com.yosi.myapp.PagingVO;
 
 @RestController
@@ -89,9 +90,10 @@ public class RidingController {
         ResponseEntity<String> entity = null; // 데이터와 처리상태를 가진다.
 
         HttpHeaders headers = new HttpHeaders();
-
+        ModelAndView mav = new ModelAndView();
         headers.add("Content-Type", "text/html; charset=utf-8");
         try {
+        	
             service.ridingMemberInsert(vo);
             service.ridingMemberUpdate(vo);
             String msg = "<script>";
@@ -113,6 +115,73 @@ public class RidingController {
 
         return entity;
     }
+	//라이딩 신청 삭제
+	@GetMapping("/riding/ridingMemberDelete")
+	public ResponseEntity<String> ridingMemberDelete(RidingVO vo, HttpServletRequest request) {
+        vo.setNickname((String)request.getSession().getAttribute("nickName"));
+        //vo.setRidingNo((int)request.getSession().getAttribute("ridingNo"));
+
+        // DB작업
+        ResponseEntity<String> entity = null; // 데이터와 처리상태를 가진다.
+
+        HttpHeaders headers = new HttpHeaders();
+        ModelAndView mav = new ModelAndView();
+        headers.add("Content-Type", "text/html; charset=utf-8");
+        try {
+        	
+            service.ridingMemberDelete(vo);
+            String msg = "<script>";
+            msg += "alert('라이딩 취소 성공');";
+            msg += "history.back();";
+            msg += "</script>";
+            entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            // 등록안됨
+            String msg = "<script>";
+            msg += "alert('라이딩 취소 실패');";
+            msg += "history.back();";
+            msg += "</script>";
+            entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
+        }
+
+        return entity;
+    }
+	
+	@GetMapping("/riding/ridingStateOk")
+    public ResponseEntity<String> ridingStateOk(RidingVO vo, HttpServletRequest request) {
+        vo.setNickname((String)request.getSession().getAttribute("nickName"));
+
+        // DB작업
+        ResponseEntity<String> entity = null; // 데이터와 처리상태를 가진다.
+
+        HttpHeaders headers = new HttpHeaders();
+
+        headers.add("Content-Type", "text/html; charset=utf-8");
+        try {
+            service.ridingStateUpdate(vo);
+            String msg = "<script>";
+            msg += "alert('글이 등록되었습니다');";
+            msg += "location.href='/riding/ridingList';";
+            msg += "</script>";
+            entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            // 등록안됨
+            String msg = "<script>";
+            msg += "alert('글등록이 실패하였습니다');";
+            msg += "history.back();";
+            msg += "</script>";
+            entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
+        }
+
+        return entity;
+    }
+	
 	
 	//글 보기
 	@GetMapping("/riding/ridingView")
@@ -128,12 +197,13 @@ public class RidingController {
 	
 	//글 수정
 	@GetMapping("/riding/ridingEdit")
-	public ModelAndView ridingEdit(int ridingNo) {
-		System.out.println(ridingNo);
+	public ModelAndView ridingEdit(int ridingNo, RidingVO vo) {
+		System.out.println(ridingNo+"diq");
 		ModelAndView mav = new ModelAndView();
-		 mav.addObject("vo", service.ridingSelect(ridingNo));
-		 mav.setViewName("riding/ridingEdit");
-		 return mav;
+		mav.addObject("lst2", service.ridingMemberShow(ridingNo));
+		mav.addObject("vo", service.ridingSelect(ridingNo));
+		mav.setViewName("riding/ridingEdit");
+		return mav;
 	}
 	
 	@PostMapping("/riding/ridingEditOk")

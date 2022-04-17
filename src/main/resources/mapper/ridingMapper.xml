@@ -60,6 +60,15 @@
 	<!-- view페이지에 보여주기 -->
 	<select id="ridingMemberShow" resultType="ridingVO">
 		select ridingMemberNo, nickname, gender, ridingCount, userScore
-		from ridingMember
+		from ridingMember where ridingNo=#{ridingNo}
 	</select>
+	
+	<delete id="ridingMemberDelete">
+		delete from ridingMember where ridingNo=#{ridingNo} and nickname=#{nickname}
+	</delete>
+	
+	<!-- ridingMember 승낙시 Update -->
+	<update id="ridingStateUpdate" parameterType="int">
+		UPDATE ridingMember SET ridingState = 1
+	</update>
 </mapper>

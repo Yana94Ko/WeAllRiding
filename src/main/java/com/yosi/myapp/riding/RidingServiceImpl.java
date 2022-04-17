@@ -57,6 +57,15 @@ public class RidingServiceImpl implements RidingService {
 	public List<RidingVO> ridingMemberShow(int ridingMemberNo) {
 		return dao.ridingMemberShow(ridingMemberNo);
 	}
+	@Override
+	public int ridingMemberDelete(RidingVO vo) {
+		
+		return dao.ridingMemberDelete(vo);
+	}
+	@Override
+	public int ridingStateUpdate(RidingVO vo) {
+		return dao.ridingUpdate(vo);
+	}
 	
 
 }
