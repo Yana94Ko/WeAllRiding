@@ -71,7 +71,7 @@ public class ShopController {
 	@PostMapping("/shopWriteOk")
 	public ResponseEntity<String> shopWriteOk(ShopVO shopVO, HttpServletRequest request) {
 		shopVO.setShopAuthors((String) request.getSession().getAttribute("nickName"));
-
+		System.out.println(shopVO.getShopAuthors()+shopVO.getShopInfo()+shopVO.getShopId());
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
@@ -113,7 +113,7 @@ public class ShopController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
 
-		try {// 정비샵 정보 업데이트 성공
+		try {// 정비샵 정보 업데이트 성공 
 			service.shopUpdate(shopVO);
 			String msg = "<script>alert('정비샵 정보가 수정되었습니다.');location.href='/shopView';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);

@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="${url}/css/course/courseCreateStyle.css">
-
 <!-- parallax START -->
 <div class="home">
 	<div class="homeBackground parallaxWindow" data-parallax="scroll"
-		data-image-src="${url}/images/home_background.png"></div>
+		data-image-src="${url}/images/home/home_background5.png"></div>
 	<!-- 배경 이미지 -->
 	<div class="homeContent">
 		<div class="homeTitle">코스 만들기</div>
@@ -13,8 +12,6 @@
 	</div>
 </div>
 <!-- parallax END -->
-
-
 <main>
 	<input type="checkbox" id="chkBicycle" onclick="setOverlayMapTypeId()" />
 	<span class="grayTxt">자전거도로 정보 보기</span>
@@ -25,6 +22,7 @@
 		<div name="courseSendData"></div>
 		<div id="courseInput">
 			<form>
+				<input type="text" name="courseSendData"/>
 				<div class="fromWrap">
 					<img src="${url}/images/course/fromIcon.png"> 
 					<input id="startPoint" type="text" value="남위례" placeholder="출발지를 입력하세요" class="placeInfoInsert" />
@@ -46,9 +44,9 @@
 				<button type="button" class="hihi">
 					<img src="${url}/images/course/delete.png" onclick="deleteAllWaypoint(), removeAllMarkers(), clearAllPolylines()">
 				</button>
-				<br />
+				<br/>
 				<button type="button" onclick="searchAllCourse()">경로 탐색하기</button>
-				<select id="bikeType" name="bikeType" onchange="chagebikeType()">
+				<select id="bikeType" onchange="chagebikeType()">
 					<option value="cycling-regular">일반</option>
 					<option value="cycling-road">로드</option>
 					<option value="cycling-mountain">산악</option>
@@ -56,7 +54,7 @@
 				</select>
 				<div class="rourouteInfoWrap">
 					<div id="routeInfo0" onclick="selectRoute(0)">
-						<h2 class="routeInfoRgt" style="width: 200px;">추천 경로</h2>
+						<h2 class="routeInfoRgt" style="width: 200px;">추천경로</h2>
 						<span class="routeInfoRgt" style="font-size: 1.2em; font-weight: bold; width: 200px;">
 							<span id="routeDistance0"></span>
 							<span class="routeInfoRgt" id="routeDuration0"></span>
@@ -66,10 +64,10 @@
 							<span id="routeDescent0"></span>
 						</span>
 						<canvas id="myChart0" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
+						<button class="ridingWriteBtn" onclick="ridingDataSend(0)" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
 					</div>
 					<div id="routeInfo1" onclick="selectRoute(1)">
-						<h2 class="routeInfoRgt" style="width: 200px;">빠른 경로</h2>
+						<h2 class="routeInfoRgt" style="width: 200px;">빠른경로</h2>
 						<span class="routeInfoRgt" style="font-size: 1.2em; font-weight: bold; width: 200px;">
 							<span id="routeDistance1"></span>
 							<span class="routeInfoRgt" id="routeDuration1"></span>
@@ -79,10 +77,10 @@
 							<span id="routeDescent1"></span>
 						</span>
 						<canvas id="myChart1" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
+						<button class="ridingWriteBtn" onclick="ridingDataSend(1)" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
 					</div>
 					<div id="routeInfo2" onclick="selectRoute(2)">
-						<h2 class="routeInfoRgt" style="width:200px;">최단 경로</h2>
+						<h2 class="routeInfoRgt" style="width:200px;">최단경로</h2>
 						<span class="routeInfoRgt" style="font-size: 1.2em; font-weight: bold; width:200px;">
 							<span id="routeDistance2"></span>
 							<span class="routeInfoRgt" id="routeDuration2"></span>
@@ -92,13 +90,13 @@
 							<span id="routeDescent2"></span>
 						</span>
 						<canvas id="myChart2" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
+						<button class="ridingWriteBtn" onclick="ridingDataSend(2)" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
 					</div>
 				</div>
 			</form>
 			<div class="courseWrap"></div>
 		</div>
-		
+
 		<div id="map"></div>
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
@@ -115,9 +113,9 @@
 		</div>
 	</div>
 	<!-- mapWrap -->
+	<!------------------- 지도 썸네일 생성용 테스트 추후 삭제 예정 ---------------------->
 	<button type="button" onclick="generateThumbnail(polyTest, linepathTest);">썸네일 생성</button>
 	<div id="ridingMap01" style="width:250px;height:200px;"></div>   
-	
-	<script type="text/javascript"
-		src="${url}/js/course/courseCreateScript.js"></script>
+	<!------------------------------------------------------------------------->
+		<script type="text/javascript" src="${url}/js/course/courseCreateScript.js"></script>
 </main>

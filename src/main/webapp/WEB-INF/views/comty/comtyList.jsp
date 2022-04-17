@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
 .comtyContainer {
 	margin: 0 auto;
@@ -13,7 +11,6 @@
 #cList {
 	overflow: auto;
 }
-
 #cList>li {
 	float: left;
 	height: 40px;
@@ -22,7 +19,6 @@
 	width: 10%;
 	color: black;
 }
-
 #cList>li:nth-child(5n+2) {
 	width: 50%;
 	white-space: nowrap; /*줄 안바꿈*/
@@ -37,7 +33,6 @@
 #cListFirst {
 	background-color: rgba(234, 234, 234);
 }
-
 #writeBtn {
 	background-color: rgba(255, 217, 102);
 	padding: 10px 50px;
@@ -53,30 +48,25 @@
 	width: 100%;
 	height: 30px;
 }
-
 .paging>li {
 	float: left;
 	width: 30px;
 	text-align: center;
 	color: black;
 }
-
 /*search*/
 #searchFrm {
 	padding: 20px 200px;
 	text-align: center;
 }
-
 #searchWord {
 	height: 24px;
 	border-radius: 6px;
 }
-
 #searchKey {
 	height: 30px;
 	border-radius: 6px;
 }
-
 #searchBtn {
 	height: 30px;
 	border-radius: 6px;
@@ -96,7 +86,7 @@
 <!-- parallax START -->
 <div class="home">
 	<div class="homeBackground parallaxWindow" data-parallax="scroll"
-		data-image-src="${url}/images/home_background.png"></div>
+		data-image-src="${url}/images/home/home_background13.png"></div>
 	<!-- 배경 이미지 -->
 	<div class="homeContent">
 		<div class="homeTitle">커뮤니티</div>
@@ -130,7 +120,6 @@
 		</c:if>
 		<br />
 		<!-- 페이징 -->
-
 		<ul class="paging">
 			<!--  이전페이지 -->
 			<c:if test="${pVO.pageNum==1}">
@@ -159,9 +148,10 @@
 						href="/comty/comtyList?pageNum=${p}
 						<c:if test='${pVO.searchWord != null}'>
 							&searchKey=${pVO.searchKey }
-							&searchWord=${pVO.searchWord }</c:if>">${p}</a>
-					</li>
-				</c:if>
+							&searchWord=${pVO.searchWord }
+						</c:if>">
+					${p}</a></li>
+					</c:if>
 			</c:forEach>
 			<c:if test="${pVO.pageNum==pVO.totalPage}">
 				<li>next</li>
@@ -183,7 +173,6 @@
 					<option value="nickname">글쓴이</option>
 				</select> <input type="text" name="searchWord" id="searchWord">
 				<button id="searchBtn">검색</button>
-
 			</form>
 		</div>
 	</div>

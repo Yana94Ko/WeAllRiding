@@ -3,6 +3,7 @@
 main {
 	width:90%;
 	position: relative;
+	height:1100px;
 }
 .map_wrap, .map_wrap * {
 	margin: 0;
@@ -60,7 +61,7 @@ main {
 }
 
 .fromWrap, .toWrap, .waypoints div{
-	margin: 2.5px;
+	margin: 1.2px;
 	display: inline-block;
 	border: 1px solid black;
 	height: 40px;

@@ -147,15 +147,15 @@ const menu = {
     'icon': 'fas fa-biking',
     'menu': {
       '라이딩 리스트': {
-        'link': '#'
+        'link': '/riding/ridingList'
         },
 
       '라이딩 개설하기': {
-        'link': '#'
+        'link': '/riding/ridingWrite'
         },
 
       'My 라이딩': {
-        	'link': '#'
+        	'link': '/riding/myRidingList'
        	 } 
    	 } 
     },

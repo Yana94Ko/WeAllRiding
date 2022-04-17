@@ -3,7 +3,7 @@
 <!-- parallax START -->
 <div class="home">
 	<div class="homeBackground parallaxWindow" data-parallax="scroll"
-		data-image-src="${url}/images/home_background.png"></div>
+		data-image-src="${url}/images/home/home_background12.png"></div>
 	<!-- 배경 이미지 -->
 	<div class="homeContent">
 		<div class="homeTitle">정비샵 찾기</div>

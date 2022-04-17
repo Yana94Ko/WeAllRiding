@@ -7,7 +7,7 @@
 <!-- parallax START -->
 <div class="home">
 	<div class="homeBackground parallaxWindow" data-parallax="scroll"
-		data-image-src="${url}/images/home_background.png"></div>
+		data-image-src="${url}/images/home/home_background5.png"></div>
 	<!-- 배경 이미지 -->
 	<div class="homeContent">
 		<div class="homeTitle">추천 코스</div>

@@ -34,7 +34,7 @@
 			<a href ="${url}/member/loginForm">로그인</a>
 		</c:if>
 		<c:if test="${logStatus =='Y'}">
-			<a href ="${url}/member/">
+			<a href ="${url}/member/memberEdit">
 				<img src =""/>
 				${nickName}님
 			</a>
@@ -50,39 +50,13 @@
 
 		<div class='mainMenu'>
 			<div id="app"></div>
-			<ul>
-				
-				<%-- <li onmouseenter="topMenuOver(1)" onmouseleave="topMenuOut(1)">코스
-					<ul id="topMenu1">
-						<li><a href="${url}/recommendView">추천 코스</a></li>
-						<li><a href="${url}/courseCreate">코스 만들기</a></li>
-					</ul>	
-				</li>
-				<li onmouseenter="topMenuOver(2)" onmouseleave="topMenuOut(2)">라이딩
-					<ul id="topMenu2">
-						<li><a href="${url}/riding/">라이딩 리스트</a></li>
-						<li><a href="${url}/riding/">my 라이딩</a></li>
-					</ul>
-				</li>	
-				<li><a href="${url}/shopView">정비샵</a></li>
-				<li><a href="${url}/comty/comtyList">커뮤니티</a></li>
-				<li><a href="${url}/idealView">이상형월드컵</a></li>
-				<c:if test="${logId == 'admin'}">
-					<li><a href="${url}/admin">관리자</a></li>
-				</c:if>
-				<c:if test="${logStatus =='N'}">
-				</c:if> --%>
-			</ul>
-			
 		</div>
-		<!-- 네비바 테스트 -->
-		
-		<!-- partial -->
+		<!-- 네비바 start -->
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/react/16.9.0/umd/react.production.min.js'></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.production.min.js'></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
 		<script  src="${url}/js/home/navScript.js"></script>
-		<!-- 네비바 테스트 -->
+		<!-- 네비바 end -->
 	</nav>
 </header>
 

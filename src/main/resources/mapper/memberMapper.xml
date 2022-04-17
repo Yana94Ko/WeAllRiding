@@ -11,4 +11,74 @@
         insert into member(userId, userPwd, userName, userTel, userEmail, birth, nickname, gender, experience, bicycleType)
         values(#{userId}, #{userPwd}, #{userName}, #{userTel}, #{userEmail}, #{birth}, #{nickname}, #{gender}, #{experience}, #{bicycleType})
     </insert>
+    <!-- 관리자 메뉴 회원 목록 -->
+    <select id = "memberList" resultType="com.yosi.myapp.member.MemberVO">
+        SELECT userId, userpwd, username, useremail, joindate FROM member
+        ORDER BY joinDate ASC
+    </select>
+    <!-- 회원정보 수정 -->
+    <update id="Update">
+        UPDATE member SET
+        userPwd = #{userPwd},
+        userEmail = #{userEmail},
+        nickname = #{nickname},
+        experience = #{experience},
+        bicycleType = #{bicyleType}
+
+    </update>
+    <select id="findUserId" resultType="com.yosi.myapp.member.MemberVO">
+        select userId from member
+        where userName=#{userName} and userTel=#{userTelP}
+    </select>
+    <select id="isValidEmail" resultType="com.yosi.myapp.member.MemberVO">
+        select userId from member
+        where userId=#{userId} and userEmail=#{userEmail}
+    </select>
+    <update id="findUserPwd">
+        update member set userPwd=#{userPwd}
+        where userId=#{userId} and userEmail=#{userEmail}
+    </update>
+    <select id="memberSelect" resultType="com.yosi.myapp.member.MemberVO">
+        select * from member
+        where userId=#{param1}
+    </select>
+    <update id="memberUpdate">
+        update member set nickname=#{nickname}, userEmail=#{userEmail}, userPwd=#{userPwd}, experience=#{experience}, bicycleType=#{bicycleType}
+        where userId=#{userId}
+    </update>
+    <delete id="memberDelete">
+        delete from member
+        where userId=#{userId} and userPwd=#{userPwd}
+    </delete>
+    <select id="checkId" resultType="com.yosi.myapp.member.MemberVO">
+        select userId from member
+        where userId=#{userId}
+    </select>
+    <select id="checkNick" resultType="com.yosi.myapp.member.MemberVO">
+        select nickname from member
+        where nickname=#{nickname}
+    </select>
+    <select id="checkTel" resultType="com.yosi.myapp.member.MemberVO">
+        select userTel from member
+        where userTel=#{userTel}
+    </select>
+    <select id="genderCount" resultMap="genderMap">
+        select gender, count(*) from member group by gender;
+    </select>
+    <resultMap id="genderMap" type="map">
+        <result column="gender" property="gender"/>
+        <result column="count(*)" property="count"/>
+    </resultMap>
+    <select id="ageCount" resultMap="ageMap">
+        select
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 0 and 19 , 1, 0)) as under_20,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 20 and 29 , 1, 0)) as age_20,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 30 and 39 , 1, 0)) as age_30,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 40 and 49 , 1, 0)) as age_40,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 50 and 59 , 1, 0)) as age_50,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 60 and 69 , 1, 0)) as over_60
+        from member
+    </select>
+    <resultMap id="ageMap" type="map">
+    </resultMap>
 </mapper>

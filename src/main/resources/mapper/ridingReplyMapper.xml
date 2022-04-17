@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.yosi.myapp.riding.RidingReplyDAO">
+	<insert id="ridingReplyWrite">
+		insert into ridingReply(ridingNo, nickname, ridingReplyComent)
+		values (#{ridingNo}, #{nickname}, #{ridingReplyComent})
+	</insert>
+	<select id="ridingReplyList" resultType="RidingReplyVO">
+		select ridingReplyNo, nickname, ridingReplyComent, ridingReplyWriteDate from ridingReply 
+		where ridingNo=${param1}
+		order by ridingReplyNo desc
+	</select>
+	<update id="ridingReplyEdit">
+		update ridingReply set ridingReplyComent=#{ridingReplyComent} 
+		where ridingReplyNo=${ridingReplyNo} and nickname=#{nickname}
+	</update>
+	<delete id="ridingReplyDel">
+		delete from ridingReply where ridingReplyNo=#{param1} and nickname=#{param2}
+	</delete>
+</mapper>
