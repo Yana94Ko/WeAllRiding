@@ -258,4 +258,39 @@ public class RidingController {
 		return mav;
 	}
 	
+	// 라이딩 후기
+	//글 보기
+		@GetMapping("/riding/ridingReview")
+	    public ModelAndView ridingReview(int ridingNo) {
+	        ModelAndView mav = new ModelAndView();
+	      
+	        mav.addObject("vo", service.ridingSelect(ridingNo));
+	        mav.addObject("lst2", service.ridingMemberShow(ridingNo));
+	        mav.setViewName("riding/ridingReview");
+	        return mav;
+	    }
+		
+		@PostMapping("/riding/ridingReviewOk")
+	    public ResponseEntity<String> ridingReviewOk(RidingVO vo, HttpServletRequest request){
+			vo.setNickname((String)request.getSession().getAttribute("nickName"));
+			ResponseEntity<String> entity = null;
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.setContentType(new MediaType("text", "html",Charset.forName("UTF-8")));
+	        try {
+				//글등록 성공
+				service.ridingReviewWrite(vo);
+				
+				//글 목록으로 이동
+				String msg = "<script>alert('글이 등록되었습니다.');location.href='/riding/ridingList';</script>";
+				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+			} catch (Exception e) {
+				// 글등록 실패
+				e.printStackTrace();
+				//글 등록 폼으로
+				String msg = "<script>alert('글등록 실패 하였습니다.');history.back();</script>";
+				entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
+			}
+			return entity;
+		}
+	
 }

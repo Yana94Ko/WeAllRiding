@@ -81,5 +81,15 @@ public class RidingServiceImpl implements RidingService {
 		return dao.myRidingMadeList(vo);
 	}
 	
+	
+	@Override
+	public int ridingReviewWrite(RidingVO vo) {
+		return dao.ridingReviewWrite(vo);
+	}
+	@Override
+	public List<RidingVO> ridingReviewList(RidingVO vo) {
+		return dao.ridingReviewList(vo);
+	}
+	
 
 }

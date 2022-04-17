@@ -326,3 +326,25 @@ h1 {
 #eListFirst {
 	background-color: rgba(234, 234, 234);
 }
+
+#rList {
+	overflow: auto;
+}
+#rList>li {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	width: 10%;
+	color: black;
+}
+#rList>li:nth-child(7n+2) {
+	width: 33%;
+	white-space: nowrap; /*줄 안바꿈*/
+	overflow: hidden; /*넘친내용 숨기기*/
+	text-overflow: ellipsis; /*넘침시 ...표시*/
+}
+
+#rListFirst {
+	background-color: rgba(234, 234, 234);
+}

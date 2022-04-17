@@ -18,8 +18,31 @@ public class RidingVO {
 	private int ridingState;
 	private int ridingCount;
 	private String ridingStartMember;
+	private int ridingReviewNo;
+	private String ridingReviewComent;
+	private String ridingReviewWriteDate;
 	
 	
+	
+	
+	public int getRidingReviewNo() {
+		return ridingReviewNo;
+	}
+	public void setRidingReviewNo(int ridingReviewNo) {
+		this.ridingReviewNo = ridingReviewNo;
+	}
+	public String getRidingReviewComent() {
+		return ridingReviewComent;
+	}
+	public void setRidingReviewComent(String ridingReviewComent) {
+		this.ridingReviewComent = ridingReviewComent;
+	}
+	public String getRidingReviewWriteDate() {
+		return ridingReviewWriteDate;
+	}
+	public void setRidingReviewWriteDate(String ridingReviewWriteDate) {
+		this.ridingReviewWriteDate = ridingReviewWriteDate;
+	}
 	public String getRidingStartMember() {
 		return ridingStartMember;
 	}

@@ -69,11 +69,12 @@
                 <c:forEach items="${myRidingEndList }" var="end">
                     <tr>
                         <td>${end.ridingNo}</td>
-                        <td><a href="/riding/ridingView?ridingNo=${end.ridingNo}">${end.ridingSubject}</a></td>
+                        <td><a href="/riding/ridingReview?ridingNo=${end.ridingNo}">${end.ridingSubject}</a></td>
                         <td>${end.nickname}</td>
                         <td>${end.ridingHit}</td>
                         <td>${end.startDate}</td>
                         <td>${end.endDate}</td>
+
                     </tr>
                 </c:forEach>
             </table>

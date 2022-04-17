@@ -94,4 +94,6 @@
 		update ridingMember set ridingState=1
 		where ridingNo=#{ridingNo} and ridingMemberNo=#{ridingMemberNo}
 	</update>
+	
+
 </mapper>

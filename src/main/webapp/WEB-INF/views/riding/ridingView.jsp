@@ -20,6 +20,13 @@
 		}
 	}
 	
+	function ridingStateUpdate() {
+		event.preventDefault();//form 기본 이벤트 제거
+		if (confirm('승낙하시겠습니까? \n 승낙 후 취소는 어려우니 신중히 생각해주세요.')){
+			location.href = "/riding/ridingStateOk?ridingNo=${vo.ridingNo}";
+		}
+	}	
+	
 	// 댓글----------------
 	function ridingReplyListAll() { //현재글의 댓글을 모두 가져오기
 		var url = "/riding/ridingReplyList";
@@ -205,7 +212,7 @@
 							<li>${vo.userScore }</li>
 							<c:if test="${nickName == nickName }">
 								<li><input type='button' id="ridingStateUpdateBtn" 
-						 			class="applicantSave" value="승낙하기">${vo.nickname }></li>
+						 			onclick="ridingStateUpdate()" value="승낙하기">${vo.nickname }></li>
 							</c:if>
 							
 						</c:if>
@@ -219,7 +226,7 @@
 				<form>
 		         	<input type="text" name="applicantNickName" id="applicantNickName" >
 		         </form>
-				<ul><li>ridingNo ${ridingNo }&nbsp;vo.ridingNo ${vo.ridingNo }&nbsp;vo.userScore  ${vo.userScore }&nbsp;${vo.ridingMemberNo }</li></ul>
+				<ul><li>vo.ridingNo ${vo.ridingNo }&nbsp;vo.userScore  ${vo.userScore }&nbsp;${vo.ridingMemberNo }</li></ul>
 				<br><br><br>
 				<c:if test="${nickName != vo.nickname && nickName != null && nickName != ''}">
 						<li><input type="button" id="ridingMemberBtn"
@@ -250,7 +257,6 @@
 				<br> <input type="button" value="댓글등록" id="replyBtn" onclick="ridingReplyFrm()">
 			</form>
 		</c:if>
-		<!-- 댓글목록이 나올 자리 -->
 		<div id="ridingReplyList"></div>
 	</div>
 </main>
