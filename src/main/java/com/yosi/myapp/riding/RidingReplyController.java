@@ -13,6 +13,7 @@ public class RidingReplyController {
 	@Inject
 	RidingReplyService service;
 	
+	
 	// 댓글 등록
 	@RequestMapping(value="/riding/ridingReplyWriteOk", method=RequestMethod.POST)
 	public int ridingReplyWriteOk (RidingReplyVO vo, HttpSession session) {

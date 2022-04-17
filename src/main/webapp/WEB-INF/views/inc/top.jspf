@@ -44,7 +44,7 @@
 				<li onmouseenter="topMenuOver(2)" onmouseleave="topMenuOut(2)">라이딩
 					<ul id="topMenu2">
 						<li><a href="${url}/riding/ridingList">라이딩 리스트</a></li>
-						<li><a href="${url}/riding/">my 라이딩</a></li>
+						<li><a href="${url}/riding/myRidingList">my 라이딩</a></li>
 					</ul>
 				</li>	
 				<li><a href="${url}/shopView">정비샵</a></li>

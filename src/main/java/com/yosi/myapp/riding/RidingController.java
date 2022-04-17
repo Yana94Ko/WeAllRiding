@@ -51,6 +51,18 @@ public class RidingController {
 		return mav;
 	}
 	
+	@GetMapping("/riding/myRidingList")
+	public ModelAndView myRidingList(RidingVO vo, HttpSession session) {
+		vo.setNickname((String)session.getAttribute("nickName"));
+		System.out.println(vo.getNickname());
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("myRidingJoinList", service.myRidingJoinList(vo));
+		mav.addObject("myRidingEndList", service.myRidingEndList(vo));
+		mav.addObject("myRidingMadeList", service.myRidingMadeList(vo));
+		mav.setViewName("riding/myRidingList");
+		return mav;
+	}
+	
 	@GetMapping("/riding/ridingWrite")
 	public ModelAndView ridingWrite(PagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
