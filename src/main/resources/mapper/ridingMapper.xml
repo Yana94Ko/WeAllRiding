@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace = "com.yosi.myapp.riding.RidingDAO">
+	<select id="ridingList" resultType="RidingVO">
+		select ridingNo, nickname, ridingKeyword, ridingSubject, ridingContent, applyUser, courseLevel, maxUser , startDate, endDate
+		from ridingBoard
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by ridingNo desc
+		limit ${onePageRecord} offset ${offsetIndex}
+	</select>
+	<select id="totalRecord" resultType="int">
+		select count(ridingNo) as cnt from ridingBoard
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	<!-- ridingWrite -->
+	<insert	id="ridingInsert">
+		insert into ridingBoard(nickname, ridingSubject, ridingContent, startDate, endDate, maxUser, applyUser, courseLevel, ridingKeyword)
+		values(#{nickname}, #{ridingSubject}, #{ridingContent}, #{startDate}, #{endDate}, #{maxUser}, 0 ,#{courseLevel}, #{ridingKeyword})
+	</insert>
+	<update id="cntHit" parameterType="int">
+		update ridingBoard set ridingHit = ridingHit+1 where ridingNo=#{param1}
+	</update>
+	<select id="ridingSelect" resultType="RidingVO">
+		select ridingNo, nickname, ridingSubject, ridingKeyword,
+		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate, 
+		courseLevel, maxUser, applyUser, ridingContent, ridingHit, ridingWriteDate 
+		from ridingBoard where ridingNo=${param1}
+	</select>
+	<update id="ridingUpdate">
+		update ridingBoard set ridingSubject=#{ridingSubject}, ridingContent=#{ridingContent}, 
+		startDate=#{startDate}, endDate=#{endDate}, maxUser=#{maxUser}, applyUser=0, courseLevel=#{courseLevel}, ridingKeyword=#{ridingKeyword}
+		where ridingNo=#{ridingNo} and nickname=#{nickname}
+	</update>
+	<delete id="ridingDelete">
+		delete from ridingBoard where ridingNo=#{param1} and nickname=#{param2}
+	</delete>
+</mapper>

@@ -10,11 +10,7 @@ public interface ComtyService {
 	public int comtyInsert(ComtyVO vo); 
 	public ComtyVO comtySelect(int comtyNo);
 	public int comtyUpdate(ComtyVO vo);
-	public int comtyDelete(int comtyNo, String nickname);
-
-	public void hitCount(int comtyNo);
-
-	
+	public int comtyDelete(int comtyNo, String nickname);	
 	public void cntHit (int comtyNo);
 	
 	//총레코드수

@@ -8,22 +8,24 @@
 	margin: 0 auto;
 	padding: 0 auto;
 }
-
+ul{
+	margin: 0px;
+	padding: 0px;
+}
 #comtyFrm {
 	background-color: rgba(234, 234, 234);
+	font-size:0.8em;
 	width: 100%;
 	height: 25px;
 	color: black;
 	text-align: right;
 	padding: 10px 0 10px;
 }
-
 #comtyViewContent {
 	min-height: 400px;
 	height: 100%;
 	color: black;
 }
-
 #editBtn {
 	background-color: rgba(255, 217, 102);
 	padding: 10px 50px;
@@ -32,7 +34,6 @@
 	border-color: rgba(204, 204, 204);
 	float: right;
 }
-
 #delBtn {
 	background-color: rgba(231, 76, 60);
 	padding: 10px 50px;
@@ -53,124 +54,124 @@
 			location.href = "/comty/comtyEdit?comtyNo=${vo.comtyNo}";
 		}
 	}
-	//댓글
-	$(function(){
-		//2. 댓글 목록을 가져오는 함수
-		function replyListAll(){//현재 글의 댓글을 모두 가져오기
-			var url = "/comty/reply/list";
-			var params = "comtyNo=${vo.comtyNo}";
-			$.ajax({
-				url:url,
-				data:params,
-				success:function(result){
-					var $result = $(result);//vo,vo,vo....
-					
-					var tag="<hr/><ul>";
-					
-					$result.each(function(idx, vo){
-						tag += "<li><div>"+vo.nickname;
-						tag += "("+vo.comtyReplyWriteDate+")";
-						if(vo.nickname=='${userId}'){
-							tag += "<input type='button' value='Edit'/>";
-							tag += "<input type='button' value='Del' title='"+vo.comtyReplyNo+"'/>";
+	// 댓글----------------
+	$(function() {
+		//댓글목록을 가져오는 함수
+		function comtyReplyListAll() { //현재글의 댓글을 모두 가져오기
+			var url = "/comty/comtyReplyList";
+			var params = "comtyNo=${vo.comtyNo}"; // 31번 글이면 no=31이 된다.
+			$
+					.ajax({
+						url : url,
+						data : params,
+						success : function(result) {
+							var $result = $(result); // vo, vo, vo, ,,,
+							var tag = "<ul>";
+							$result
+									.each(function(idx, vo) {
+										tag += "<li><div><div id='NN'>" + vo.nickname + "</div>";
+										// 	 'goguma'== goguma
+										if (vo.nickname == '${nickName}') {
+											tag += "<input type='button' value='삭제' id='comtyReplyListDel' title='"+vo.comtyReplyNo+"' />";
+											tag += "<input type='button' value='수정' id='comtyReplyListEdit'/>";
+										}
+										tag += "<br/><div>" + vo.comtyReplyComent
+												+ "</div>";
+										tag += "<div id='CRWD' style='color:lightgray;'>" + vo.comtyReplyWriteDate
+												+ "</div></div>";
+										
+										//본인글일때 수정폼이 있어야 한다.
+										if (vo.nickname == '${nickName}') {
+											tag += "<div style='display:none'><form method='post'>";
+											tag += "<input type='hidden' name='comtyReplyNo' value='"+vo.comtyReplyNo+"'/>";
+											tag += "<textarea name='comtyReplyComent' style='width:500px; height:50px;'>"
+													+ vo.comtyReplyComent
+													+ "</textarea>";
+											tag += "<input type='submit' value='수정'/>";
+											tag += "</form></div>";
+										}
+										tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
+									});
+							tag += "</ul>";
+							$("#comtyReplyList").html(tag);
+						},
+						error : function(e) {
+							console.log(e.responseText)
 						}
-						
-						tag += "<br/><br/>"+vo.comtyReplyComent+"</div>";
-						if(vo.userid=='${userId}'){
-							tag += "<div style='display:none;'><form method='post'>";
-							tag += "<input type='hidden' name = 'replyno' value='"+vo.comtyReplyNo+"'/>";
-							tag += "<textarea name='coment' style='width:400px;'>"+vo.comtyReplyComent+"</textarea>";
-							tag += "<input type='submit' value='수정'/>";
-							tag += "</form></div>"
-						}
-						
-						tag += "<hr/></li>";
 					});
-					
-					tag+="</ul>";
-					
-					$("#replyList").html(tag);
-					
-				},error:function(e){
-					console.log(e.responseText);
-				}
-			});
-			
 		}
-		//1. 댓글 등록
-		$("#replyFrm").submit(function(){
-			event.preventDefault();//from 기본 이벤트 제거
-			if($("#comtyReplyComent").val()==""){//댓글을 입력하지 않은 경우
-				alert("먼저, 댓글을 입력해주세요!");
+		// 댓글등록
+		$("#comtyReplyFrm").submit(function() {
+			event.preventDefault();//form 기본 이벤트 제거
+			if ($("#comtyReplyComent").val() == "") {//댓글 안쓴경우
+				alert("댓글을 입력후 등록하세요");
 				return;
-			}else{//댓글을 입력한 경우
-				//form에 있는 데이터를 params에 담기
-				var params = $("#replyFrm").serialize();
-			
+			} else {//댓글 입력한경우
+				var params = $("#comtyReplyFrm").serialize();
 				$.ajax({
-					url:'/reply/writeOk',
-					data:params,
-					type:'POST',
-					success:function(r){//결과물이 r에 담김
-						//1)폼에 입력된 내용을 지움
+					url : '/comty/comtyReplyWriteOk',
+					data : params,
+					type : 'POST',
+					success : function() {
+						//폼을초기화
 						$("#comtyReplyComent").val("");
-						console.log("r",r);						
-						//댓글 목록 refresh되어야 함
-						replyListAll();
-						
-					},error:function(e){
+						//댓글 목록 refresh되어야 한다.
+						comtyReplyListAll();
+					},
+					error : function(e) {
 						console.log(e.responseText);
 					}
 				});
 			}
 		});
-	
-		//댓글수정 버튼 클릭시 해당 폼 보여주기
-		$(document).on('click','#replyList input[value=Edit]',function(){
-			$(this).parent().css("display","none");//숨기기
-			$(this).parent().next().css("display","block");//보여주기
-		})
-		//댓글 수정 DB 작업
-		$(document).on('submit','#replyList form',function(){
+		// 댓글 수정(Edit)버튼 선택 시 해당폼 보여주기
+		$(document).on('click', '#comtyReplyList input[value=수정]',
+				function() {
+					$(this).parent().css("display", "none"); //숨기기
+					//보여주기
+					$(this).parent().next().css("display", "block");
+				});
+		// 댓글 수정(DB)
+		$(document).on('submit', '#comtyReplyList form', function() {
 			event.preventDefault();
-			//데이터
-			var params=$(this).serialize();
-			var url='/comty/reply/editOk';
+			//데이터 준비
+			var params = $(this).serialize();
+			var url = '/comty/comtyReplyEditOk';
 			$.ajax({
-				url:url,
-				data:params,
-				type:'POST',
-				success:function(result){
+				url : url,
+				data : params,
+				type : 'POST',
+				success : function(result) {
 					console.log(result);
-					replyListAll();
-				},error:function(){
-					console.log('수정에러 발생');
+					comtyReplyListAll();
+				},
+				error : function() {
+					console.log('수정에러발생');
 				}
-			})
+			});
 		});
-	
-		//4. 댓글 삭제
-		$(document).on('click','#replyList input[value=Del]',function(){
-			if(confirm('댓글을 삭제하시려구요?')){
-				var params = "replyno="+$(this).attr("title");
+		// 댓글 삭제
+		$(document).on('click', '#comtyReplyList input[value=삭제]', function() {
+			if (confirm('댓글을 삭제하시겠습니까?')) {
+				var params = "comtyReplyNo=" + $(this).attr("title");
 				$.ajax({
-					url:'/comty/reply/del',
-					data:params,
-					success:function(result){
+					url : '/comty/comtyReplyDel',
+					data : params,
+					success : function(result) {
 						console.log(result);
-						replyListAll();
-					},error:function(){
-						console.log("댓글 삭제 에러");
+						comtyReplyListAll();
+					},
+					error : function() {
+						console.log("댓글삭제에러발생")
 					}
 				});
 			}
 		});
-		
-		//현재 글의 댓글
-		replyListAll();
+		// 현재글의 댓글
+		comtyReplyListAll();
+	});
 </script>
 <main>
-
 	<div class="comtyContainer">
 		<h2>${vo.comtySubject }</h2>
 		<ul>
@@ -182,23 +183,25 @@
 		<ul>
 			<li id="comtyViewContent">${vo.comtyContent }</li>
 		</ul>
+		<hr>
 		<c:if test="${userId == vo.nickname }">
 			<div id="viewBTN">
-				<button id="editBtn" onclick="javascript:edit()">글 수정</button>
 				<button id="delBtn" onclick="javascript:del()">글 삭제</button>
+				<button id="editBtn" onclick="javascript:edit()">글 수정</button>
 			</div>
 		</c:if>
-		
-		<!-- 댓글쓰기 -->
-	<c:if test="${logStatus=='Y'}">
-		<form method='post' id='replyFrm'>
-			<input type="hidden" name="comtyNo" value="${vo.comtyNo}"/>
-			<textarea name="coment" id='coment'style='width:500px;height:80px;'></textarea>
-			<input type="submit" value="댓글등록"/>
-		</form>
-	</c:if>
-	<hr/>
-	<!-- 댓글 목록 나올 자리 -->
-	<div id="replyList">
+		<br/><br/><br/><br/>
+		<!-- 댓글 쓰기 폼 -->
+		<c:if test="${logStatus=='Y' }">
+			<form method='post' id="comtyReplyFrm">
+				<input type="hidden" name="comtyNo" value="${vo.comtyNo }" />
+				<textarea name="comtyReplyComent" id="comtyReplyComent"
+					style="width: 100%; height: 100px;"></textarea>
+				<br>
+				<input type="submit" value="댓글등록" id="replyBtn">
+			</form>
+		</c:if>
+		<!-- 댓글목록이 나올 자리 -->
+		<div id="comtyReplyList"></div>
 	</div>
 </main>

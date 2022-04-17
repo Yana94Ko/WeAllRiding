@@ -9,8 +9,12 @@
 	<!-- Pavicon -->
 	<link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
 	<link rel="stylesheet" href="${url}/css/topBottomStyle.css">
+	<script src="https://www.google.com/jsapi"></script>
+   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyAjhvj5MrqSSdgkuL_28oiPoBTewyr7wYg" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <%--ajax 라이브러리 추가 (Tom)--%>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="${url}/js/topBottomScript.js"></script>
 	<!-- jquery cdn url -->
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -37,6 +41,7 @@
 				<img src="${url}/images/logo.png"/>
 			</a>
 		</div>
+
 		<div class='mainMenu'>
 			<ul>
 				<li onmouseenter="topMenuOver(1)" onmouseleave="topMenuOut(1)">코스

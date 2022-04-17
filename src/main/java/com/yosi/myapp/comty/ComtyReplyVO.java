@@ -6,6 +6,7 @@ public class ComtyReplyVO {
 	private String nickname;
 	private String comtyReplyComent;
 	private String comtyReplyWriteDate;
+	
 	public int getComtyNo() {
 		return comtyNo;
 	}
@@ -36,6 +37,5 @@ public class ComtyReplyVO {
 	public void setComtyReplyWriteDate(String comtyReplyWriteDate) {
 		this.comtyReplyWriteDate = comtyReplyWriteDate;
 	}
-	
-	
+
 }

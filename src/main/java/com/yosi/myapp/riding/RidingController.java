@@ -1,7 +1,6 @@
-package com.yosi.myapp.comty;
+package com.yosi.myapp.riding;
 
 import java.nio.charset.Charset;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +11,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,46 +21,50 @@ import org.springframework.web.servlet.ModelAndView;
 import com.yosi.myapp.PagingVO;
 
 @RestController
-public class ComtyController {
+public class RidingController {
 	@Autowired
-	ComtyService ComtyService;
+	RidingService RidingService;
 	@Inject
-	ComtyService service;
+	RidingService service;
 	
-	@GetMapping("/comty/comtyList")
-	public ModelAndView allSelect(PagingVO pVO) {
+	/*
+	 * @Inject RidingReplyService replyService;
+	 */
+	
+	@GetMapping("/riding/ridingList")
+	public ModelAndView ridingList(PagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
 		
 		// 총 레코드 수
 		pVO.setTotalRecord(service.totalRecord(pVO));
 		
-		mav.addObject("lst", service.allSelect(pVO));
+		mav.addObject("lst", service.ridingList(pVO));
 		mav.addObject("pVO", pVO);
 		
-		mav.setViewName("comty/comtyList");
+		mav.setViewName("riding/ridingList");
 		return mav;
 	}
 	
-	@GetMapping("/comty/comtyWrite")
-	public ModelAndView comtyWrite(PagingVO pVO) {
+	@GetMapping("/riding/ridingWrite")
+	public ModelAndView ridingWrite(PagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("lst", service.allSelect(pVO));
-		mav.setViewName("comty/comtyWrite");
+		mav.addObject("lst", service.ridingList(pVO));
+		mav.setViewName("riding/ridingWrite");
 		return mav;
 	}
 	
-	@PostMapping("/comty/comtyWriteOk")
-    public ResponseEntity<String> comtyWriteOk(ComtyVO vo, HttpServletRequest request){
+	@PostMapping("/riding/ridingWriteOk")
+    public ResponseEntity<String> ridingWriteOk(RidingVO vo, HttpServletRequest request){
 		vo.setNickname((String)request.getSession().getAttribute("userId"));
 		ResponseEntity<String> entity = null;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("text", "html",Charset.forName("UTF-8")));
         try {
 			//글등록 성공
-			service.comtyInsert(vo);
+			service.ridingInsert(vo);
 			
 			//글 목록으로 이동
-			String msg = "<script>alert('글이 등록되었습니다.');location.href='/comty/comtyList';</script>";
+			String msg = "<script>alert('글이 등록되었습니다.');location.href='/riding/ridingList';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 		} catch (Exception e) {
 			// 글등록 실패
@@ -75,30 +77,33 @@ public class ComtyController {
 	}
 	
 	//글 보기
-	@RequestMapping("/comty/comtyView")
-	public ModelAndView comtyView(@RequestParam("comtyNo") int comtyNo) {
-		 ModelAndView mav = new ModelAndView();
-
-		 service.cntHit(comtyNo); // 조회수 증가
+	@RequestMapping("/riding/ridingView")
+	public ModelAndView ridingView(@RequestParam(value="ridingNo", required=false) int ridingNo) {
+		System.out.println("ridingView"); 
+		ModelAndView mav = new ModelAndView();
+		 		 
+		 service.cntHit(ridingNo); // 조회수 증가
 		 
-		 mav.addObject("vo", service.comtySelect(comtyNo));
-		 mav.setViewName("comty/comtyView");
-		 
+		 mav.addObject("vo", service.ridingSelect(ridingNo));
+		 mav.setViewName("riding/ridingView");
 		 
 		 return mav;
 	}
 	
 	//글 수정
-	@GetMapping("/comty/comtyEdit")
-	public ModelAndView comtyEdit( int comtyNo) {
+	@GetMapping("/ridingEdit")
+	public ModelAndView ridingEdit(int ridingNo) {
+		System.out.println(ridingNo);
+		System.out.println("ridingEdit");
 		ModelAndView mav = new ModelAndView();
-		 mav.addObject("vo", service.comtySelect(comtyNo));
-		 mav.setViewName("comty/comtyEdit");
+		 mav.addObject("vo", service.ridingSelect(ridingNo));
+		 mav.setViewName("riding/ridingEdit");
 		 return mav;
 	}
 	
-	@PostMapping("/comty/comtyEditOk")
-	public ResponseEntity<String> comtyEditOk(ComtyVO vo, HttpSession session) {
+	@PostMapping("/riding/ridingEditOk")
+	public ResponseEntity<String> ridingEditOk(RidingVO vo, HttpSession session) {
+		System.out.println("ridingDelOk");
 		vo.setNickname((String)session.getAttribute("userId"));
 		
 		ResponseEntity<String> entity =null;
@@ -106,9 +111,9 @@ public class ComtyController {
 		headers.add("Content-Type", "text/html; charset=UTF-8");
 		
 		try {
-			service.comtyUpdate(vo);
+			service.ridingUpdate(vo);
 			
-			String msg="<script>alert('글이 수정되었습니다.');location.href='/comty/comtyView?comtyNo="+vo.getComtyNo()+"';</script>";
+			String msg="<script>alert('글이 수정되었습니다.');location.href='/riding/ridingView?ridingNo="+vo.getRidingNo()+"';</script>";
 			entity=new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 			
 		}catch (Exception e) {
@@ -120,18 +125,20 @@ public class ComtyController {
 				
 	}
 	// 글 삭제
-	@GetMapping("/comty/comtyDel")
-	public ModelAndView comtyDel(int comtyNo, HttpSession session, ModelAndView mav) {
+	@GetMapping("/ridingDel")
+	public ModelAndView ridingDel(int ridingNo, HttpSession session, ModelAndView mav) {
+		System.out.println("ridingDel");
 		String nickname = (String)session.getAttribute("userId");
-		int result = service.comtyDelete(comtyNo, nickname);
+		int result = service.ridingDelete(ridingNo, nickname);
 		if(result>0) {
 			//삭제됨
-			mav.setViewName("redirect:comtyList");
+			mav.setViewName("redirect:ridingList");
 			
 		} else {
 			//삭제 안됨
-			mav.addObject("comtyNo", comtyNo);
-			mav.setViewName("redirect:comtyView");
+			System.out.println("삭제가 안됬어요");
+			mav.addObject("ridingNo", ridingNo);
+			mav.setViewName("redirect:ridingView");
 		}
 		
 		return mav;
