@@ -1,11 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <main>
-	<div class="home">
-		<img src="https://googlewph.com/wp-content/uploads/2021/05/%EC%A0%84%EA%B8%B0%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%B6%94%EC%B2%9C.jpg" width="100%"/>
-		<img src="https://submergemag.com/wp-content/uploads/2013/05/Submerge-No-Coast-IMG_0113-624x416.jpg" width="100%"/>
-		일단 띄웠음
-		그리고 한번 수정해봤음
-		그리고 한번 더 고고
-		dfdfdffff
+	<div class="container">
+	  <section class="background">
+	    <div class="content-wrapper">
+	      <p class="content-title">We All Riding은</p>
+	      <p class="content-subtitle">라이더들이 라이딩을 즐길 수 있게 함께 돕는 공간입니다.</p>
+	      <button class="w-btn-neon2" type="button">
+				라이딩 함께 하기
+			</button>
+	    </div>
+	  </section>
+	  <section class="background">
+	    <div class="content-wrapper">
+	      <p class="content-title">참여 가능한 라이딩</p>
+	      <p class="content-subtitle">1234개</p>
+	      <button class="w-btn w-btn-gra1 w-btn-gra-anim" type="button">
+				라이딩 함께 하기
+			</button>
+	    </div>
+	  </section>
+  	  <section class="background">
+	    <div class="content-wrapper">
+	      <p class="content-title">오늘 개설된 라이딩</p>
+	      <p class="content-subtitle">56개</p>
+	      <button class="w-btn w-btn-gra1 w-btn-gra-anim" type="button">
+				라이딩 개설 하기
+			</button>
+	    </div>
+	  </section>
+	  	  <section class="background">
+	    <div class="content-wrapper">
+			<p class="content-title">자전거 이상형 월드컵</p>
+			<p class="content-subtitle">나에게 맞는 자전거는 무엇일까?</p>
+			<button class="w-btn w-btn-gra1 w-btn-gra-anim" type="button" onclick="location.href='${url}/idealView';">
+				바로가기
+			</button>
+	    </div>
+	  </section>
 	</div>
 </main>
+<link rel="stylesheet" type="text/css" href="${url}/css/home/homeStyle.css">
+<link rel="stylesheet" type="text/css" href="${url}/css/plugins/buttonStyle.css">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
+<script type="text/javascript" src="${url}/js/home/homeScript.js"></script>
