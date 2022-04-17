@@ -135,6 +135,17 @@
 	ridingReplyListAll();
 	
 </script>
+<!-- parallax START -->
+<div class="home">
+	<div class="homeBackground parallaxWindow" data-parallax="scroll"
+		data-image-src="${url}/images/home/home_background.png"></div>
+	<!-- 배경 이미지 -->
+	<div class="homeContent">
+		<div class="homeTitle">라이딩 목록</div>
+		<!-- 페이지 타이틀 -->
+	</div>
+</div>
+<!-- parallax END -->
 <main>
 	<div class="ridingViewContainer">
 		<form method='post'>

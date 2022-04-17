@@ -1,13 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <main>
-	<div class="home">
-		<img src="https://googlewph.com/wp-content/uploads/2021/05/%EC%A0%84%EA%B8%B0%EC%9E%90%EC%A0%84%EA%B1%B0-%EC%B6%94%EC%B2%9C.jpg" width="100%"/>
-		<img src="https://submergemag.com/wp-content/uploads/2013/05/Submerge-No-Coast-IMG_0113-624x416.jpg" width="100%"/>
-		일단 띄웠음
-		그리고 한번 수정해봤음
-		그리고 한번 더 고고
-		dfdfdffff
+	<div class="container">
+	  <section class="background">
+	    <div class="content-wrapper">
+	      <p class="content-title">We All Riding</p>
+	      <p class="content-subtitle">라이더들이 라이딩을 즐길 수 있게 함께 돕는 공간입니다.</p>
+	      <p class="content-subtitle">참여 가능한 라이딩 : 1234개</p>
+	      <button class="w-btn-neon2" type="button" onclick="location.href='${url}/riding/ridingList'">
+				라이딩 함께 하기
+			</button>
+	    </div>
+	  </section>
+	  <section class="background">
+	    <div class="content-wrapper">
+	      <p class="content-title">새로운 곳으로의 여행 </p>
+	      <p class="content-subtitle">경험 가능한 추천 코스 : 53개</p>
+	      <button class="w-btn w-btn-gra1 w-btn-gra-anim" type="button" onclick="location.href='${url}/recommendView'">
+				새로운 경험으로 출발
+			</button>
+	    </div>
+	  </section>
+  	  <section class="background">
+	    <div class="content-wrapper">
+	      <p class="content-title">여행 중 의지 할 친구를 만들고 싶나요?</p>
+	      <p class="content-subtitle">오늘 개설된 라이딩 : 56개</p>
+	      <button class="w-btn w-btn-gra1 w-btn-gra-anim" type="button" onclick="location.href='${url}/courseCreate'">
+				새로운 여정 만들기
+			</button>
+	    </div>
+	  </section>
+	  <section class="background">
+	    <div class="content-wrapper">
+			<p class="content-title">여행 중 자전거가 망가진 적이 있었나요?</p>
+			<p class="content-subtitle">내 주변 자전거 공임 정보 위키</p>
+			<button class="w-btn w-btn-gra1 w-btn-gra-anim" type="button" onclick="location.href='${url}/idealView';">
+				정보 나누러 가기
+			</button>
+	    </div>
+	  </section>
+	  <section class="background">
+	    <div class="content-wrapper">
+			<p class="content-title">나에게 맞는 자전거를 못 찾으셨나요?</p>
+			<p class="content-subtitle">나도 모르는 내 취향 찾기</p>
+			<button class="w-btn w-btn-gra1 w-btn-gra-anim" type="button" onclick="location.href='${url}/idealView';">
+				바로가기
+			</button>
+	    </div>
+	  </section>
 	</div>
-
 </main>
-
+<!-- 메인페이지 start -->
+<link rel="stylesheet" type="text/css" href="${url}/css/home/homeStyle.css">
+<link rel="stylesheet" type="text/css" href="${url}/css/plugins/buttonStyle.css">
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
+<script type="text/javascript" src="${url}/js/home/homeScript.js"></script>
+<!-- 메인페이지 스크립트 end -->

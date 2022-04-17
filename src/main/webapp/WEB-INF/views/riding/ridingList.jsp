@@ -2,6 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
+<!-- parallax START -->
+<div class="home">
+	<div class="homeBackground parallaxWindow" data-parallax="scroll"
+		data-image-src="${url}/images/home/home_background.png"></div>
+	<!-- 배경 이미지 -->
+	<div class="homeContent">
+		<div class="homeTitle">라이딩 리스트</div>
+		<!-- 페이지 타이틀 -->
+	</div>
+</div>
+<!-- parallax END -->
+
 <main>
 	<div class="ridingListFrm" id="ridingListFrm">
 		&nbsp;<h1>&nbsp;&nbsp;&nbsp;&nbsp;라이딩 리스트</h1>

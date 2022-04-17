@@ -3,12 +3,12 @@ var nav = document.getElementsByClassName("nav");
 $(window).on('scroll', function() {
 	if ($(window).scrollTop() > 47) {
 		$('.top').addClass('active');
-		$('.nav').addClass('active');
-		$('.mainMenu>ul').addClass('active');
+		$('.navBar').addClass('active');
+		$('#app').addClass('active');
 	} else {
 		$('.top').removeClass('active');
-		$('.nav').removeClass('active');
-		$('.mainMenu>ul').removeClass('active');
+		$('.navBar').removeClass('active');
+		$('#app').removeClass('active');
 	}
 });
 

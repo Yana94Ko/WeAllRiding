@@ -3,6 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script src="${url}/js/member/memberEdit.js"></script>
 <link rel="stylesheet" href="/css/member/memberForm.css" type="text/css"/>
+<!-- parallax START -->
+<div class="home">
+	<div class="homeBackground parallaxWindow" data-parallax="scroll"
+		data-image-src="${url}/images/home/home_background16.png"></div>
+	<!-- 배경 이미지 -->
+	<div class="homeContent">
+		<div class="homeTitle">회원정보 수정</div>
+		<!-- 페이지 타이틀 -->
+	</div>
+</div>
+<!-- parallax END -->
 <main>
   <section class="memberForm">
     <h1>회원정보 수정</h1>

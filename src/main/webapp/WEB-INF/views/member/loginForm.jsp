@@ -5,7 +5,7 @@
 <main>
     <section class="loginForm">
         <div id="log">
-            <h1>WeAllRiding</h1>
+            <h1>로그인</h1>
             <form method="post" action="/member/loginOk" id="logFrm">
                 <div class="input-area">
                     <input type="text" name="userId" id="userId" required/>

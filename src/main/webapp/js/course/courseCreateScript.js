@@ -190,10 +190,8 @@ function getListItem(index, places) {
 	}
 
 	itemStr += ' <span class="tel">' + places.phone + '</span>' + '</div>';
-
 	el.innerHTML = itemStr;
 	el.className = 'item';
-	
 	return el;
 }
 
@@ -479,7 +477,6 @@ function searchCourse(preference, routeNo) {
 			var courseDataParse = JSON.parse(courseData);//입력받은 String값을 json Data로 파싱
 			var course = courseDataParse.routes;
 
-			
 			distances[routeNo]=course[0].summary.distance.toFixed(2);
 			$("#routeDistance"+routeNo).html(distances[routeNo]+"km");
 			durationes[routeNo]=(course[0].summary.duration/60/60).toFixed(0)+"시간 "+(course[0].summary.duration%60).toFixed(0)+"분";//초를 분단위로 변환
@@ -535,6 +532,7 @@ function searchCourse(preference, routeNo) {
 	body += '"units": "km", ';//거리 단위
 	body += '"geometry": "true" }';//경로 지도 표시 여부(poly)
 	request.send(body);
+	
 	//// 경로 타입 : OpenRouteService 중에서 경유지를 가지는 경로탐색 <--
 }
 //-----------------> OpenRouteService inmport end <------------------------
@@ -611,8 +609,8 @@ var chartData2;
 function plot(chartLabel, chartData, routeNo) {
 	removeChart(routeNo);
 	if(routeNo==0){
-		charBorderColor="rgba(238, 99, 174, 1)";
-		charBackgroundColor="rgba(238, 99, 174, 0.5)";
+		charBorderColor="rgba(0, 206, 125, 1)";
+		charBackgroundColor="rgba(0, 206, 125, 0.5)";
 		chartLabel0=chartLabel;
 		chartData0=chartData;
 	}else if(routeNo==1){
@@ -621,8 +619,8 @@ function plot(chartLabel, chartData, routeNo) {
 		chartLabel1=chartLabel;
 		chartData1=chartData;
 	}else if(routeNo==2){
-		charBorderColor="rgba(0, 206, 125, 1)";
-		charBackgroundColor="rgba(0, 206, 125, 0.5)";
+		charBorderColor="rgba(238, 99, 174, 1)";
+		charBackgroundColor="rgba(238, 99, 174, 0.5)";
 		chartLabel2=chartLabel;
 		chartData2=chartData;
 	}
@@ -933,7 +931,6 @@ function addWaypointMarker() {
 			allPointMarkers[i] = waypointMarker;
 		}
 	}
-	
 }
 //마커 삭제
 function removeAllMarkers() {//출발지, 도착지, 경유지의 모든 마커를 삭제함.
@@ -994,6 +991,7 @@ function ridingDataSend(routeNo,frm){
 			data: sendDatajson,
 			success: function(result) {
 				//1. 문자열을 json으로 변환 JSON.stringify(문자열);
+				return true;
 			}, error: function(request, status, error) {
 				console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
 			}
@@ -1001,3 +999,59 @@ function ridingDataSend(routeNo,frm){
 	}, 300);
 }
 //====================================> 코스 정보 표시 및 라이딩 개설 관련 End <======================================
+//====================================>  지도 썸네일 이미지 생성 Start <======================================
+var polyTest = [];
+var linepathTest = [];
+//지도 썸네일 생성
+function generateThumbnail(polyTest, linepathTest){
+	var container = document.getElementById("ridingMap01");
+	
+	var options = {
+					center : map.getCenter(), //추후 map.getCenter()로 변경
+					draggable: false,
+					level : map.getLevel()+3,
+					disableDoubleClick:false,
+					disableDoubleClickZoom:false,
+					scrollwheel:false,
+				};
+				
+	var mapThumbnail = new kakao.maps.Map(container, options);
+	var polylineThumbnail = polyTest;
+	
+	polylineThumbnail.setOptions({
+		strokeColor:"#ee63ae",
+		strokeOpacity: 0.8,
+	});
+	var startImageSrc = '/images/course/startPin.png'; // 출발지 마커이미지의 주소입니다
+	var endImageSrc = '/images/course/endPin.png'; // 도착지 마커이미지의 주소입니다 
+	   
+    imageSize = new kakao.maps.Size(46, 46), // 마커이미지의 크기입니다
+    imageOption = { offset: new kakao.maps.Point(21, 50) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+      
+	// 출발지 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+	var startMarkerImage = new kakao.maps.MarkerImage(startImageSrc, imageSize, imageOption),
+	    startMarkerPosition =linepathTest[0]; // 출발지마커가 표시될 위치입니다
+	    
+	// 도착지 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+	var endMarkerImage = new kakao.maps.MarkerImage(endImageSrc, imageSize, imageOption),
+	    endMarkerPosition = linepathTest[linepathTest.length-1]; // 도착지 마커가 표시될 위치입니다
+	
+	// 출발지 마커를 생성합니다
+	var startMarker = new kakao.maps.Marker({
+	    position: startMarkerPosition, 
+	    image: startMarkerImage // 마커이미지 설정 
+	});
+	// 도착지 마커를 생성합니다
+	var endMarker = new kakao.maps.Marker({
+	    position: endMarkerPosition, 
+	    image: endMarkerImage // 마커이미지 설정 
+	});
+	
+	// 마커가 지도 위에 표시되도록 설정합니다
+	startMarker.setMap(mapThumbnail);  
+	endMarker.setMap(mapThumbnail);  
+	polylineThumbnail.setMap(mapThumbnail);
+}
+
+//====================================> 지도 썸네일 이미지 생성 End <======================================
+

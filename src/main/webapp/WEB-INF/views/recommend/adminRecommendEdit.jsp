@@ -21,6 +21,7 @@
 		<input type="text" id="recHashtag" name="recHashtag" value="${recommendVO.recHashtag}"/>
 		<h3>설명</h3>
 		<input type="text" id="recDescription" name="recDescription" value="${recommendVO.recDescription}"/>
+		
 		<h3>난이도</h3>
 		<input type="text" id="recLevel" name="recLevel" value="${recommendVO.recLevel}"/>
 		<h3>예상 시간</h3>

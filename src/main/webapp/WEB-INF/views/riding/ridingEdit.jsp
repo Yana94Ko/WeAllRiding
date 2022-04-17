@@ -25,6 +25,19 @@
 }
 </style>
 <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
+
+<!-- parallax START -->
+<div class="home">
+	<div class="homeBackground parallaxWindow" data-parallax="scroll"
+		data-image-src="${url}/images/home/home_background.png"></div>
+	<!-- 배경 이미지 -->
+	<div class="homeContent">
+		<div class="homeTitle">라이딩 수정 하기</div>
+		<!-- 페이지 타이틀 -->
+	</div>
+</div>
+<!-- parallax END -->
+
 <main>
 <div class="ridingViewContainer">
    <form method="post" action="/riding/ridingEditOk?ridingNo=${vo.ridingNo}">

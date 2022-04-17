@@ -5,7 +5,7 @@
 <!-- parallax START -->
 <div class="home">
 	<div class="homeBackground parallaxWindow" data-parallax="scroll"
-		data-image-src="${url}/images/home_background.png"></div>
+		data-image-src="${url}/images/home/home_background5.png"></div>
 	<!-- 배경 이미지 -->
 	<div class="homeContent">
 		<div class="homeTitle">코스 만들기</div>
@@ -22,8 +22,10 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>
 	<div class="map_wrap">
+		<div name="courseSendData"></div>
 		<div id="courseInput">
 			<form method="get" action="riding/ridingWrite">
+				<input type="text" name="courseSendData"/>
 				<div class="fromWrap">
 					<img src="${url}/images/course/fromIcon.png"> 
 					<input id="startPoint" type="text" value="남위례" placeholder="출발지를 입력하세요" class="placeInfoInsert" />
@@ -114,6 +116,9 @@
 		</div>
 	</div>
 	<!-- mapWrap -->
-	<script type="text/javascript"
-		src="${url}/js/course/courseCreateScript.js"></script>
+	<!------------------- 지도 썸네일 생성용 테스트 추후 삭제 예정 ---------------------->
+	<button type="button" onclick="generateThumbnail(polyTest, linepathTest);">썸네일 생성</button>
+	<div id="ridingMap01" style="width:250px;height:200px;"></div>   
+	<!------------------------------------------------------------------------->
+		<script type="text/javascript" src="${url}/js/course/courseCreateScript.js"></script>
 </main>
