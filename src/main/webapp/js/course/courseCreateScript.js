@@ -966,51 +966,38 @@ function setWaypointNames(){
 		}
 	}
 }
-$("#pFrm").submit(function(){
-			event.preventDefault();
-			
-			//폼의 데이터를 json으로 변환
-			
-						
-			
-});
 function ridingDataSend(routeNo,frm){
 	setCourseLine();
 	setWaypointNames();
 	setTimeout(function() {
-		var sendDataSum = {
-			locationNames: {
-				startpointName: document.getElementById("startPoint").value,
-				endpointName: document.getElementById("endPoint").value,
-				waypointName: "경유지 이름들 이게 늘어나면 어떻게 되나!!!!"
-			},
-			courseDistance: document.getElementById("routeDistance" + routeNo).innerText,
-			courseDuration: document.getElementById("routeDuration" + routeNo).innerText,
-			courseAscent: document.getElementById("routeAscent" + routeNo).innerText,
-			courseDescent: document.getElementById("routeDescent" + routeNo).innerText,
-			coursePath: linePathChoiced,
-			courseChartLabel: chartLabelChoiced,
-			courseChartData: chartDataChoiced
-		}
+		var url = "riding/ridingWriteData";
+		var sendDataSum={};		
+		sendDataSum.startPointName=document.getElementById("startPoint").value;
+		sendDataSum.endpointName =  document.getElementById("endPoint").value;
+		sendDataSum.waypointName = "경유지 이름들 이게 늘어나면 어떻게 되나!!!!";
+		sendDataSum.courseDistance = document.getElementById("routeDistance" + routeNo).innerText;
+		sendDataSum.courseDuration= document.getElementById("routeDuration" + routeNo).innerText;
+		sendDataSum.courseAscent= document.getElementById("routeAscent" + routeNo).innerText;
+		sendDataSum.courseDescent= document.getElementById("routeDescent" + routeNo).innerText;
+		sendDataSum.linePathChoiced= linePathChoiced;
+		sendDataSum.courseChartLabel= chartLabelChoiced;
+		sendDataSum.courseChartData= chartDataChoiced;
 
 		var sendDatajson = JSON.stringify(sendDataSum);
+		
 		console.log(sendDatajson);
 
 		$.ajax({
 			url: url,
 			type: "POST",
+			contentType: "application/json; charset=utf-8",
 			data: sendDatajson,
 			success: function(result) {
 				//1. 문자열을 json으로 변환 JSON.stringify(문자열);
-				var jsonData1 = JSON.stringify(result);
 			}, error: function(request, status, error) {
 				console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
 			}
 		});
 	}, 300);
-	var url = "riding/ridingWriteData";
-	
-	
-	
 }
 //====================================> 코스 정보 표시 및 라이딩 개설 관련 End <======================================

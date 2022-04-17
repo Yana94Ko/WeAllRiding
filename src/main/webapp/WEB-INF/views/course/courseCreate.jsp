@@ -24,7 +24,6 @@
 	<div class="map_wrap">
 		<div id="courseInput">
 			<form method="get" action="riding/ridingWrite">
-				<textarea name="courseSendData"/></textarea>
 				<div class="fromWrap">
 					<img src="${url}/images/course/fromIcon.png"> 
 					<input id="startPoint" type="text" value="남위례" placeholder="출발지를 입력하세요" class="placeInfoInsert" />

@@ -1,6 +1,8 @@
 package com.yosi.myapp.riding;
 
 import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,11 +70,16 @@ public class RidingController {
 		mav.setViewName("riding/ridingWrite");
 		return mav;
 	}
-	@RequestMapping(value="/riding/ridingWriteData", method=RequestMethod.POST, produces="application/text;charset=utf-8")
 	@ResponseBody
-	public String ridingWriteData(String startpointName) {
-		System.out.println("데이터 잘 넘어왔어요"+startpointName);	
-		return "데이터 전송 완료";
+	@RequestMapping(value="riding/ridingWriteData", method=RequestMethod.POST, produces="application/text;charset=utf-8")
+	public String  ridingWriteData(@RequestBody RidingVO rVO) {
+		System.out.println("데이터 잘 넘어왔어요"+rVO.getStartPointName());	
+		System.out.println("데이터 잘 넘어왔어요"+rVO.getCourseChartLabel());
+		System.out.println("데이터 잘 넘어왔어요"+rVO.getLinePathChoiced());
+		System.out.println("데이터 잘 넘어왔어요"+rVO.getCourseChartData());
+		Object[] obje = rVO.getLinePathChoiced();
+		System.out.println(obje[0]);
+		return "해치웠나";
 	}
 	
 	@PostMapping("/riding/ridingWriteOk")
