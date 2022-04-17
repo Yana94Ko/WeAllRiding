@@ -503,9 +503,10 @@ function searchCourse(preference, routeNo) {
 			chartData = [];
 			//고도값 정제
 			for (var i = 0; i < points.length; i++) {
-				chartLabel.push('"' + points[i][0] + ',' + points[i][1] + '"');
+				chartLabel.push("'" + points[i][0] + "," + points[i][1] + "'");
 				chartData.push(points[i][2]);
 			}
+			console.log(chartLabel)
 			var myChart;
 			//차트 그리기
 			plot(chartLabel, chartData, routeNo);
@@ -953,7 +954,7 @@ function removeAllMarkers() {//출발지, 도착지, 경유지의 모든 마커�
 //========================================> 마커 생성/삭제 관련 end <=============================================
 //===================================> 코스 정보 표시 및 라이딩 개설 관련 Start <=====================================
 var waypointNames="";
-var linePathChoiced="";
+var linePathChoiced=[];
 var chartLabelChoiced;
 var chartDataChoiced;
 function setWaypointNames(){
@@ -965,24 +966,51 @@ function setWaypointNames(){
 		}
 	}
 }
-function ridingDataSend(routeNo){
+$("#pFrm").submit(function(){
+			event.preventDefault();
+			
+			//폼의 데이터를 json으로 변환
+			
+						
+			
+});
+function ridingDataSend(routeNo,frm){
+	setCourseLine();
 	setWaypointNames();
-	var sendDataSum = {
-		locationNames : {
-			startpointName : document.getElementById("startPoint").value,
-			endpointName : document.getElementById("endPoint").value,
-			waypointName : "경유지 이름들"
-		},
-		courseDistance : document.getElementById("routeDistance"+routeNo).innerText,
-		courseDuration : document.getElementById("routeDuration"+routeNo).innerText,
-		courseAscent : document.getElementById("routeAscent"+routeNo).innerText,
-		courseDescent : document.getElementById("routeDescent"+routeNo).innerText,
-		coursePath : linePathChoiced,
-		courseChartLabel : chartLabelChoiced,
-		courseChartData : chartDataChoiced
-	}
-	var sendDatajson = JSON.stringify(sendDataSum);
-	$("input[name=courseSendData]").val(sendDatajson);
-	//console.log($("input[name=courseSendData]").val());
+	setTimeout(function() {
+		var sendDataSum = {
+			locationNames: {
+				startpointName: document.getElementById("startPoint").value,
+				endpointName: document.getElementById("endPoint").value,
+				waypointName: "경유지 이름들 이게 늘어나면 어떻게 되나!!!!"
+			},
+			courseDistance: document.getElementById("routeDistance" + routeNo).innerText,
+			courseDuration: document.getElementById("routeDuration" + routeNo).innerText,
+			courseAscent: document.getElementById("routeAscent" + routeNo).innerText,
+			courseDescent: document.getElementById("routeDescent" + routeNo).innerText,
+			coursePath: linePathChoiced,
+			courseChartLabel: chartLabelChoiced,
+			courseChartData: chartDataChoiced
+		}
+
+		var sendDatajson = JSON.stringify(sendDataSum);
+		console.log(sendDatajson);
+
+		$.ajax({
+			url: url,
+			type: "POST",
+			data: sendDatajson,
+			success: function(result) {
+				//1. 문자열을 json으로 변환 JSON.stringify(문자열);
+				var jsonData1 = JSON.stringify(result);
+			}, error: function(request, status, error) {
+				console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+			}
+		});
+	}, 300);
+	var url = "riding/ridingWriteData";
+	
+	
+	
 }
 //====================================> 코스 정보 표시 및 라이딩 개설 관련 End <======================================

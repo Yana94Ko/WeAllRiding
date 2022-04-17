@@ -17,12 +17,16 @@ public class RidingVO {
 	private int ridingMemberNo;
 	private int ridingState;
 	private int ridingCount;
+	private String sendDatajson;
 	
 	
 	
-	
-		
-
+	public String getSendDatajson() {
+		return sendDatajson;
+	}
+	public void setSendDatajson(String sendDatajson) {
+		this.sendDatajson = sendDatajson;
+	}
 	public int getRidingCount() {
 		return ridingCount;
 	}

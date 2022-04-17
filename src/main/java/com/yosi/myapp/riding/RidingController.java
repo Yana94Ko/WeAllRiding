@@ -67,6 +67,12 @@ public class RidingController {
 		mav.setViewName("riding/ridingWrite");
 		return mav;
 	}
+	@RequestMapping(value="/riding/ridingWriteData", method=RequestMethod.POST, produces="application/text;charset=utf-8")
+	@ResponseBody
+	public String ridingWriteData(String startpointName) {
+		System.out.println("데이터 잘 넘어왔어요"+startpointName);	
+		return "데이터 전송 완료";
+	}
 	
 	@PostMapping("/riding/ridingWriteOk")
     public ResponseEntity<String> ridingWriteOk(RidingVO vo, HttpServletRequest request){
