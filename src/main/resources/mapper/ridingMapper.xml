@@ -92,7 +92,7 @@
 	<!-- ridingMember 승낙시 Update -->
 	<update id="ridingStateUpdate" parameterType="ridingVO">
 		update ridingMember set ridingState=1
-		where ridingNo=#{ridingNo} and ridingMemberNo=#{ridingMemberNo}
+		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
 	</update>
 	
 

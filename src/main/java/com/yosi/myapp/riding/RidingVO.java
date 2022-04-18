@@ -21,10 +21,17 @@ public class RidingVO {
 	private int ridingReviewNo;
 	private String ridingReviewComent;
 	private String ridingReviewWriteDate;
+	private String applicantNickName;
 	
 	
 	
 	
+	public String getApplicantNickName() {
+		return applicantNickName;
+	}
+	public void setApplicantNickName(String applicantNickName) {
+		this.applicantNickName = applicantNickName;
+	}
 	public int getRidingReviewNo() {
 		return ridingReviewNo;
 	}

@@ -1,7 +1,9 @@
 package com.yosi.myapp.riding;
 
 import java.nio.charset.Charset;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -161,38 +163,27 @@ public class RidingController {
 
         return entity;
     }
-	
-	@GetMapping("/riding/ridingStateOk")
-    public ResponseEntity<String> ridingStateOk(RidingVO vo, HttpServletRequest request) {
-        vo.setNickname(vo.getRidingStartMember());     
-        System.out.println(vo.getNickname());
-        // DB작업
-        ResponseEntity<String> entity = null; // 데이터와 처리상태를 가진다.
+	// 승낙
+	@ResponseBody
+	@RequestMapping(value="/riding/ridingStateOk", method = RequestMethod.GET) 
+	public ModelAndView ridingStateOk(int ridingNo, RidingVO vo) { 
+		ModelAndView mav = new ModelAndView(); 
+		mav.addObject(service.ridingSelect(ridingNo));
+		System.out.println(vo.getApplicantNickName());
+		System.out.println(vo.getRidingNo());
+		
+		try { 
+			service.ridingStateUpdate(vo); 
+			
+			mav.setViewName("riding/ridingView"); 
+			mav.addObject(service.ridingStateUpdate(vo)); 
+		} catch (Exception e) { 
+			System.out.println(e);
+			e.printStackTrace();
+		} 
+		return mav; 
+	}
 
-        HttpHeaders headers = new HttpHeaders();
-
-        headers.add("Content-Type", "text/html; charset=utf-8");
-        try {
-            service.ridingStateUpdate(vo);
-            String msg = "<script>";
-            msg += "alert('글이 등록되었습니다');";
-            msg += "location.href='/riding/ridingList';";
-            msg += "</script>";
-            entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            // 등록안됨
-            String msg = "<script>";
-            msg += "alert('글등록이 실패하였습니다');";
-            msg += "history.back();";
-            msg += "</script>";
-            entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
-        }
-
-        return entity;
-    }
 	
 	
 	//글 보기
@@ -257,40 +248,5 @@ public class RidingController {
 		
 		return mav;
 	}
-	
-	// 라이딩 후기
-	//글 보기
-		@GetMapping("/riding/ridingReview")
-	    public ModelAndView ridingReview(int ridingNo) {
-	        ModelAndView mav = new ModelAndView();
-	      
-	        mav.addObject("vo", service.ridingSelect(ridingNo));
-	        mav.addObject("lst2", service.ridingMemberShow(ridingNo));
-	        mav.setViewName("riding/ridingReview");
-	        return mav;
-	    }
-		
-		@PostMapping("/riding/ridingReviewOk")
-	    public ResponseEntity<String> ridingReviewOk(RidingVO vo, HttpServletRequest request){
-			vo.setNickname((String)request.getSession().getAttribute("nickName"));
-			ResponseEntity<String> entity = null;
-	        HttpHeaders headers = new HttpHeaders();
-	        headers.setContentType(new MediaType("text", "html",Charset.forName("UTF-8")));
-	        try {
-				//글등록 성공
-				service.ridingReviewWrite(vo);
-				
-				//글 목록으로 이동
-				String msg = "<script>alert('글이 등록되었습니다.');location.href='/riding/ridingList';</script>";
-				entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-			} catch (Exception e) {
-				// 글등록 실패
-				e.printStackTrace();
-				//글 등록 폼으로
-				String msg = "<script>alert('글등록 실패 하였습니다.');history.back();</script>";
-				entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
-			}
-			return entity;
-		}
 	
 }

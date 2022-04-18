@@ -12,6 +12,11 @@
 			location.href = "/riding/ridingEdit?ridingNo=${vo.ridingNo}";
 		}
 	}
+	function ridingStateOk() {
+		if (confirm('승낙 하시겠습니까?')) {
+			location.href = "/riding/ridingStateOk?ridingNo=${vo.ridingNo}";
+		}
+	}
 	
 	function ridingMember() {
 		event.preventDefault();//form 기본 이벤트 제거
@@ -19,13 +24,6 @@
 			location.href = "/riding/ridingMemberOk?ridingNo=${vo.ridingNo}";
 		}
 	}
-	
-	function ridingStateUpdate() {
-		event.preventDefault();//form 기본 이벤트 제거
-		if (confirm('승낙하시겠습니까? \n 승낙 후 취소는 어려우니 신중히 생각해주세요.')){
-			location.href = "/riding/ridingStateOk?ridingNo=${vo.ridingNo}";
-		}
-	}	
 	
 	// 댓글----------------
 	function ridingReplyListAll() { //현재글의 댓글을 모두 가져오기
@@ -211,22 +209,36 @@
 							<li>${vo.ridingCount }</li>
 							<li>${vo.userScore }</li>
 							<c:if test="${nickName == nickName }">
+								<c:if test="${applicantNickName != 1 }">
 								<li><input type='button' id="ridingStateUpdateBtn" 
-						 			onclick="ridingStateUpdate()" value="승낙하기">${vo.nickname }></li>
+						 			class="applicantSave" value="승낙하기"></li>
+						 		</c:if>
+								
+						 		
 							</c:if>
-							
 						</c:if>
 					</c:forEach>
 				</ul>
 				<script>
 					$(".applicantSave").on("click", function(event) {
-						$('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
-					});
+						var applicantNickName = $('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
+						
+						$.ajax({
+							url : "/riding/ridingStateOk?ridingNo=${vo.ridingNo}", 
+							type : "GET", 
+							data : applicantNickName, 
+							dataType: 'JSON', 
+							success : function(data){
+								alert("성공")
+							},error : function(e){
+					               console.log(e.responseText);
+				            }
+							});
+						});
 				</script>
-				<form>
+				<form id="nicknameTest">
 		         	<input type="text" name="applicantNickName" id="applicantNickName" >
 		         </form>
-				<ul><li>vo.ridingNo ${vo.ridingNo }&nbsp;vo.userScore  ${vo.userScore }&nbsp;${vo.ridingMemberNo }</li></ul>
 				<br><br><br>
 				<c:if test="${nickName != vo.nickname && nickName != null && nickName != ''}">
 						<li><input type="button" id="ridingMemberBtn"
@@ -239,8 +251,8 @@
 				</c:if>
 				<c:if test="${userId == vo.nickname }">
 					<div id="viewBTN">
-						<button id="delBtn" onclick="javascript:ridingViewDel()">글 삭제</button>
-						<button id="editBtn" onclick="javascript:ridingViewEdit()">글 수정</button>
+						<button type="button" id="delBtn" onclick="javascript:ridingViewDel()">글 삭제</button>
+						<button type="button" id="editBtn" onclick="javascript:ridingViewEdit()">글 수정</button>
 					</div>
 				</c:if>
 				<li><input type="text" id="ridingReview"
@@ -257,6 +269,7 @@
 				<br> <input type="button" value="댓글등록" id="replyBtn" onclick="ridingReplyFrm()">
 			</form>
 		</c:if>
+		<!-- 댓글목록이 나올 자리 -->
 		<div id="ridingReplyList"></div>
 	</div>
 </main>
