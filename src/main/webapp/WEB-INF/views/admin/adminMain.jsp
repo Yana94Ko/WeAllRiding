@@ -23,7 +23,16 @@
     }
 
     // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
+
+    function ComtyDelete(comtyNo, nickname){
+        axios.get("/admin/comtyDel?comtyNo="+comtyNo+"&nickname="+nickname)
+        .then((res) =>{
+            location.reload();
+        })
+        .catch((res) =>{
+            console.log(res);
+        })
+    }
 </script>
 
 <hr/>
@@ -97,6 +106,7 @@
                         <td>${cm.nickname}</td>
                         <td>${cm.comtyHit}</td>
                         <td>${cm.comtyWriteDate}</td>
+                        <td><button type="button" onclick="ComtyDelete(${cm.comtyNo}, '${cm.nickname}')">삭제</button></td>
                     </tr>
                 </c:forEach>
 
