@@ -43,4 +43,10 @@ public interface RidingDAO {
 	public int ridingScoreUp(RidingVO vo);
 	public int ridingScoreDown(RidingVO vo);
 	
+	public int applyUserCount(RidingVO vo);
+	
+	public int ridingApplyUpdate(RidingVO vo);
+	
+	public int ridingApplicantCntUp(RidingVO vo);
+	public int ridingApplicantCntDown(RidingVO vo);
 }

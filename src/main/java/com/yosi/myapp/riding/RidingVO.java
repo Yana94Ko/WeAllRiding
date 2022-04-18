@@ -22,10 +22,16 @@ public class RidingVO {
 	private String ridingReviewComent;
 	private String ridingReviewWriteDate;
 	private String applicantNickName;
+	private int applicantCnt;
 	
 	
 	
-	
+	public int getApplicantCnt() {
+		return applicantCnt;
+	}
+	public void setApplicantCnt(int applicantCnt) {
+		this.applicantCnt = applicantCnt;
+	}
 	public String getApplicantNickName() {
 		return applicantNickName;
 	}

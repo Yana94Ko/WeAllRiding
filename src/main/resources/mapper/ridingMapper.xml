@@ -5,7 +5,9 @@
 	
 <mapper namespace = "com.yosi.myapp.riding.RidingDAO">
 	<select id="ridingList" resultType="RidingVO">
-		select ridingNo, nickname, ridingKeyword, ridingSubject, ridingContent, applyUser, courseLevel, maxUser , startDate, endDate
+		select ridingNo, nickname, ridingKeyword, ridingSubject, 
+		ridingContent, applyUser, courseLevel, maxUser , 
+		startDate, endDate, ridingHit, ridingWriteDate
 		from ridingBoard
 		<if test='searchWord != null'>
 			where ${searchKey} like '%${searchWord}%'
@@ -43,8 +45,8 @@
 	
 	<!-- ridingWrite -->
 	<insert	id="ridingInsert">
-		insert into ridingBoard(nickname, ridingSubject, ridingContent, startDate, endDate, maxUser, applyUser, courseLevel, ridingKeyword)
-		values(#{nickname}, #{ridingSubject}, #{ridingContent}, #{startDate}, #{endDate}, #{maxUser}, 0 ,#{courseLevel}, #{ridingKeyword})
+		insert into ridingBoard(nickname, ridingSubject, ridingContent, startDate, endDate, maxUser, applyUser, courseLevel, ridingKeyword, applicantCnt)
+		values(#{nickname}, #{ridingSubject}, #{ridingContent}, #{startDate}, #{endDate}, #{maxUser}, 0 ,#{courseLevel}, #{ridingKeyword},#{applicantCnt})
 	</insert>
 	<update id="cntHit" parameterType="int">
 		update ridingBoard set ridingHit = ridingHit+1 where ridingNo=#{param1}
@@ -57,7 +59,7 @@
 	</select>
 	<update id="ridingUpdate">
 		update ridingBoard set ridingSubject=#{ridingSubject}, ridingContent=#{ridingContent}, 
-		startDate=#{startDate}, endDate=#{endDate}, maxUser=#{maxUser}, applyUser=0, courseLevel=#{courseLevel}, ridingKeyword=#{ridingKeyword}
+		startDate=#{startDate}, endDate=#{endDate}, maxUser=#{maxUser}, applyUser=#{applyUser}, courseLevel=#{courseLevel}, ridingKeyword=#{ridingKeyword}
 		where ridingNo=#{ridingNo} and nickname=#{nickname}
 	</update>
 	<delete id="ridingDelete">
@@ -118,5 +120,14 @@
 	<update id="ridingScoreDown" parameterType="ridingVO">
 		update ridingMember set userScore=userScore-1
 		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
+	</update>
+	
+	<update id="ridingApplicantCntUp" parameterType="ridingVO">
+		update ridingBoard set applicantCnt={vo.applicantCnt}+1
+		where ridingNo=#{ridingNo} and nickname=#{nickname}
+	</update>
+	<update id="ridingApplicantCntDown" parameterType="ridingVO">
+		update ridingBoard set applicantCnt={vo.applicantCnt}-1
+		where ridingNo=#{ridingNo} and nickname=#{nickname}
 	</update>
 </mapper>

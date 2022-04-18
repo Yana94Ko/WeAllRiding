@@ -19,6 +19,7 @@
 
 <div class="ridingContainer">
    <form method="post" action="/riding/ridingWriteOk" id="ridingFrm">
+   	  <input type="hidden" name="applicantCnt" value="1"/>
       <ul>
          <h1 style="font-size: 1.3em;">라이딩 개설</h1><br><br>
          <h2>제목</h2>

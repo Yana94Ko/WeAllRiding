@@ -174,7 +174,7 @@ public class RidingController {
 		
 		try { 
 			service.ridingStateUpdate(vo); 
-			
+			service.ridingApplicantCntUp(vo);
 			mav.setViewName("riding/ridingView"); 
 			mav.addObject(service.ridingStateUpdate(vo)); 
 		} catch (Exception e) { 
@@ -194,7 +194,7 @@ public class RidingController {
 		
 		try { 
 			service.ridingStateDel(vo); 
-			
+			service.ridingApplicantCntDown(vo);
 			mav.setViewName("riding/ridingView"); 
 			mav.addObject(service.ridingStateDel(vo)); 
 		} catch (Exception e) { 

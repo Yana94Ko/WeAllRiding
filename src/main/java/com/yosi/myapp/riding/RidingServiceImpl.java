@@ -101,6 +101,22 @@ public class RidingServiceImpl implements RidingService {
 	public int ridingScoreDown(RidingVO vo) {
 		return dao.ridingScoreDown(vo);
 	}
+	@Override
+	public int applyUserCount(RidingVO vo) {
+		return dao.applyUserCount(vo);
+	}
+	@Override
+	public int ridingApplyUpdate(RidingVO vo) {
+		return dao.ridingApplyUpdate(vo);
+	}
+	@Override
+	public int ridingApplicantCntUp(RidingVO vo) {
+		return dao.ridingApplicantCntUp(vo);
+	}
+	@Override
+	public int ridingApplicantCntDown(RidingVO vo) {
+		return dao.ridingApplicantCntDown(vo);
+	}
 	
 	
 

@@ -239,6 +239,7 @@
 					<li id="eListFirst">승낙/거절</li>
 					<c:forEach var="vo" items="${lst2 }">
 						<c:if test="${vo.ridingNo == vo.ridingNo}">
+							<li style="display:block">${vo.ridingState }</li>
 							<li>${vo.ridingMemberNo }</li>
 							<li>${vo.nickname }</li>
 							<li>${vo.gender }</li>
@@ -261,6 +262,7 @@
 					<li id="vListFirst">유저 레벨</li>
 					<c:forEach var="vo" items="${lst2 }">
 						<c:if test="${vo.ridingNo == vo.ridingNo}">
+							<li style="display:block">${vo.ridingState }</li>
 							<li>${vo.ridingMemberNo }</li>
 							<li>${vo.nickname }</li>
 							<li>${vo.gender }</li>
