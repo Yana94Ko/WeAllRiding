@@ -11,10 +11,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
+
+import java.util.Map;
+
+
 @Service
 public class MemberServiceImpl implements MemberService {
     @Autowired
     MemberDAO dao;
+
 
     @Override
     public MemberVO loginCheck(MemberVO vo) {
@@ -43,6 +48,76 @@ public class MemberServiceImpl implements MemberService {
         return dao.memberList();
     }
 
+    //관리자 페이지 회원수정 및 정지
+    @Override
+    public void AdminUpdate(MemberVO vo) throws Exception {
+        dao.AdminUpdate(vo);
+    }
 
+    //관리자 페이지 회원정보 상세보기
+    @Override
+    public MemberVO AdminView(String userId) {
+        return dao.AdminView(userId);
+    }
+    //관리자 페이지 회원 삭제
+    @Override
+    public void AdminDelete(String userId) {
+
+    }
+
+    @Override
+    public MemberVO findUserId(MemberVO vo) {
+        return dao.findUserId(vo);
+    }
+
+    @Override
+    public MemberVO isValidEmail(MemberVO vo) {
+        return dao.isValidEmail(vo);
+    }
+
+    @Override
+    public int findUserPwd(MemberVO vo) {
+        return dao.findUserPwd(vo);
+    }
+
+    @Override
+    public MemberVO memberSelect(String UserId) {
+        return dao.memberSelect(UserId);
+    }
+
+    @Override
+    public int memberUpdate(MemberVO vo) {
+        return dao.memberUpdate(vo);
+    }
+
+    @Override
+    public int memberDelete(MemberVO vo) {
+        return dao.memberDelete(vo);
+    }
+
+    @Override
+    public MemberVO checkId(MemberVO vo) {
+        return dao.checkId(vo);
+    }
+
+    @Override
+    public MemberVO checkNick(MemberVO vo) {
+        return dao.checkNick(vo);
+    }
+
+    @Override
+    public MemberVO checkTel(MemberVO vo) {
+        return dao.checkTel(vo);
+    }
+
+    @Override
+    public List<Map<String,String>> genderCount() {
+        return dao.genderCount();
+    }
+
+    @Override
+    public Map<String,String> ageCount() {
+        return dao.ageCount();
+    }
 
 }

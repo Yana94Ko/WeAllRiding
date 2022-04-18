@@ -31,7 +31,7 @@ public class ShopController {
 		mav.setViewName("/shop/shopView");
 		return mav;
 	}
-	
+
 	// 정비샵 정보 존재 유무 확인
 	@GetMapping("/shopCheck")
 	public ModelAndView shopCheck(int shopId, String shopName, String shopRoadAddress, String shopPhone)
@@ -117,7 +117,7 @@ public class ShopController {
 			service.shopUpdate(shopVO);
 			String msg = "<script>alert('정비샵 정보가 수정되었습니다.');location.href='/shopView';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-		} catch (Exception e) {// 정비샵 정보 등록 실패 
+		} catch (Exception e) {// 정비샵 정보 등록 실패
 			e.printStackTrace();
 			String msg = "<script>alert('정비샵 정보 수정에 실패하였습니다.');history.back();</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);

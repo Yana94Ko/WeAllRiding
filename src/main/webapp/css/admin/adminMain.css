@@ -1,5 +1,5 @@
 * {
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 body {
@@ -9,10 +9,12 @@ body {
 /* 전체 텝 메뉴 크기 및 색상 */
 .tab {
     float: left;
-    border: 1px solid #ccc;
     background-color: #f1f1f1;
     width: 20%;
-    height: 300px;
+    height: 350px;
+    position: relative;
+    bottom: 150px;
+    border: 2px solid grey;
 }
 
 /* 텝메뉴 버튼 스타일 */
@@ -20,14 +22,15 @@ body {
     display: block;
     background-color: inherit;
     color: black;
-    padding: 22px 16px;
+    padding: 18px 16px;
     width: 100%;
     border: none;
     outline: none;
     text-align: left;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 17px;
+    font-size: 0.9em;
+    position: relative;
 }
 
 /* 마우스 오버시 버튼 색 변경 */
@@ -44,15 +47,53 @@ body {
 .tabcontent {
     float: left;
     padding: 0px 12px;
-    border: 1px solid #ccc;
     width: 80%;
     border-left: none;
     height: 500px;
+    position: relative;
+    bottom: 155px
 }
+
+/* top.bottom 숨김 */
 header {
     display: none;
 }
 
 main {
     top: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+footer {
+    display: none;
+}
+/* 숨김 끝 */
+
+.top2 {
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+
+.top3 {
+    font-size: 2em;
+
+}
+
+.top3 img {
+    margin-left: 10px;
+}
+
+.tabMenu {
+    margin-top: 10px;
+    text-align: center;
+    position: relative;
+    top: 26px;
+}
+
+.tabMenu li {
+    font-size: 1.3em;
+    color: #3d3d3d;
 }
