@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="${url}/css/course/courseCreateStyle.css">
+
 <!-- parallax START -->
 <div class="home">
 	<div class="homeBackground parallaxWindow" data-parallax="scroll"
@@ -12,14 +13,19 @@
 	</div>
 </div>
 <!-- parallax END -->
+
+
 <main>
 	<!-- kakao map API 불러오기(키 입력) -->
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>
 	<div class="map_wrap">
-		<div name="courseSendData"></div>
+		<form style="display:none" id="courseSendDataFrm" method="post" action="/riding/ridingWrite">
+			<textarea name="courseSendData"></textarea>
+		</form>
 		<div id="courseInput">
 			<form>
+				
 				<input type="text" name="courseSendData"/>
 				<div class="fromWrap">
 					<img src="${url}/images/course/fromIcon.png"> 
@@ -66,7 +72,7 @@
 							<span id="routeDescent0"></span>
 						</span>
 						<canvas id="myChart0" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" onclick="return ridingDataSend(0,this.form)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
+						<button class="ridingWriteBtn" onclick="return ridingDataSend(0)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
 					</div>
 					<div id="routeInfo1" onclick="selectRoute(1)">
 						<h2 class="routeInfoRgt" style="width: 200px; font-weight:10px; font-weight: bold; font-size: 20px; top: 6px; position: relative; ">빠른경로</h2>
@@ -79,7 +85,7 @@
 							<span id="routeDescent1"></span>
 						</span>
 						<canvas id="myChart1" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" onclick="return ridingDataSend(1,this.form)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
+						<button class="ridingWriteBtn" onclick="return ridingDataSend(1)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
 
 					</div>
 					<div id="routeInfo2" onclick="selectRoute(2)">
@@ -93,7 +99,7 @@
 							<span id="routeDescent2"></span>
 						</span>
 						<canvas id="myChart2" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" onclick="return ridingDataSend(2,this.form)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
+						<button class="ridingWriteBtn" onclick="return ridingDataSend(2)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
 					</div>
 				</div>
 			</form>

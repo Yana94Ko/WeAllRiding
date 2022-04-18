@@ -189,7 +189,6 @@
 	</div>
 </div>
 <!-- parallax END -->
-
 <main>
 	<div class="ridingViewContainer">
 		<form method='post'>

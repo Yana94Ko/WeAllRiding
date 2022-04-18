@@ -22,6 +22,7 @@
 			<div class="card">
 				<!-- 카드 헤더 -->
 				<div class="card-header">
+					
 					<div class="card-header-is_closed">
 						<div class="card-header-nNumbe">${vo.applicantCnt }/${vo.maxUser }</div>
 					</div>

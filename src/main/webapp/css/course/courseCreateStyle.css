@@ -37,7 +37,7 @@ main {
 /*--> 출발지 도착지 입력 폼*/
 #courseInput {
 	position: absolute;
-    width: 25%;
+    width: 21%;
     height: 96%;
     margin: 15px;
     overflow: scroll;

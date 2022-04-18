@@ -1,3 +1,4 @@
+console.log("작동중")
 //--> 처음 실행시 주변 자전거샵 위치 표시해주기
 var datas = null;
 setTimeout(function() {
@@ -81,6 +82,9 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places();
+
+// 지도 타입 변경 컨트롤을 생성한다
+var mapTypeControl = new kakao.maps.MapTypeControl();
 
 // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
@@ -190,10 +194,8 @@ function getListItem(index, places) {
 	}
 
 	itemStr += ' <span class="tel">' + places.phone + '</span>' + '</div>';
-
 	el.innerHTML = itemStr;
 	el.className = 'item';
-
 	return el;
 }
 
@@ -479,14 +481,14 @@ function searchCourse(preference, routeNo) {
 			var courseDataParse = JSON.parse(courseData);//입력받은 String값을 json Data로 파싱
 			var course = courseDataParse.routes;
 
-			distances[routeNo] = course[0].summary.distance.toFixed(2);
-			$("#routeDistance" + routeNo).html(distances[routeNo] + "km");
-			durationes[routeNo] = (course[0].summary.duration / 60 / 60).toFixed(0) + "시간 " + (course[0].summary.duration % 60).toFixed(0) + "분";//초를 분단위로 변환
-			$("#routeDuration" + routeNo).html(durationes[routeNo]);
-			ascents[routeNo] = course[0].summary.ascent;
-			$("#routeAscent" + routeNo).html(ascents[routeNo] + "m");
-			descents[routeNo] = course[0].summary.descent;
-			$("#routeDescent" + routeNo).html(descents[routeNo] + "m");
+			distances[routeNo]=course[0].summary.distance.toFixed(2);
+			$("#routeDistance"+routeNo).html(distances[routeNo]+"km");
+			durationes[routeNo]=(course[0].summary.duration/60/60).toFixed(0)+"시간 "+(course[0].summary.duration%60).toFixed(0)+"분";//초를 분단위로 변환
+			$("#routeDuration"+routeNo).html(durationes[routeNo]);
+			ascents[routeNo]=course[0].summary.ascent;
+			$("#routeAscent"+routeNo).html(ascents[routeNo]+"m");
+			descents[routeNo]=course[0].summary.descent;
+			$("#routeDescent"+routeNo).html(descents[routeNo]+"m");
 
 			//console.log(preference+"의 총거리" + distances[routeNo]);
 			//console.log(preference+"의 소요시간" + durationes[routeNo]);
@@ -495,14 +497,14 @@ function searchCourse(preference, routeNo) {
 
 			//Geomery값 추출
 			points = decodeGeometry(course[0].geometry, true);
-			allPoints[routeNo] = [];//경로 데이터 전달을 위한 경로 데이터 배열 저장
-			allPoints[routeNo] = points;
 
+			allPoints[routeNo]=[];//경로 데이터 전달을 위한 경로 데이터 배열 저장
+			allPoints[routeNo]=points;
 			chartLabel = [];
 			chartData = [];
 			//고도값 정제
 			for (var i = 0; i < points.length; i++) {
-				chartLabel.push('"' + points[i][0] + ',' + points[i][1] + '"');
+				chartLabel.push("'" + points[i][0] + "," + points[i][1] + "'");
 				chartData.push(points[i][2]);
 			}
 			var myChart;
@@ -510,7 +512,6 @@ function searchCourse(preference, routeNo) {
 			plot(chartLabel, chartData, routeNo);
 
 			//경로 생성
-
 			setCourseLine(points, preference, routeNo);
 
 			geocodes[routeNo] = course[0].geometry;
@@ -612,8 +613,8 @@ function plot(chartLabel, chartData, routeNo) {
 	removeChart(routeNo);
 
 	if(routeNo==0){
-		charBorderColor="rgba(238, 99, 174, 1)";
-		charBackgroundColor="rgba(238, 99, 174, 0.5)";
+		charBorderColor="rgba(0, 206, 125, 1)";
+		charBackgroundColor="rgba(0, 206, 125, 0.5)";
 		chartLabel0=chartLabel;
 		chartData0=chartData;
 	}else if(routeNo==1){
@@ -622,8 +623,8 @@ function plot(chartLabel, chartData, routeNo) {
 		chartLabel1=chartLabel;
 		chartData1=chartData;
 	}else if(routeNo==2){
-		charBorderColor="rgba(0, 206, 125, 1)";
-		charBackgroundColor="rgba(0, 206, 125, 0.5)";
+		charBorderColor="rgba(238, 99, 174, 1)";
+		charBackgroundColor="rgba(238, 99, 174, 0.5)";
 		chartLabel2=chartLabel;
 		chartData2=chartData;
 
@@ -729,7 +730,9 @@ function setCourseLine(points, preference, routeNo) {
 		polyline0.setPath(linepath0);
 		polyline0.setMap(map);
 		chartLabelChoiced = chartLabel0;
-		chartDataChoiced = chartData0;
+
+	 	chartDataChoiced = chartData0;
+	 	pointsChoiced = allPoints[routeNo];
 	} else if (routeNo == 1) {
 		$.each(points, function(index, v) {
 			var p = new kakao.maps.LatLng(v[0], v[1]);
@@ -744,7 +747,8 @@ function setCourseLine(points, preference, routeNo) {
 		polyline1.setPath(linepath1);
 		polyline1.setMap(map);
 		chartLabelChoiced = chartLabel1;
-		chartDataChoiced = chartData1;
+	 	chartDataChoiced = chartData1;
+	 	pointsChoiced = allPoints[routeNo];
 	} else if (routeNo == 2) {
 		$.each(points, function(index, v) {
 			var p = new kakao.maps.LatLng(v[0], v[1]);
@@ -759,7 +763,8 @@ function setCourseLine(points, preference, routeNo) {
 		polyline2.setPath(linepath2);
 		polyline2.setMap(map);
 		chartLabelChoiced = chartLabel2;
-		chartDataChoiced = chartData2;
+	 	chartDataChoiced = chartData2;
+	 	pointsChoiced = allPoints[routeNo];
 	}
 }
 
@@ -954,108 +959,55 @@ function removeAllMarkers() {//출발지, 도착지, 경유지의 모든 마커�
 //========================================> 마커 생성/삭제 관련 end <=============================================
 //===================================> 코스 정보 표시 및 라이딩 개설 관련 Start <=====================================
 
-var waypointNames = "";
-var linePathChoiced = [];
+var waypointNames=[];
+var linePathChoiced=[];
 var chartLabelChoiced;
 var chartDataChoiced;
-function setWaypointNames() {
+
+function setWaypointNames(){
 	for (var i = 0; i < $(".waypoints").children().length; i++) {
 		if ($("input[name=pointCoordinate]").eq(i).val()) {
-			//console.log(i);
-			waypointNames = $("input[name=pointName]").eq(i).val();
-			//console.log(waypointNames);
+			waypointNames[i]=$("input[id=pointName]").eq(i).val()
 		}
 	}
 }
-function ridingDataSend(routeNo, frm) {
+
+function ridingDataSend(routeNo,frm){
+	var position = map.getCenter();
+	var level = map.getLevel();
+	var markerPoditions=[];
+	markerPoditions.push($("#startCoordinate").val());
+	markerPoditions.push($("#endCoordinate").val());
+	for (var i = 0; i < $(".waypoints").children().length; i++) {
+		if ($("input[name=pointCoordinate]").eq(i).val()) {
+			markerPoditions.push($("input[name=pointCoordinate]").eq(i).val());
+		}
+	}
 	setCourseLine();
 	setWaypointNames();
+	console.log("경유지 확인"+waypointNames);
 	setTimeout(function() {
-		var url = "riding/ridingWriteData";
-		var sendDataSum = {};
-		sendDataSum.startPointName = document.getElementById("startPoint").value;
-		sendDataSum.endpointName = document.getElementById("endPoint").value;
-		sendDataSum.waypointName = "경유지 이름들 이게 늘어나면 어떻게 되나!!!!";
+		var sendDataSum={};		
+		sendDataSum.startPointName=document.getElementById("startPoint").value;
+		sendDataSum.endPointName =  document.getElementById("endPoint").value;
+		sendDataSum.wayPointNames = waypointNames;
 		sendDataSum.courseDistance = document.getElementById("routeDistance" + routeNo).innerText;
-		sendDataSum.courseDuration = document.getElementById("routeDuration" + routeNo).innerText;
-		sendDataSum.courseAscent = document.getElementById("routeAscent" + routeNo).innerText;
-		sendDataSum.courseDescent = document.getElementById("routeDescent" + routeNo).innerText;
-		sendDataSum.linePathChoiced = linePathChoiced;
-		sendDataSum.courseChartLabel = chartLabelChoiced;
-		sendDataSum.courseChartData = chartDataChoiced;
-
+		sendDataSum.courseDuration= document.getElementById("routeDuration" + routeNo).innerText;
+		sendDataSum.courseAscent= document.getElementById("routeAscent" + routeNo).innerText;
+		sendDataSum.courseDescent= document.getElementById("routeDescent" + routeNo).innerText;
+		sendDataSum.pointsChoiced= pointsChoiced;
+		sendDataSum.position = position;
+		sendDataSum.level = level;
+		sendDataSum.markerPoditions = markerPoditions;
+		
+		
 		var sendDatajson = JSON.stringify(sendDataSum);
-
+		$("textarea[name=courseSendData]").val(sendDatajson);
+		$("#courseSendDataFrm").submit();
+		
 		console.log(sendDatajson);
 
-		$.ajax({
-			url: url,
-			type: "POST",
-			contentType: "application/json; charset=utf-8",
-			data: sendDatajson,
-			success: function(result) {
-				//1. 문자열을 json으로 변환 JSON.stringify(문자열);
-				return true;
-			}, error: function(request, status, error) {
-				console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
-			}
-		});
 	}, 300);
 }
+
 //====================================> 코스 정보 표시 및 라이딩 개설 관련 End <======================================
-
-//====================================>  지도 썸네일 이미지 생성 Start <======================================
-var polyTest = [];
-var linepathTest = [];
-//지도 썸네일 생성
-function generateThumbnail(polyTest, linepathTest) {
-	var container = document.getElementById("ridingMap01");
-
-	var options = {
-		center: map.getCenter(), //추후 map.getCenter()로 변경
-		draggable: false,
-		level: map.getLevel() + 3,
-		disableDoubleClick: false,
-		disableDoubleClickZoom: false,
-		scrollwheel: false,
-	};
-
-	var mapThumbnail = new kakao.maps.Map(container, options);
-	var polylineThumbnail = polyTest;
-
-	polylineThumbnail.setOptions({
-		strokeColor: "#ee63ae",
-		strokeOpacity: 0.8,
-	});
-	var startImageSrc = '/images/course/startPin.png'; // 출발지 마커이미지의 주소입니다
-	var endImageSrc = '/images/course/endPin.png'; // 도착지 마커이미지의 주소입니다 
-
-	imageSize = new kakao.maps.Size(46, 46), // 마커이미지의 크기입니다
-		imageOption = { offset: new kakao.maps.Point(21, 50) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-	// 출발지 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-	var startMarkerImage = new kakao.maps.MarkerImage(startImageSrc, imageSize, imageOption),
-		startMarkerPosition = linepathTest[0]; // 출발지마커가 표시될 위치입니다
-
-	// 도착지 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-	var endMarkerImage = new kakao.maps.MarkerImage(endImageSrc, imageSize, imageOption),
-		endMarkerPosition = linepathTest[linepathTest.length - 1]; // 도착지 마커가 표시될 위치입니다
-
-	// 출발지 마커를 생성합니다
-	var startMarker = new kakao.maps.Marker({
-		position: startMarkerPosition,
-		image: startMarkerImage // 마커이미지 설정 
-	});
-	// 도착지 마커를 생성합니다
-	var endMarker = new kakao.maps.Marker({
-		position: endMarkerPosition,
-		image: endMarkerImage // 마커이미지 설정 
-	});
-
-	// 마커가 지도 위에 표시되도록 설정합니다
-	startMarker.setMap(mapThumbnail);
-	endMarker.setMap(mapThumbnail);
-	polylineThumbnail.setMap(mapThumbnail);
-}
-
-//====================================> 지도 썸네일 이미지 생성 End <======================================

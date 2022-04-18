@@ -1,27 +1,25 @@
 package com.yosi.myapp.riding;
 
 import java.nio.charset.Charset;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import com.mysql.cj.Session;
+
 import com.yosi.myapp.PagingVO;
 
 @RestController
@@ -30,7 +28,6 @@ public class RidingController {
 	RidingService RidingService;
 	@Inject
 	RidingService service;
-	
 	
 	/*
 	 * @Inject RidingReplyService replyService;
@@ -53,7 +50,7 @@ public class RidingController {
 	@GetMapping("/riding/myRidingList")
 	public ModelAndView myRidingList(RidingVO vo, HttpSession session) {
 		vo.setNickname((String)session.getAttribute("nickName"));
-		System.out.println(vo.getNickname());
+		//System.out.println(vo.getNickname());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("myRidingJoinList", service.myRidingJoinList(vo));
 		mav.addObject("myRidingEndList", service.myRidingEndList(vo));
@@ -63,13 +60,24 @@ public class RidingController {
 	}
 	
 	@GetMapping("/riding/ridingWrite")
-	public ModelAndView ridingWrite(PagingVO pVO) {
+	public ModelAndView ridingWrite(RidingVO rVO) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("lst", service.ridingList(pVO));
+		//System.out.println("데이터 잘 넘어왔어요..."+rVO.getStartPointName());	
+		mav.addObject("rVO", rVO );
 		mav.setViewName("riding/ridingWrite");
 		return mav;
 	}
 	
+	@PostMapping("/riding/ridingWrite")
+	public ModelAndView ridingWritepost(RidingVO rVO) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("데이터 잘 넘어왔어요+++"+(rVO.getCourseSendData().length()));	
+		//JSONObject courseResiveData = new JSONObject(rVO.getCourseSendData());
+		mav.addObject("rVO", rVO );
+		mav.setViewName("riding/ridingWrite");
+		return mav;
+	}
+   	
 	@PostMapping("/riding/ridingWriteOk")
     public ResponseEntity<String> ridingWriteOk(RidingVO vo, HttpServletRequest request){
 		vo.setNickname((String)request.getSession().getAttribute("nickName"));
@@ -225,7 +233,7 @@ public class RidingController {
 	//글 수정
 	@GetMapping("/riding/ridingEdit")
 	public ModelAndView ridingEdit(int ridingNo, RidingVO vo) {
-
+		System.out.println(ridingNo);
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("lst2", service.ridingMemberShow(ridingNo));
 		mav.addObject("vo", service.ridingSelect(ridingNo));

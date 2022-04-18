@@ -24,8 +24,6 @@ public class RidingVO {
 	private String applicantNickName;
 	private int applicantCnt;
 	
-	
-	
 	public int getApplicantCnt() {
 		return applicantCnt;
 	}
@@ -62,6 +60,7 @@ public class RidingVO {
 	public void setRidingStartMember(String ridingStartMember) {
 		this.ridingStartMember = ridingStartMember;
 	}
+	
 	public int getRidingCount() {
 		return ridingCount;
 	}

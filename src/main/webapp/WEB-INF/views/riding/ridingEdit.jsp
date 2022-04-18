@@ -43,7 +43,6 @@
 			location.href = "/riding/ridingStateOk?ridingNo=${vo.ridingNo}";
 		}
 	}	
-	
 </script>
 <main>
 <div class="ridingViewContainer">

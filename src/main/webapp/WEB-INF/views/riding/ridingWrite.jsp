@@ -41,8 +41,8 @@
 
          <h2>코스</h2>
          <li>
-            <button type="button" id="bestCourseBtn">추천 코스</button>
-             <button type="button" id="newCourseBtn">코스 생성하기</button>
+        	<button type="button" id="bestCourseBtn">추천 코스</button>
+         	<button type="button" id="newCourseBtn">코스 생성하기</button>
          </li>
          <li style="height:800px;">
          <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>

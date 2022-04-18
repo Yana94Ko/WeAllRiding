@@ -338,7 +338,3 @@ function displayOverlay(marker,places) {
 function closeOverlay() {
 	overlay.setMap(null);
 }
-
-    
-
-
