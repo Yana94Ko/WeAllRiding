@@ -2,9 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <link rel = "stylesheet" href="/css/admin/adminMain.css" type="text/css"/>
+<link rel="stylesheet" href="/css/statistics/statistics.css" type="text/css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- 탭메뉴 바꾸기 -->
+
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +15,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Tables</title>
+<title>WeAllRiding Admin</title>
 
 <!-- Custom fonts for this template -->
 <link href="${url}/css/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -59,6 +62,7 @@
             관리자
         </div>
 
+
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -70,9 +74,9 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">관리자 메뉴</h6>
                     <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
-                    <a class="collapse-item" href="${url}/adminComty">커뮤니티 관리</a>
-                    <a class="collapse-item" href="${url}/adminCourse">추천경로 관리</a>
-                    <a class="collapse-item" href="${url}/adminRiding">라이딩 관리</a>
+                    <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
+                    <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
+                    <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                     <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                 </div>
             </div>
@@ -80,7 +84,7 @@
 
         <!-- 통계 -->
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="${url}/admin/adminMain">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>통계</span></a>
         </li>
@@ -103,10 +107,10 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">회원 이용 메뉴</h6>
-                    <a class="collapse-item" href="${url}/comty/comtyList">코스</a>
+                    <a class="collapse-item" href="${url}#">코스</a>
                     <a class="collapse-item" href="${url}/register.html">라이딩</a>
                     <a class="collapse-item" href="${url}/admin/adminShop">장비샵</a>
-                    <a class="collapse-item" href="${url}/forgot-password.html">커뮤니티</a>
+                    <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
                     <a class="collapse-item" href="${url}/forgot-password.html">이상형 월드컵</a>
                     <div class="collapse-divider"></div>
 <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
@@ -116,12 +120,6 @@
             </div>
         </li>
 
-        <!-- 사이드 테이블 -->
-        <li class="nav-item active">
-            <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
-        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -290,50 +288,30 @@
                 </ul>
 
             </nav>
-            <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                    For more information about DataTables, please visit the <a target="_blank"
-                                                                               href="https://datatables.net">official DataTables documentation</a>.</p>
+                <h1 class="h3 mb-2 text-gray-800">통계</h1>
+                <p class="mb-4">회원 성별 통계와 이용자의 연령대 분포를 확인할 수 있습니다.</p>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">통계 그래프</h6>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>이름</th>
-                                    <th>이메일</th>
-                                    <th>아이디</th>
-                                    <th>비밀번호</th>
-                                    <th>회원가입일</th>
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>이름</th>
-                                    <th>이메일</th>
-                                    <th>아이디</th>
-                                    <th>비밀번호</th>
-                                    <th>회원가입일</th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                <tr>
-                                    <td></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <main>
+                            <div class="statisticsContainer">
+                                <div id="gender">
+                                    <canvas id="genderChart" width="400px" height="400px"></canvas>
+                                </div>
+                                <div id="age">
+                                    <canvas id="ageChart" width="400px" height="400px"></canvas>
+                                </div>
+                            </div>
+                        </main>
                     </div>
                 </div>
 

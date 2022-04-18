@@ -13,9 +13,12 @@
     </insert>
     <!-- 관리자 페이지 회원 목록 -->
     <select id = "memberList" resultType="com.yosi.myapp.member.MemberVO">
-        SELECT userId, userpwd, username, useremail, joindate FROM member
-        ORDER BY joinDate ASC
-        LIMIT 0, 10
+        SELECT userId, userPwd, userName, userEmail, joinDate FROM member
+        <if test = 'searchWord != null'>
+            WHERE ${searchKey} like '%${searchWord}%'
+        </if>
+        ORDER BY joinDate DESC
+        LIMIT ${onePageRecord} OFFSET ${offsetIndex}
     </select>
     <!-- 관리자 페이지 회원 목록 페이지 수 -->
     <select id="totalRecord" resultType="int">
@@ -26,14 +29,13 @@
     </select>
     <!-- 관리자 페이지 회원정보 수정 및 정리 -->
     <update id="AdminUpdate">
-        UPDATE member
-        SET *
-        WHERE userId = #{userId}
+        update member set nickname=#{nickname}, userEmail=#{userEmail}, userPwd=#{userPwd}, userTel=#{userTel}, userEmail=#{userEmail}, birth=#{birth}, suspendDate=#{suspendDate}
+        where userId=#{userId}
     </update>
     <!--관리자 페이지 회원정보 상세보기 -->
     <select id = "AdminView" resultType="com.yosi.myapp.member.MemberVO">
-        SELECT *  FROM member
-        ORDER BY joinDate ASC
+        SELECT userId, userPwd, userName, userTel, birth, nickname, userEmail, suspendDate FROM member
+        where userId=#{userId}
     </select>
     <!-- 관리자 페이지 회원 삭제 -->
     <delete id="AdminDelete">

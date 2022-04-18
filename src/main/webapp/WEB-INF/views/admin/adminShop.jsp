@@ -4,8 +4,6 @@
 <link rel = "stylesheet" href="/css/admin/adminMain.css" type="text/css"/>
 <link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
 <link rel="icon" href="${url}/images/icon.png" type="image/x-icon">
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- 탭메뉴 바꾸기 -->
@@ -74,17 +72,17 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
-                        <a class="collapse-item" href="${url}/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/adminCourse">추천경로 관리</a>
-                        <a class="collapse-item" href="${url}/adminRiding">라이딩 관리</a>
-                        <a class="collapse-item" href="${url}/adminShop">정비샵 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                     </div>
                 </div>
             </li>
 
             <!-- 통계 -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="${url}/admin/adminMain">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>통계</span></a>
             </li>
@@ -107,10 +105,10 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">회원 이용 메뉴</h6>
-                        <a class="collapse-item" href="${url}/comty/comtyList">코스</a>
+                        <a class="collapse-item" href="${url}#">코스</a>
                         <a class="collapse-item" href="${url}/register.html">라이딩</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">장비샵</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">커뮤니티</a>
+                        <a class="collapse-item" href="${url}/forgot-password.html">정비샵</a>
+                        <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
                         <a class="collapse-item" href="${url}/forgot-password.html">이상형 월드컵</a>
                         <div class="collapse-divider"></div>
                         <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
@@ -298,7 +296,6 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- 회원관리 설명 -->
                     <h1 class="h3 mb-2 text-gray-800">정비샵 관리</h1>
                     <p class="mb-4">정비샵 관리 페이지입니다. 매장 정보를 수정 또는 삭제할 수 있고, 매장 정보를 조회할 수 있습니다.</p>
@@ -435,11 +432,6 @@
     <!-- Page level plugins -->
     <script src="${url}/css/admin/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
     <!-- Page level custom scripts -->
     <script src="${url}js/admin/js/demo/datatables-demo.js"></script>
-
-
-
-
 </main>

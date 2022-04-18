@@ -58,6 +58,5 @@ function MemberDelete(){
                 alert(res);
                 alert("에러 발생. 운영자에게 문의해주세요")
             })
-
     }
 }

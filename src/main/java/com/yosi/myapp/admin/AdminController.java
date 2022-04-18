@@ -22,6 +22,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+
+import javax.inject.Inject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import java.util.List;
 
 
@@ -36,60 +45,68 @@ public class AdminController {
 	@Autowired
 	ShopService shopService;
 
-	//기능 : Console 창에 해당 로그가 찍힌다. 따라서 프로그램이 오류 발생 시 어디서 어떤 이유로 오류가 발생하는지 알 수 있어 이슈 처리가 용이하다.
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
-	// 관리자 페이지에 가져올 데이터
+	// 관리자 메인 페이지
 	@GetMapping("adminMain")
-	public ModelAndView adminMain(aMemberPagingVO mVO) {
-		ModelAndView pag = new ModelAndView();
+	public String adminMain(Model model) {
 
-		//회원 목록 가져오기
-		mVO.setTotalRecord(memberService.totalRecord(mVO));
-		pag.addObject("memberList", memberService.memberList(mVO));
-		pag.addObject("mVO", mVO);
+		model.addAttribute("adminMain", model);
 
-
-		//커뮤니티 목록 가져오기
-		aMemberPagingVO cVO = new aMemberPagingVO();
-		cVO.setTotalRecord(comtyService.totalRecord(new PagingVO()));
-		pag.addObject("cVO", cVO);
-		pag.addObject("comtyList", comtyService.comtyList());
-
-
-		pag.setViewName("admin/adminMain");
-		return pag;
+		return("admin/adminMain");
 	}
 
+	// 관리자 회원관리 페이지
 	@GetMapping("adminMember")
-	public String adminMember(Model model, aMemberPagingVO mVO) {
-		model.addAttribute("adminMemer", memberService.memberList(mVO));
-		return "admin/adminMember";
+	public ModelAndView memberList(Model model, aMemberPagingVO mVO) {
+		ModelAndView mav = new ModelAndView();
+
+		mVO.setTotalRecord(memberService.totalRecord(mVO));
+
+		mav.addObject("memberList", memberService.memberList(mVO));
+		mav.addObject("mVO", mVO);
+
+		mav.setViewName("admin/adminMember");
+		return mav;
 	}
-	//해당페이지 회원정보 가져오기
-	@RequestMapping("memberPage")
-	@ResponseBody
-	public List<MemberVO> memberPage(aMemberPagingVO mVO){
-		System.out.println(mVO.getPageNum());
-		return memberService.memberList(mVO);
+	//관리자 페이지 회원정보 상세보기
+	@RequestMapping("adminMember")
+	public ModelAndView AdminView(@RequestParam String userId) {
+		System.out.println(userId);
+		MemberVO vo = memberService.AdminView(userId);
+		if (vo.getSuspendDate()!=null) {
+			LocalDateTime d = LocalDateTime.parse(vo.getSuspendDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+			vo.setSuspendDate(d.toString());
+		}
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("av", vo);
+		mav.setViewName("admin/adminMember");
+		return mav;
+	}
+
+	// 관리자 커뮤니티관리 페이지
+	@GetMapping("adminComty")
+	public ModelAndView allSelect(PagingVO pVO) {
+		ModelAndView mav = new ModelAndView();
+
+		pVO.setTotalRecord(comtyService.totalRecord(pVO));
+
+		mav.addObject("lst", comtyService.allSelect(pVO));
+		mav.addObject("pVO", pVO);
+
+		mav.setViewName("admin/adminComty");
+		return mav;
 	}
 
 	//관리자 페이지 회원정보 수정
-	@RequestMapping(value="admin/adminMain/", method = RequestMethod.POST)
+	@RequestMapping(value="adminMemberEdit", method = RequestMethod.POST)
 	public String AdminUpdate(MemberVO vo) throws Exception {
+		if(vo.getSuspendDate().equals("")){
+			vo.setSuspendDate(null);
+		}
 		memberService.AdminUpdate(vo);
-		return "redirect:/admin/adminMain";
+		return "redirect:/admin/adminMember";
 	}
 
-	//관리자 페이지 회원정보 상세보기
-	@GetMapping("adminView")
-	public String AdminView(String userId, Model model) {
-		model.addAttribute("AdminView", memberService.AdminView(userId));
-		//콘솔에 어떤 아이디인지 출력
-		logger.info("클릭한 아이디 : "+userId);
-		return "adminMember";
-	}
-	
 	@GetMapping("adminShop")
 	public ModelAndView AdminShop(ShopPagingVO sPVO) {
 		ModelAndView mav = new ModelAndView();
@@ -101,5 +118,5 @@ public class AdminController {
 		mav.setViewName("admin/adminShop");
 		return mav;
 	}
-	
+
 }

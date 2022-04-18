@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <link rel = "stylesheet" href="/css/admin/adminMain.css" type="text/css"/>
+<link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
+<link rel="icon" href="${url}/images/icon.png" type="image/x-icon">
 
-
+<script scr="${url}js/admin/adminMember.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- 탭메뉴 바꾸기 -->
@@ -14,7 +16,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Tables</title>
+<title>WeAllRiding Admin</title>
 
 <!-- Custom fonts for this template -->
 <link href="${url}/css/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -72,9 +74,9 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
-                        <a class="collapse-item" href="${url}/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/adminCourse">추천경로 관리</a>
-                        <a class="collapse-item" href="${url}/adminRiding">라이딩 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                     </div>
                 </div>
@@ -82,7 +84,7 @@
 
             <!-- 통계 -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="${url}/admin/adminMain">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>통계</span></a>
             </li>
@@ -105,10 +107,10 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">회원 이용 메뉴</h6>
-                        <a class="collapse-item" href="${url}/comty/comtyList">코스</a>
+                        <a class="collapse-item" href="${url}#">코스</a>
                         <a class="collapse-item" href="${url}/register.html">라이딩</a>
                         <a class="collapse-item" href="${url}/forgot-password.html">장비샵</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">커뮤니티</a>
+                        <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
                         <a class="collapse-item" href="${url}/forgot-password.html">이상형 월드컵</a>
                         <div class="collapse-divider"></div>
                         <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
@@ -318,33 +320,127 @@
                                         <th>회원가입일</th>
                                     </tr>
                                     </thead>
-                                    <c:forEach var="mVO" items="${adminMemer}">
+                                    <c:forEach var="Lst" items="${memberList}">
                                         <tr>
-                                            <td>${mVO.userName}</td>
-                                            <td>${mVO.userEmail}</td>
-                                            <td>${mVO.userId}</td>
-                                            <td>${mVO.userPwd}</td>
-                                            <td>${mVO.joinDate}</td>
+                                            <td>${Lst.userName}</td>
+                                            <td>${Lst.userEmail}</td>
+                                            <td><a data-toggle="modal" href="#memberDeleteModal" >${Lst.userId}</a></td>
+                                            <td>${Lst.userPwd}</td>
+                                            <td>${Lst.joinDate}</td>
                                         </tr>
                                     </c:forEach>
                                 </table>
                                 <nav aria-label="Page navigation example">
-                                    <ul class="paging">
+                                    <ul class="pagination">
                                         <li class="page-item">
+                                            <c:if test="${mVO.pageNum==1}">
                                             <a class="page-link" href="#" aria-label="Previous">
                                                 <span aria-hidden="true">&laquo;</span>
                                             </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
+                                            </c:if>
+                                            <c:if test="${mVO.pageNum>1}">
+                                        <li>
+                                            <a class="page-link" aria-label="Previous" href="${url}/admin/adminMember?pageNum=${mVO.pageNum-1}<c:if test='${mVO.searchWord != null}'>&searchKey=${mVO.searchKey }&searchWord=${mVO.searchWord }</c:if>">
+                                                <span aria-hidden="true">&laquo;</span>
                                             </a>
                                         </li>
+                                        </c:if>
+                                        </li>
+                                        <!--  페이지 번호                 1,5      6,10         11,15-->
+                                        <c:forEach var="p" begin="${mVO.startPage}"
+                                                   end="${mVO.startPage+mVO.onePageCount-1}">
+                                            <!--  총 페이지수보다 출력할 페이지번호가 작을때 -->
+                                            <c:if test="${p <= mVO.totalPage}">
+                                                <c:if test="${p == mVO.pageNum}">
+                                                    <li class="page-item">
+                                                </c:if>
+                                                <c:if test="${p != mVO.pageNum}">
+                                                    <li class="page-item">
+                                                </c:if>
+                                                <a class="page-link" href="${url}/admin/adminMember?pageNum=${p}<c:if test='${mVO.searchWord != null}'>&searchKey=${mVO.searchKey }&searchWord=${mVO.searchWord }</c:if>">
+                                                        ${p}
+                                                </a>
+                                                </li>
+                                            </c:if>
+                                        </c:forEach>
+                                        <c:if test="${mVO.pageNum==mVO.totalPage}">
+                                            <li class="page-item">
+                                                <a class="page-link" aria-label="Next" href="#">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${mVO.pageNum<mVO.totalPage}">
+                                            <li class="page-item">
+                                                <a class="page-link" aria-label="Next" href="${url}/admin/adminMember?pageNum=${mVO.pageNum+1}<c:if test='${mVO.searchWord != null}'>&searchKey=${mVO.searchKey }&searchWord=${mVO.searchWord }</c:if>">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </c:if>
                                     </ul>
                                 </nav>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="memberDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="">회원 상세정보</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form name="form1" method="post" action="/admin/adminMemberEdit">
+                                                    <table border="1">
+                                                        <table border="1">
+                                                            <tr>
+                                                                <td>아이디</td>
+                                                                <td><input name="userId" id="userId" value="${av.userId}" readonly="readonly"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>비밀번호</td>
+                                                                <td><input type="password" id="userPwd" value="${av.userPwd}" name="userPwd"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>이름</td>
+                                                                <td><input name="userName" value="${av.userName}"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>닉네임</td>
+                                                                <td><input type="text" name="nickname" value="${av.nickname}"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>연락처</td>
+                                                                <td><input name="userTel1" value="${av.userTel1}" readonly="readonly"></td>
+                                                                <td><input name="userTel2" value="${av.userTel2}" readonly="readonly"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>이메일</td>
+                                                                <td><input type="text" name="userEmail" value="${av.userEmail}"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>생년월일</td>
+                                                                <td><input type="date" name="birth" value="${av.birth}"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>회원정지일</td>
+                                                                <td><input type="datetime-local" name="suspendDate" value="${av.suspendDate}"></td>
+                                                            </tr>
+                                                        </table>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" onclick="MemberDelete()" class="btn btn-primary">삭제하기</button>
+                                                <button type="submit" class="btn btn-primary">수정하기</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -402,7 +498,7 @@
 
     <!-- Page level plugins -->
     <script src="${url}/css/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="${url}css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="${url}js/admin/js/demo/datatables-demo.js"></script>
