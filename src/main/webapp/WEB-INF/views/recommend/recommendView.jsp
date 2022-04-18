@@ -98,8 +98,7 @@
 				<li>prev</li>
 			</c:if>
 			<c:if test="${rPVO.pageNum>1}">
-				<li><a
-					href="${url}/recommendView?pageNum=${rPVO.pageNum-1}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">prev</a></li>
+				<li><a href="${url}/recommendView?pageNum=${rPVO.pageNum-1}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">prev</a></li>
 			</c:if>
 			<!--  페이지 번호                 1,5      6,10         11,15-->
 			<c:forEach var="p" begin="${rPVO.startPage}"

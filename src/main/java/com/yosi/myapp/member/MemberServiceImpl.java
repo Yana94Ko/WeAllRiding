@@ -1,5 +1,6 @@
 package com.yosi.myapp.member;
 
+import com.yosi.myapp.aMemberPagingVO;
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
@@ -9,12 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+
+
 import java.util.Map;
+
 
 @Service
 public class MemberServiceImpl implements MemberService {
     @Autowired
     MemberDAO dao;
+
 
     @Override
     public MemberVO loginCheck(MemberVO vo) {
@@ -39,8 +45,26 @@ public class MemberServiceImpl implements MemberService {
 
     // 관리자 페이지 회원 목록
     @Override
-    public List<MemberVO> memberList() {
-        return dao.memberList();
+    public List<MemberVO> memberList(aMemberPagingVO mVO) {
+        return dao.memberList(mVO);
+    }
+    public int totalRecord(aMemberPagingVO mVO) { return dao.totalRecord(mVO); }
+
+    //관리자 페이지 회원수정 및 정지
+    @Override
+    public void AdminUpdate(MemberVO vo) throws Exception {
+        dao.AdminUpdate(vo);
+    }
+
+    //관리자 페이지 회원정보 상세보기
+    @Override
+    public MemberVO AdminView(String userId) {
+        return dao.AdminView(userId);
+    }
+    //관리자 페이지 회원 삭제
+    @Override
+    public void AdminDelete(String userId) {
+
     }
 
     @Override

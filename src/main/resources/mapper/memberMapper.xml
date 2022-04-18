@@ -11,21 +11,35 @@
         insert into member(userId, userPwd, userName, userTel, userEmail, birth, nickname, gender, experience, bicycleType)
         values(#{userId}, #{userPwd}, #{userName}, #{userTel}, #{userEmail}, #{birth}, #{nickname}, #{gender}, #{experience}, #{bicycleType})
     </insert>
-    <!-- 관리자 메뉴 회원 목록 -->
+    <!-- 관리자 페이지 회원 목록 -->
     <select id = "memberList" resultType="com.yosi.myapp.member.MemberVO">
         SELECT userId, userpwd, username, useremail, joindate FROM member
         ORDER BY joinDate ASC
+        LIMIT 0, 10
     </select>
-    <!-- 회원정보 수정 -->
-    <update id="Update">
-        UPDATE member SET
-        userPwd = #{userPwd},
-        userEmail = #{userEmail},
-        nickname = #{nickname},
-        experience = #{experience},
-        bicycleType = #{bicyleType}
-
+    <!-- 관리자 페이지 회원 목록 페이지 수 -->
+    <select id="totalRecord" resultType="int">
+        select count(joinDate) as cnt from member
+        <if test='searchWord != null'>
+            where ${searchKey} like '%${searchWord}%'
+        </if>
+    </select>
+    <!-- 관리자 페이지 회원정보 수정 및 정리 -->
+    <update id="AdminUpdate">
+        UPDATE member
+        SET *
+        WHERE userId = #{userId}
     </update>
+    <!--관리자 페이지 회원정보 상세보기 -->
+    <select id = "AdminView" resultType="com.yosi.myapp.member.MemberVO">
+        SELECT *  FROM member
+        ORDER BY joinDate ASC
+    </select>
+    <!-- 관리자 페이지 회원 삭제 -->
+    <delete id="AdminDelete">
+        DELETE FROM member
+        WHERE userId = #{userId}
+    </delete>
     <select id="findUserId" resultType="com.yosi.myapp.member.MemberVO">
         select userId from member
         where userName=#{userName} and userTel=#{userTelP}

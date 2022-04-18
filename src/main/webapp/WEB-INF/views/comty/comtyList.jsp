@@ -80,7 +80,7 @@
 				return false;
 			}
 		});
-	}
+	});
 </script>
 
 <!-- parallax START -->

@@ -14,7 +14,8 @@
 <main>
 	<div class="container">  
 	  	<form action="/shopWriteOk" method="post" id="shop">
-			<input type="hidden" id="shopId" name="shopId" value=${shopId}>		
+			<input type="hidden" id="shopId" name="shopId" value=${shopId}>
+			<input type="hidden" id="shopName" name="shopName" value=${shopName}>				
 			<h3>${shopName}</h3>
 			<h4>정비샵 정보를 공유해주세요</h4>
 			<fieldset>

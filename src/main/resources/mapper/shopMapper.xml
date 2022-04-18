@@ -9,15 +9,35 @@
 		WHERE shopId=${param1}
 	</select>
 	<insert id="shopInsert">
-		INSERT INTO shop(shopId, shopInfo, shopAuthors)
-		VALUES (#{shopId}, #{shopInfo}, #{shopAuthors});
+		INSERT INTO shop(shopId, shopName, shopInfo, shopAuthors)
+		VALUES (#{shopId}, #{shopName}, #{shopInfo}, #{shopAuthors});
 	</insert>
 	<select id="shopSelect" resultType="ShopVO">
-		SELECT shopId, shopInfo, shopAuthors FROM shop WHERE shopId=${param1}
+		SELECT shopId, shopName, shopInfo, shopAuthors FROM shop WHERE shopId=${param1}
 	</select>
 	<update id="shopUpdate">
 		UPDATE shop SET shopInfo = #{shopInfo}, shopAuthors = #{shopAuthors} 
 		WHERE shopId = #{shopId}
 	</update>
+	<select id="shopList" resultType="ShopVO">
+		select shopId, shopName, shopInfo, shopAuthors
+		from shop
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by shopId desc
+		limit ${onePageRecord} offset ${offsetIndex}
+	</select>
+		<select id="shopAllSelect" resultType="ShopVO">
+		SELECT shopId, shopName, shopInfo, shopAuthors, writedate FROM shop
+		order by shopId desc;
+	</select>
+	<select id="totalRecord" resultType="int">
+		select count(shopId) cnt from shop
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	
 </mapper>
 

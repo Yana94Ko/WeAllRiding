@@ -4,7 +4,6 @@
 <!-- css와 js 적용 -->
 <script src="${url}/js/member/memberFind.js"></script>
 <link rel = "stylesheet" href="/css/member/memberFind.css" type="text/css"/>
-
 <!-- 부트스트랩 사용을 위한 스타일 시트와 스크립트 임포트 -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <script src ="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
