@@ -87,8 +87,8 @@ public class RidingServiceImpl implements RidingService {
 		return dao.ridingReviewWrite(vo);
 	}
 	@Override
-	public List<RidingVO> ridingReviewList(RidingVO vo) {
-		return dao.ridingReviewList(vo);
+	public List<RidingVO> ridingReviewList(int ridingNo) {
+		return dao.ridingReviewList(ridingNo);
 	}
 	
 

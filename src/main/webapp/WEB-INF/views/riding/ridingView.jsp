@@ -24,7 +24,34 @@
 			location.href = "/riding/ridingMemberOk?ridingNo=${vo.ridingNo}";
 		}
 	}
-	
+	// 리뷰---
+	function ridingReviewListAll() { //현재글의 댓글을 모두 가져오기
+		var url = "/riding/ridingReviewList";
+		var params = "ridingNo=${vo.ridingNo}"; // 31번 글이면 no=31이 된다.
+				
+		$.ajax({
+			url : url,
+			data : params,
+			success : function(result) {
+				var $result = $(result); // vo, vo, vo, ,,,
+				var tag = "<ul>";
+				$result.each(function(idx, vo) {
+					tag += "<li><div id='dddd' style='color:black;'><div id='NN'>" + vo.nickname + "</div>";
+					tag += "<br/><div>" + vo.ridingReviewComent + "</div>";
+					tag += "<div id='CRWD' style='color:lightgray;'>" + vo.ridingReviewWriteDate
+							+ "</div></div>";
+					tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
+				});
+				tag += "</ul>";
+				$("#ridingReviewList").html(tag);
+			},
+			error : function(e) {
+				console.log(e.responseText)
+			}
+			
+		});
+	}
+	ridingReviewListAll();	
 	// 댓글----------------
 	function ridingReplyListAll() { //현재글의 댓글을 모두 가져오기
 		var url = "/riding/ridingReplyList";
@@ -255,11 +282,15 @@
 						<button type="button" id="editBtn" onclick="javascript:ridingViewEdit()">글 수정</button>
 					</div>
 				</c:if>
-				<li><input type="text" id="ridingReview"
-					value="후기 자리 (라이딩 신청 멤버만 가능)" /></li>
+				
+				<br><br><br><br><br>
+				<h1>라이딩 후기</h1><hr>
+				<div id="ridingReviewList"></div>
 			</ul>
 		</form>
 		
+		<br><br><br><br><br>
+		<h1>댓글</h1>
 		<!-- 댓글 쓰기 폼 -->
 		<c:if test="${logStatus=='Y' }">
 			<form method='post' id="ridingReplyFrm">
@@ -272,4 +303,5 @@
 		<!-- 댓글목록이 나올 자리 -->
 		<div id="ridingReplyList"></div>
 	</div>
+	<br><br><br><br><br>
 </main>

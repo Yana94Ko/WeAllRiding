@@ -95,5 +95,14 @@
 		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
 	</update>
 	
-
+	<!-- 라이딩 후기 -->
+	<insert id="ridingReviewWrite">
+		insert into ridingReview(ridingNo, nickname, ridingReviewComent)
+		values (#{ridingNo}, #{nickname}, #{ridingReviewComent})
+	</insert>
+	<select id="ridingReviewList" resultType="RidingVO">
+		select ridingReviewNo, nickname, ridingReviewComent, ridingReviewWriteDate from ridingReview
+		where ridingNo=${param1}
+		order by ridingReviewNo desc
+	</select>
 </mapper>

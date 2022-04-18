@@ -31,5 +31,5 @@ public interface RidingService {
 	//후기등록
 	public int ridingReviewWrite(RidingVO vo);
 	//후기목록
-	public List<RidingVO> ridingReviewList(RidingVO vo);
+	public List<RidingVO> ridingReviewList(int ridingNo);
 }

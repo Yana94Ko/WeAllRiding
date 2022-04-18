@@ -261,26 +261,15 @@ public class RidingController {
 		return mav;
 	}
 
-	@PostMapping("/riding/ridingReviewOk")
-	public ResponseEntity<String> ridingReviewOk(RidingVO vo, HttpServletRequest request) {
-		vo.setNickname((String) request.getSession().getAttribute("nickName"));
-		ResponseEntity<String> entity = null;
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
-		try {
-			// 글등록 성공
-			service.ridingReviewWrite(vo);
-
-			// 글 목록으로 이동
-			String msg = "<script>alert('글이 등록되었습니다.');location.href='/riding/ridingList';</script>";
-			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-		} catch (Exception e) {
-			// 글등록 실패
-			e.printStackTrace();
-			// 글 등록 폼으로
-			String msg = "<script>alert('글등록 실패 하였습니다.');history.back();</script>";
-			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
-		}
-		return entity;
+	// 댓글 등록
+	@RequestMapping(value="/riding/ridingReviewWriteOk", method=RequestMethod.POST)
+	public int ridingReviewWriteOk (RidingVO vo, HttpSession session) {
+		vo.setNickname((String)session.getAttribute("nickName"));
+		return service.ridingReviewWrite(vo);
+	}
+	// 댓글목록
+	@RequestMapping("/riding/ridingReviewList")
+	public List<RidingVO> ridingReviewList(int ridingNo) {
+		return service.ridingReviewList(ridingNo);
 	}
 }
