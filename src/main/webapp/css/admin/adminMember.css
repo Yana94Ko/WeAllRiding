@@ -6,17 +6,3 @@ footer {
     display: none;
 }
 
-.paging {
-    margin: 0px auto;
-    padding: 0px 50%;
-    width: 100%;
-    height: 30px;
-}
-
-.paging>li {
-    float: left;
-    width: 30px;
-    text-align: center;
-    color: black;
-
-}

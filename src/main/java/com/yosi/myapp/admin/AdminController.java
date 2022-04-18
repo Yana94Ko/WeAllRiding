@@ -18,7 +18,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import javax.inject.Inject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import java.util.List;
 
 
@@ -33,16 +41,13 @@ public class AdminController {
 
 
 
-	//기능 : Console 창에 해당 로그가 찍힌다. 따라서 프로그램이 오류 발생 시 어디서 어떤 이유로 오류가 발생하는지 알 수 있어 이슈 처리가 용이하다.
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-
 	// 관리자 메인 페이지
 	@GetMapping("adminMain")
 	public String adminMain(Model model) {
 
 		model.addAttribute("adminMain", model);
 
-		return("admin/adminShop");
+		return("admin/adminMain");
 	}
 
 	// 관리자 회원관리 페이지
@@ -55,6 +60,20 @@ public class AdminController {
 		mav.addObject("memberList", memberService.memberList(mVO));
 		mav.addObject("mVO", mVO);
 
+		mav.setViewName("admin/adminMember");
+		return mav;
+	}
+	//관리자 페이지 회원정보 상세보기
+	@RequestMapping("adminMember")
+	public ModelAndView AdminView(@RequestParam String userId) {
+		System.out.println(userId);
+		MemberVO vo = memberService.AdminView(userId);
+		if (vo.getSuspendDate()!=null) {
+			LocalDateTime d = LocalDateTime.parse(vo.getSuspendDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+			vo.setSuspendDate(d.toString());
+		}
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("av", vo);
 		mav.setViewName("admin/adminMember");
 		return mav;
 	}
@@ -74,20 +93,15 @@ public class AdminController {
 	}
 
 	//관리자 페이지 회원정보 수정
-	@RequestMapping(value="admin/adminMain/", method = RequestMethod.POST)
+	@RequestMapping(value="adminMemberEdit", method = RequestMethod.POST)
 	public String AdminUpdate(MemberVO vo) throws Exception {
+		if(vo.getSuspendDate().equals("")){
+			vo.setSuspendDate(null);
+		}
 		memberService.AdminUpdate(vo);
-		return "redirect:/admin/adminMain";
+		return "redirect:/admin/adminMember";
 	}
 
-	//관리자 페이지 회원정보 상세보기
-	@GetMapping("adminView")
-	public String AdminView(String userId, Model model) {
-		model.addAttribute("AdminView", memberService.AdminView(userId));
-		//콘솔에 어떤 아이디인지 출력
-		logger.info("클릭한 아이디 : "+userId);
-		return "adminMember";
-	}
 }
 
 

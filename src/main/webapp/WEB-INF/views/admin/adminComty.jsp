@@ -82,7 +82,7 @@
 
             <!-- 통계 -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="${url}/admin/adminMain">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>통계</span></a>
             </li>

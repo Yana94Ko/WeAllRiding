@@ -8,23 +8,6 @@ public class MemberVO {
     private String userTel1;
     private String userTel2;
     private String userTelP;
-
-    public String getUserTel1() {
-        return userTel1;
-    }
-
-    public void setUserTel1(String userTel1) {
-        this.userTel1 = userTel1;
-    }
-
-    public String getUserTel2() {
-        return userTel2;
-    }
-
-    public void setUserTel2(String userTel2) {
-        this.userTel2 = userTel2;
-    }
-
     private String birth;
     private String nickname;
     private String suspendDate;
@@ -66,12 +49,25 @@ public class MemberVO {
     }
 
     public void setUserTel(String userTel) {
-        String[] telSp = userTel.split("[1-3]",2 ); // 합쳐진 전화번호를 앞의 세자리와 나머지로 자른다
-        userTel1 = telSp[0];
-        userTel2 = telSp[1];
+        userTel1 = userTel.substring(0, 3);
+        userTel2 = userTel.substring(3);
         this.userTel = userTel;
     }
+    public String getUserTel1() {
+        return userTel1;
+    }
 
+    public void setUserTel1(String userTel1) {
+        this.userTel1 = userTel1;
+    }
+
+    public String getUserTel2() {
+        return userTel2;
+    }
+
+    public void setUserTel2(String userTel2) {
+        this.userTel2 = userTel2;
+    }
     public String getBirth() {
         return birth;
     }
