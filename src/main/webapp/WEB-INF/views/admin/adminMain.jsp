@@ -72,10 +72,10 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">관리자 메뉴</h6>
                     <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
-                    <a class="collapse-item" href="${url}/adminComty">커뮤니티 관리</a>
-                    <a class="collapse-item" href="${url}/adminCourse">추천경로 관리</a>
-                    <a class="collapse-item" href="${url}/adminRiding">라이딩 관리</a>
-                    <a class="collapse-item" href="${url}/adminShop">공인샵 관리</a>
+                    <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
+                    <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
+                    <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
+                    <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                 </div>
             </div>
         </li>
@@ -105,10 +105,10 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">회원 이용 메뉴</h6>
-                    <a class="collapse-item" href="${url}/comty/comtyList">코스</a>
+                    <a class="collapse-item" href="${url}#">코스</a>
                     <a class="collapse-item" href="${url}/register.html">라이딩</a>
-                    <a class="collapse-item" href="${url}/forgot-password.html">장비샵</a>
-                    <a class="collapse-item" href="${url}/forgot-password.html">커뮤니티</a>
+                    <a class="collapse-item" href="${url}/forgot-password.html">정비샵</a>
+                    <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
                     <a class="collapse-item" href="${url}/forgot-password.html">이상형 월드컵</a>
                     <div class="collapse-divider"></div>
 <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>

@@ -14,9 +14,12 @@
 
     <!-- 관리자 페이지 회원 목록 -->
     <select id = "memberList" resultType="com.yosi.myapp.member.MemberVO">
-        SELECT userId, userpwd, username, useremail, joindate FROM member
-        ORDER BY joinDate ASC
-        LIMIT 0, 10
+        SELECT userId, userPwd, userName, userEmail, joinDate FROM member
+        <if test = 'searchWord != null'>
+            WHERE ${searchKey} like '%${searchWord}%'
+        </if>
+        ORDER BY joinDate DESC
+        LIMIT ${onePageRecord} OFFSET ${offsetIndex}
     </select>
     <!-- 관리자 페이지 회원 목록 페이지 수 -->
     <select id="totalRecord" resultType="int">

@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<link rel = "stylesheet" href="/css/admin/adminMain.css" type="text/css"/>
+<link rel="stylesheet" href="/css/admin/adminMember.css" type="text/css"/>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -72,10 +72,10 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
-                        <a class="collapse-item" href="${url}/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/adminCourse">추천경로 관리</a>
-                        <a class="collapse-item" href="${url}/adminRiding">라이딩 관리</a>
-                        <a class="collapse-item" href="${url}/adminShop">공인샵 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminShop">공인샵 관리</a>
                     </div>
                 </div>
             </li>
@@ -105,10 +105,10 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">회원 이용 메뉴</h6>
-                        <a class="collapse-item" href="${url}/comty/comtyList">코스</a>
+                        <a class="collapse-item" href="${url}#">코스</a>
                         <a class="collapse-item" href="${url}/register.html">라이딩</a>
                         <a class="collapse-item" href="${url}/forgot-password.html">장비샵</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">커뮤니티</a>
+                        <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
                         <a class="collapse-item" href="${url}/forgot-password.html">이상형 월드컵</a>
                         <div class="collapse-divider"></div>
                         <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
@@ -318,33 +318,56 @@
                                         <th>회원가입일</th>
                                     </tr>
                                     </thead>
-                                    <c:forEach var="mVO" items="${adminMemer}">
+                                    <c:forEach var="Lst" items="${memberList}">
                                         <tr>
-                                            <td>${mVO.userName}</td>
-                                            <td>${mVO.userEmail}</td>
-                                            <td>${mVO.userId}</td>
-                                            <td>${mVO.userPwd}</td>
-                                            <td>${mVO.joinDate}</td>
+                                            <td>${Lst.userName}</td>
+                                            <td>${Lst.userEmail}</td>
+                                            <td>${Lst.userId}</td>
+                                            <td>${Lst.userPwd}</td>
+                                            <td>${Lst.joinDate}</td>
                                         </tr>
                                     </c:forEach>
                                 </table>
-                                <nav aria-label="Page navigation example">
-                                    <ul class="paging">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                                <ul class="paging">
+                                    <!--  이전페이지 -->
+                                    <c:if test="${mVO.pageNum==1}">
+                                        <li>prev</li>
+                                    </c:if>
+                                    <c:if test="${mVO.pageNum>1}">
+                                            <li><a href="/admin/adminMember?pageNum=${mVO.pageNum-1}
+                                        <c:if test='${mVO.searchWord != null}'>
+                                            &searchKey=${mVO.searchKey }
+                                            &searchWord=${mVO.searchWord }
+                                        </c:if>">prev</a></li>
+                                    </c:if>
+                                                    <!--  페이지 번호                 1,5      6,10         11,15-->
+                                                    <c:forEach var="p" begin="${mVO.startPage}"
+                                                               end="${mVO.startPage+mVO.onePageCount-1}">
+                                                        <!-- 총 페이지수보다 출력할 페이지번호가 작을때 -->
+                                                        <c:if test="${p <= mVO.totalPage}">
+                                                            <c:if test="${p == mVO.pageNum}">
+                                                                <li style="background-color: lightgray; height:25px; border-radius: 6px;">
+                                                            </c:if>
+                                                            <c:if test="${p != mVO.pageNum}">
+                                                                <li>
+                                                            </c:if>
+                                                            <a href="/admin/adminMember?pageNum=${p}
+                                        <c:if test='${mVO.searchWord != null}'>
+                                            &searchKey=${mVO.searchKey }
+                                            &searchWord=${mVO.searchWord }</c:if>">${p}</a></li>
+                                        </c:if>
+                                    </c:forEach>
+                                    <c:if test="${mVO.pageNum==mVO.totalPage}">
+                                        <li>next</li>
+                                    </c:if>
+                                    <c:if test="${mVO.pageNum<mVO.totalPage}">
+                                        <li><a href="/admin/adminMember?pageNum=${mVO.pageNum+1}
+                                        <c:if test='${mVO.searchWord != null}'>
+                                            &searchKey=${mVO.searchKey }
+                                            &searchWord=${mVO.searchWord }
+                                        </c:if>">next</a></li>
+                                    </c:if>
+                                </ul>
                             </div>
                         </div>
                     </div>
