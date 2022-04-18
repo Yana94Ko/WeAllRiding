@@ -30,7 +30,6 @@
 
 <div class="ridingContainer">
    <form method="post" action="/riding/ridingWriteOk" id="ridingFrm">
-         <input type="hidden" name="applicantCnt"/>
          <textarea style="display:none" id="courseSendData"name="courseSendData">${rVO.courseSendData}</textarea>
       <ul>
          <h1 style="font-size: 1.3em;">라이딩 개설</h1><br><br>
