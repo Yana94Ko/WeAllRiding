@@ -111,7 +111,7 @@ public class RidingController {
             service.ridingMemberInsert(vo);
             service.ridingMemberUpdate(vo);
             String msg = "<script>";
-            msg += "alert('글이 등록되었습니다');";
+            msg += "alert('신청 되었습니다');";
             msg += "location.href='/riding/ridingList';";
             msg += "</script>";
             entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
@@ -121,7 +121,7 @@ public class RidingController {
 
             // 등록안됨
             String msg = "<script>";
-            msg += "alert('글등록이 실패하였습니다');";
+            msg += "alert('신청 실패하였습니다');";
             msg += "history.back();";
             msg += "</script>";
             entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
@@ -129,33 +129,32 @@ public class RidingController {
 
         return entity;
     }
-	//라이딩 신청 삭제
-	@GetMapping("/riding/ridingMemberDelete")
-	public ResponseEntity<String> ridingMemberDelete(RidingVO vo, HttpServletRequest request) {
+	
+	// 라이딩 신청 삭제
+	@GetMapping("/riding/ridingMemberCan")
+    public ResponseEntity<String> ridingMemberCan(RidingVO vo, HttpServletRequest request) {
         vo.setNickname((String)request.getSession().getAttribute("nickName"));
-        //vo.setRidingNo((int)request.getSession().getAttribute("ridingNo"));
-
-        // DB작업
         ResponseEntity<String> entity = null; // 데이터와 처리상태를 가진다.
-
         HttpHeaders headers = new HttpHeaders();
         ModelAndView mav = new ModelAndView();
         headers.add("Content-Type", "text/html; charset=utf-8");
+		System.out.println("1 "+vo.getRidingNo());
+		System.out.println("1 "+vo.getNickname());
         try {
         	
-            service.ridingMemberDelete(vo);
+            service.ridingStateDel(vo);
             String msg = "<script>";
-            msg += "alert('라이딩 취소 성공');";
-            msg += "history.back();";
+            msg += "alert('신청 취소 성공');";
+            msg += "location.href='/riding/ridingList';";
             msg += "</script>";
             entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 
         } catch (Exception e) {
             e.printStackTrace();
-
-            // 등록안됨
+    		System.out.println(vo.getRidingNo());
+    		System.out.println(vo.getNickname());
             String msg = "<script>";
-            msg += "alert('라이딩 취소 실패');";
+            msg += "alert('신청 취소 실패');";
             msg += "history.back();";
             msg += "</script>";
             entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
@@ -163,6 +162,7 @@ public class RidingController {
 
         return entity;
     }
+	
 	// 승낙
 	@ResponseBody
 	@RequestMapping(value="/riding/ridingStateOk", method = RequestMethod.GET) 
@@ -181,6 +181,38 @@ public class RidingController {
 			System.out.println(e);
 			e.printStackTrace();
 		} 
+		return mav; 
+	}
+	@ResponseBody
+	@RequestMapping(value="/riding/ridingStateDel", method = RequestMethod.GET) 
+	public ModelAndView ridingStateDel(int ridingNo, RidingVO vo) {
+		ModelAndView mav = new ModelAndView(); 
+		mav.addObject(service.ridingSelect(ridingNo));
+
+		System.out.println(vo.getApplicantNickName());
+		System.out.println(vo.getRidingNo());
+		
+		try { 
+			service.ridingStateDel(vo); 
+			
+			mav.setViewName("riding/ridingView"); 
+			mav.addObject(service.ridingStateDel(vo)); 
+		} catch (Exception e) { 
+			System.out.println(e);
+			e.printStackTrace();
+		}
+		return mav; 
+	}
+	@ResponseBody
+	@RequestMapping(value="/riding/ridingStateTest", method = RequestMethod.GET) 
+	public ModelAndView ridingStateTest(int ridingNo, RidingVO vo) {
+		ModelAndView mav = new ModelAndView(); 
+		mav.addObject(service.ridingSelect(ridingNo));
+
+		System.out.println(vo.getApplicantNickName());
+		System.out.println(vo.getRidingNo());
+		
+		
 		return mav; 
 	}
 
@@ -241,7 +273,7 @@ public class RidingController {
 			
 		} else {
 			//삭제 안됨
-			System.out.println("삭제가 안됬어요");
+			System.out.println("삭제가 안됐어요");
 			mav.addObject("ridingNo", ridingNo);
 			mav.setViewName("redirect:ridingView");
 		}

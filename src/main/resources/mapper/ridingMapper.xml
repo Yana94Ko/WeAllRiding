@@ -94,6 +94,8 @@
 		update ridingMember set ridingState=1
 		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
 	</update>
-	
+	<delete id="ridingStateDel">
+		delete from ridingMember where ridingNo=#{ridingNo} and nickname=#{nickname}
+	</delete>
 
 </mapper>
