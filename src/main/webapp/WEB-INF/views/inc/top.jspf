@@ -40,6 +40,9 @@
 			</a>
 			<a href ="${url}/member/logout">로그아웃</a>
 		</c:if>
+		<c:if test="${userId == 'adminTM'}">
+			<a href="${url}/admin">관리자 메뉴</a>
+		</c:if>
 	</div>
 	<nav class='navBar'>
 		<div class='logo'>

@@ -199,7 +199,7 @@ if(!window['idealView']) {
     _O.Html = {
       set() {
         this.setRoundTitle();
-        this.setContent();
+        this.setcontents();
       },
       setHistory() {
         const tObj = document.getElementById('modal');
@@ -260,9 +260,9 @@ if(!window['idealView']) {
         }
         return s;
       },
-      setContent() {
-        const tObj = document.getElementById('content');
-        tObj.className = 'content in_game';
+      setcontents() {
+        const tObj = document.getElementById('contents');
+        tObj.className = 'contents in_game';
         let s = `
           <ul class="list_ideal" id="list_ideal">
           ${this.getItem()}

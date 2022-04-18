@@ -10,50 +10,89 @@ input[type='search']::-webkit-search-cancel-button {-webkit-appearance:none}
 a {color:#333;text-decoration:none}
 a:active, a:hover {text-decoration:none}
 address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
-.soff {display:none;}
-/* content */
-.wrap {max-width:100%; margin:0 auto}
-#roundTitle{
-	font-weight:bold;font-size:2rem;line-height:1.4;
-	position:relative;
-	display:block;
+
+main *{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-.content {margin-bottom:30px; height:600px;}
-.content.default,
-.content.in_game {
+main {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 30px;
+  color: #777;
+  background: #dddddd;
+  width:100%;
+}
+
+.container {
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  line-height: 200px;
+}
+.containerWrap {
+  min-height:800px;
+  height:auto;	
+  background: var(--color-lightGray-1);
+  padding: 25px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.wrap button{
+  font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+}
+.w-btn-outline {
+	width:100px;
+	height:50px;
+}
+
+#cancel{
+	margin:auto auto 0 0 ;
+} 
+#prev{
+	margin: auto 0  0 auto;
+} 
+
+#roundTitle {
+  display: block;
+  font-size: 35px;
+  font-weight: 300;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* content */
+.contents {margin-bottom:30px; height:auto;}
+.contents.default,
+.contents.in_game {
   display:flex;
   justify-content:center;
   align-items:center;
   min-height:300px;
-  background-color:#fff;
+  background:var(--color-lightGray-1);
   border-radius:10px;
   -webkit-border-radius:10px;
 }
 .content.in_game {padding: 30px 0}
-
-#btnGameStart,
-#cancel,
-#prev {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	color: #000000;
-    padding: 8px 20px;
-    margin:0 auto;
-    background:rgba(255, 192, 0, 0.6);
-	border-radius: 10px;
-	border: none;
-	width : 150px;
-	height: 60px;
-}
-
-.list_ideal {display:flex;justify-content:space-evenly;position: relative;
-    top: 100px;}
+.list_ideal {
+	display:flex;justify-content:space-evenly;position: relative;
+    }
 .list_ideal li {
   width:35%;
   position: relative;
   display: -ms-flexbox;
   display: flex;
-  background-color: #fff;
+  background:var(--color-lightGray-1);
   justify-content:space-between;
 }
 .list_ideal li a {display:block;width:100%}
@@ -65,12 +104,48 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
   -webkit-filter: unset;
   filter: unset;
 }
-.list_ideal li span {display:block;overflow:hidden;width:100%;border:1px solid #ddd;border-radius:10px;}
-.list_ideal li span img {width:100%;vertical-align:top}
+.list_ideal li span {text-align: center;height: 500px; line-height:500px; width:100%; display:block;overflow:hidden;border:none;}
+.list_ideal li span img {
+	margin:0 auto;
+	max-width:100%;
+	max-height:100%;
+	vertical-align: middle;
+	border: 1px solid #ddd;
+    border-radius: 10px;
+}
 .list_ideal li strong {display:block;text-align:center}
 .list_ideal li a[hover="true"] strong {text-decoration:underline}
 
+/* button */
 
+
+
+/* footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background:var(--color-lightGray-1);
+}
+
+.soff{display:none;}
+
+footer{
+	height: 120px;
+}
+
+
+/* media */
+@media (max-width:525px){
+  .list_ideal {display:block}
+  .list_ideal li {width:90%;margin:15px auto 0}
+}
+
+
+
+
+#history{
+	display:none;
+}
 #history .tit {margin:10px 0;font-size:18px;font-weight:bold;text-align:center}
 #history #modal {width:100%; height:100%}
 #history .history_box .round {width: 100%;margin-bottom:10px;text-align:center}
@@ -85,18 +160,4 @@ address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 #history img.dim {
   -webkit-filter: grayscale(100%);
   filter: gray;
-}
-/* footer */
-footer {
-  display: flex;
-  justify-content: space-between;
-  background:#fff;
-}
-
-
-
-/* media */
-@media (max-width:525px){
-  .list_ideal {display:block}
-  .list_ideal li {width:90%;margin:15px auto 0}
 }

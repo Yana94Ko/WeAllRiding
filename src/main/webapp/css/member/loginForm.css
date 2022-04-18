@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 main{
-	width:100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,6 +8,7 @@ main{
     background-image: url("/images/home/home_background16.png");
     background-size: cover;
     background-attachment : fixed;
+    padding:0;
 }
 
 .loginForm{

@@ -18,8 +18,8 @@
 
 <main>
 	<!-- 리스트 -->
-	<div id="record-no">게시글 수 : ${rPVO.totalRecord },
-		${rPVO.pageNum}/${rPVO.totalPage}</div>
+<%-- 	<div id="record-no">게시글 수 : ${rPVO.totalRecord },
+		${rPVO.pageNum}/${rPVO.totalPage}</div> --%>
 	<div class="cardWrap">
 		<c:forEach var="recommendVO" items="${list}">
 			<div class="card">

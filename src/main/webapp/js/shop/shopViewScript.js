@@ -289,8 +289,8 @@ function displayOverlay(marker,places) {
 		success:function(result){
 			var shopInfo = result.shopInfo;
 			var shopAuthors= result.shopAuthors;
-			$(".shopInfo").html(shopInfo);
 			if(shopAuthors!=null){
+				$(".shopInfo").html("<span style='color:#000; font-weight:bold;'>정비샵 정보</span><br/>"+"<textarea>"+shopInfo+"</textarea>");
 				$(".shopAuthors").html("작성자 : "+shopAuthors);	
 			}
 		}, error:function(e){
@@ -308,10 +308,10 @@ function displayOverlay(marker,places) {
 		'        </div>' +
 		'        <div class="body">' +
 		'            <div class="desc">' +
-		'                <div class="ellipsis">'+places.road_address_name+'</div>' +
+		'                <div class="ellipsis"><span style="color:#000; font-weight:bold;">주소:</span> '+places.road_address_name+'</div>' +
 		'                <div class="jibun ellipsis">'+places.address_name+'</div>' +
-		'                <div class="tel">' + places.phone + '</div>'+		
-		'                <div class="shopInfo">등록된 정비샵 정보가 없어요</div>'+
+		'                <div class="tel"><span style="color:#000; font-weight:bold;">전화번호: </span> ' + places.phone + '</div>'+		
+		'                <div class="shopInfo"><span style="color:#000; font-weight:bold;">정비샵 정보</span> <br/><textarea>등록된 정비샵 정보가 없어요</textarea></div>'+
 		'                <div class="shopAuthors">정보를 등록해주세요!</div>'+
 		'                <div><a href="/shopCheck?shopId='+places.id+
 													  '&shopName='+places.place_name+

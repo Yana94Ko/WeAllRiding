@@ -2,7 +2,6 @@
 
 /* 사용할 태그 기본값 초기화 */
 div, h1,p, a, i {
-	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
@@ -12,10 +11,14 @@ div, h1,p, a, i {
 
 
 /* -> Card */
+.cardWrap{
+	width:80%;
+	margin: 0 auto;
+}
 /* 카드 박스 부분 */
 .card {
-	height: 450px;
-	width: 45%;  /* 반응형디자인 못 할 경우 min-width로 크기 조절 */
+	height: 600px;
+	width: 48%;  /* 반응형디자인 못 할 경우 min-width로 크기 조절 */
 	border-radius: 15px;
 	display: inline-block;
 	margin-top: 30px;
@@ -25,6 +28,7 @@ div, h1,p, a, i {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
 		rgba(0, 0, 0, 0.19);
 	overflow: hidden;
+	background-color: var(--color-lightGray-1);
 }
 /* 카드 헤더부분(이미지) */
 .cardHeader {
@@ -34,7 +38,7 @@ div, h1,p, a, i {
 	-o-transition: 0.5s; /*오페라*/
 	transition: 0.5s;
 	width: 100%;
-	height: 270px;
+	height: 60%;
 	border-radius: 15px 15px 0 0;
 	background-size: 100% 280px;
 	background-repeat: no-repeat;
@@ -48,7 +52,7 @@ div, h1,p, a, i {
 /* 마우스 올릴 시 높이 낮아짐 */
 .card:hover .cardHeader {
 	opacity: 0.8;
-	height: 100px;
+	height: 30%;
 }
 h1 {
 	font-size: 22px;
@@ -95,7 +99,7 @@ h1 {
 	-ms-transition: .2s ease-in-out; /*익스플로러*/
 	-o-transition: .2s ease-in-out; /*오페라*/
 	overflow: scroll;
-	height: 200px;
+	height: 250px;
 }
 
 .recDiv{

@@ -1,5 +1,4 @@
 // TODO: Activate caret active animation
-
 class CpcNavigation extends React.Component {
   constructor(props) {
     super(props);
@@ -123,11 +122,8 @@ class CpcNavigation extends React.Component {
 
 
   }}
-
-
 // Navigation menu builder
 const menu = {
-
   '코스': {
     'link': '#',
     'icon': 'fas fa-road',
@@ -169,7 +165,7 @@ const menu = {
     
   '이상형 월드컵': {
     'link': '/idealView',
-    'icon': 'fas fa-dice-five' } 
+    'icon': 'fas fa-dice-five' },
     };
 
 

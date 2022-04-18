@@ -1,9 +1,16 @@
 @charset "UTF-8";
 
 main {
-	width:90%;
-	position: relative;
-	height:1100px;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 30px;
+  color: #777;
+  background: #dddddd;
+  width:100%;
+  min-height: 79%;
+  height: 60%;
+  padding: 3% 0 0% 0;
 }
 .map_wrap, .map_wrap * {
 	margin: 0;
@@ -18,16 +25,26 @@ main {
 
 .map_wrap {
 	position: relative;
-	width: 100%;
-	height: 1000px;
+	overflow: hidden;
+	max-width:90%;
+	height:700px;	
+	background: var(--color-lightGray-1);
+	padding: 0;
+	margin: 0 auto;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 /*--> 출발지 도착지 입력 폼*/
 #courseInput {
 	position: absolute;
-	width: 20%;
-	height: 100%;
-	margin: 15px;
+    width: 25%;
+    height: 96%;
+    margin: 15px;
+    overflow: scroll;
+    
+}
+#courseInput::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
 }
 
 #courseInput img {
@@ -75,6 +92,96 @@ main {
 	margin-left:-35px;
 	z-index: 800;
 }
+
+.ridingWriteBtn{
+    color: #6e6e6e;
+	width: 60px;
+    height: 40px;
+    line-height: 10px;
+    font-size: 15px;
+    padding:0;	
+    cursor: pointer;
+    position: relative;
+    left:0;
+    top:0;
+    display: inline-block;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    margin-left: 10px;
+    background:#fff;
+    border: 2px solid #6aafe6;
+    color: #6e6e6e;
+}
+
+.ridingWriteBtn:hover {
+    background-color: #6aafe6;
+    color: #d4dfe6;
+}
+
+
+.w-btn {
+	width: 150px;
+    height: 35px;
+    line-height: 10px;
+    font-size: 15px;
+    padding:0;	
+    cursor: pointer;
+    position: relative;
+    border: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    margin-left: 10px;
+}
+.w-btn-blue {
+    background-color: #6aafe6;
+    color: #d4dfe6;
+}
+
+.w-btn-blue {
+    background-color: #6aafe6;
+    color: aliceblue;
+}
+.w-btn:hover {
+
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.w-btn:active {
+    transform: scale(1.02);
+}
+
+select{
+  -moz-appearance: none;
+-webkit-appearance: none;
+appearance: none;
+font-family: "Noto Sansf KR", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #444;
+  background-color: #fff;
+
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  margin: 0;
+
+  border: 1px solid #aaa;
+  border-radius: 0.5em;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+  width:70px;
+  height:35.7px;
+  margin-right:5px;
+  text-align: center;
+}
+
 div[id^="routeInfo"]{
 	display: none;
 	width: 275px;
@@ -82,6 +189,7 @@ div[id^="routeInfo"]{
 	border: 2px solid #c1c1c1;
 	height: 140px;
 	margin:0 auto;
+	margin-top:10px;
 	text-align: center;
 	overflow: hidden;
 }
@@ -99,7 +207,7 @@ canvas {
 /* 출발지 도착지 입력 폼 <--*/
 
 #map{
-	width:80%;
+	width:87%;
 	height:100%;
 	position:relative; 
 	left : 300px; 
@@ -112,7 +220,7 @@ canvas {
 	top: 0;
 	left: 300px;
 	bottom: 0;
-	width: 250px;
+/* 	width: 300px; */
 	margin: 0;
 	overflow-y: auto;
 	background: rgba(255, 255, 255, 0.7);
