@@ -16,7 +16,14 @@
     <select id = "memberList" resultType="com.yosi.myapp.member.MemberVO">
         SELECT userId, userpwd, username, useremail, joindate FROM member
         ORDER BY joinDate ASC
-        LIMIT 0, 11
+        LIMIT 0, 10
+    </select>
+    <!-- 관리자 페이지 회원 목록 페이지 수 -->
+    <select id="totalRecord" resultType="int">
+        select count(joinDate) as cnt from member
+        <if test='searchWord != null'>
+            where ${searchKey} like '%${searchWord}%'
+        </if>
     </select>
     <!-- 관리자 페이지 회원정보 수정 및 정리 -->
     <update id="AdminUpdate">

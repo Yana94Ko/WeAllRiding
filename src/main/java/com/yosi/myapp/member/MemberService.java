@@ -2,6 +2,9 @@ package com.yosi.myapp.member;
 
 
 
+import com.yosi.myapp.PagingVO;
+import com.yosi.myapp.aMemberPagingVO;
+
 import java.util.List;
 
 
@@ -14,8 +17,8 @@ public interface MemberService {
 
 
     //관리자 페이지 리스트
-    public List<MemberVO> memberList();
-
+    public List<MemberVO> memberList(aMemberPagingVO mVO);
+    public int totalRecord(aMemberPagingVO mVO);
 
     //멤버 관련 메서드
     public MemberVO findUserId(MemberVO vo);

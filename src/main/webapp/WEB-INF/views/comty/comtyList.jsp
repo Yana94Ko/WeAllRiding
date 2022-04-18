@@ -88,7 +88,7 @@
 				return false;
 			}
 		});
-	}
+	});
 </script>
 <main>
 	<div class="comtyContainer">

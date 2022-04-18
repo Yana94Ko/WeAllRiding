@@ -1,7 +1,10 @@
 package com.yosi.myapp.member;
 
+import com.yosi.myapp.aMemberPagingVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+
 
 import java.util.List;
 
@@ -16,7 +19,8 @@ public interface MemberDAO {
 
 
     //관리자 페이지 회원목록
-    public List<MemberVO> memberList();
+    public List<MemberVO> memberList(aMemberPagingVO mVO);
+    public int totalRecord(aMemberPagingVO mVO);
 
     //멤버 관련 메서드
     public MemberVO findUserId(MemberVO vo);

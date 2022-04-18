@@ -1,5 +1,6 @@
 package com.yosi.myapp.member;
 
+import com.yosi.myapp.aMemberPagingVO;
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
@@ -44,9 +45,10 @@ public class MemberServiceImpl implements MemberService {
 
     // 관리자 페이지 회원 목록
     @Override
-    public List<MemberVO> memberList() {
-        return dao.memberList();
+    public List<MemberVO> memberList(aMemberPagingVO mVO) {
+        return dao.memberList(mVO);
     }
+    public int totalRecord(aMemberPagingVO mVO) { return dao.totalRecord(mVO); }
 
     //관리자 페이지 회원수정 및 정지
     @Override
