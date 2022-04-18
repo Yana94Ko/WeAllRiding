@@ -99,6 +99,9 @@
 	<delete id="ridingStateDel">
 		delete from ridingMember where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
 	</delete>
+	<delete id="ridingStateCancle">
+		delete from ridingMember where ridingNo=#{ridingNo} and nickname=#{nickname}
+	</delete>
 	
 
 	<!-- 라이딩 후기 -->
@@ -122,12 +125,12 @@
 		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
 	</update>
 	
-	<update id="ridingApplicantCntUp" parameterType="ridingVO">
-		update ridingBoard set applicantCnt=applicantCnt+1
-		where ridingNo=#{ridingNo} and nickname=#{nickname}
-	</update>
-	<update id="ridingApplicantCntDown" parameterType="ridingVO">
-		update ridingBoard set applicantCnt=applicantCnt-1
-		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
-	</update>
+	 <update id="ridingApplicantCntUp" parameterType="ridingVO">
+      update ridingBoard set applicantCnt= applicantCnt+1
+      where ridingNo=#{ridingNo}
+   </update>
+   <update id="ridingApplicantCntDown" parameterType="ridingVO">
+      update ridingBoard set applicantCnt= applicantCnt-1
+      where ridingNo=#{ridingNo}
+   </update>
 </mapper>

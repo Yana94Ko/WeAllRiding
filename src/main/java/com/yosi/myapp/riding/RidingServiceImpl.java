@@ -117,6 +117,10 @@ public class RidingServiceImpl implements RidingService {
 	public int ridingApplicantCntDown(RidingVO vo) {
 		return dao.ridingApplicantCntDown(vo);
 	}
+	@Override
+	public int ridingStateCancle(RidingVO vo) {
+		return dao.ridingStateCancle(vo);
+	}
 	
 	
 

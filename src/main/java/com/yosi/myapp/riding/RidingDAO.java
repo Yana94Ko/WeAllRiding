@@ -49,4 +49,5 @@ public interface RidingDAO {
 	
 	public int ridingApplicantCntUp(RidingVO vo);
 	public int ridingApplicantCntDown(RidingVO vo);
+	public int ridingStateCancle(RidingVO vo);
 }

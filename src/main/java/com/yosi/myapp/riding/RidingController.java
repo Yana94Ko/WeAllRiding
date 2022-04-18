@@ -141,8 +141,8 @@ public class RidingController {
 		System.out.println("1 "+vo.getRidingNo());
 		System.out.println("1 "+vo.getNickname());
         try {
-        	
-            service.ridingStateDel(vo);
+            service.ridingStateCancle(vo);
+            service.ridingApplicantCntDown(vo);
             String msg = "<script>";
             msg += "alert('신청 취소 성공');";
             msg += "location.href='/riding/ridingList';";
@@ -192,7 +192,6 @@ public class RidingController {
 		System.out.println(vo.getRidingNo());
 		
 		try { 
-			service.ridingApplicantCntDown(vo);
 			service.ridingStateDel(vo);
 			mav.setViewName("riding/ridingView"); 
 		} catch (Exception e) { 
