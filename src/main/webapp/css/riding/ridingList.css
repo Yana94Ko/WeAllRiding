@@ -302,4 +302,103 @@ h1 {
 }
 #mListFirst {
 	background-color: rgba(234, 234, 234);
+<<<<<<< HEAD
+=======
+}
+#eList {
+	overflow: auto;
+}
+#eList>li {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	width: 10%;
+	color: black;
+}
+#eList>li:nth-child(7n+2) {
+	width: 50%;
+	white-space: nowrap; /*줄 안바꿈*/
+	overflow: hidden; /*넘친내용 숨기기*/
+	text-overflow: ellipsis; /*넘침시 ...표시*/
+}
+#eListFirst {
+	background-color: rgba(234, 234, 234);
+}
+#vList {
+	overflow: auto;
+}
+#vList>li {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	width: 10%;
+	color: black;
+}
+#vList>li:nth-child(5n+2) {
+	width: 60%;
+	white-space: nowrap; /*줄 안바꿈*/
+	overflow: hidden; /*넘친내용 숨기기*/
+	text-overflow: ellipsis; /*넘침시 ...표시*/
+}
+#vListFirst {
+	background-color: rgba(234, 234, 234);
+}
+
+#rList {
+	overflow: auto;
+}
+#rList>li {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	width: 10%;
+	color: black;
+}
+#rList>li:nth-child(7n+2) {
+	width: 33%;
+	white-space: nowrap; /*줄 안바꿈*/
+	overflow: hidden; /*넘친내용 숨기기*/
+	text-overflow: ellipsis; /*넘침시 ...표시*/
+}
+
+#rListFirst {
+	background-color: rgba(234, 234, 234);
+}
+#reviewListText {
+	width: 300px;
+	padding: 10px 10px;
+	margin: 5px;
+	border-radius: 6px;
+	border-color: rgba(204, 204, 204);
+	float: left;
+}
+#reviewImg {
+	float: left;
+}
+#reviewTextImg {
+	display: block;
+	width:100%;
+	height:50px;
+}
+#ridingReviewComent {
+	min-height: 400px; 
+	width: 100%;
+	border-radius: 6px;
+	border-color: rgba(204, 204, 204);
+}
+#supportGo {
+	width: 600px;
+	height: 70px;
+	float: right;
+	border-top : none;
+	border-left : none;
+	border-radius: 6px;
+	border-color: rgba(255, 255, 255);
+	background-color: rgba(255, 217, 102);
+	text-align: center;
+	font-size: 1.1em;
+>>>>>>> 2d37f33be5d2c7d5fa89e280663db8fa58bc31f8
 }

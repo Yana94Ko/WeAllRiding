@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+.myRidingContainer {
+	width: 80%;
+	margin: 0 auto;
+	padding: 0 auto;
+	min-height: 1200px;
+	height: 100%;
+}
+.tab {
+	background-color: rgba(239, 239, 239);
+}
+.tablinks {
+	margin: 0 auto;
+	padding: 0 auto;
+	width:32.99%;
+	height:50px;
+	border:none;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.tablinks:hover {
+	color: #fff;
+	background-color: rgba(255, 192, 0);
+}
+
+h3 {
+	font-size: 1.2em;
+}
+
+a.hover{
+	font-weight: bold;
+}
+
+table {
+	border-collapse: collapse;
+	text-align: left;
+	line-height: 1.5;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	margin: 20px 10px;
+}
+
+
+tr  {
+	width: 150px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ddd;
+}
+	
+td {
+	width: 350px;
+	padding: 10px;
+	vertical-align: top;
+	border-bottom: 1px solid #ddd;
+}
+
+#ridingTop {
+	background-color: rgba(225, 240, 253);
+}
+  

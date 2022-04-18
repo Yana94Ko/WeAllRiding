@@ -1,11 +1,8 @@
 package com.yosi.myapp.member;
 
-
 import com.yosi.myapp.PagingVO;
 import com.yosi.myapp.aMemberPagingVO;
-
 import java.util.List;
-
 import java.util.Map;
 
 public interface MemberService {

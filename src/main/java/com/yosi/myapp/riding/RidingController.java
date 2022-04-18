@@ -1,16 +1,18 @@
 package com.yosi.myapp.riding;
 
 import java.nio.charset.Charset;
-
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.mysql.cj.Session;
 import com.yosi.myapp.PagingVO;
 
 @RestController
@@ -99,13 +101,14 @@ public class RidingController {
         ResponseEntity<String> entity = null; // 데이터와 처리상태를 가진다.
 
         HttpHeaders headers = new HttpHeaders();
-
+        ModelAndView mav = new ModelAndView();
         headers.add("Content-Type", "text/html; charset=utf-8");
         try {
+        	
             service.ridingMemberInsert(vo);
             service.ridingMemberUpdate(vo);
             String msg = "<script>";
-            msg += "alert('글이 등록되었습니다');";
+            msg += "alert('신청 되었습니다');";
             msg += "location.href='/riding/ridingList';";
             msg += "</script>";
             entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
@@ -115,7 +118,7 @@ public class RidingController {
 
             // 등록안됨
             String msg = "<script>";
-            msg += "alert('글등록이 실패하였습니다');";
+            msg += "alert('신청 실패하였습니다');";
             msg += "history.back();";
             msg += "</script>";
             entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
@@ -123,6 +126,89 @@ public class RidingController {
 
         return entity;
     }
+	
+	// 라이딩 신청 삭제
+	@GetMapping("/riding/ridingMemberCan")
+    public ResponseEntity<String> ridingMemberCan(RidingVO vo, HttpServletRequest request) {
+        vo.setNickname((String)request.getSession().getAttribute("nickName"));
+        ResponseEntity<String> entity = null; // 데이터와 처리상태를 가진다.
+        HttpHeaders headers = new HttpHeaders();
+        ModelAndView mav = new ModelAndView();
+        headers.add("Content-Type", "text/html; charset=utf-8");
+		System.out.println("1 "+vo.getRidingNo());
+		System.out.println("1 "+vo.getNickname());
+        try {
+            service.ridingStateCancle(vo);
+            service.ridingApplicantCntDown(vo);
+            String msg = "<script>";
+            msg += "alert('신청 취소 성공');";
+            msg += "location.href='/riding/ridingList';";
+            msg += "</script>";
+            entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+    		System.out.println(vo.getRidingNo());
+    		System.out.println(vo.getNickname());
+            String msg = "<script>";
+            msg += "alert('신청 취소 실패');";
+            msg += "history.back();";
+            msg += "</script>";
+            entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
+        }
+
+        return entity;
+    }
+	
+	// 승낙
+	@ResponseBody
+	@RequestMapping(value="/riding/ridingStateOk", method = RequestMethod.GET) 
+	public ModelAndView ridingStateOk(int ridingNo, RidingVO vo) { 
+		ModelAndView mav = new ModelAndView(); 
+		mav.addObject(service.ridingSelect(ridingNo));
+		System.out.println(vo.getApplicantNickName());
+		System.out.println(vo.getRidingNo());
+		
+		try { 
+			mav.addObject(service.ridingStateUpdate(vo)); 
+			service.ridingApplicantCntUp(vo);
+			mav.setViewName("riding/ridingView"); 
+		} catch (Exception e) { 
+			System.out.println(e);
+			e.printStackTrace();
+		} 
+		return mav; 
+	}
+	@ResponseBody
+	@RequestMapping(value="/riding/ridingStateDel", method = RequestMethod.GET) 
+	public ModelAndView ridingStateDel(int ridingNo, RidingVO vo) {
+		ModelAndView mav = new ModelAndView(); 
+		mav.addObject(service.ridingSelect(ridingNo));
+
+		System.out.println(vo.getApplicantNickName());
+		System.out.println(vo.getRidingNo());
+		
+		try { 
+			service.ridingStateDel(vo);
+			mav.setViewName("riding/ridingView"); 
+		} catch (Exception e) { 
+			System.out.println(e);
+			e.printStackTrace();
+		}
+		return mav; 
+	}
+	@ResponseBody
+	@RequestMapping(value="/riding/ridingStateTest", method = RequestMethod.GET) 
+	public ModelAndView ridingStateTest(int ridingNo, RidingVO vo) {
+		ModelAndView mav = new ModelAndView(); 
+		mav.addObject(service.ridingSelect(ridingNo));
+
+		System.out.println(vo.getApplicantNickName());
+		System.out.println(vo.getRidingNo());
+		
+		
+		return mav; 
+	}
 	
 	//글 보기
 	@GetMapping("/riding/ridingView")
@@ -137,14 +223,14 @@ public class RidingController {
     }
 	
 	//글 수정
-	@GetMapping("/ridingEdit")
-	public ModelAndView ridingEdit(int ridingNo) {
-		System.out.println(ridingNo);
-		System.out.println("ridingEdit");
+	@GetMapping("/riding/ridingEdit")
+	public ModelAndView ridingEdit(int ridingNo, RidingVO vo) {
+
 		ModelAndView mav = new ModelAndView();
-		 mav.addObject("vo", service.ridingSelect(ridingNo));
-		 mav.setViewName("riding/ridingEdit");
-		 return mav;
+		mav.addObject("lst2", service.ridingMemberShow(ridingNo));
+		mav.addObject("vo", service.ridingSelect(ridingNo));
+		mav.setViewName("riding/ridingEdit");
+		return mav;
 	}
 	
 	@PostMapping("/riding/ridingEditOk")
@@ -169,7 +255,7 @@ public class RidingController {
 				
 	}
 	// 글 삭제
-	@GetMapping("/ridingDel")
+	@GetMapping("/riding/ridingDel")
 	public ModelAndView ridingDel(int ridingNo, HttpSession session, ModelAndView mav) {
 		String nickname = (String)session.getAttribute("nickName");
 		int result = service.ridingDelete(ridingNo, nickname);
@@ -179,12 +265,73 @@ public class RidingController {
 			
 		} else {
 			//삭제 안됨
-			System.out.println("삭제가 안됬어요");
+			System.out.println("삭제가 안됐어요");
 			mav.addObject("ridingNo", ridingNo);
 			mav.setViewName("redirect:ridingView");
 		}
 		
 		return mav;
+	}
+	// 라이딩 후기
+	// 글 보기
+	@GetMapping("/riding/ridingReview")
+	public ModelAndView ridingReview(int ridingNo) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("vo", service.ridingSelect(ridingNo));
+		mav.addObject("lst2", service.ridingMemberShow(ridingNo));
+		mav.setViewName("riding/ridingReview");
+		return mav;
+	}
+
+	// 댓글 등록
+	@RequestMapping(value="/riding/ridingReviewWriteOk", method=RequestMethod.POST)
+	public int ridingReviewWriteOk (RidingVO vo, HttpSession session) {
+		System.out.println(vo.getRidingReviewComent());
+		vo.setNickname((String)session.getAttribute("nickName"));
+		return service.ridingReviewWrite(vo);
+	}
+	// 댓글목록
+	@RequestMapping("/riding/ridingReviewList")
+	public List<RidingVO> ridingReviewList(int ridingNo) {
+		return service.ridingReviewList(ridingNo);
+	}
+		
+		
+		
+	// 승낙
+	@ResponseBody
+	@RequestMapping(value="/riding/ridingScoreUpOk", method = RequestMethod.GET) 
+	public String ridingScoreUpOk(int ridingNo, RidingVO vo) { 
+		service.ridingSelect(ridingNo);
+		System.out.println(vo.getApplicantNickName());
+		System.out.println(vo.getUserScore());
+		
+		try { 
+			service.ridingScoreUp(vo);
+			
+		} catch (Exception e) { 
+			System.out.println(e);
+			e.printStackTrace();
+		} 
+		return "완료"; 
+	}
+	
+	// 승낙
+	@ResponseBody
+	@RequestMapping(value="/riding/ridingScoreDownOk", method = RequestMethod.GET) 
+	public String ridingScoreDownOk(int ridingNo, RidingVO vo) { 
+		service.ridingSelect(ridingNo);
+		System.out.println(vo.getApplicantNickName());
+		System.out.println(vo.getUserScore());
+		
+		try { 
+			service.ridingScoreDown(vo);
+			
+		} catch (Exception e) { 
+			System.out.println(e);
+			e.printStackTrace();
+		} 
+		return "완료"; 
 	}
 	
 }
