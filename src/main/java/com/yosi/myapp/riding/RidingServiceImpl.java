@@ -90,6 +90,14 @@ public class RidingServiceImpl implements RidingService {
 	public List<RidingVO> ridingReviewList(int ridingNo) {
 		return dao.ridingReviewList(ridingNo);
 	}
+	@Override
+	public int ridingScoreUp(RidingVO vo) {
+		return dao.ridingScoreUp(vo);
+	}
+	@Override
+	public int ridingScoreDown(RidingVO vo) {
+		return dao.ridingScoreDown(vo);
+	}
 	
 
 }

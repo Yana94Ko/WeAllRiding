@@ -272,4 +272,39 @@ public class RidingController {
 	public List<RidingVO> ridingReviewList(int ridingNo) {
 		return service.ridingReviewList(ridingNo);
 	}
+	// 승낙
+	@ResponseBody
+	@RequestMapping(value="/riding/ridingScoreUpOk", method = RequestMethod.GET) 
+	public String ridingScoreUpOk(int ridingNo, RidingVO vo) { 
+		service.ridingSelect(ridingNo);
+		System.out.println(vo.getApplicantNickName());
+		System.out.println(vo.getUserScore());
+		
+		try { 
+			service.ridingScoreUp(vo);
+			
+		} catch (Exception e) { 
+			System.out.println(e);
+			e.printStackTrace();
+		} 
+		return "완료"; 
+	}
+	// 승낙
+	@ResponseBody
+	@RequestMapping(value="/riding/ridingScoreDownOk", method = RequestMethod.GET) 
+	public String ridingScoreDownOk(int ridingNo, RidingVO vo) { 
+		service.ridingSelect(ridingNo);
+		System.out.println(vo.getApplicantNickName());
+		System.out.println(vo.getUserScore());
+		
+		try { 
+			service.ridingScoreDown(vo);
+			
+		} catch (Exception e) { 
+			System.out.println(e);
+			e.printStackTrace();
+		} 
+		return "완료"; 
+	}
+	
 }

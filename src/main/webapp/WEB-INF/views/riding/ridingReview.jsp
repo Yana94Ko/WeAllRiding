@@ -28,7 +28,27 @@
 			});
 		}
 	}
-
+	/* 
+	function userScoreUp() {
+		event.preventDefault();
+		confirm("유저를 칭찬합니다");
+		$("#reviewImg1").on("click", function(event) {
+			var applicantNickName = $('input[name=applicantNickName]').val($(this).prev().val());
+			
+			$.ajax({
+				url : "/riding/ridingScoreOk?ridingNo=${vo.ridingNo}", 
+				type : "GET", 
+				data : applicantNickName, 
+				dataType: 'JSON', 
+				success : function(data){
+					alert(data);
+				},error : function(e){
+		               console.log(e.responseText);
+	            }
+			});
+		});
+	}
+ */
 </script>
 
 <main>
@@ -75,13 +95,52 @@
 				<c:forEach var="vo" items="${lst2 }">
 					<div id="reviewTextImg">
 						<input type="text" value="${vo.nickname }" id="reviewListText" readonly/>
-						<img src="../../images/웃는이모티콘.png" id="reviewImg">
-						<img src="../../images/우는이모티콘.png" id="reviewImg">
+						<img src="../../images/웃는이모티콘.png" class="reviewImg1">
+						<img src="../../images/우는이모티콘.png" class="reviewImg2">
 					</div>
 				</c:forEach>		
-	
-		
 			</ul>
+			
+			<script>
+					$(".reviewImg1").on("click", function(event) {
+						confirm("좋았어요!");
+						console.log("들어오는")
+						var applicantNickName = $('input[name=applicantNickName]').val($(this).prev().val());
+						
+						$.ajax({
+							url : "/riding/ridingScoreUpOk?ridingNo=${vo.ridingNo}", 
+							type : "GET", 
+							data : applicantNickName, 
+							dataType: 'JSON', 
+							success : function(data){
+								this.next().style("display:none");
+							},error : function(e){
+								console.log(e.responseText);
+							}
+						});
+					});
+					$(".reviewImg2").on("click", function(event) {
+						confirm("아쉬웠어요!");
+						console.log("들어오는")
+						var applicantNickName = $('input[name=applicantNickName]').val($(this).prev().prev().val());
+						
+						$.ajax({
+							url : "/riding/ridingScoreDownOk?ridingNo=${vo.ridingNo}", 
+							type : "GET", 
+							data : applicantNickName, 
+							dataType: 'JSON', 
+							success : function(data){
+								this.next().style("display:none");
+							},error : function(e){
+								console.log(e.responseText);
+							}
+						});
+					});
+				</script>		
+				<form id="nicknameTest">
+		         	<input type="text" name="applicantNickName" id="applicantNickName" >
+		         </form>
+			
 			<br><br><br>
 			<h3 style="font-size:1.2em;">라이딩 후기</h3> <br>
 			<li>

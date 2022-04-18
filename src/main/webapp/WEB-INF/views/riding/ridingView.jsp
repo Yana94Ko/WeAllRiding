@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
+
 <link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
 <script type="text/javascript">
@@ -260,8 +264,8 @@
 							},error : function(e){
 					               console.log(e.responseText);
 				            }
-							});
 						});
+					});
 				</script>
 				<form id="nicknameTest">
 		         	<input type="text" name="applicantNickName" id="applicantNickName" >
@@ -284,8 +288,10 @@
 				</c:if>
 				
 				<br><br><br><br><br>
-				<h1>라이딩 후기</h1><hr>
-				<div id="ridingReviewList"></div>
+				<c:if test="${vo.endDate < today }">
+					<h1>라이딩 후기</h1><hr>
+					<div id="ridingReviewList"></div>
+				</c:if>
 			</ul>
 		</form>
 		

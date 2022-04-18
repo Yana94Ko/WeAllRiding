@@ -105,4 +105,12 @@
 		where ridingNo=${param1}
 		order by ridingReviewNo desc
 	</select>
+	<update id="ridingScoreUp" parameterType="ridingVO">
+		update ridingMember set userScore=userScore+1
+		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
+	</update>
+	<update id="ridingScoreDown" parameterType="ridingVO">
+		update ridingMember set userScore=userScore-1
+		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
+	</update>
 </mapper>

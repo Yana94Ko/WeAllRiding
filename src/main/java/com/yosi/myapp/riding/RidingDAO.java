@@ -38,4 +38,8 @@ public interface RidingDAO {
 	//후기목록
 	public List<RidingVO> ridingReviewList(int ridingNo);
 	
+	//유저평가
+	public int ridingScoreUp(RidingVO vo);
+	public int ridingScoreDown(RidingVO vo);
+	
 }
