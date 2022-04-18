@@ -9,9 +9,23 @@
 	<!-- Pavicon -->
 	<link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
 	<link rel="stylesheet" href="${url}/css/topBottomStyle.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<script src="https://www.google.com/jsapi"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <%--ajax 라이브러리 추가 (Tom)--%>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="${url}/js/topBottomScript.js"></script>
+	
+	<!-- 네비바  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<script src="https://kit.fontawesome.com/1628c03f6a.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="${url}/css/home/navStyle.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+		
+	<!-- jquery cdn url -->
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!-- HomeBackground를 위한 parallax 플러그인 cdn url -->
+	<script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
 	</head>
 <body>
 <header>
@@ -26,35 +40,27 @@
 			</a>
 			<a href ="${url}/member/logout">로그아웃</a>
 		</c:if>
+		<c:if test="${userId == 'adminTM'}">
+			<a href="${url}/admin/adminMain">관리자 메뉴</a>
+		</c:if>
 	</div>
-	<nav class='nav'>
+	<nav class='navBar'>
 		<div class='logo'>
 			<a href="${url}/">
 				<img src="${url}/images/logo.png"/>
 			</a>
 		</div>
+
 		<div class='mainMenu'>
-			<ul>
-				<li onmouseenter="topMenuOver(1)" onmouseleave="topMenuOut(1)">코스
-					<ul id="topMenu1">
-						<li><a href="${url}/course/">추천 코스</a></li>
-						<li><a href="${url}/courseCreate">코스 만들기</a></li>
-					</ul>	
-				</li>
-				<li onmouseenter="topMenuOver(2)" onmouseleave="topMenuOut(2)">라이딩
-					<ul id="topMenu2">
-						<li><a href="${url}/riding/">라이딩 리스트</a></li>
-						<li><a href="${url}/riding/">my 라이딩</a></li>
-					</ul>
-				</li>	
-				<li><a href="${url}/shopView">정비샵</a></li>
-				<li><a href="${url}/comty/comtyList">커뮤니티</a></li>
-				<c:if test="${userId == 'adminTM'}">
-					<li><a href="${url}/admin/adminMain">관리자</a></li>
-				</c:if>
-				<c:if test="${logStatus =='N'}">
-				</c:if>
-			</ul>
+			<div id="app"></div>
 		</div>
+		<!-- 네비바 start -->
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/react/16.9.0/umd/react.production.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.production.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
+		<script  src="${url}/js/home/navScript.js"></script>
+		<!-- 네비바 end -->
 	</nav>
 </header>
+
+		 

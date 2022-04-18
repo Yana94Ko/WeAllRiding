@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <style>
 .comtyContainer{
 	width: 80%;
@@ -10,7 +9,6 @@
 	width: 99%;
 	height: 30px;
 }
-
 #comtyFrm li {
 	margin: 0px;
 	padding: 10px 5px;
@@ -32,7 +30,6 @@
 					height: '400px'
 				}
 		);
-
 		$("#comtyFrm").submit(function() {
 			if ($("#comtySubject").val() == '') {
 				alert("글 제목을 입력하세요");
@@ -45,6 +42,17 @@
 		});
 	});
 </script>
+<!-- parallax START -->
+<div class="home">
+	<div class="homeBackground parallaxWindow" data-parallax="scroll"
+		data-image-src="${url}/images/home/home_background13.png"></div>
+	<!-- 배경 이미지 -->
+	<div class="homeContent">
+		<div class="homeTitle">커뮤니티 글 수정</div>
+		<!-- 페이지 타이틀 -->
+	</div>
+</div>
+<!-- parallax END -->
 <main>
 <div class="comtyContainer">
 	<form method="post" action="/comty/comtyEditOk" id="comtyFrm">

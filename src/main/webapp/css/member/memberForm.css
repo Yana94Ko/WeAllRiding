@@ -1,19 +1,26 @@
 main{
+    width:100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 180vh;
-    background-image: url("/images/memberFromBackground.jpg");
-    background-position: top;
+    height: 100%;
+    background-image: url("/images/home/home_background16.png");
+    background-size: cover;
+    background-attachment : fixed;
+    padding:0;
 }
 
 .memberForm{
     width: 700px;
-    height: 640px;
+    height: 900px;
+    padding: 20px;
+    padding-left: 40px;
     align-items: center;
-    margin-top: 10px;
+    margin:0 auto;
+    background-color:rgba(255,255,255,0.6); 
+    position : relative;
+    top:100px;
     border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .memberForm h1{
@@ -80,7 +87,7 @@ main{
 .userTel1{
     position: relative;
     left: 49px;
-    bottom: 110px;
+    bottom: 150px;
 }
 
 .tel{

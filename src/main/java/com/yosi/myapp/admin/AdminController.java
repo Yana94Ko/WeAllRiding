@@ -4,11 +4,15 @@ package com.yosi.myapp.admin;
 
 
 import com.yosi.myapp.PagingVO;
+
 import com.yosi.myapp.aMemberPagingVO;
 import com.yosi.myapp.comty.ComtyService;
 import com.yosi.myapp.member.MemberController;
 import com.yosi.myapp.member.MemberService;
 import com.yosi.myapp.member.MemberVO;
+import com.yosi.myapp.shop.ShopPagingVO;
+import com.yosi.myapp.shop.ShopService;
+import com.yosi.myapp.shop.ShopVO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +42,8 @@ public class AdminController {
 	MemberService memberService;
 	@Autowired
 	ComtyService comtyService;
-
+	@Autowired
+	ShopService shopService;
 
 
 	// 관리자 메인 페이지
@@ -103,6 +108,16 @@ public class AdminController {
 		return "redirect:/admin/adminMember";
 	}
 
+	@GetMapping("adminShop")
+	public ModelAndView AdminShop(ShopPagingVO sPVO) {
+		ModelAndView mav = new ModelAndView();
+		
+		sPVO.setTotalRecord(shopService.totalRecord(sPVO));
+		mav.addObject("list", shopService.shopList(sPVO));
+		mav.addObject("sPVO", sPVO);
+		mav.addObject("shopVO", shopService.shopAllSelect());
+		mav.setViewName("admin/adminShop");
+		return mav;
+	}
+
 }
-
-

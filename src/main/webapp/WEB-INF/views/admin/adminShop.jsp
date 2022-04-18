@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<link rel = "stylesheet" href="/css/admin/adminComty.css" type="text/css"/>
-
-
+<link rel = "stylesheet" href="/css/admin/adminMain.css" type="text/css"/>
+<link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
+<link rel="icon" href="${url}/images/icon.png" type="image/x-icon">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- 탭메뉴 바꾸기 -->
@@ -296,45 +296,84 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <!-- 회원관리 설명 -->
+                    <h1 class="h3 mb-2 text-gray-800">정비샵 관리</h1>
+                    <p class="mb-4">정비샵 관리 페이지입니다. 매장 정보를 수정 또는 삭제할 수 있고, 매장 정보를 조회할 수 있습니다.</p>
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                                                                                   href="https://datatables.net">official DataTables documentation</a>.</p>
-
-                    <!-- DataTales Example -->
+                    <!-- 데이터 테이블 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">정비샵 목록</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>아이디</th>
-                                        <th>비밀번호</th>
-                                        <th>회원가입일</th>
+                                        <th>정비샵ID</th>
+                                        <th>매장명</th>
+                                        <th>매장정보</th>
+                                        <th>작성자</th>
                                     </tr>
                                     </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>아이디</th>
-                                        <th>비밀번호</th>
-                                        <th>회원가입일</th>
-                                    </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    <tr>
-                                        <td></td>
-                                    </tr>
-                                    </tbody>
+                                    <c:forEach var="shopPVO" items="${list}">
+                                        <tr>
+                                            <td>${shopPVO.shopId}</td>
+                                            <td>${shopPVO.shopName}</td><!-- 매장명 db 컬럼 추가 필요  -->
+                                            <td>${shopPVO.shopInfo}</td>
+                                            <td>${shopPVO.shopAuthors}</td>
+                                        </tr>
+                                    </c:forEach>
                                 </table>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                        	<c:if test="${sPVO.pageNum==1}">
+												<a class="page-link" aria-label="Previous">
+                                                	<span aria-hidden="true">&laquo;</span>
+                                            	</a>
+											</c:if>
+                                        	<c:if test="${sPVO.pageNum>1}">
+												<li>
+													<a class="page-link" aria-label="Previous" href="${url}/admin/adminShop?pageNum=${sPVO.pageNum-1}<c:if test='${sPVO.searchWord != null}'>&searchKey=${sPVO.searchKey }&searchWord=${sPVO.searchWord }</c:if>">
+														<span aria-hidden="true">&laquo;</span>
+													</a>
+												</li>
+											</c:if>
+                                        </li>
+                                        <!--  페이지 번호                 1,5      6,10         11,15-->
+										<c:forEach var="p" begin="${sPVO.startPage}"
+											end="${sPVO.startPage+sPVO.onePageCount-1}">
+											<!--  총 페이지수보다 출력할 페이지번호가 작을때 -->
+											<c:if test="${p <= sPVO.totalPage}">
+												<c:if test="${p == sPVO.pageNum}">
+												<li class="page-item">
+												</c:if>
+												<c:if test="${p != sPVO.pageNum}">
+													<li class="page-item">
+												</c:if>
+												<a class="page-link" href="${url}/admin/adminShop?pageNum=${p}<c:if test='${sPVO.searchWord != null}'>&searchKey=${sPVO.searchKey }&searchWord=${sPVO.searchWord }</c:if>">
+													${p}
+												</a>
+												</li>
+											</c:if>
+										</c:forEach>
+										<c:if test="${sPVO.pageNum==sPVO.totalPage}">
+											<li class="page-item">
+												<a class="page-link" aria-label="Next">
+													<span aria-hidden="true">&raquo;</span>
+												</a>
+											</li>
+										</c:if>
+										<c:if test="${sPVO.pageNum<sPVO.totalPage}">
+											<li class="page-item">
+												<a class="page-link" aria-label="Next" href="${url}/admin/adminShop?pageNum=${sPVO.pageNum+1}<c:if test='${sPVO.searchWord != null}'>&searchKey=${sPVO.searchKey }&searchWord=${sPVO.searchWord }</c:if>">
+													<span aria-hidden="true">&raquo;</span>
+												</a>
+											</li>
+										</c:if>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
@@ -392,9 +431,7 @@
 
     <!-- Page level plugins -->
     <script src="${url}/css/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="${url}css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
+    <script src="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
     <script src="${url}js/admin/js/demo/datatables-demo.js"></script>
-
 </main>

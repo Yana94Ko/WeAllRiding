@@ -6,7 +6,8 @@ public class ComtyVO {
 	private String comtySubject;
 	private String comtyWriteDate;
 	private String comtyContent;
-	private int comtyHit;
+	private int comtyHit;	
+
 	public int getComtyNo() {
 		return comtyNo;
 	}

@@ -36,7 +36,6 @@ dependencies {
 	//2) artifact : https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
 	implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.9.3'
 
-
 	//3. @Inject 어노테이션 사용하기 위한 javax dependency impl
 	implementation 'javax.inject:javax.inject:1'
 	//4.이메일 발송을 위한 mail 의존성

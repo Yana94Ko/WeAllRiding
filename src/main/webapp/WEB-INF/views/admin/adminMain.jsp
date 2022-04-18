@@ -2,8 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <link rel = "stylesheet" href="/css/admin/adminMain.css" type="text/css"/>
-
-
 <link rel="stylesheet" href="/css/statistics/statistics.css" type="text/css"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -111,7 +109,7 @@
                     <h6 class="collapse-header">회원 이용 메뉴</h6>
                     <a class="collapse-item" href="${url}#">코스</a>
                     <a class="collapse-item" href="${url}/register.html">라이딩</a>
-                    <a class="collapse-item" href="${url}/forgot-password.html">정비샵</a>
+                    <a class="collapse-item" href="${url}/admin/adminShop">장비샵</a>
                     <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
                     <a class="collapse-item" href="${url}/forgot-password.html">이상형 월드컵</a>
                     <div class="collapse-divider"></div>

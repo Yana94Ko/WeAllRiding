@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script src="${url}/js/member/loginForm.js"></script>
 <link rel = "stylesheet" href="/css/member/loginForm.css" type="text/css"/>
 <main>
     <section class="loginForm">
         <div id="log">
-            <h1>WeAllRiding</h1>
+            <h1>로그인</h1>
             <form method="post" action="/member/loginOk" id="logFrm">
                 <div class="input-area">
                     <input type="text" name="userId" id="userId" required/>

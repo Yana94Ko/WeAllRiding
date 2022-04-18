@@ -36,6 +36,6 @@ public class ComtyReplyVO {
 	public void setComtyReplyWriteDate(String comtyReplyWriteDate) {
 		this.comtyReplyWriteDate = comtyReplyWriteDate;
 	}
-	
-	
+
+
 }

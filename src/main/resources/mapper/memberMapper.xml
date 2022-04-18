@@ -11,7 +11,6 @@
         insert into member(userId, userPwd, userName, userTel, userEmail, birth, nickname, gender, experience, bicycleType)
         values(#{userId}, #{userPwd}, #{userName}, #{userTel}, #{userEmail}, #{birth}, #{nickname}, #{gender}, #{experience}, #{bicycleType})
     </insert>
-
     <!-- 관리자 페이지 회원 목록 -->
     <select id = "memberList" resultType="com.yosi.myapp.member.MemberVO">
         SELECT userId, userPwd, userName, userEmail, joinDate FROM member

@@ -8,13 +8,8 @@ import net.nurigo.sdk.message.response.SingleMessageSentResponse;
 import net.nurigo.sdk.message.service.DefaultMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-
-
-
 import java.util.Map;
-
 
 @Service
 public class MemberServiceImpl implements MemberService {

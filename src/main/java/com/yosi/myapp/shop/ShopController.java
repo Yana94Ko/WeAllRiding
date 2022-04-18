@@ -25,13 +25,16 @@ public class ShopController {
 
 	// 정비샵 검색
 	@GetMapping("/shopView")
-	public ModelAndView shopView() {
+	public ModelAndView shopView(ShopPagingVO sPVO) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("shopVO", service.shopSelect(0));
+		mav.addObject("allSelect", service.shopAllSelect());
+		mav.addObject("list", service.shopList(sPVO));
+		mav.addObject("sPVO", sPVO);
 		mav.setViewName("/shop/shopView");
 		return mav;
 	}
-
+	
 	// 정비샵 정보 존재 유무 확인
 	@GetMapping("/shopCheck")
 	public ModelAndView shopCheck(int shopId, String shopName, String shopRoadAddress, String shopPhone)
@@ -63,6 +66,7 @@ public class ShopController {
 		model.addAttribute("shopName", shopName);
 		model.addAttribute("shopRoadAddress", shopRoadAddress);
 		model.addAttribute("shopPhone", shopPhone);
+		
 		mav.setViewName("shop/shopWrite");
 		return mav;
 	}
@@ -71,7 +75,7 @@ public class ShopController {
 	@PostMapping("/shopWriteOk")
 	public ResponseEntity<String> shopWriteOk(ShopVO shopVO, HttpServletRequest request) {
 		shopVO.setShopAuthors((String) request.getSession().getAttribute("nickName"));
-
+		System.out.println(shopVO.getShopAuthors()+shopVO.getShopInfo()+shopVO.getShopId()+shopVO.getShopName());
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
@@ -113,11 +117,11 @@ public class ShopController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
 
-		try {// 정비샵 정보 업데이트 성공
+		try {// 정비샵 정보 업데이트 성공 
 			service.shopUpdate(shopVO);
 			String msg = "<script>alert('정비샵 정보가 수정되었습니다.');location.href='/shopView';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-		} catch (Exception e) {// 정비샵 정보 등록 실패
+		} catch (Exception e) {// 정비샵 정보 등록 실패 
 			e.printStackTrace();
 			String msg = "<script>alert('정비샵 정보 수정에 실패하였습니다.');history.back();</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);

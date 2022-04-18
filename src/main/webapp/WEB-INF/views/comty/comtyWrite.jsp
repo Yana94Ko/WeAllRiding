@@ -50,8 +50,18 @@
 		});
 	});
 </script>
+<!-- parallax START -->
+<div class="home">
+	<div class="homeBackground parallaxWindow" data-parallax="scroll"
+		data-image-src="${url}/images/home/home_background13.png"></div>
+	<!-- 배경 이미지 -->
+	<div class="homeContent">
+		<div class="homeTitle">커뮤니티 글 작성</div>
+		<!-- 페이지 타이틀 -->
+	</div>
+</div>
+<!-- parallax END -->
 <main>
-
 <div class="comtyContainer">
 	<form method="post" action="/comty/comtyWriteOk" id="comtyFrm">
 		<ul>

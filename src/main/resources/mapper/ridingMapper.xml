@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace = "com.yosi.myapp.riding.RidingDAO">
+	<select id="ridingList" resultType="RidingVO">
+		select ridingNo, nickname, ridingKeyword, ridingSubject, 
+		ridingContent, applyUser, courseLevel, maxUser , 
+		startDate, endDate, ridingHit, ridingWriteDate
+		from ridingBoard
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by ridingNo desc
+		limit ${onePageRecord} offset ${offsetIndex}
+	</select>
+	<select id="totalRecord" resultType="int">
+		select count(ridingNo) as cnt from ridingBoard
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+	</select>
+	
+	<!-- myRiding -->
+	<select id="myRidingJoinList" resultType="RidingVO">
+		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit, A.startDate, A.endDate 
+		FROM ridingBoard A
+		INNER JOIN ridingMember B
+		ON A.ridingNo = B.ridingNo WHERE B.nickname=#{nickname};
+	</select>
+	<select id="myRidingEndList" resultType="RidingVO">
+		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit, A.startDate, A.endDate 
+		FROM ridingBoard A
+		INNER JOIN ridingMember B
+		ON A.ridingNo = B.ridingNo WHERE (B.nickname=#{nickname} and now() > A.endDate) or 
+		(A.nickname=#{nickname} and now() > A.endDate);
+	</select>
+	<select id="myRidingMadeList" resultType="RidingVO">
+		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit, A.startDate, A.endDate 
+		FROM ridingBoard A
+		INNER JOIN ridingMember B
+		ON B.nickname=A.nickname WHERE B.nickname=#{nickname};
+	</select>
+	
+	<!-- ridingWrite -->
+	<insert	id="ridingInsert">
+		insert into ridingBoard(nickname, ridingSubject, ridingContent, startDate, endDate, maxUser, applyUser, courseLevel, ridingKeyword, applicantCnt, courseSendData)
+		values(#{nickname}, #{ridingSubject}, #{ridingContent}, #{startDate}, #{endDate}, #{maxUser}, 0 ,#{courseLevel}, #{ridingKeyword},#{applicantCnt}, #{courseSendData})
+	</insert>
+	<update id="cntHit" parameterType="int">
+		update ridingBoard set ridingHit = ridingHit+1 where ridingNo=#{param1}
+	</update>
+	<select id="ridingSelect" resultType="RidingVO">
+		select ridingNo, nickname, ridingSubject, ridingKeyword,
+		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate, 
+		courseLevel, maxUser, applyUser, ridingContent, ridingHit, ridingWriteDate 
+		from ridingBoard where ridingNo=#{param1}
+	</select>
+	<update id="ridingUpdate">
+		update ridingBoard set ridingSubject=#{ridingSubject}, ridingContent=#{ridingContent}, 
+		startDate=#{startDate}, endDate=#{endDate}, maxUser=#{maxUser}, applyUser=#{applyUser}, courseLevel=#{courseLevel}, ridingKeyword=#{ridingKeyword}
+		where ridingNo=#{ridingNo} and nickname=#{nickname}
+	</update>
+	<delete id="ridingDelete">
+		delete from ridingBoard where ridingNo=#{param1} and nickname=#{param2}
+	</delete>
+	
+	<!-- 라이딩 참가 신청 -->
+	<insert id="ridingMemberInsert">
+		insert into ridingMember (ridingNo, nickname) 
+		values(#{ridingNo}, #{nickname})
+	</insert>
+	
+	<!-- 테이블 합치기 -->
+	<update id="ridingMemberUpdate">
+		UPDATE ridingMember rm
+		JOIN member m
+		ON rm.nickname = m.nickName
+		SET rm.gender = m.gender
+		WHERE rm.nickname = m.nickname;
+	</update>
+	
+	<!-- view페이지에 보여주기 -->
+	<select id="ridingMemberShow" resultType="ridingVO">
+		select ridingMemberNo, nickname, gender, ridingCount, userScore
+		from ridingMember where ridingNo=#{ridingNo}
+	</select>
+	<delete id="ridingMemberDelete">
+		delete from ridingMember where ridingNo=#{ridingNo} and nickname=#{nickname}
+	</delete>
+	
+	<!-- ridingMember 승낙시 Update -->
+	<update id="ridingStateUpdate" parameterType="ridingVO">
+		update ridingMember set ridingState=1
+		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
+	</update>
+	<delete id="ridingStateDel">
+		delete from ridingMember where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
+	</delete>
+	<delete id="ridingStateCancle">
+		delete from ridingMember where ridingNo=#{ridingNo} and nickname=#{nickname}
+	</delete>
+	
+
+	<!-- 라이딩 후기 -->
+	<insert id="ridingReviewWrite">
+		insert into ridingReview(ridingNo, nickname, ridingReviewComent)
+		values (#{ridingNo}, #{nickname}, #{ridingReviewComent}) 
+	</insert>
+
+	<select resultType="RidingVO" id="ridingReviewList">
+		select ridingReviewNo, nickname, ridingReviewComent, ridingReviewWriteDate 
+		from ridingReview where ridingNo=${param1}
+		order by ridingReviewNo desc 
+	</select>
+
+	<update id="ridingScoreUp" parameterType="ridingVO">
+		update ridingMember set userScore=userScore+1
+		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
+	</update>
+	<update id="ridingScoreDown" parameterType="ridingVO">
+		update ridingMember set userScore=userScore-1
+		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
+	</update>
+	
+	 <update id="ridingApplicantCntUp" parameterType="ridingVO">
+      update ridingBoard set applicantCnt= applicantCnt+1
+      where ridingNo=#{ridingNo}
+   </update>
+   <update id="ridingApplicantCntDown" parameterType="ridingVO">
+      update ridingBoard set applicantCnt= applicantCnt-1
+      where ridingNo=#{ridingNo}
+   </update>
+</mapper>

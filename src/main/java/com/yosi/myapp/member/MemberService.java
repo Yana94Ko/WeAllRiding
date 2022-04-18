@@ -1,20 +1,14 @@
 package com.yosi.myapp.member;
 
-
-
 import com.yosi.myapp.PagingVO;
 import com.yosi.myapp.aMemberPagingVO;
-
 import java.util.List;
-
-
 import java.util.Map;
 
 public interface MemberService {
     public MemberVO loginCheck(MemberVO vo);
     public int memberInsert(MemberVO vo);
     public void certifiedPhone(String userTel, int randomNumber);
-
 
     //관리자 페이지 리스트
     public List<MemberVO> memberList(aMemberPagingVO mVO);

@@ -1,23 +1,28 @@
 @charset "UTF-8";
 
 main{
+	width:100%;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url("/images/loginFormBackground.png");
-    background-position: bottom;
-    background-position: left;
+    background-image: url("/images/home/home_background16.png");
+    background-size: cover;
+    background-attachment : fixed;
 }
 
-.memberForm{
-    width: 430px;
-    height: 360px;
+.loginForm{
+    width: 600px;
+    height: 500px;
+    padding: 20px;
+    padding-left: 40px;
     align-items: center;
-    margin-top: 150px;
-
+    margin:0 auto;
+    background-color:rgba(255,255,255,0.6); 
+    border-radius: 15px;
+    position : relative;
+	top:400px;
 }
-
 .loginForm h1{
     font-size: 32px;
     color: ivory;
