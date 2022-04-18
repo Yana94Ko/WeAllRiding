@@ -167,5 +167,14 @@ public class RidingVO {
 		this.ridingHit = ridingHit;
 	}
 	
+	//--> course에서 받은 데이터/
+    private String courseSendData;
+    public String getCourseSendData() {
+        return courseSendData;
+    }
+    public void setCourseSendData(String courseSendData) {
+        this.courseSendData = courseSendData;
+    }
+    //course에서 받은 데이터 <--//
 	
 }

@@ -45,8 +45,8 @@
 	
 	<!-- ridingWrite -->
 	<insert	id="ridingInsert">
-		insert into ridingBoard(nickname, ridingSubject, ridingContent, startDate, endDate, maxUser, applyUser, courseLevel, ridingKeyword, applicantCnt)
-		values(#{nickname}, #{ridingSubject}, #{ridingContent}, #{startDate}, #{endDate}, #{maxUser}, 0 ,#{courseLevel}, #{ridingKeyword},#{applicantCnt})
+		insert into ridingBoard(nickname, ridingSubject, ridingContent, startDate, endDate, maxUser, applyUser, courseLevel, ridingKeyword, applicantCnt, courseSendData)
+		values(#{nickname}, #{ridingSubject}, #{ridingContent}, #{startDate}, #{endDate}, #{maxUser}, 0 ,#{courseLevel}, #{ridingKeyword},#{applicantCnt}, #{courseSendData})
 	</insert>
 	<update id="cntHit" parameterType="int">
 		update ridingBoard set ridingHit = ridingHit+1 where ridingNo=#{param1}
@@ -97,7 +97,7 @@
 		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
 	</update>
 	<delete id="ridingStateDel">
-		delete from ridingMember where ridingNo=#{ridingNo} and nickname=#{nickname}
+		delete from ridingMember where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
 	</delete>
 	
 
@@ -123,11 +123,11 @@
 	</update>
 	
 	<update id="ridingApplicantCntUp" parameterType="ridingVO">
-		update ridingBoard set applicantCnt={vo.applicantCnt}+1
+		update ridingBoard set applicantCnt=applicantCnt+1
 		where ridingNo=#{ridingNo} and nickname=#{nickname}
 	</update>
 	<update id="ridingApplicantCntDown" parameterType="ridingVO">
-		update ridingBoard set applicantCnt={vo.applicantCnt}-1
-		where ridingNo=#{ridingNo} and nickname=#{nickname}
+		update ridingBoard set applicantCnt=applicantCnt-1
+		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
 	</update>
 </mapper>

@@ -173,10 +173,9 @@ public class RidingController {
 		System.out.println(vo.getRidingNo());
 		
 		try { 
-			service.ridingStateUpdate(vo); 
+			mav.addObject(service.ridingStateUpdate(vo)); 
 			service.ridingApplicantCntUp(vo);
 			mav.setViewName("riding/ridingView"); 
-			mav.addObject(service.ridingStateUpdate(vo)); 
 		} catch (Exception e) { 
 			System.out.println(e);
 			e.printStackTrace();
@@ -193,10 +192,9 @@ public class RidingController {
 		System.out.println(vo.getRidingNo());
 		
 		try { 
-			service.ridingStateDel(vo); 
 			service.ridingApplicantCntDown(vo);
+			service.ridingStateDel(vo);
 			mav.setViewName("riding/ridingView"); 
-			mav.addObject(service.ridingStateDel(vo)); 
 		} catch (Exception e) { 
 			System.out.println(e);
 			e.printStackTrace();
