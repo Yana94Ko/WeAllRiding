@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
-<script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
+
 <script type="text/javascript">
 	//댓글등록
 	function ridingReviewFrm(){
@@ -12,7 +12,7 @@
 			confirm("후기는 작성 후 수정이 불가하니 신중히 작성해주세요 \n후기를 작성하시겠습니까?");
 			var params = $("#ridingReviewFrm").serialize();
 			$.ajax({
-				url : '/riding/ridingReviewWriteOk',
+				url : '/riding/ridingReviewWriteOk?ridingNo=${vo.ridingNo}',
 				data : params,
 				type : 'POST',
 				success : function() {
@@ -53,7 +53,7 @@
 
 <main>
 	<div class="ridingViewContainer">
-		<form method='post' action="riding/ridingReviewOk" id="ridingReviewFrm">
+		<form method='post'>
 			<ul>
 				<h1 id="ridingViewTitle">라이딩 후기</h1>
 				<br>
@@ -138,7 +138,7 @@
 					});
 				</script>		
 				<form id="nicknameTest">
-		         	<input type="text" name="applicantNickName" id="applicantNickName" >
+		         	<input type="text" name="applicantNickName" id="applicantNickName" style="display:none;" >
 		         </form>
 			
 			<br><br><br>
@@ -146,15 +146,12 @@
 			<li>
 				<form method='post' id="ridingReviewFrm">
 				<input type="hidden" name="ridingNo" value="${vo.ridingNo }" />
-				<textarea name="ridingReviewComent" id="ridingReviewComent"></textarea>
-				<br> <input type="button" value="후기 등록" id="ridingwriteBtn" onclick="ridingReviewFrm()">
+				<textarea name="ridingReviewComent" id="ridingReviewComent" placeholder="라이딩에 대한 후기를 작성해주세요"></textarea>
+				<input type="button" value="후기 등록" id="ridingwriteBtn" onclick="ridingReviewFrm()">
 			</form>
 			</li>
 	         <br>
 		</form>
-		
-         </li>
-		
 	</div>
 	<br><br><br>
 </main>

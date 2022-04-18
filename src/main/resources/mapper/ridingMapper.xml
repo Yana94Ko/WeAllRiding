@@ -94,17 +94,23 @@
 		update ridingMember set ridingState=1
 		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
 	</update>
+	<delete id="ridingStateDel">
+		delete from ridingMember where ridingNo=#{ridingNo} and nickname=#{nickname}
+	</delete>
 	
+
 	<!-- 라이딩 후기 -->
 	<insert id="ridingReviewWrite">
 		insert into ridingReview(ridingNo, nickname, ridingReviewComent)
-		values (#{ridingNo}, #{nickname}, #{ridingReviewComent})
+		values (#{ridingNo}, #{nickname}, #{ridingReviewComent}) 
 	</insert>
-	<select id="ridingReviewList" resultType="RidingVO">
-		select ridingReviewNo, nickname, ridingReviewComent, ridingReviewWriteDate from ridingReview
-		where ridingNo=${param1}
-		order by ridingReviewNo desc
+
+	<select resultType="RidingVO" id="ridingReviewList">
+		select ridingReviewNo, nickname, ridingReviewComent, ridingReviewWriteDate 
+		from ridingReview where ridingNo=${param1}
+		order by ridingReviewNo desc 
 	</select>
+
 	<update id="ridingScoreUp" parameterType="ridingVO">
 		update ridingMember set userScore=userScore+1
 		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}

@@ -56,7 +56,7 @@
          </li>
         
          </li>
-         <br><br><br><br>--%>
+         <br><br><br><br>
          <li id=courseLevel style="color:black">
          <h2>난이도</h2>
          <select id="courseLevelsel" name="courseLevel" class="courseLevelsel" value="${vo.courseLevel }">
