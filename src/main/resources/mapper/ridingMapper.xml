@@ -43,8 +43,8 @@
 	
 	<!-- ridingWrite -->
 	<insert	id="ridingInsert">
-		insert into ridingBoard(nickname, ridingSubject, ridingContent, startDate, endDate, maxUser, applyUser, courseLevel, ridingKeyword)
-		values(#{nickname}, #{ridingSubject}, #{ridingContent}, #{startDate}, #{endDate}, #{maxUser}, 0 ,#{courseLevel}, #{ridingKeyword})
+		insert into ridingBoard(nickname, ridingSubject, ridingContent, startDate, endDate, maxUser, applyUser, courseLevel, ridingKeyword, courseSendData)
+		values(#{nickname}, #{ridingSubject}, #{ridingContent}, #{startDate}, #{endDate}, #{maxUser}, 0 ,#{courseLevel}, #{ridingKeyword},#{courseSendData})
 	</insert>
 	<update id="cntHit" parameterType="int">
 		update ridingBoard set ridingHit = ridingHit+1 where ridingNo=#{param1}

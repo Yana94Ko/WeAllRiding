@@ -31,6 +31,8 @@
 
 <div class="ridingContainer">
    <form method="post" action="/riding/ridingWriteOk" id="ridingFrm">
+   	  <input type="hidden" name="applicantCnt" value="1"/>
+   	  <textarea style="display:none" id="courseSendData"name="courseSendData">${rVO.courseSendData}</textarea>
       <ul>
          <h1 style="font-size: 1.3em;">라이딩 개설</h1><br><br>
          <h2>제목</h2>
@@ -43,7 +45,16 @@
         	<button type="button" id="bestCourseBtn">추천 코스</button>
          	<button type="button" id="newCourseBtn">코스 생성하기</button>
          </li>
-         <li style="height:400px;">코스가 나올 공간입니다.</li>
+         <li style="height:800px;">
+         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>
+         <div id="map" style="width:100%;height:500px;"></div>
+         <h4>코스 정보</h4>
+         <span>경유지 정보 : </span></span><span id="startPoint"></span>&nbsp;-&nbsp;<span id="waypoint"></span><span id="endPoint"></span>
+         <span id="distance"></span><br/>
+         <span id="duration"></span><br/>
+         <span id="ascent"></span><span id="descent"></span>
+         <canvas id="myChart" width="1060" height="150"></canvas>
+         </li>
          
          <li id="dateAll">
          <h2>일정</h2>
@@ -83,4 +94,5 @@
       </ul>
    </form>
 </div>
+<script type="text/javascript" src="${url}/js/riding/riding.js"></script>
 </main>

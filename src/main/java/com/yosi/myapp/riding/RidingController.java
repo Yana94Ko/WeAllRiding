@@ -6,6 +6,8 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,13 +24,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.yosi.myapp.PagingVO;
 
+import kotlinx.serialization.json.Json;
+
 @RestController
 public class RidingController {
 	@Autowired
 	RidingService RidingService;
 	@Inject
 	RidingService service;
-	
 	
 	/*
 	 * @Inject RidingReplyService replyService;
@@ -51,7 +54,7 @@ public class RidingController {
 	@GetMapping("/riding/myRidingList")
 	public ModelAndView myRidingList(RidingVO vo, HttpSession session) {
 		vo.setNickname((String)session.getAttribute("nickName"));
-		System.out.println(vo.getNickname());
+		//System.out.println(vo.getNickname());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("myRidingJoinList", service.myRidingJoinList(vo));
 		mav.addObject("myRidingEndList", service.myRidingEndList(vo));
@@ -61,24 +64,24 @@ public class RidingController {
 	}
 	
 	@GetMapping("/riding/ridingWrite")
-	public ModelAndView ridingWrite(PagingVO pVO) {
+	public ModelAndView ridingWrite(RidingVO rVO) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("lst", service.ridingList(pVO));
+		//System.out.println("데이터 잘 넘어왔어요..."+rVO.getStartPointName());	
+		mav.addObject("rVO", rVO );
 		mav.setViewName("riding/ridingWrite");
 		return mav;
 	}
-	@ResponseBody
-	@RequestMapping(value="riding/ridingWriteData", method=RequestMethod.POST, produces="application/text;charset=utf-8")
-	public String  ridingWriteData(@RequestBody RidingVO rVO) {
-		System.out.println("데이터 잘 넘어왔어요"+rVO.getStartPointName());	
-		System.out.println("데이터 잘 넘어왔어요"+rVO.getCourseChartLabel());
-		System.out.println("데이터 잘 넘어왔어요"+rVO.getLinePathChoiced());
-		System.out.println("데이터 잘 넘어왔어요"+rVO.getCourseChartData());
-		Object[] obje = rVO.getLinePathChoiced();
-		System.out.println(obje[0]);
-		return "해치웠나";
-	}
 	
+	@PostMapping("/riding/ridingWrite")
+	public ModelAndView ridingWritepost(RidingVO rVO) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println("데이터 잘 넘어왔어요+++"+(rVO.getCourseSendData().length()));	
+		//JSONObject courseResiveData = new JSONObject(rVO.getCourseSendData());
+		mav.addObject("rVO", rVO );
+		mav.setViewName("riding/ridingWrite");
+		return mav;
+	}
+   	
 	@PostMapping("/riding/ridingWriteOk")
     public ResponseEntity<String> ridingWriteOk(RidingVO vo, HttpServletRequest request){
 		vo.setNickname((String)request.getSession().getAttribute("nickName"));

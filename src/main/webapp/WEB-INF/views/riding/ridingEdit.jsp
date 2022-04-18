@@ -25,7 +25,7 @@
 }
 </style>
 <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
-
+<script type="text/javascript" src="${url}/js/riding/riding.js"></script>
 <!-- parallax START -->
 <div class="home">
 	<div class="homeBackground parallaxWindow" data-parallax="scroll"

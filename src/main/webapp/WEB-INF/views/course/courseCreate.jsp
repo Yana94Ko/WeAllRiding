@@ -22,9 +22,12 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>
 	<div class="map_wrap">
-		<div name="courseSendData"></div>
+		<form style="display:none" id="courseSendDataFrm" method="post" action="/riding/ridingWrite">
+			<textarea name="courseSendData"></textarea>
+		</form>
 		<div id="courseInput">
-			<form method="get" action="riding/ridingWrite">
+			<form>
+				
 				<input type="text" name="courseSendData"/>
 				<div class="fromWrap">
 					<img src="${url}/images/course/fromIcon.png"> 
@@ -67,7 +70,7 @@
 							<span id="routeDescent0"></span>
 						</span>
 						<canvas id="myChart0" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" onclick="return ridingDataSend(0,this.form)" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
+						<button class="ridingWriteBtn" onclick="return ridingDataSend(0)" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
 					</div>
 					<div id="routeInfo1" onclick="selectRoute(1)">
 						<h2 class="routeInfoRgt" style="width: 200px;">빠른경로</h2>
@@ -80,7 +83,7 @@
 							<span id="routeDescent1"></span>
 						</span>
 						<canvas id="myChart1" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" onclick="return ridingDataSend(1,this.form)" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
+						<button class="ridingWriteBtn" onclick="return ridingDataSend(1)" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
 					</div>
 					<div id="routeInfo2" onclick="selectRoute(2)">
 						<h2 class="routeInfoRgt" style="width:200px;">최단경로</h2>
@@ -93,7 +96,7 @@
 							<span id="routeDescent2"></span>
 						</span>
 						<canvas id="myChart2" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" onclick="return ridingDataSend(2,this.form)" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
+						<button class="ridingWriteBtn" onclick="return ridingDataSend(2)" type="button" style="position: absolute; bottom: 100px;">라이딩 개설</button>
 					</div>
 				</div>
 			</form>

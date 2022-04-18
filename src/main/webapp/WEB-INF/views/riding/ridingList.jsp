@@ -22,6 +22,7 @@
 			<div class="card">
 				<!-- 카드 헤더 -->
 				<div class="card-header">
+					
 					<div class="card-header-is_closed">
 						<div class="card-header-nNumbe">${vo.applyUser }/${vo.maxUser }</div>
 					</div>
@@ -30,7 +31,7 @@
 				<div class="card-body">
 					<!--  카드 바디 헤더 -->
 					<div class="card-body-header">
-						<h1>${ridingSubject }</h1>
+						<h1>${vo.ridingSubject }</h1>
 						<p class="card-body-hashtag">${vo.ridingKeyword }</p>
 						<p class="card-body-nickname">${vo.nickname }</p>
 					</div>
