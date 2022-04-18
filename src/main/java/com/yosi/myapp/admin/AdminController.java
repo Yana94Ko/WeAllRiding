@@ -74,6 +74,7 @@ public class AdminController {
 		}
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("av", vo);
+
 		mav.setViewName("admin/adminMember");
 		return mav;
 	}

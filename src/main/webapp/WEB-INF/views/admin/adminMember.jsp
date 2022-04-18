@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
 <link rel = "stylesheet" href="/css/admin/adminMain.css" type="text/css"/>
 <link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
 <link rel="icon" href="${url}/images/icon.png" type="image/x-icon">
@@ -393,15 +394,11 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form name="form1" method="post" action="/admin/adminMemberEdit">
-                                                    <table border="1">
-                                                        <table border="1">
+                                                    <c:forEach var="av" begin="1" end="5" items="${memberList}">
+                                                        <table id="userInfo${status.count}" border="1">
                                                             <tr>
                                                                 <td>아이디</td>
                                                                 <td><input name="userId" id="userId" value="${av.userId}" readonly="readonly"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>비밀번호</td>
-                                                                <td><input type="password" id="userPwd" value="${av.userPwd}" name="userPwd"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>이름</td>
@@ -429,6 +426,7 @@
                                                                 <td><input type="datetime-local" name="suspendDate" value="${av.suspendDate}"></td>
                                                             </tr>
                                                         </table>
+                                                    </c:forEach>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
