@@ -28,6 +28,10 @@ h3 {
 	font-size: 1.2em;
 }
 
+a.hover{
+	font-weight: bold;
+}
+
 table {
 	border-collapse: collapse;
 	text-align: left;

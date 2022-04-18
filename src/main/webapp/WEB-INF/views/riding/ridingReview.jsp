@@ -44,30 +44,18 @@
 				<hr>
 				
 				<h1 style="margin:0 auto; padding:20px 0px;">라이딩 참가자</h1>
-				
-				<ul id="rList">
-					<li id="rListFirst">번호</li>
-					<li id="rListFirst">닉네임</li>
-					<li id="rListFirst">성별</li>
-					<li id="rListFirst">모임 횟수</li>
-					<li id="rListFirst">유저 레벨</li>
-					<li id="rListFirst">좋았어요!</li>
-					<li id="rListFirst">별로였어요!</li>
-					<c:forEach var="vo" items="${lst2 }">
-						<c:if test="${vo.ridingNo == vo.ridingNo}">
-							<li>${vo.ridingMemberNo }</li>
-							<li>${vo.nickname }</li>
-							<li>${vo.gender }</li>
-							<li>${vo.ridingCount }</li>
-							<li>${vo.userScore }</li>	
-							<li>+</li>
-							<li>-</li>			
-						</c:if>
-					</c:forEach>
-				</ul>
+				<c:forEach var="vo" items="${lst2 }">
+					<div id="reviewTextImg">
+						<input type="text" value="${vo.nickname }" id="reviewListText"/>
+						<img src="../../images/웃는이모티콘.png" id="reviewImg">
+						<img src="../../images/우는이모티콘.png" id="reviewImg">
+					</div>
+				</c:forEach>		
+		
 			</ul>
 			<br><br><br>
-			<li><input type="text" name="ridingReviewComent" id="ridingReviewComent" style="min-height:400px; width: 100%;" placeholder="라이딩에 대한 후기를 남겨주세요."></input></li>
+			<h3 style="font-size:1.2em;">라이딩 후기</h3> <br>
+			<li><input type="text" name="ridingReviewComent" id="ridingReviewComent" placeholder="라이딩에 대한 후기를 남겨주세요."></input></li>
 	         
 	         <li id="ridingwriteBTN">
             <button id="ridingwriteBtn">후기 등록</button>
