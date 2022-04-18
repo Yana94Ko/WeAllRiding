@@ -56,7 +56,7 @@
 			<br><br><br>
 			<h3 style="font-size:1.2em;">라이딩 후기</h3> <br>
 			<li><input type="text" name="ridingReviewComent" id="ridingReviewComent" placeholder="라이딩에 대한 후기를 남겨주세요."></input></li>
-	         
+	         <br>
 	         <li id="ridingwriteBTN">
             <button id="ridingwriteBtn">후기 등록</button>
 		</form>
