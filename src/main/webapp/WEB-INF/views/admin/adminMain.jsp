@@ -304,12 +304,14 @@
                     </div>
                     <div class="card-body">
                         <main>
-                            <div class="statisticsContainer">
-                                <div id="gender">
-                                    <canvas id="genderChart" width="400px" height="400px"></canvas>
-                                </div>
-                                <div id="age">
-                                    <canvas id="ageChart" width="400px" height="400px"></canvas>
+                            <div class="st">
+                                <div class="statisticsContainer" >
+                                    <div id="gender" class="gender">
+                                        <canvas id="genderChart" width="400px" height="400px"></canvas>
+                                    </div>
+                                    <div id="age" class="age">
+                                        <canvas id="ageChart" width="400px" height="400px"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </main>

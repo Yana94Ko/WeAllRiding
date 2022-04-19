@@ -6,7 +6,7 @@
 <link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
 <link rel="icon" href="${url}/images/icon.png" type="image/x-icon">
 
-<script scr="${url}js/admin/adminMember.js"></script>
+<script src ="/js/admin/adminMember.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- 탭메뉴 바꾸기 -->
@@ -54,6 +54,7 @@
                     $("#userEmail").val(result.userEmail);
                     $("#birth").val(result.birth);
                     $("#suspendDate").val(result.suspendDate);
+                    $("#userPwd").val(result.userPwd);
                 }
             });
         });
@@ -449,14 +450,17 @@
                                                                 <td>회원정지일</td>
                                                                 <td><input type="datetime-local" id="suspend" name="suspendDate" value="${av.suspendDate}"></td>
                                                             </tr>
+                                                            <tr>
+                                                                <td>비밀번호</td>
+                                                                <td><input type="password" id="userPwd" name="userPwd" value="${av.userPwd}"></td>
+                                                            </tr>
                                                         </table>
-
+                                                        <div class="modal-footer">
+                                                            <button type="button" onclick="AdminMemberDelete()" class="btn btn-primary">삭제하기</button>
+                                                            <button type="submit"  class="btn btn-primary">수정하기</button>
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
+                                                        </div>
                                                 </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" onclick="AdminMemberDelete()" class="btn btn-primary">삭제하기</button>
-                                                <button type="submit"  class="btn btn-primary">수정하기</button>
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
                                             </div>
                                         </div>
                                     </div>

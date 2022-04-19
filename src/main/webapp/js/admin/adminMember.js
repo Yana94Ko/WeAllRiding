@@ -6,7 +6,7 @@ function AdminMemberDelete() {
         userPwd: userpwd.value
     }
     if (confirm("정말로 탈퇴시키겠습니까?")) {
-        axios.post("/admin/adminMember", body)
+        axios.post("/member/MemberDelete", body)
             .then((res) => {
                 if (res.data === 0) {
                     alert("회원정보를 확인해주세요")
