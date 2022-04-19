@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
 <link rel = "stylesheet" href="/css/admin/adminMain.css" type="text/css"/>
 <link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
 <link rel="icon" href="${url}/images/icon.png" type="image/x-icon">
 
-<script scr="${url}js/admin/adminMember.js"></script>
+<script src ="/js/admin/adminMember.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- 탭메뉴 바꾸기 -->
@@ -33,7 +32,6 @@
 
 
 <script>
-
     //회원정보 가져오기
     $(function() {
 
@@ -184,7 +182,7 @@
                             class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                   aria-label="Search" aria-describedby="basic-addon2">
+                                   aria-label="Search" aria-describedby="basic-addon2" id="searchV">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
