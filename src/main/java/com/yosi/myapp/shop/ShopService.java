@@ -12,4 +12,5 @@ public interface ShopService {
 	public List<ShopVO> shopAllSelect();
 	public int shopUpdate(ShopVO shopVO);
 	public int totalRecord(ShopPagingVO sPVO);
+	public int shopDelete(int shopId);
 }

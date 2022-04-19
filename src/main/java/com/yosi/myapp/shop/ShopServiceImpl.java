@@ -47,4 +47,9 @@ public class ShopServiceImpl implements ShopService {
 		return dao.totalRecord(sPVO);
 	}
 
+	@Override
+	public int shopDelete(int shopId) {
+		return dao.shopDelete(shopId);
+	}
+
 }

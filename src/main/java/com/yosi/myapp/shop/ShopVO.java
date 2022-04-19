@@ -1,6 +1,7 @@
 package com.yosi.myapp.shop;
 
 public class ShopVO {
+	private int shopNo;
 	private int shopId;
 	private String shopName;
 	private String shopInfo;
@@ -37,6 +38,12 @@ public class ShopVO {
 	}
 	public void setWritedate(String writedate) {
 		this.writedate = writedate;
+	}
+	public int getShopNo() {
+		return shopNo;
+	}
+	public void setShopNo(int shopNo) {
+		this.shopNo = shopNo;
 	}
 	
 	

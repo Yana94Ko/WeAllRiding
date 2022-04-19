@@ -36,7 +36,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/adminMain">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -95,28 +95,29 @@
                 회원 전용
             </div>
 
-            <!-- 회원 전용 메뉴 -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                   aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>회원 메뉴 보기</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">회원 이용 메뉴</h6>
-                        <a class="collapse-item" href="${url}#">코스</a>
-                        <a class="collapse-item" href="${url}/register.html">라이딩</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">정비샵</a>
-                        <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">이상형 월드컵</a>
-                        <div class="collapse-divider"></div>
-                        <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
-                        <%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
-                        <%--                    <a class="collapse-item" href="blank.html">Blank Page</a>--%>
-                    </div>
-                </div>
-            </li>
+                    <!-- 회원 전용 메뉴 -->
+			        <li class="nav-item">
+			            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+			               aria-expanded="true" aria-controls="collapsePages">
+			                <i class="fas fa-fw fa-folder"></i>
+			                <span>회원 메뉴 보기</span>
+			            </a>
+			            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+			                <div class="bg-white py-2 collapse-inner rounded">
+			                    <h6 class="collapse-header">회원 이용 메뉴</h6>
+			                    <a class="collapse-item" href="${url}/courseCreate">코스</a>
+			                    <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
+			                    <a class="collapse-item" href="${url}/shopView">장비샵</a>
+			                    <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
+			                    <a class="collapse-item" href="${url}/idealView">이상형 월드컵</a>
+			                    <div class="collapse-divider"></div>
+			<%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
+			<%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
+			<%--                    <a class="collapse-item" href="blank.html">Blank Page</a>--%>
+			                </div>
+			            </div>
+			        </li>
+
 
             <!-- 사이드 테이블 -->
             <li class="nav-item active">
@@ -310,18 +311,20 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>정비샵ID</th>
+                                        <th>번호</th>
                                         <th>매장명</th>
                                         <th>매장정보</th>
                                         <th>작성자</th>
+                                        <th>옵션</th>
                                     </tr>
                                     </thead>
                                     <c:forEach var="shopPVO" items="${list}">
                                         <tr>
-                                            <td>${shopPVO.shopId}</td>
+                                            <td>${shopPVO.shopNo+1}</td>
                                             <td>${shopPVO.shopName}</td><!-- 매장명 db 컬럼 추가 필요  -->
                                             <td>${shopPVO.shopInfo}</td>
                                             <td>${shopPVO.shopAuthors}</td>
+                                            <th><button class="btn btn-danger" style="height:40px;" type="button" onclick="location.href='/admin/shopDelete?shopId=${shopPVO.shopId}';">삭제</button></th>
                                         </tr>
                                     </c:forEach>
                                 </table>

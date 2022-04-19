@@ -134,4 +134,6 @@ public class ShopController {
 	public ShopVO shopInfoLoad(int shopId) {
 		return service.shopSelect(shopId);
 	}
+	
+	
 }

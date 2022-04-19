@@ -187,6 +187,35 @@ header>img{
 	opacity:0;
 	visibility:none;
 }
+#login, #logout, #admin{
+	width:150px;
+	float:left;
+	margin-left:5px;
+	margin-right:5px;
+	color:#fff;
+	position:relative;
+	left: 70%;
+    text-align: center;
+	transition-property: background-color;
+  	transition-duration:0.3s;
+  	transition-delay:0s;
+  	transition-timing-function:ease-in-out;
+}
+#login a, #logout a, #admin a{
+	text-decoration: none;
+	color:#fff;
+}
+#login:hover, #logout:hover, #admin:hover{
+	background-color:var(--color-gray-0);
+}
+
+
+#login a:visited, #logout a:visited, #admin a:visited{
+	text-decoration: none;
+	color:#fff;
+}
+
+
 .navBar{
 	font-size:1.5em;
 	width:100%;	

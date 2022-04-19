@@ -13,7 +13,7 @@
 		VALUES (#{shopId}, #{shopName}, #{shopInfo}, #{shopAuthors});
 	</insert>
 	<select id="shopSelect" resultType="ShopVO">
-		SELECT shopId, shopName, shopInfo, shopAuthors FROM shop WHERE shopId=${param1}
+		SELECT shopNo, shopId, shopName, shopInfo, shopAuthors FROM shop WHERE shopId=${param1}
 	</select>
 	<update id="shopUpdate">
 		UPDATE shop SET shopInfo = #{shopInfo}, shopAuthors = #{shopAuthors} 
@@ -38,6 +38,8 @@
 			where ${searchKey} like '%${searchWord}%'
 		</if>
 	</select>
-	
+		<delete id="shopDelete">
+		delete from shop where shopId=#{param1}
+	</delete>
 </mapper>
 

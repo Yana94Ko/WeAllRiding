@@ -37,7 +37,6 @@
          <li><input type="text" name="ridingSubject" id="ridingSubject" /></li><br>
          <h2>키워드</h2>
          <li><input type="text" name="ridingKeyword" id="ridingKeyword" placeholder="ex)  #순천  #광양"/></li><br>
-
          <h2>코스</h2>
          <li>
         	<button type="button" id="bestCourseBtn">추천 코스</button>

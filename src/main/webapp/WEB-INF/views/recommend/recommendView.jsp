@@ -25,7 +25,7 @@
 			<div class="card">
 				<!-- 카드 헤더 -->
 				<div class="cardHeader">
-					<img class="cardThumbnail" src="${url}/images/courseImg.png">
+					<div id="map" class="cardThumbnail" style="width:100%;height:500px;"></div>
 				</div>
 
 				<!--  카드 바디 -->
