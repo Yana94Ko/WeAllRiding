@@ -454,8 +454,8 @@
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" onclick="MemberDelete()" class="btn btn-primary">삭제하기</button>
-                                                <button type="submit" class="btn btn-primary">수정하기</button>
+                                                <button type="button" onclick="AdminMemberDelete()" class="btn btn-primary">삭제하기</button>
+                                                <button type="submit"  class="btn btn-primary">수정하기</button>
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
                                             </div>
                                         </div>

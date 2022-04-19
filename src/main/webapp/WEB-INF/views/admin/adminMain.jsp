@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/css/statistics/statistics.css" type="text/css"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="${url}/js/statistics/statisticsMake.js"></script>
 
 <!-- 탭메뉴 바꾸기 -->
 
