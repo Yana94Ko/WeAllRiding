@@ -65,7 +65,7 @@ if(!window['idealView']) {
             selected: false
           },
           {
-            name: '산악 자전거',
+            name: '하이브리드 자전거',
             imgSrc: '/images/ideal/bikes/8.png',
             selected: false
           },
@@ -75,7 +75,7 @@ if(!window['idealView']) {
             selected: false
           },
           {
-            name: '로드 자전거',
+            name: '산악 자전거',
             imgSrc: '/images/ideal/bikes/10.png',
             selected: false
           },
@@ -90,12 +90,12 @@ if(!window['idealView']) {
             selected: false
           },
           {
-            name: '산악 자전거',
+            name: '하이브리드 자전거',
             imgSrc: '/images/ideal/bikes/13.png',
             selected: false
           },
           {
-            name: '산악 자전거',
+            name: '하이브리드 자전거',
             imgSrc: '/images/ideal/bikes/14.png',
             selected: false
           },
