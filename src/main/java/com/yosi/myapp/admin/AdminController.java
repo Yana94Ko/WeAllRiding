@@ -87,6 +87,7 @@ public class AdminController {
 		mav.setViewName("admin/adminMember");
 		return mav;
 	}
+
 	@RequestMapping("adminMember2")
 	@ResponseBody
 	public MemberVO adminView2(@RequestParam String userId){
