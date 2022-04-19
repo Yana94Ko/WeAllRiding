@@ -101,18 +101,13 @@ for(var z = 0; z < 10;z++){
 		}
 		setCourseLine(points);
 		//데이터 입력
-		$("#startPoint").text(startPointName);
+		$("#startPoint" + z).text(startPointName);
 		//경유지 정보 가공
-		var waypointNamesSum = "";
-		for (var i = 0; i < waypointNames.length; i++) {
-			waypointNamesSum += waypointNames[i] + " - ";
-		}
-		$("#waypoint").text(waypointNamesSum);
-		$("#endPoint").text(endPointName);
-		$("#distance").text(distance);
-		$("#duration").text(duration);
-		$("#descent").text(descent);
-		$("#ascent").text(ascent);
+		$("#endPoint" + z).text(endPointName);
+		$("#distance" + z).text(distance);
+		$("#duration" + z).text(duration);
+		$("#descent" + z).text(descent);
+		$("#ascent" + z).text(ascent);
 		console.log(z+"번째 완료")
 	}
 }
