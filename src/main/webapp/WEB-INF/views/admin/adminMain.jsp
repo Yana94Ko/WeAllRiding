@@ -292,11 +292,11 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <!-- Page Heading -->
+                <!-- 메인 페이지 통계 띄우기 -->
                 <h1 class="h3 mb-2 text-gray-800">통계</h1>
                 <p class="mb-4">회원 성별 통계와 이용자의 연령대 분포를 확인할 수 있습니다.</p>
 
-                <!-- DataTales Example -->
+                <!-- 통계 그래프 출력 -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">통계 그래프</h6>

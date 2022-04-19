@@ -105,11 +105,11 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">회원 이용 메뉴</h6>
-                        <a class="collapse-item" href="${url}#">코스</a>
-                        <a class="collapse-item" href="${url}#">라이딩</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">정비샵</a>
+                        <a class="collapse-item" href="${url}/recommendView">코스</a>
+                        <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
+                        <a class="collapse-item" href="${url}/shopView">장비샵</a>
                         <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">이상형 월드컵</a>
+                        <a class="collapse-item" href="${url}/idealView">이상형 월드컵</a>
                         <div class="collapse-divider"></div>
                         <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
                         <%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
@@ -118,12 +118,7 @@
                 </div>
             </li>
 
-            <!-- 사이드 테이블 -->
-            <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

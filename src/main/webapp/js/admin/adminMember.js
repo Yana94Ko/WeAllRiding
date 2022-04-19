@@ -11,7 +11,7 @@ function MemberDelete() {
                 if (res.data === 0) {
                     alert("회원정보를 확인해주세요")
                 } else {
-                    location.href = "/admin/adminMain";
+                    location.href = "/admin/adminMemeber";
                 }
             })
             .catch((res) => {

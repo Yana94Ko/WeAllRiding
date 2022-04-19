@@ -10,6 +10,8 @@ import com.yosi.myapp.comty.ComtyService;
 import com.yosi.myapp.member.MemberController;
 import com.yosi.myapp.member.MemberService;
 import com.yosi.myapp.member.MemberVO;
+import com.yosi.myapp.riding.RidingService;
+import com.yosi.myapp.riding.RidingVO;
 import com.yosi.myapp.shop.ShopPagingVO;
 import com.yosi.myapp.shop.ShopService;
 import com.yosi.myapp.shop.ShopVO;
@@ -43,6 +45,8 @@ public class AdminController {
 	ComtyService comtyService;
 	@Autowired
 	ShopService shopService;
+	@Autowired
+	RidingService ridingService;
 
 
 	// 관리자 메인 페이지
@@ -69,7 +73,7 @@ public class AdminController {
 	}
 	//관리자 페이지 회원정보 상세보기
 	@RequestMapping("adminMember")
-	public ModelAndView AdminView(@RequestParam String userId) {
+	public ModelAndView adminMember(@RequestParam String userId) {
 		System.out.println(userId);
 		MemberVO vo = memberService.AdminView(userId);
 		if (vo.getSuspendDate()!=null) {
@@ -78,10 +82,15 @@ public class AdminController {
 		}
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("av", vo);
+
 		mav.setViewName("admin/adminMember");
 		return mav;
 	}
-
+	@RequestMapping("adminMember2")
+	@ResponseBody
+	public MemberVO adminView2(@RequestParam String userId){
+		return memberService.AdminView(userId);
+	}
 	// 관리자 커뮤니티관리 페이지
 	@GetMapping("adminComty")
 	public ModelAndView allSelect(PagingVO pVO) {
@@ -106,7 +115,8 @@ public class AdminController {
 		return "redirect:/admin/adminMember";
 	}
 
-	//관리자 페이지 정비샵 리스트 띄우기
+
+	// 관리자 페이지 정비샵 리스트 출력
 	@GetMapping("adminShop")
 	public ModelAndView AdminShop(ShopPagingVO sPVO) {
 		ModelAndView mav = new ModelAndView();
@@ -129,4 +139,18 @@ public class AdminController {
 	}
 	
 
+	// 관리자 페이지 라이딩 리스트 출력
+	@GetMapping("adminRiding")
+	public ModelAndView AdminRiding(PagingVO pVO) {
+		ModelAndView mav = new ModelAndView();
+
+		pVO.setTotalRecord(ridingService.totalRecord(pVO));
+
+		mav.addObject("ridingList", ridingService.ridingList(pVO));
+		mav.addObject("pVO", pVO);
+		mav.setViewName("admin/adminRiding");
+
+		return mav;
+
+	}
 }
