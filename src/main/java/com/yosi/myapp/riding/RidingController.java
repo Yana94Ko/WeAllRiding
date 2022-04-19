@@ -223,7 +223,6 @@ public class RidingController {
     public ModelAndView ridingView(int ridingNo) {
         ModelAndView mav = new ModelAndView();
         service.cntHit(ridingNo); // 조회수 증가
-        
         mav.addObject("vo", service.ridingSelect(ridingNo));
         mav.addObject("lst2", service.ridingMemberShow(ridingNo));
         mav.setViewName("riding/ridingView");
@@ -306,7 +305,7 @@ public class RidingController {
 		
 		
 		
-	// 승낙
+	// (참가자)회원평가 - 추천
 	@ResponseBody
 	@RequestMapping(value="/riding/ridingScoreUpOk", method = RequestMethod.GET) 
 	public String ridingScoreUpOk(int ridingNo, RidingVO vo) { 
@@ -324,7 +323,7 @@ public class RidingController {
 		return "완료"; 
 	}
 	
-	// 승낙
+	// (참가자)회원평가 - 비추
 	@ResponseBody
 	@RequestMapping(value="/riding/ridingScoreDownOk", method = RequestMethod.GET) 
 	public String ridingScoreDownOk(int ridingNo, RidingVO vo) { 

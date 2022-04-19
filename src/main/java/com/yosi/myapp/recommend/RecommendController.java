@@ -58,7 +58,6 @@ public class RecommendController {
 			String msg = "<script>alert('추천경로 등록을 실패하였습니다.');history.back();</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
 		}
-		
 		return entity;
 	} 
 	
