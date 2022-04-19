@@ -9,21 +9,20 @@
 		WHERE recNo=${param1}
 	</select>
 	<insert id="recommendInsert">
-		INSERT INTO recommend(recTitle, recHashtag, recDescription, recLevel, recTime, recDistance, recStartPoint, recEndPoint, recPoint1, recPoint2, recPoint3, recPoint4, recPoint5)
-		VALUES (#{recTitle},#{recHashtag},#{recDescription},#{recLevel},#{recTime},#{recDistance},#{recStartPoint},#{recEndPoint},#{recPoint1},#{recPoint2},#{recPoint3},#{recPoint4},#{recPoint5});
+		INSERT INTO recommend(recTitle, recHashtag, recDescription, recLevel, recommendSendData)
+		VALUES (#{recTitle},#{recHashtag},#{recDescription},#{recLevel},#{recommendSendData});
 	</insert>
 	<select id="recommendSelect" resultType="RecommendVO">
-		SELECT recNo, recTitle, recHashtag, recDescription, recLevel, recTime, recDistance, recStartPoint, recEndPoint, recPoint1, recPoint2, recPoint3, recPoint4, recPoint5, recWritedate 
+		SELECT recNo, recTitle, recHashtag, recDescription, recLevel, recommendSendData 
 	    FROM recommend WHERE recNo=${param1};
 	</select>
 	
 	<select id="recommendAllSelect" resultType="RecommendVO">
-		select recNo, recTitle, recHashtag, recDescription, recLevel, recTime, recDistance, recStartPoint, recEndPoint, recPoint1, recPoint2, recPoint3, recPoint4, recPoint5, recWritedate
+		select recNo, recTitle, recHashtag, recDescription, recLevel,recommendSendData
 		from recommend order by recNo desc;
 	</select>
 	<update id="recommendUpdate">
-		UPDATE recommend SET recTitle = #{recTitle}, recHashtag = #{recHashtag}, recDescription = #{recDescription}, recLevel = #{recLevel}, recTime = #{recTime}, recDistance = #{recDistance},
-		recStartPoint = #{recStartPoint}, recEndPoint = #{recEndPoint}, recPoint1 = #{recPoint1}, recPoint2 = #{recPoint2}, recPoint3 = #{recPoint3}, recPoint4 = #{recPoint4}, recPoint5 = #{recPoint5}
+		UPDATE recommend SET recTitle = #{recTitle}, recHashtag = #{recHashtag}, recDescription = #{recDescription}, recLevel = #{recLevel}, recommendSendData = #{recommendSendData}
 		WHERE recNo = #{recNo}
 	</update> 
 	<delete id="recommendDelete">
@@ -31,7 +30,7 @@
 	</delete>
 	
 	<select id="recommendList" resultType="RecommendVO">
-		select recNo, recTitle, recHashtag, recDescription, recLevel, recTime, recDistance, recStartPoint, recEndPoint, recPoint1, recPoint2, recPoint3, recPoint4, recPoint5, date_format(recWritedate,'%m-%d %H:%i') recWritedate
+		select recNo, recTitle, recHashtag, recDescription, recLevel, recommendSendData, date_format(recWritedate,'%m-%d %H:%i') recWritedate
 		from recommend
 		<if test='searchWord != null'>
 			where ${searchKey} like '%${searchWord}%'

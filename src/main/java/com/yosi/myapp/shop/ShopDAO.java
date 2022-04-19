@@ -16,4 +16,5 @@ public interface ShopDAO {
 	public int shopUpdate(ShopVO shopVO);
 	//총레코드수
 	public int totalRecord(ShopPagingVO sPVO);
+	public int shopDelete(int shopId);
 }

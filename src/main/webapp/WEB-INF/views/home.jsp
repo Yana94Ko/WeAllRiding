@@ -33,7 +33,7 @@
 	    <div class="content-wrapper">
 			<p class="content-title">여행 중 자전거가 망가진 적이 있었나요?</p>
 			<p class="content-subtitle">내 주변 자전거 공임 정보 위키</p>
-			<button class="w-btn w-btn-gra1 w-btn-gra-anim" type="button" onclick="location.href='${url}/idealView';">
+			<button class="w-btn w-btn-gra1 w-btn-gra-anim" type="button" onclick="location.href='${url}/shopView';">
 				정보 나누러 가기
 			</button>
 	    </div>

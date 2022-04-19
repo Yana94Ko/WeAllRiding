@@ -141,7 +141,7 @@ html, body, #app {
     transform: var(--cpc-caret-transform);
   }
 }
-@media (min-width: 576px) {
+@media (min-width: 400px) {
 
 
   .cpc-main {

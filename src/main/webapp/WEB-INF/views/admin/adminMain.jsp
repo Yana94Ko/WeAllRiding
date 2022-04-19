@@ -38,7 +38,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/adminMain">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -108,7 +108,7 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">회원 이용 메뉴</h6>
-                    <a class="collapse-item" href="${url}/recommendView">코스</a>
+                    <a class="collapse-item" href="${url}/courseCreate">코스</a>
                     <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
                     <a class="collapse-item" href="${url}/shopView">장비샵</a>
                     <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>

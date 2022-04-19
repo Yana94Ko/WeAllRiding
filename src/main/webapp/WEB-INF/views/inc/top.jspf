@@ -31,18 +31,25 @@
 <header>
 	<div class='top'>
 		<c:if test="${logStatus !='Y'}">
-			<a href ="${url}/member/loginForm">로그인</a>
+			<div id="login">
+				<a href ="${url}/member/loginForm"><i class="fas fa-sign-in-alt"></i>  로그인</a>
+			</div>
 		</c:if>
 		<c:if test="${logStatus =='Y'}">
-			<a href ="${url}/member/memberEdit">
-				<img src =""/>
-				${nickName}님
-			</a>
-			<a href ="${url}/member/logout">로그아웃</a>
+			<div id="login">
+				<a href ="${url}/member/memberEdit">
+					<i class="fas fa-user"></i>  ${nickName} 님
+				</a>
+			</div>
+			<div id="logout">
+				<a href ="${url}/member/logout"><i class="fas fa-sign-out-alt"></i>  로그아웃</a>
+			</div>
 		</c:if>
-		<c:if test="${userId == 'adminTM'}">
-			<a href="${url}/admin/adminMain">관리자 메뉴</a>
-		</c:if>
+		<div id="admin">
+			<c:if test="${userId == 'adminTM'}">
+				<a href="${url}/admin/adminMain"><i class="fas fa-tools"></i>  관리자 메뉴</a>
+			</c:if>
+		</div>
 	</div>
 	<nav class='navBar'>
 		<div class='logo'>

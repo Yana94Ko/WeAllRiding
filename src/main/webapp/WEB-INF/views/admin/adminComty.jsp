@@ -311,6 +311,7 @@
                                         <th>글쓴이</th>
                                         <th>조회수</th>
                                         <th>등록일</th>
+                                        <th>옵션</th>
                                     </tr>
                                     </thead>
                                     <c:forEach var="vo" items="${lst }">
@@ -320,6 +321,7 @@
                                             <td>${vo.nickname }</td>
                                             <td>${vo.comtyHit }</td>
                                             <td id="comtyWD">${vo.comtyWriteDate }</td>
+                                            <td><button class="btn btn-danger" style="height: 40px;" type="button" onclick="location.href='/admin/adminComtyDelete?comtyNo=${vo.comtyNo}';" >삭제</button> </td>
                                         </tr>
                                     </c:forEach>
                                 </table>

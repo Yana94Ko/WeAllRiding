@@ -39,7 +39,6 @@ import java.util.List;
 @RequestMapping("/admin/")
 @Controller // 현재의 클래스를 controller bean에 등록시킴
 public class AdminController {
-
 	@Autowired
 	MemberService memberService;
 	@Autowired
@@ -117,6 +116,7 @@ public class AdminController {
 		return "redirect:/admin/adminMember";
 	}
 
+
 	// 관리자 페이지 정비샵 리스트 출력
 	@GetMapping("adminShop")
 	public ModelAndView AdminShop(ShopPagingVO sPVO) {
@@ -129,6 +129,24 @@ public class AdminController {
 		mav.setViewName("admin/adminShop");
 		return mav;
 	}
+
+	//관리자 페이지 커뮤니티 글 삭제하기
+	@GetMapping("adminComtyDelete")
+	public ModelAndView adminComtyDelete(int comtyNo, ModelAndView mav) {
+		comtyService.adminComtyDelete(comtyNo);
+		mav.setViewName("redirect:/admin/adminComty");
+		return mav;
+	}
+	
+	
+	//관리자 페이지정비샵 정보 삭제하기
+	@GetMapping("shopDelete")
+	public ModelAndView shopDelete(int shopId, ModelAndView mav) {
+		shopService.shopDelete(shopId);
+		mav.setViewName("redirect:/admin/adminShop");
+		return mav;
+	}
+	
 
 	// 관리자 페이지 라이딩 리스트 출력
 	@GetMapping("adminRiding")

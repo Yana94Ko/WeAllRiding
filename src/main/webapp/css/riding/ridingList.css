@@ -38,7 +38,7 @@ table {
 /*css 초기화*/
 .card {
 	height: 400px;
-	width: 350px;
+	width: 30%;
 	border-radius: 15px;
 	display: inline-block;
 	margin-top: 30px;
@@ -59,7 +59,6 @@ table {
 	width: 100%;
 	height: 270px;
 	border-radius: 15px 15px 0 0;
-	background-image: url("images/korea.jpeg");
 	background-size: 100% 280px;
 	background-repeat: no-repeat;
 }
@@ -302,8 +301,6 @@ h1 {
 }
 #mListFirst {
 	background-color: rgba(234, 234, 234);
-<<<<<<< HEAD
-=======
 }
 #eList {
 	overflow: auto;
@@ -400,5 +397,38 @@ h1 {
 	background-color: rgba(255, 217, 102);
 	text-align: center;
 	font-size: 1.1em;
->>>>>>> 2d37f33be5d2c7d5fa89e280663db8fa58bc31f8
+}
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100px;;
+}
+.btn {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 400% auto;
+  color: white;
+  font-size:1.4em;
+  font-weight:600;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 20px #eee;
+  border-radius: 26px;
+ }
+ .btn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+ .btn-4 {
+  background-image: linear-gradient(to right, #f6d365 0%, #fda085 51%, #f6d365 100%);
+}
+.btn-1 {
+  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
 }
