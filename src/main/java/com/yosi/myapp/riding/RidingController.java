@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.yosi.myapp.PagingVO;
+import com.yosi.myapp.RidingPagingVO;
 
 @RestController
 public class RidingController {
@@ -34,7 +34,7 @@ public class RidingController {
 	 */
 	
 	@GetMapping("/riding/ridingList")
-	public ModelAndView ridingList(PagingVO pVO) {
+	public ModelAndView ridingList(RidingPagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
 		
 		// 총 레코드 수
@@ -59,20 +59,12 @@ public class RidingController {
 		return mav;
 	}
 	
-	@GetMapping("/riding/ridingWrite")
-	public ModelAndView ridingWrite(RidingVO rVO) {
-		ModelAndView mav = new ModelAndView();
-		//System.out.println("데이터 잘 넘어왔어요..."+rVO.getStartPointName());	
-		mav.addObject("rVO", rVO );
-		mav.setViewName("riding/ridingWrite");
-		return mav;
-	}
-	
 	@PostMapping("/riding/ridingWrite")
-	public ModelAndView ridingWritepost(RidingVO rVO) {
+	public ModelAndView ridingWritepost(RidingVO rVO, RidingPagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("데이터 잘 넘어왔어요+++"+(rVO.getCourseSendData().length()));	
 		//JSONObject courseResiveData = new JSONObject(rVO.getCourseSendData());
+		mav.addObject("lst", service.ridingList(pVO));
 		mav.addObject("rVO", rVO );
 		mav.setViewName("riding/ridingWrite");
 		return mav;
