@@ -12,20 +12,21 @@
 <!-- parallax END -->
 
 <main>
-	<form action="/adminRecommendWriteOk" method="post">
+	<form id="recommendSendDataFrm" action="/adminRecommendWriteOk" method="post">
 		<label>제목</label>
 		<input type="text" id="recTitle" name="recTitle"/>
 		<label>해시태그</label>
 		<input type="text" id="recHashtag" name="recHashtag"/>
 		<label>설명</label>
 		<input type="text" id="recDescription" name="recDescription"/>
-		<label>난이도</label>
-		<input type="text" id="recLevel" name="recLevel"/>
-		<label>예상 시간</label>
-		<input type="text" id="recTime" name="recTime"/>
-		<label>전체 거리</label>
-		<input type="text" id="recDistance" name="recDistance"/>
-		<textarea name="courseSendData"></textarea>
+		<select id="recLevel" name="recLevel" class="recLevel">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+         </select>
+		<textarea style="display:none" name="recommendSendData"></textarea>
 	</form>
 	<!-- kakao map API 불러오기(키 입력) -->
 	<script type="text/javascript"
@@ -77,7 +78,7 @@
 							<span id="routeDescent0"></span>
 						</span>
 						<canvas id="myChart0" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" onclick="return ridingDataSend(0)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
+						<button class="ridingWriteBtn" onclick="return recommendDataSend(0)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
 					</div>
 					<div id="routeInfo1" onclick="selectRoute(1)">
 						<h2 class="routeInfoRgt" style="width: 200px; font-weight:10px; font-weight: bold; font-size: 20px; top: 6px; position: relative; ">빠른경로</h2>
@@ -90,7 +91,7 @@
 							<span id="routeDescent1"></span>
 						</span>
 						<canvas id="myChart1" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" onclick="return ridingDataSend(1)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
+						<button class="ridingWriteBtn" onclick="return recommendDataSend(1)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
 
 					</div>
 					<div id="routeInfo2" onclick="selectRoute(2)">
@@ -104,7 +105,7 @@
 							<span id="routeDescent2"></span>
 						</span>
 						<canvas id="myChart2" width="300" height="60"></canvas>
-						<button class="ridingWriteBtn" onclick="return ridingDataSend(2)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
+						<button class="ridingWriteBtn" onclick="return recommendDataSend(2)" type="button" style="position: absolute;top: 5px; left: 204px; width: 50px; height: 40px;"><i class="fas fa-biking"></i></button>
 					</div>
 				</div>
 			</form>
@@ -126,9 +127,5 @@
 		</div>
 	</div>
 	<!-- mapWrap -->
-	<!------------------- 지도 썸네일 생성용 테스트 추후 삭제 예정 ---------------------->
-	<!-- <button type="button" onclick="generateThumbnail(polyTest, linepathTest);">썸네일 생성</button>
-	<div id="ridingMap01" style="width:250px;height:200px;"></div>    -->
-	<!------------------------------------------------------------------------->
-		<script type="text/javascript" src="${url}/js/course/courseCreateScript.js"></script>
+		<script type="text/javascript" src="${url}/js/recommend/recommendCreateScript.js"></script>
 </main>

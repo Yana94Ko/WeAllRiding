@@ -972,7 +972,7 @@ function setWaypointNames(){
 	}
 }
 
-function ridingDataSend(routeNo,frm){
+function recommendDataSend(routeNo){
 	var position = map.getCenter();
 	var level = map.getLevel();
 	var markerPoditions=[];

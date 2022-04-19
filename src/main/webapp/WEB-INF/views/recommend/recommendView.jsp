@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="${url}/css/recommend/recommendStyle.css" />
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>
 
 
 <!-- parallax START -->
@@ -21,11 +22,11 @@
 <%-- 	<div id="record-no">게시글 수 : ${rPVO.totalRecord },
 		${rPVO.pageNum}/${rPVO.totalPage}</div> --%>
 	<div class="cardWrap">
-		<c:forEach var="recommendVO" items="${list}">
+		<c:forEach var="recommendVO" items="${list}" varStatus="st">
 			<div class="card">
 				<!-- 카드 헤더 -->
 				<div class="cardHeader">
-					<img class="cardThumbnail" src="${url}/images/courseImg.png">
+					<div id="map${st.index}" style="height: 100%;"></div>
 				</div>
 
 				<!--  카드 바디 -->
@@ -48,21 +49,22 @@
 							<p class="recContent">${recommendVO.recDescription}</p>
 						</div>
 						<div class="recDiv recCourse">
-							<span class="recTitle">코스 정보</span>
-							<p class="recContent">${recommendVO.recStartPoint}-
-								${recommendVO.recPoint1} - ${recommendVO.recEndPoint}</p>
+							<span>경유지 정보 : </span><span id="startPoint"></span>&nbsp;-&nbsp;<span
+					id="waypoint"></span><span id="endPoint"></span>
+							<p class="recContent"></p>
 						</div>
 						<div class="recDiv recDistance">
-							<span class="recTitle">전체 거리</span>
-							<div class="recCourse">${recommendVO.recDistance}m</div>
+							<span id="distance"></span>
+							<div class="recCourse"></div>
 						</div>
 						<div class="recDiv recTime">
-							<span class="recTitle">소요 시간</span>
-							<p class="recCourse">${recommendVO.recTime}분</p>
+							<span id="duration"></span>
+							<p class="recCourse"></p>
 						</div>
 						<div class="recDiv recLevel">
 							<span class="recTitle">난이도</span>
-							<p class="recCourse">${recommendVO.recLevel}점</p>
+							<p class="recCourse">${recommendVO.recLevel}</p>
+							<span id="ascent"></span><span id="descent"></span>
 						</div>
 						<a href="/adminRecommendEdit?recNo=${recommendVO.recNo}"><button
 								type="button" class="btn cardBodyButton">라이딩 수정</button></a> <a
@@ -78,7 +80,10 @@
 						</div>
 						<!-- 라이딩 개설 버튼 -->
 						<div class="footerRight">
-							<button type="button" class="btn cardBodyButton">라이딩 개설</button>
+							<form  id="recommendSendDataFrm${st.index}" method="post" action="/riding/ridingWrite">
+								<textarea style="display:none" name="CourseSendData" id="recommendSendData${st.index}">${recommendVO.recommendSendData}</textarea>
+								<button type="button" onclick="document.getElementById('recommendSendDataFrm${st.index}').submit();" class="btn cardBodyButton">라이딩 개설</button>
+							</form>
 						</div>
 
 						<!-- 조회수, 댓글 -->
@@ -128,4 +133,5 @@
 	</div>
 	<a href="${url}/adminRecommendWrite"><button type="button"
 			class="btn createRec">추천코스 생성</button></a>
+	<script type="text/javascript" src="${url}/js/recommend/recommendViewScript.js"></script>
 </main>
