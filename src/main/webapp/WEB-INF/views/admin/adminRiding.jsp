@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<link rel = "stylesheet" href="/css/admin/adminComty.css" type="text/css"/>
-
+<link rel = "stylesheet" href="/css/admin/adminRiding.css" type="text/css"/>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -105,11 +104,11 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">회원 이용 메뉴</h6>
-                        <a class="collapse-item" href="${url}#">코스</a>
-                        <a class="collapse-item" href="${url}/register.html">라이딩</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">정비샵</a>
+                        <a class="collapse-item" href="${url}/recommendView">코스</a>
+                        <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
+                        <a class="collapse-item" href="${url}/shopView">장비샵</a>
                         <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">이상형 월드컵</a>
+                        <a class="collapse-item" href="${url}/idealView">이상형 월드컵</a>
                         <div class="collapse-divider"></div>
                         <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
                         <%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
@@ -118,12 +117,7 @@
                 </div>
             </li>
 
-            <!-- 사이드 테이블 -->
-            <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -310,30 +304,39 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable" width="" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>아이디</th>
-                                        <th>비밀번호</th>
-                                        <th>회원가입일</th>
+                                        <th>라이딩 번호</th>
+                                        <th>닉네임</th>
+                                        <th>키워드</th>
+                                        <th>주제</th>
+                                        <th>콘텐츠</th>
+                                        <th>참여 유저</th>
+                                        <th>코스 레벨</th>
+                                        <th>최대인원</th>
+                                        <th>시작일</th>
+                                        <th>마감일</th>
+                                        <th>매너점수</th>
+                                        <th>작성날짜</th>
                                     </tr>
                                     </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>아이디</th>
-                                        <th>비밀번호</th>
-                                        <th>회원가입일</th>
-                                    </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    <tr>
-                                        <td></td>
-                                    </tr>
-                                    </tbody>
+                                    <c:forEach var="rLst" items="${ridingList}">
+                                        <tr>
+                                            <td>${rLst.ridingNo}</td>
+                                            <td>${rLst.nickname}</td>
+                                            <td>${rLst.ridingKeyword}</td>
+                                            <td>${rLst.ridingSubject}</td>
+                                            <td>${rLst.ridingContent}</td>
+                                            <td>${rLst.applyUser}</td>
+                                            <td>${rLst.courseLevel}</td>
+                                            <td>${rLst.maxUser}</td>
+                                            <td>${rLst.startDate}</td>
+                                            <td>${rLst.endDate}</td>
+                                            <td>${rLst.ridingHit}</td>
+                                            <td>${rLst.ridingWriteDate}</td>
+                                        </tr>
+                                    </c:forEach>
                                 </table>
                             </div>
                         </div>

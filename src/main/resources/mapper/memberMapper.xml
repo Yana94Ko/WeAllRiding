@@ -34,7 +34,7 @@
     </update>
     <!--관리자 페이지 회원정보 상세보기 -->
     <select id = "AdminView" resultType="com.yosi.myapp.member.MemberVO">
-        SELECT userId, ,userName, userTel, birth, nickname, userEmail, suspendDate FROM member
+        SELECT userId, userName, userTel, birth, nickname, userEmail, suspendDate FROM member
         where userId=#{userId}
     </select>
     <!-- 관리자 페이지 회원 삭제 -->

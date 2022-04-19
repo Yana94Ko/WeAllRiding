@@ -30,6 +30,35 @@
 
 <!-- Custom styles for this page -->
 <link href="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
+<script>
+
+    //회원정보 가져오기
+    $(function() {
+
+        $(".mId").click(function(){
+            var userid = $(this).text();
+            console.log(userid)
+            $.ajax({
+                url:"/admin/adminMember2",
+                data :{
+                    userId:userid
+                }
+                ,success:function(result){
+                    $("#userId").val(result.userId);
+                    $("#userName").val(result.userName);
+                    $("#nickname").val(result.nickname);
+                    $("#userTel1").val(result.userTel1);
+                    $("#userTel2").val(result.userTel2);
+                    $("#userEmail").val(result.userEmail);
+                    $("#birth").val(result.birth);
+                    $("#suspendDate").val(result.suspendDate);
+                }
+            });
+        });
+    });
+</script>
 <main id="page-top">
 
     <!-- Page Wrapper -->
@@ -108,11 +137,11 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">회원 이용 메뉴</h6>
-                        <a class="collapse-item" href="${url}#">코스</a>
-                        <a class="collapse-item" href="${url}/register.html">라이딩</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">장비샵</a>
+                        <a class="collapse-item" href="${url}/recommendView">코스</a>
+                        <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
+                        <a class="collapse-item" href="${url}/shopView">장비샵</a>
                         <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
-                        <a class="collapse-item" href="${url}/forgot-password.html">이상형 월드컵</a>
+                        <a class="collapse-item" href="${url}/idealView">이상형 월드컵</a>
                         <div class="collapse-divider"></div>
                         <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
                         <%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
@@ -121,12 +150,7 @@
                 </div>
             </li>
 
-            <!-- 사이드 테이블 -->
-            <li class="nav-item active">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -325,7 +349,7 @@
                                         <tr>
                                             <td>${Lst.userName}</td>
                                             <td>${Lst.userEmail}</td>
-                                            <td><a data-toggle="modal" href="#memberDeleteModal" >${Lst.userId}</a></td>
+                                            <td><a data-toggle="modal" href="#memberDeleteModal" class="mId">${Lst.userId}</a></td>
                                             <td>${Lst.userPwd}</td>
                                             <td>${Lst.joinDate}</td>
                                         </tr>
@@ -394,39 +418,39 @@
                                             </div>
                                             <div class="modal-body">
                                                 <form name="form1" method="post" action="/admin/adminMemberEdit">
-                                                    <c:forEach var="av" begin="1" end="5" items="${memberList}">
+
                                                         <table id="userInfo${status.count}" border="1">
                                                             <tr>
                                                                 <td>아이디</td>
-                                                                <td><input name="userId" id="userId" value="${av.userId}" readonly="readonly"></td>
+                                                                <td><input name="userId" id="userId" value="" readonly="readonly"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>이름</td>
-                                                                <td><input name="userName" value="${av.userName}"></td>
+                                                                <th>이름</th>
+                                                                <td><input name="userName" id="userName" value="${av.userName}"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>닉네임</td>
-                                                                <td><input type="text" name="nickname" value="${av.nickname}"></td>
+                                                                <th>닉네임</th>
+                                                                <td><input type="text" id="nickname" name="nickname" value="${av.nickname}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>연락처</td>
-                                                                <td><input name="userTel1" value="${av.userTel1}" readonly="readonly"></td>
-                                                                <td><input name="userTel2" value="${av.userTel2}" readonly="readonly"></td>
+                                                                <td><input name="userTel1" id="userTel1" value="${av.userTel1}" readonly="readonly"></td>
+                                                                <td><input name="userTel2" id="userTel2" value="${av.userTel2}" readonly="readonly"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>이메일</td>
-                                                                <td><input type="text" name="userEmail" value="${av.userEmail}"></td>
+                                                                <td><input type="text" name="userEmail" id="userEmail" value="${av.userEmail}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>생년월일</td>
-                                                                <td><input type="date" name="birth" value="${av.birth}"></td>
+                                                                <td><input type="date" name="birth" id="birth" value="${av.birth}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>회원정지일</td>
-                                                                <td><input type="datetime-local" name="suspendDate" value="${av.suspendDate}"></td>
+                                                                <td><input type="datetime-local" id="suspend" name="suspendDate" value="${av.suspendDate}"></td>
                                                             </tr>
                                                         </table>
-                                                    </c:forEach>
+
                                                 </form>
                                             </div>
                                             <div class="modal-footer">

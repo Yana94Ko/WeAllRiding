@@ -107,11 +107,11 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">회원 이용 메뉴</h6>
-                    <a class="collapse-item" href="${url}#">코스</a>
-                    <a class="collapse-item" href="${url}/register.html">라이딩</a>
-                    <a class="collapse-item" href="${url}/admin/adminShop">장비샵</a>
+                    <a class="collapse-item" href="${url}/recommendView">코스</a>
+                    <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
+                    <a class="collapse-item" href="${url}/shopView">장비샵</a>
                     <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
-                    <a class="collapse-item" href="${url}/forgot-password.html">이상형 월드컵</a>
+                    <a class="collapse-item" href="${url}/idealView">이상형 월드컵</a>
                     <div class="collapse-divider"></div>
 <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
 <%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
@@ -292,11 +292,11 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <!-- Page Heading -->
+                <!-- 메인 페이지 통계 띄우기 -->
                 <h1 class="h3 mb-2 text-gray-800">통계</h1>
                 <p class="mb-4">회원 성별 통계와 이용자의 연령대 분포를 확인할 수 있습니다.</p>
 
-                <!-- DataTales Example -->
+                <!-- 통계 그래프 출력 -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">통계 그래프</h6>
