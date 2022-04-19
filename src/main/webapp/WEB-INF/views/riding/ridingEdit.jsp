@@ -57,9 +57,6 @@
          <h2 id="ridingViewTitle">키워드</h2>
          <li style="color: black;">${vo.ridingKeyword }</li><br>
          
-         <h2 id="ridingViewTitle">코스</h2>
-         <li style="height:400px; color:black;">코스가 나올 공간입니다.</li>
-         
          <li id="dateAll" style="color:black;">
          <h2 id="ridingViewTitle">일정</h2>
     	 <input type="date" name="startDate" id="startDate" value="${vo.startDate }" > - <input type="date" name="endDate" id="endDate" value="${vo.endDate }">

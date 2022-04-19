@@ -8,7 +8,7 @@
 		data-image-src="${url}/images/home/home_background5.png"></div>
 	<!-- 배경 이미지 -->
 	<div class="homeContent">
-		<div class="homeTitle">코스 만들기</div>
+		<div class="homeTitle">나만의 코스 만들기</div>
 		<!-- 페이지 타이틀 -->
 	</div>
 </div>

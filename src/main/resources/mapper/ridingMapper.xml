@@ -7,7 +7,7 @@
 	<select id="ridingList" resultType="RidingVO">
 		select ridingNo, nickname, ridingKeyword, ridingSubject, 
 		ridingContent, applyUser, courseLevel, maxUser , 
-		startDate, endDate, ridingHit, ridingWriteDate
+		startDate, endDate, ridingHit, ridingWriteDate, courseSendData
 		from ridingBoard
 		<if test='searchWord != null'>
 			where ${searchKey} like '%${searchWord}%'
@@ -54,7 +54,7 @@
 	<select id="ridingSelect" resultType="RidingVO">
 		select ridingNo, nickname, ridingSubject, ridingKeyword,
 		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate, 
-		courseLevel, maxUser, applyUser, ridingContent, ridingHit, ridingWriteDate 
+		courseLevel, maxUser, applyUser, ridingContent, ridingHit, ridingWriteDate, courseSendData
 		from ridingBoard where ridingNo=#{param1}
 	</select>
 	<update id="ridingUpdate">

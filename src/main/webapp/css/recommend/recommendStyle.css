@@ -18,7 +18,7 @@ div, h1,p, a, i {
 /* 카드 박스 부분 */
 .card {
 	height: 600px;
-	width: 48%;  /* 반응형디자인 못 할 경우 min-width로 크기 조절 */
+	width: 47%;  /* 반응형디자인 못 할 경우 min-width로 크기 조절 */
 	border-radius: 15px;
 	display: inline-block;
 	margin-top: 30px;

@@ -223,7 +223,6 @@ public class RidingController {
     public ModelAndView ridingView(int ridingNo) {
         ModelAndView mav = new ModelAndView();
         service.cntHit(ridingNo); // 조회수 증가
-        
         mav.addObject("vo", service.ridingSelect(ridingNo));
         mav.addObject("lst2", service.ridingMemberShow(ridingNo));
         mav.setViewName("riding/ridingView");
