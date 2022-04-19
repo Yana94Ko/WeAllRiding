@@ -5,12 +5,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import com.yosi.myapp.PagingVO;
+import com.yosi.myapp.RidingPagingVO;
 
 @Mapper
 @Repository
 public interface RidingDAO {
-	public List<RidingVO> ridingList(PagingVO pVO);
+	public List<RidingVO> ridingList(RidingPagingVO pVO);
 	public int ridingInsert(RidingVO vo); 
 	public RidingVO ridingSelect(int ridingNo);
 	public int ridingUpdate(RidingVO vo);
@@ -19,7 +19,7 @@ public interface RidingDAO {
 	public void cntHit (int ridingNo);
 
 	//총레코드수
-	public int totalRecord(PagingVO pVO);
+	public int totalRecord(RidingPagingVO pVO);
 	
 	public int ridingMemberInsert(RidingVO vo);
 	public int ridingMemberUpdate(RidingVO vo);
