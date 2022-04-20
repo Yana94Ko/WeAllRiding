@@ -73,7 +73,7 @@
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                     </div>
@@ -292,7 +292,7 @@
                 <div class="container-fluid">
                     <!-- 회원관리 설명 -->
                     <h1 class="h3 mb-2 text-gray-800">정비샵 관리</h1>
-                    <p class="mb-4">정비샵 관리 페이지입니다. 매장 정보를 수정 또는 삭제할 수 있고, 매장 정보를 조회할 수 있습니다.</p>
+                    <p class="mb-4">정비샵 관리 페이지입니다. 매장 정보를 조회, 삭제 할 수 있습니다.</p>
 
                     <!-- 데이터 테이블 -->
                     <div class="card shadow mb-4">
@@ -429,5 +429,5 @@
     <script src="${url}/css/admin/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
-    <script src="${url}js/admin/js/demo/datatables-demo.js"></script>
+    <script src="${url}/js/admin/js/demo/datatables-demo.js"></script>
 </main>

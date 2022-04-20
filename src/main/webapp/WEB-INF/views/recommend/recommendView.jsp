@@ -66,6 +66,8 @@
 							<p class="recCourse">${recommendVO.recLevel}</p>
 							<span id="ascent${st.index}"></span><span id="descent${st.index}"></span>
 						</div>
+						<a href="/adminRecommendEdit?recNo=${recommendVO.recNo}"><button
+								type="button" class="btn cardBodyButton">라이딩 수정</button></a>
 					</div>
 					<!--  카드 바디 푸터 -->
 					<div class="cardBodyFooter">
@@ -127,7 +129,5 @@
 			</c:if>
 		</ul>
 	</div>
-	<a href="${url}/adminRecommendWrite"><button type="button"
-			class="btn createRec">추천코스 생성</button></a>
 	<script type="text/javascript" src="${url}/js/recommend/recommendViewScript.js"></script>
 </main>

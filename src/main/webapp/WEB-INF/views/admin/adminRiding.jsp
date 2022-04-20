@@ -72,7 +72,7 @@
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                     </div>
@@ -317,7 +317,7 @@
                                         <th>최대인원</th>
                                         <th>시작일</th>
                                         <th>마감일</th>
-                                        <th>매너점수</th>
+                                        <th>조회수</th>
                                         <th>작성날짜</th>
                                     </tr>
                                     </thead>

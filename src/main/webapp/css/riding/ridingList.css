@@ -5,7 +5,7 @@ html, body, div, span, applet, object, iframes, h1, h2, h3, h4, h5, h6,
 	dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, u,
 	i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table,
 	caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
-	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+	details, embed, figure, figcaption, header, hgroup, menu, nav,
 	output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
@@ -17,7 +17,7 @@ html, body, div, span, applet, object, iframes, h1, h2, h3, h4, h5, h6,
 li {
 	color: black;
 }
-article, aside, details, figcaption, figure, footer, header, hgroup,
+article, aside, details, figcaption, figure, header, hgroup,
 	menu, nav, section {
 	display: block;
 }
@@ -104,7 +104,7 @@ h1 {
 	height: 180px;
 	margin: 5px 20px;
 } */
-
+@
 /* .card:hover .card-body-description {
     opacity: 1;
     -webkit-transition: .5s ease-in-out;
@@ -432,3 +432,4 @@ h1 {
 .btn-1 {
   background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
 }
+

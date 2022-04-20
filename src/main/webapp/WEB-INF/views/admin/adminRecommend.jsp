@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<link rel = "stylesheet" href="/css/admin/adminComty.css" type="text/css"/>
-
-
+<link rel = "stylesheet" href="/css/admin/adminMain.css" type="text/css"/>
+<link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
+<link rel="icon" href="${url}/images/icon.png" type="image/x-icon">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- 탭메뉴 바꾸기 -->
@@ -36,7 +36,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/adminMain">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -73,7 +73,7 @@
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                     </div>
@@ -95,29 +95,28 @@
                 회원 전용
             </div>
 
-            <!-- 회원 전용 메뉴 -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                   aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>회원 메뉴 보기</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">회원 이용 메뉴</h6>
-                        <a class="collapse-item" href="${url}/recommendView">코스</a>
-                        <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
-                        <a class="collapse-item" href="${url}/shopView">장비샵</a>
-                        <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
-                        <a class="collapse-item" href="${url}/idealView">이상형 월드컵</a>
-                        <div class="collapse-divider"></div>
-                        <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
-                        <%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
-                        <%--                    <a class="collapse-item" href="blank.html">Blank Page</a>--%>
-                    </div>
-                </div>
-            </li>
-
+                    <!-- 회원 전용 메뉴 -->
+			        <li class="nav-item">
+			            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+			               aria-expanded="true" aria-controls="collapsePages">
+			                <i class="fas fa-fw fa-folder"></i>
+			                <span>회원 메뉴 보기</span>
+			            </a>
+			            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+			                <div class="bg-white py-2 collapse-inner rounded">
+			                    <h6 class="collapse-header">회원 이용 메뉴</h6>
+			                    <a class="collapse-item" href="${url}/courseCreate">코스</a>
+			                    <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
+			                    <a class="collapse-item" href="${url}/shopView">장비샵</a>
+			                    <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
+			                    <a class="collapse-item" href="${url}/idealView">이상형 월드컵</a>
+			                    <div class="collapse-divider"></div>
+			<%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
+			<%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
+			<%--                    <a class="collapse-item" href="blank.html">Blank Page</a>--%>
+			                </div>
+			            </div>
+			        </li>
 
 
             <!-- Divider -->
@@ -291,45 +290,90 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <!-- 회원관리 설명 -->
+                    <h1 class="h3 mb-2 text-gray-800">추천 코스 관리</h1>
+                    <p class="mb-4">추천코스 관리 페이지입니다. 추천 코스를 생성, 수정, 삭제 할 수 있습니다.</p>
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                                                                                   href="https://datatables.net">official DataTables documentation</a>.</p>
-
-                    <!-- DataTales Example -->
+                    <!-- 데이터 테이블 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">추천 코스 목록</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>아이디</th>
-                                        <th>비밀번호</th>
-                                        <th>회원가입일</th>
+                                        <th>번호</th>
+                                        <th>제목</th>
+                                        <th>출발지</th>
+                                        <th>도착지</th>
+                                        <th>작성일</th>
                                     </tr>
                                     </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>아이디</th>
-                                        <th>비밀번호</th>
-                                        <th>회원가입일</th>
-                                    </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    <tr>
-                                        <td></td>
-                                    </tr>
-                                    </tbody>
+                                    <c:forEach var="recommendVO" items="${list}" varStatus="st">
+                                        <tr>
+                                            <td>${recommendVO.recNo}</td>
+                                            <td>${recommendVO.recTitle}</td>
+                                            <td><span id="startPoint${st.index}"></span></td>
+                                            <td><span id="endPoint${st.index}"></span></td>
+                                            <td>${recommendVO.recWritedate}</td>
+                                            <%-- <th><button class="btn btn-danger" style="height:40px;" type="button" onclick="location.href='/admin/shopDelete?shopId=${shopPVO.shopId}';">삭제</button></th> --%>
+                                        </tr>
+                                    </c:forEach>
                                 </table>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                        	<c:if test="${rPVO.pageNum==1}">
+												<a class="page-link" aria-label="Previous">
+                                                	<span aria-hidden="true">&laquo;</span>
+                                            	</a>
+											</c:if>
+                                        	<c:if test="${rPVO.pageNum>1}">
+												<li>
+													<a class="page-link" aria-label="Previous" href="${url}/admin/adminShop?pageNum=${rPVO.pageNum-1}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
+														<span aria-hidden="true">&laquo;</span>
+													</a>
+												</li>
+											</c:if>
+                                        </li>
+                                        <!--  페이지 번호                 1,5      6,10         11,15-->
+										<c:forEach var="p" begin="${rPVO.startPage}"
+											end="${rPVO.startPage+rPVO.onePageCount-1}">
+											<!--  총 페이지수보다 출력할 페이지번호가 작을때 -->
+											<c:if test="${p <= rPVO.totalPage}">
+												<c:if test="${p == rPVO.pageNum}">
+												<li class="page-item">
+												</c:if>
+												<c:if test="${p != rPVO.pageNum}">
+													<li class="page-item">
+												</c:if>
+												<a class="page-link" href="${url}/admin/adminRecommend?pageNum=${p}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
+													${p}
+												</a>
+												</li>
+											</c:if>
+										</c:forEach>
+										<c:if test="${rPVO.pageNum==rPVO.totalPage}">
+											<li class="page-item">
+												<a class="page-link" aria-label="Next">
+													<span aria-hidden="true">&raquo;</span>
+												</a>
+											</li>
+										</c:if>
+										<c:if test="${rPVO.pageNum<rPVO.totalPage}">
+											<li class="page-item">
+												<a class="page-link" aria-label="Next" href="${url}/admin/adminShop?pageNum=${rPVO.pageNum+1}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
+													<span aria-hidden="true">&raquo;</span>
+												</a>
+											</li>
+										</c:if>
+                                    </ul>
+                                    <a href="${url}/admin/adminRecommendWrite">
+                                    	<button type="button" class="btn btn-primary">추천코스 생성</button>
+									</a>		
+                                </nav>
                             </div>
                         </div>
                     </div>
@@ -387,9 +431,7 @@
 
     <!-- Page level plugins -->
     <script src="${url}/css/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="${url}css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
+    <script src="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
-    <script src="${url}js/admin/js/demo/datatables-demo.js"></script>
-
+    <script src="${url}/js/admin/js/demo/datatables-demo.js"></script>
 </main>
