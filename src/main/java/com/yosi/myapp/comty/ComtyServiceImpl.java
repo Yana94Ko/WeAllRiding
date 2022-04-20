@@ -45,4 +45,9 @@ public class ComtyServiceImpl implements ComtyService {
 		return dao.comtyList();
 	}
 
+	//관리자 페이지 커뮤니티 글 삭제
+	@Override
+	public int adminComtyDelete(int comtyNO) { return dao.adminComtyDelete(comtyNO); }
+
+
 }

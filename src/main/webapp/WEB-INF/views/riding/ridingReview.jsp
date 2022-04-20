@@ -95,8 +95,8 @@
 				<c:forEach var="vo" items="${lst2 }">
 					<div id="reviewTextImg">
 						<input type="text" value="${vo.nickname }" id="reviewListText" readonly/>
-						<img src="../../images/웃는이모티콘.png" class="reviewImg1">
-						<img src="../../images/우는이모티콘.png" class="reviewImg2">
+						<img src="../../images/smile.png" class="reviewImg1">
+						<img src="../../images/sad.png" class="reviewImg2">
 					</div>
 				</c:forEach>		
 			</ul>

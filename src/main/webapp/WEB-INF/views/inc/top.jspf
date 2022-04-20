@@ -30,26 +30,30 @@
 <body>
 <header>
 	<div class='top'>
-		<c:if test="${logStatus !='Y'}">
-			<div id="login">
-				<a href ="${url}/member/loginForm"><i class="fas fa-sign-in-alt"></i>  로그인</a>
-			</div>
-		</c:if>
-		<c:if test="${logStatus =='Y'}">
-			<div id="login">
-				<a href ="${url}/member/memberEdit">
-					<i class="fas fa-user"></i>  ${nickName} 님
-				</a>
-			</div>
-			<div id="logout">
-				<a href ="${url}/member/logout"><i class="fas fa-sign-out-alt"></i>  로그아웃</a>
-			</div>
-		</c:if>
-		<div id="admin">
+		<div class="logContainer">
 			<c:if test="${userId == 'adminTM'}">
-				<a href="${url}/admin/adminMain"><i class="fas fa-tools"></i>  관리자 메뉴</a>
+				<div id="admin">
+					<a href="${url}/admin/adminMain"><i class="fas fa-tools"></i><span>관리자 메뉴</span></a>
+				</div>
+			</c:if>
+			<c:if test="${logStatus =='Y'}">
+				<div id="login">
+					<a href ="${url}/member/memberEdit">
+						<i class="fas fa-user"></i>  ${nickName} 님
+					</a>
+				</div>
+				<div id="logout">
+					<a href ="${url}/member/logout"><i class="fas fa-sign-out-alt"></i><span>로그아웃</span></a>
+				</div>
+			</c:if>
+			<c:if test="${logStatus !='Y'}">
+				<div id="login">
+					<a href ="${url}/member/loginForm"><i class="fas fa-sign-in-alt"></i><span>로그인</span></a>
+				</div>
 			</c:if>
 		</div>
+		
+			
 	</div>
 	<nav class='navBar'>
 		<div class='logo'>

@@ -5,10 +5,14 @@ $(window).on('scroll', function() {
 		$('.top').addClass('active');
 		$('.navBar').addClass('active');
 		$('#app').addClass('active');
+		$('.mainMenu').addClass('active');
+		
 	} else {
 		$('.top').removeClass('active');
 		$('.navBar').removeClass('active');
 		$('#app').removeClass('active');
+		$('.mainMenu').removeClass('active');
+		
 	}
 });
 

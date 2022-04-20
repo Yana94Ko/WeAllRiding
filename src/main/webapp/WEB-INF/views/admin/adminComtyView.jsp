@@ -257,7 +257,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">운영자</span>
                                 <img class="img-profile rounded-circle"
                                      src="${url}/css/admin/img/undraw_profile.svg">
                             </a>
@@ -293,42 +293,37 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                                                                                   href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <h1 class="h3 mb-2 text-gray-800">커뮤니티 관리</h1>
+                    <p class="mb-4">커뮤니티를 확인하고 삭제할 수 있습니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">커뮤니티 글 상세보기</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
                                     <tr>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>아이디</th>
-                                        <th>비밀번호</th>
-                                        <th>회원가입일</th>
+                                        <th style="width: 90px;">제목</th>
+                                        <td>${vo.comtySubject}</td>
                                     </tr>
-                                    </thead>
-                                    <tfoot>
                                     <tr>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>아이디</th>
-                                        <th>비밀번호</th>
-                                        <th>회원가입일</th>
+                                        <th>작성자</th>
+                                        <td>${vo.nickname}</td>
                                     </tr>
-                                    </tfoot>
-                                    <tbody>
                                     <tr>
-                                        <td></td>
+                                        <th>번호</th>
+                                        <td>${vo.comtyNo}</td>
                                     </tr>
-                                    </tbody>
+                                    <tr>
+                                        <th>글 내용</th>
+                                        <td>${vo.comtyContent}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>옵션</th>
+                                        <td><button class="btn btn-danger" style="height: 60px; width: 600px; position: relative; left: 150px; font-size: 1.1em" type="button" onclick="location.href='/admin/adminComtyDelete?comtyNo=${vo.comtyNo}';" >삭제</button> </td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>

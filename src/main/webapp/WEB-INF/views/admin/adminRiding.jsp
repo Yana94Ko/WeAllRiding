@@ -72,7 +72,7 @@
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                     </div>
@@ -292,33 +292,31 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                                                                                   href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <h1 class="h3 mb-2 text-gray-800">라이딩 리스트</h1>
+                    <p class="mb-4">라이딩 리스트를 확인하고 삭제할 수 있습니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">라이딩 리스트 목록</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>라이딩 번호</th>
-                                        <th>닉네임</th>
-                                        <th>키워드</th>
-                                        <th>주제</th>
-                                        <th>콘텐츠</th>
-                                        <th>참여 유저</th>
-                                        <th>코스 레벨</th>
-                                        <th>최대인원</th>
-                                        <th>시작일</th>
-                                        <th>마감일</th>
-                                        <th>매너점수</th>
-                                        <th>작성날짜</th>
+                                        <th style="width: 130px">라이딩 번호</th>
+                                        <th style="width: 130px">닉네임</th>
+                                        <th style="width: 130px">키워드</th>
+                                        <th style="width: 130px">주제</th>
+                                        <th style="width: 130px">콘텐츠</th>
+                                        <th style="width: 130px">참여 유저</th>
+                                        <th style="width: 130px">코스 레벨</th>
+                                        <th style="width: 130px">최대인원</th>
+                                        <th style="width: 130px">시작일</th>
+                                        <th style="width: 130px">마감일</th>
+                                        <th style="width: 130px">조회수</th>
+                                        <th style="width: 130px">작성날짜</th>
                                     </tr>
                                     </thead>
                                     <c:forEach var="rLst" items="${ridingList}">

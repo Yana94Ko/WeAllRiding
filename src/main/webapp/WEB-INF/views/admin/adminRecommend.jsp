@@ -291,13 +291,13 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- 회원관리 설명 -->
-                    <h1 class="h3 mb-2 text-gray-800">정비샵 관리</h1>
-                    <p class="mb-4">정비샵 관리 페이지입니다. 매장 정보를 조회, 삭제 할 수 있습니다.</p>
+                    <h1 class="h3 mb-2 text-gray-800">추천 코스 관리</h1>
+                    <p class="mb-4">추천코스 관리 페이지입니다. 추천 코스를 생성, 수정, 삭제 할 수 있습니다.</p>
 
                     <!-- 데이터 테이블 -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">정비샵 목록</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">추천 코스 목록</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -305,70 +305,74 @@
                                     <thead>
                                     <tr>
                                         <th>번호</th>
-                                        <th>매장명</th>
-                                        <th>매장정보</th>
-                                        <th>작성자</th>
-                                        <th>옵션</th>
+                                        <th>제목</th>
+                                        <th>출발지</th>
+                                        <th>도착지</th>
+                                        <th>작성일</th>
                                     </tr>
                                     </thead>
-                                    <c:forEach var="shopPVO" items="${list}">
+                                    <c:forEach var="recommendVO" items="${list}" varStatus="st">
                                         <tr>
-                                            <td>${shopPVO.shopNo+1}</td>
-                                            <td>${shopPVO.shopName}</td><!-- 매장명 db 컬럼 추가 필요  -->
-                                            <td>${shopPVO.shopInfo}</td>
-                                            <td>${shopPVO.shopAuthors}</td>
-                                            <th><button class="btn btn-danger" style="height:40px;" type="button" onclick="location.href='/admin/shopDelete?shopId=${shopPVO.shopId}';">삭제</button></th>
+                                            <td>${recommendVO.recNo}</td>
+                                            <td>${recommendVO.recTitle}</td>
+                                            <td><span id="startPoint${st.index}"></span></td>
+                                            <td><span id="endPoint${st.index}"></span></td>
+                                            <td>${recommendVO.recWritedate}</td>
+                                            <%-- <th><button class="btn btn-danger" style="height:40px;" type="button" onclick="location.href='/admin/shopDelete?shopId=${shopPVO.shopId}';">삭제</button></th> --%>
                                         </tr>
                                     </c:forEach>
                                 </table>
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination">
                                         <li class="page-item">
-                                        	<c:if test="${sPVO.pageNum==1}">
+                                        	<c:if test="${rPVO.pageNum==1}">
 												<a class="page-link" aria-label="Previous">
                                                 	<span aria-hidden="true">&laquo;</span>
                                             	</a>
 											</c:if>
-                                        	<c:if test="${sPVO.pageNum>1}">
+                                        	<c:if test="${rPVO.pageNum>1}">
 												<li>
-													<a class="page-link" aria-label="Previous" href="${url}/admin/adminShop?pageNum=${sPVO.pageNum-1}<c:if test='${sPVO.searchWord != null}'>&searchKey=${sPVO.searchKey }&searchWord=${sPVO.searchWord }</c:if>">
+													<a class="page-link" aria-label="Previous" href="${url}/admin/adminShop?pageNum=${rPVO.pageNum-1}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
 														<span aria-hidden="true">&laquo;</span>
 													</a>
 												</li>
 											</c:if>
                                         </li>
                                         <!--  페이지 번호                 1,5      6,10         11,15-->
-										<c:forEach var="p" begin="${sPVO.startPage}"
-											end="${sPVO.startPage+sPVO.onePageCount-1}">
+										<c:forEach var="p" begin="${rPVO.startPage}"
+											end="${rPVO.startPage+rPVO.onePageCount-1}">
 											<!--  총 페이지수보다 출력할 페이지번호가 작을때 -->
-											<c:if test="${p <= sPVO.totalPage}">
-												<c:if test="${p == sPVO.pageNum}">
+											<c:if test="${p <= rPVO.totalPage}">
+												<c:if test="${p == rPVO.pageNum}">
 												<li class="page-item">
 												</c:if>
-												<c:if test="${p != sPVO.pageNum}">
+												<c:if test="${p != rPVO.pageNum}">
 													<li class="page-item">
 												</c:if>
-												<a class="page-link" href="${url}/admin/adminShop?pageNum=${p}<c:if test='${sPVO.searchWord != null}'>&searchKey=${sPVO.searchKey }&searchWord=${sPVO.searchWord }</c:if>">
+												<a class="page-link" href="${url}/admin/adminRecommend?pageNum=${p}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
 													${p}
 												</a>
 												</li>
 											</c:if>
 										</c:forEach>
-										<c:if test="${sPVO.pageNum==sPVO.totalPage}">
+										<c:if test="${rPVO.pageNum==rPVO.totalPage}">
 											<li class="page-item">
 												<a class="page-link" aria-label="Next">
 													<span aria-hidden="true">&raquo;</span>
 												</a>
 											</li>
 										</c:if>
-										<c:if test="${sPVO.pageNum<sPVO.totalPage}">
+										<c:if test="${rPVO.pageNum<rPVO.totalPage}">
 											<li class="page-item">
-												<a class="page-link" aria-label="Next" href="${url}/admin/adminShop?pageNum=${sPVO.pageNum+1}<c:if test='${sPVO.searchWord != null}'>&searchKey=${sPVO.searchKey }&searchWord=${sPVO.searchWord }</c:if>">
+												<a class="page-link" aria-label="Next" href="${url}/admin/adminShop?pageNum=${rPVO.pageNum+1}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
 													<span aria-hidden="true">&raquo;</span>
 												</a>
 											</li>
 										</c:if>
                                     </ul>
+                                    <a href="${url}/admin/adminRecommendWrite">
+                                    	<button type="button" class="btn btn-primary">추천코스 생성</button>
+									</a>		
                                 </nav>
                             </div>
                         </div>

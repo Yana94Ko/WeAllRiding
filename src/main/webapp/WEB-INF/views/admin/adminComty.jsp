@@ -73,7 +73,7 @@
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                     </div>
@@ -293,38 +293,90 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                                                                                   href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <h1 class="h3 mb-2 text-gray-800">커뮤니티 관리</h1>
+                    <p class="mb-4">
+                        커뮤니티를 확인하고 삭제할 수 있습니다.<br/>
+                        제목을 클릭하여 글 내용을 확인할 수 있습니다.
+                    </p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">커뮤니티 글 목록</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <th>아이디</th>
-                                        <th>비밀번호</th>
-                                        <th>회원가입일</th>
+                                        <th>번호</th>
+                                        <th>제목</th>
+                                        <th>글쓴이</th>
+                                        <th>조회수</th>
+                                        <th>등록일</th>
+                                        <th>옵션</th>
                                     </tr>
                                     </thead>
                                     <c:forEach var="vo" items="${lst }">
                                         <tr>
                                             <td>${vo.comtyNo }</td>
-                                            <td>${vo.comtySubject }</td>
+                                            <td><a href="/admin/adminComtyView?comtyNo=${vo.comtyNo}">${vo.comtySubject }</a></td>
                                             <td>${vo.nickname }</td>
                                             <td>${vo.comtyHit }</td>
                                             <td id="comtyWD">${vo.comtyWriteDate }</td>
+                                            <td><button class="btn btn-danger" style="height: 40px;" type="button" onclick="location.href='/admin/adminComtyDelete?comtyNo=${vo.comtyNo}';" >삭제</button> </td>
                                         </tr>
                                     </c:forEach>
                                 </table>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <c:if test="${pVO.pageNum==1}">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                            </c:if>
+                                            <c:if test="${pVO.pageNum>1}">
+                                        <li>
+                                            <a class="page-link" aria-label="Previous" href="${url}/admin/adminComty?pageNum=${pVO.pageNum-1}<c:if test='${pVO.searchWord != null}'>&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        </c:if>
+                                        </li>
+                                        <!--  페이지 번호                 1,5      6,10         11,15-->
+                                        <c:forEach var="p" begin="${pVO.startPage}"
+                                                   end="${pVO.startPage+pVO.onePageCount-1}">
+                                            <!--  총 페이지수보다 출력할 페이지번호가 작을때 -->
+                                            <c:if test="${p <= pVO.totalPage}">
+                                                <c:if test="${p == pVO.pageNum}">
+                                                    <li class="page-item">
+                                                </c:if>
+                                                <c:if test="${p != pVO.pageNum}">
+                                                    <li class="page-item">
+                                                </c:if>
+                                                <a class="page-link" href="${url}/admin/adminComty?pageNum=${p}<c:if test='${pVO.searchWord != null}'>&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>">
+                                                        ${p}
+                                                </a>
+                                                </li>
+                                            </c:if>
+                                        </c:forEach>
+                                        <c:if test="${pVO.pageNum==pVO.totalPage}">
+                                            <li class="page-item">
+                                                <a class="page-link" aria-label="Next" href="#">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </c:if>
+                                        <c:if test="${pVO.pageNum<pVO.totalPage}">
+                                            <li class="page-item">
+                                                <a class="page-link" aria-label="Next" href="${url}/admin/adminComty?pageNum=${pVO.pageNum+1}<c:if test='${pVO.searchWord != null}'>&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>">
+                                                    <span aria-hidden="true">&raquo;</span>
+                                                </a>
+                                            </li>
+                                        </c:if>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>

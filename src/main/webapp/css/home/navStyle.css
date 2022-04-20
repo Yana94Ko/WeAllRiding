@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+/* @import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700"); */
 :root {
   --animation-time: 300ms;
   --app-font-family: Montserrat, sans-serif;
@@ -25,35 +25,38 @@
 /*   --cpc-sub-menu-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5); */
 }
 
-html, body, #app {
+html, body{
   font-size: 20px;
   height:100%;
 }
 
+
 #app {
-  width: 90%;
+  width: 100%;
+  height:auto;
   display: flex;
+  left: 0vw;
   align-items: center;
   justify-content: center;
   font-family: var(--app-font-family);
   background-image: var(--app-background-image);
-  padding: 2rem;
   overflow: visible;
   box-sizing: border-box;
   float:right;
-	padding-top:30px;
-	height:100%; 
-	transition-property: padding-top;
-	transition-duration:0.5s;
-	transition-timing-function:ease-in-out;
+  margin:4vh 0;
+transition-property: margin;
+transition-duration:0.5s;
+transition-timing-function:ease-in-out;
 }
 
 #app.active{
-	padding-top:-80px;
+margin:4vh 0;
 }
 
 .cpc-menu {
-  width: 1200px;
+  width: 100%;
+  height: 100%;
+  position: relative;
   background-color: var(--cpc-menu-background-color);
   padding: var(--cpc-menu-padding);
   margin: auto;
@@ -68,7 +71,7 @@ html, body, #app {
   list-style-type: none;
 }
 .cpc-main > li, .cpc-sub > li {
-  width: 100%;
+  flex-grow: 1;
 }
 .cpc-main > li > a, .cpc-sub > li > a {
   color: var(--cpc-menu-links-color);
@@ -76,6 +79,8 @@ html, body, #app {
   text-align: center;
   text-decoration: none;
   width: 100%;
+  font-size: 2vh;
+  line-height: 3vh;
   padding: var(--cpc-menu-links-padding);
   display: flex;
   justify-content: space-between;
@@ -89,6 +94,8 @@ html, body, #app {
 }
 
 .cpc-main {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,7 +148,7 @@ html, body, #app {
     transform: var(--cpc-caret-transform);
   }
 }
-@media (min-width: 576px) {
+@media (min-width: 600px) {
 
 
   .cpc-main {
@@ -157,7 +164,8 @@ html, body, #app {
     background-color: var(--cpc-sub-menu-background-color);
     padding: var(--cpc-sub-menu-padding);
     position: absolute;
-    top: 120%;
+    /* top: 120%; */
+    top:7vh;
     border-radius: var(--cpc-sub-menu-border-radius);
     box-shadow: var(--cpc-sub-menu-box-shadow);
   }

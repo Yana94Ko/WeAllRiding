@@ -49,27 +49,25 @@
 							<p class="recContent">${recommendVO.recDescription}</p>
 						</div>
 						<div class="recDiv recCourse">
-							<span>경유지 정보 : </span><span id="startPoint"></span>&nbsp;-&nbsp;<span
-					id="waypoint"></span><span id="endPoint"></span>
+							<span>출발/도착지 <br/>출발 - </span><span id="startPoint${st.index}"></span><br/>도착&nbsp;-&nbsp;<span
+					id="waypoint"></span><span id="endPoint${st.index}"></span>
 							<p class="recContent"></p>
 						</div>
 						<div class="recDiv recDistance">
-							<span id="distance"></span>
+							<span id="distance${st.index}"></span>
 							<div class="recCourse"></div>
 						</div>
 						<div class="recDiv recTime">
-							<span id="duration"></span>
+							<span id="duration${st.index}"></span>
 							<p class="recCourse"></p>
 						</div>
 						<div class="recDiv recLevel">
 							<span class="recTitle">난이도</span>
 							<p class="recCourse">${recommendVO.recLevel}</p>
-							<span id="ascent"></span><span id="descent"></span>
+							<span id="ascent${st.index}"></span><span id="descent${st.index}"></span>
 						</div>
 						<a href="/adminRecommendEdit?recNo=${recommendVO.recNo}"><button
-								type="button" class="btn cardBodyButton">라이딩 수정</button></a> <a
-							href="/recommendDelete?recNo=${recommendVO.recNo}"><button
-								type="button" class="btn cardBodyButton">라이딩 삭제</button></a>
+								type="button" class="btn cardBodyButton">라이딩 수정</button></a>
 					</div>
 					<!--  카드 바디 푸터 -->
 					<div class="cardBodyFooter">
@@ -82,7 +80,7 @@
 						<div class="footerRight">
 							<form  id="recommendSendDataFrm${st.index}" method="post" action="/riding/ridingWrite">
 								<textarea style="display:none" name="CourseSendData" id="recommendSendData${st.index}">${recommendVO.recommendSendData}</textarea>
-								<button type="button" onclick="document.getElementById('recommendSendDataFrm${st.index}').submit();" class="btn cardBodyButton">라이딩 개설</button>
+								<button style="width: 250px;height:60px;" type="button" onclick="document.getElementById('recommendSendDataFrm${st.index}').submit();" class="btn cardBodyButton">라이딩 개설</button>
 							</form>
 						</div>
 
@@ -131,7 +129,5 @@
 			</c:if>
 		</ul>
 	</div>
-	<a href="${url}/adminRecommendWrite"><button type="button"
-			class="btn createRec">추천코스 생성</button></a>
 	<script type="text/javascript" src="${url}/js/recommend/recommendViewScript.js"></script>
 </main>

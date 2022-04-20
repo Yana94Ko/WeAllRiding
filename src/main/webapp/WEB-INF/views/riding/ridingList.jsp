@@ -3,6 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>
+<script>
+	$(function() {
+		$("#searchFrm").submit(function() {
+			if ($("#searchWord").val() == "") {
+				alert("검색어를 입력하세요");
+				return false;
+			}
+		});
+	});
+</script>
+
 <!-- parallax START -->
 <div class="home">
 	<div class="homeBackground parallaxWindow" data-parallax="scroll"
@@ -56,6 +67,63 @@
 				<button id="ridingwriteBtn" onclick="location.href='/riding/ridingWrite' ">글 작성하기</button>
 			</div>
 		</c:if>
-	</div>
+		<br>
+		<!-- 페이징 -->
+		<ul class="paging">
+			<!--  이전페이지 -->
+			<c:if test="${pVO.pageNum==1}">
+				<li>prev</li>
+			</c:if>
+			<c:if test="${pVO.pageNum>1}">
+				<li><a
+					href="/riding/ridingList?pageNum=${pVO.pageNum-1}
+					<c:if test='${pVO.searchWord != null}'>
+						&searchKey=${pVO.searchKey }
+						&searchWord=${pVO.searchWord }</c:if>">prev&nbsp;&nbsp;</a></li>
+			</c:if>
+			<!--  페이지 번호                 1,5      6,10         11,15-->
+			<c:forEach var="p" begin="${pVO.startPage}"
+				end="${pVO.startPage+pVO.onePageCount-1}">
+				<!--  총 페이지수보다 출력할 페이지번호가 작을때 -->
+				<c:if test="${p <= pVO.totalPage}">
+					<c:if test="${p == pVO.pageNum}">
+						<li
+							style="background-color: lightgray; height: 25px; border-radius: 6px;">
+					</c:if>
+					<c:if test="${p != pVO.pageNum}">
+						<li>
+					</c:if>
+					<a
+						href="/riding/ridingList?pageNum=${p}
+						<c:if test='${pVO.searchWord != null}'>
+							&searchKey=${pVO.searchKey }
+							&searchWord=${pVO.searchWord }
+						</c:if>">
+					${p}</a></li>
+					</c:if>
+			</c:forEach>
+			<c:if test="${pVO.pageNum==pVO.totalPage}">
+				<li>next</li>
+			</c:if>
+			<c:if test="${pVO.pageNum<pVO.totalPage}">
+				<li><a
+					href="/riding/ridingList?pageNum=${pVO.pageNum+1}
+					<c:if test='${pVO.searchWord != null}'>
+						&searchKey=${pVO.searchKey }
+						&searchWord=${pVO.searchWord }</c:if>">&nbsp;&nbsp;next</a></li>
+			</c:if>
+		</ul>
+		<!-- 검색 -->
+		<div>
+			<form method="get" action="/riding/ridingList" id="searchFrm">
+				<select name="searchKey" id="searchKey">
+					<option value="ridingSubject">제목</option>
+					<option value="ridingContent">글내용</option>
+					<option value="nickname">글쓴이</option>
+				</select> <input type="text" name="searchWord" id="searchWord">
+				<button id="searchBtn">검색</button>
+			</form>
+		</div>
+	</div>	
 	<script type="text/javascript" src="${url}/js/riding/ridingList.js"></script>
 </main>

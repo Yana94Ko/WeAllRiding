@@ -5,7 +5,7 @@
 <main>
     <section class="loginForm">
         <div id="log">
-            <h1>로그인</h1>
+            <h1>Login</h1>
             <form method="post" action="/member/loginOk" id="logFrm">
                 <div class="input-area">
                     <input type="text" name="userId" id="userId" required/>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="bottom-menu">
                     <a href ="${url}/member/memberFind">아이디/비밀번호 찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <a href ="${url}/member/memberForm">회원가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href ="${url}/member/memberForm">회원가입 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </form>
         </div>

@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <footer>
-	<div class='logo'>
-		<a href="${url}/">
-			<img src="${url}/images/logo.png"/>
-		</a>
-	</div>
-	<div class="content">
-		<div class="text">
-			<span>Contact : WeAllRiding1@gmail.com</span>
-			<span>Copyright 2022. WeAllRiding All Rights reserved. </span>
+	<div class="footerContainer">
+		<div class='footerLogo'>
+			<a href="${url}/">
+				<img src="${url}/images/logo.png"/>
+			</a>
 		</div>
-		
+		<div class="footerContent">
+			<div class="footerText">
+				<p>Contact : WeAllRiding1@gmail.com</p>
+				<p>Copyright 2022. WeAllRiding All Rights reserved. </p>
+			</div>
+			
+		</div>
 	</div>
+	
 </footer>
 </body>
 </html>
