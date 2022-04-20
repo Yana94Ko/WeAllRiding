@@ -81,7 +81,7 @@ let ridingKeyword = document.getElementById("ridingKeyword").values;
 						
 					// 	 'goguma'== goguma
 					if (vo.nickname == '${nickName}') {
-						tag += "<input type='button' value='삭제' id='ridingReplyListDel' title='"+vo.ridingReplyNo+"' onclick='ridingReplyListDel()' />";
+						tag += "<input type='button' value='삭제' title='"+vo.ridingReplyNo+"'/>";
 						tag += "<input type='button' value='수정' id='ridingReplyListEdit'/>";
 					}
 					tag += "<br/><div>" + vo.ridingReplyComent + "</div>";

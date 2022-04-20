@@ -42,7 +42,26 @@
 		if (confirm('승낙하시겠습니까? \n 승낙 후 취소는 어려우니 신중히 생각해주세요.')){
 			location.href = "/riding/ridingStateOk?ridingNo=${vo.ridingNo}";
 		}
-	}	
+	}
+    function SetDefaultValue() {
+        const courseLevel = ${vo.courseLevel};
+        const maxUser = ${vo.maxUser};
+        const cl = document.getElementById("courseLevelsel");
+        const mu = document.getElementById("maxUsersel");
+        for(let i=0;i<cl.options.length;i++){
+            if(cl.options[i].value==courseLevel){
+                cl.options[i].selected = true;
+            }
+        }
+        for(let i=0;i<mu.options.length;i++) {
+            if (mu.options[i].value == maxUser) {
+                mu.options[i].selected = true;
+            }
+        }
+    }
+    document.addEventListener("DOMContentLoaded", function(){
+       SetDefaultValue();
+    });
 </script>
 <main>
 <div class="ridingViewContainer">
@@ -75,7 +94,7 @@
          <br><br><br><br>
          <li id=courseLevel style="color:black">
          <h2>난이도</h2>
-         <select id="courseLevelsel" name="courseLevel" class="courseLevelsel" value="${vo.courseLevel }">
+         <select id="courseLevelsel" name="courseLevel" class="courseLevelsel" >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
