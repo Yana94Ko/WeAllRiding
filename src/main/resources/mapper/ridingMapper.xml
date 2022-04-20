@@ -24,20 +24,23 @@
 	
 	<!-- myRiding -->
 	<select id="myRidingJoinList" resultType="RidingVO">
-		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit, A.startDate, A.endDate 
+		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit, 
+		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate
 		FROM ridingBoard A
 		INNER JOIN ridingMember B
 		ON A.ridingNo = B.ridingNo WHERE B.nickname=#{nickname};
 	</select>
 	<select id="myRidingEndList" resultType="RidingVO">
-		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit, A.startDate, A.endDate 
+		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit,
+		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate
 		FROM ridingBoard A
 		INNER JOIN ridingMember B
 		ON A.ridingNo = B.ridingNo WHERE (B.nickname=#{nickname} and now() > A.endDate) or 
 		(A.nickname=#{nickname} and now() > A.endDate);
 	</select>
 	<select id="myRidingMadeList" resultType="RidingVO">
-		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit, A.startDate, A.endDate 
+		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit,
+		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate
 		FROM ridingBoard A
 		INNER JOIN ridingMember B
 		ON B.nickname=A.nickname WHERE B.nickname=#{nickname};

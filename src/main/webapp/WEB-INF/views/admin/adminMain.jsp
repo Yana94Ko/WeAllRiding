@@ -38,7 +38,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/adminMain">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -76,7 +76,7 @@
                     <h6 class="collapse-header">관리자 메뉴</h6>
                     <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
                     <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
-                    <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
+                    <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로 관리</a>
                     <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                     <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                 </div>
@@ -108,7 +108,7 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">회원 이용 메뉴</h6>
-                    <a class="collapse-item" href="${url}/courseCreate">코스</a>
+                    <a class="collapse-item" href="${url}/recommendView">코스</a>
                     <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
                     <a class="collapse-item" href="${url}/shopView">장비샵</a>
                     <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
@@ -371,9 +371,9 @@
 
 <!-- Page level plugins -->
 <script src="${url}/css/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="${url}css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="${url}js/admin/js/demo/datatables-demo.js"></script>
+<script src="${url}/js/admin/js/demo/datatables-demo.js"></script>
 
 </main>

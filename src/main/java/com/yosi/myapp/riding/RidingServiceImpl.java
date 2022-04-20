@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.yosi.myapp.PagingVO;
+import com.yosi.myapp.RidingPagingVO;
 
 @Service
 public class RidingServiceImpl implements RidingService {
@@ -15,7 +15,7 @@ public class RidingServiceImpl implements RidingService {
 	RidingDAO dao;
 	
 	@Override
-	public List<RidingVO> ridingList(PagingVO pVO) {
+	public List<RidingVO> ridingList(RidingPagingVO pVO) {
 		return dao.ridingList(pVO);
 	}
 	@Override
@@ -40,7 +40,7 @@ public class RidingServiceImpl implements RidingService {
 		dao.cntHit(ridingNo);
 	}
 	@Override
-	public int totalRecord(PagingVO pVO) {
+	public int totalRecord(RidingPagingVO pVO) {
 		return dao.totalRecord(pVO);
 	}
 	
