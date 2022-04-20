@@ -23,4 +23,5 @@ public interface ComtyDAO {
 
 	//관리자 페이지 커뮤니티 글 삭제
 	public int adminComtyDelete(int comtyNo);
+
 }

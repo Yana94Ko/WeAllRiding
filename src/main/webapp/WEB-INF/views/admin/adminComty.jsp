@@ -294,7 +294,10 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">커뮤니티 관리</h1>
-                    <p class="mb-4">커뮤니티를 확인하고 삭제할 수 있습니다.</p>
+                    <p class="mb-4">
+                        커뮤니티를 확인하고 삭제할 수 있습니다.<br/>
+                        제목을 클릭하여 글 내용을 확인할 수 있습니다.
+                    </p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -317,7 +320,7 @@
                                     <c:forEach var="vo" items="${lst }">
                                         <tr>
                                             <td>${vo.comtyNo }</td>
-                                            <td>${vo.comtySubject }</td>
+                                            <td><a href="/admin/adminComtyView?comtyNo=${vo.comtyNo}">${vo.comtySubject }</a></td>
                                             <td>${vo.nickname }</td>
                                             <td>${vo.comtyHit }</td>
                                             <td id="comtyWD">${vo.comtyWriteDate }</td>

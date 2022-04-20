@@ -137,6 +137,17 @@ public class AdminController {
 		mav.setViewName("redirect:/admin/adminComty");
 		return mav;
 	}
+
+	//관리자 페이지 커뮤니티 글 상세 보기
+	@RequestMapping("adminComtyView")
+	public ModelAndView adminComtyView(@RequestParam("comtyNo") int comtyNo) {
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("vo", comtyService.comtySelect(comtyNo));
+		mav.setViewName("admin/adminComtyView");
+
+		return mav;
+	}
 	
 	
 	//관리자 페이지정비샵 정보 삭제하기

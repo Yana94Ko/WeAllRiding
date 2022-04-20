@@ -54,6 +54,7 @@
                     $("#userEmail").val(result.userEmail);
                     $("#birth").val(result.birth);
                     $("#suspendDate").val(result.suspendDate);
+                    $("#isAdmin").val(result.isAdmin);
                     $("#userPwd").val(result.userPwd);
                 }
             });
@@ -290,7 +291,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">운영자</span>
                                 <img class="img-profile rounded-circle"
                                      src="${url}/css/admin/img/undraw_profile.svg">
                             </a>
@@ -327,7 +328,11 @@
 
                     <!-- 회원관리 설명 -->
                     <h1 class="h3 mb-2 text-gray-800">회원관리</h1>
-                    <p class="mb-4">회원관리 페이지입니다. 회원 정보를 수정 또는 삭제할 수 있고, 상세 회원정보를 조회할 수 있습니다.</p>
+                    <p class="mb-4">
+                        회원관리 페이지입니다. 회원 정보를 수정 또는 삭제할 수 있고, 상세 회원정보를 조회할 수 있습니다.<br/>
+                        아이디를 클릭하여 회원정보를 수정 또는 삭제할 수 있습니다.<br/>
+                        수정 목록의 isAdmin을 통해 관리자 권한을 부여할 수 있습니다.
+                    </p>
 
                     <!-- 데이터 테이블 -->
                     <div class="card shadow mb-4">
@@ -341,6 +346,7 @@
                                     <tr>
                                         <th>이름</th>
                                         <th>이메일</th>
+                                        <th>닉네임</th>
                                         <th>아이디</th>
                                         <th>비밀번호</th>
                                         <th>회원가입일</th>
@@ -350,9 +356,10 @@
                                         <tr>
                                             <td>${Lst.userName}</td>
                                             <td>${Lst.userEmail}</td>
+                                            <td>${Lst.nickname}</td>
                                             <td><a data-toggle="modal" href="#memberDeleteModal" class="mId">${Lst.userId}</a></td>
                                             <td>${Lst.userPwd}</td>
-                                            <td>${Lst.joinDate}</td>
+                                            <td id="adminJD">${Lst.joinDate}</td>
                                         </tr>
                                     </c:forEach>
                                 </table>
@@ -449,6 +456,10 @@
                                                             <tr>
                                                                 <td>회원정지일</td>
                                                                 <td><input type="datetime-local" id="suspend" name="suspendDate" value="${av.suspendDate}"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>관리자 권한</td>
+                                                                <td><input type="text" id="isAdmin" name="isAdmin">${av.isAdmin}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>비밀번호</td>

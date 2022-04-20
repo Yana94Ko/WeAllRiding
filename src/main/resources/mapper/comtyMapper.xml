@@ -49,4 +49,5 @@
 	<delete id="adminComtyDelete">
 		DELETE FROM comty where comtyNo=#{param1}
 	</delete>
+
 </mapper>

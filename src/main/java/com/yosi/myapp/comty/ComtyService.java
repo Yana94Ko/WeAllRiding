@@ -21,5 +21,6 @@ public interface ComtyService {
 
 	//관리자페이지 커뮤니티 글 삭제
 	public int adminComtyDelete(int comtyNo);
+
 }
 
