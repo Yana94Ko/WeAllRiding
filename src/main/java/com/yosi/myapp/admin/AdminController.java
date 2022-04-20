@@ -97,6 +97,7 @@ public class AdminController {
 		mav.setViewName("admin/adminMember");
 		return mav;
 	}
+
 	@RequestMapping("adminMember2")
 	@ResponseBody
 	public MemberVO adminView2(@RequestParam String userId){
@@ -137,6 +138,25 @@ public class AdminController {
 		mav.addObject("sPVO", sPVO);
 		mav.addObject("shopVO", shopService.shopAllSelect());
 		mav.setViewName("admin/adminShop");
+		return mav;
+	}
+
+	//관리자 페이지 커뮤니티 글 삭제하기
+	@GetMapping("adminComtyDelete")
+	public ModelAndView adminComtyDelete(int comtyNo, ModelAndView mav) {
+		comtyService.adminComtyDelete(comtyNo);
+		mav.setViewName("redirect:/admin/adminComty");
+		return mav;
+	}
+
+	//관리자 페이지 커뮤니티 글 상세 보기
+	@RequestMapping("adminComtyView")
+	public ModelAndView adminComtyView(@RequestParam("comtyNo") int comtyNo) {
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("vo", comtyService.comtySelect(comtyNo));
+		mav.setViewName("admin/adminComtyView");
+
 		return mav;
 	}
 	
@@ -210,5 +230,20 @@ public class AdminController {
 		mav.setViewName("redirect:/admin/adminRecommend");
 		return mav;
 	}
-	
+
+	@ResponseBody
+	@RequestMapping("/availableRiding")
+	public String availableRiding(){
+		return ridingService.availableRiding();
+	}
+	@ResponseBody
+	@RequestMapping("/todayRiding")
+	public String todayRiding(){
+		return ridingService.todayRiding();
+	}
+	@ResponseBody
+	@RequestMapping("/availableCourse")
+	public int availableCourse(RecommendPagingVO rPVO){
+		return recommendService.totalRecord(rPVO);
+	}
 }

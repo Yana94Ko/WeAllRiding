@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<link rel = "stylesheet" href="/css/admin/adminRiding.css" type="text/css"/>
+<link rel = "stylesheet" href="/css/admin/adminComty.css" type="text/css"/>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -42,6 +43,7 @@
                 <div class="sidebar-brand-text mx-3">WeAllRiding Admin <sup>TM</sup></div>
             </a>
 
+
             <!-- Heading -->
             <div class="sidebar-heading">
                 관리자
@@ -59,7 +61,7 @@
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminCourse">추천경로 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                     </div>
@@ -133,7 +135,6 @@
                         </button>
                     </form>
 
-                    <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -162,49 +163,37 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">라이딩 리스트</h1>
-                    <p class="mb-4">라이딩 리스트를 확인하고 삭제할 수 있습니다.</p>
+                    <h1 class="h3 mb-2 text-gray-800">커뮤니티 관리</h1>
+                    <p class="mb-4">커뮤니티를 확인하고 삭제할 수 있습니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">라이딩 리스트 목록</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">커뮤니티 글 상세보기</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="" cellspacing="0">
-                                    <thead>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <tr>
-                                        <th style="width: 130px">라이딩 번호</th>
-                                        <th style="width: 130px">닉네임</th>
-                                        <th style="width: 130px">키워드</th>
-                                        <th style="width: 130px">주제</th>
-                                        <th style="width: 130px">콘텐츠</th>
-                                        <th style="width: 130px">참여 유저</th>
-                                        <th style="width: 130px">코스 레벨</th>
-                                        <th style="width: 130px">최대인원</th>
-                                        <th style="width: 130px">시작일</th>
-                                        <th style="width: 130px">마감일</th>
-                                        <th style="width: 130px">조회수</th>
-                                        <th style="width: 130px">작성날짜</th>
+                                        <th style="width: 90px;">제목</th>
+                                        <td>${vo.comtySubject}</td>
                                     </tr>
-                                    </thead>
-                                    <c:forEach var="rLst" items="${ridingList}">
-                                        <tr>
-                                            <td>${rLst.ridingNo}</td>
-                                            <td>${rLst.nickname}</td>
-                                            <td>${rLst.ridingKeyword}</td>
-                                            <td>${rLst.ridingSubject}</td>
-                                            <td>${rLst.ridingContent}</td>
-                                            <td>${rLst.applyUser}</td>
-                                            <td>${rLst.courseLevel}</td>
-                                            <td>${rLst.maxUser}</td>
-                                            <td>${rLst.startDate}</td>
-                                            <td>${rLst.endDate}</td>
-                                            <td>${rLst.ridingHit}</td>
-                                            <td>${rLst.ridingWriteDate}</td>
-                                        </tr>
-                                    </c:forEach>
+                                    <tr>
+                                        <th>작성자</th>
+                                        <td>${vo.nickname}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>번호</th>
+                                        <td>${vo.comtyNo}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>글 내용</th>
+                                        <td>${vo.comtyContent}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>옵션</th>
+                                        <td><button class="btn btn-danger" style="height: 60px; width: 600px; position: relative; left: 150px; font-size: 1.1em" type="button" onclick="location.href='/admin/adminComtyDelete?comtyNo=${vo.comtyNo}';" >삭제</button> </td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
@@ -231,7 +220,6 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-
     <!-- Bootstrap core JavaScript-->
     <script src="${url}/css/admin/vendor/jquery/jquery.min.js"></script>
     <script src="${url}/css/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -247,6 +235,6 @@
     <script src="${url}css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="${url}/js/admin/js/demo/datatables-demo.js"></script>
+    <script src="${url}js/admin/js/demo/datatables-demo.js"></script>
 
 </main>

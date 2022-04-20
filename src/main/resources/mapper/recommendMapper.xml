@@ -44,5 +44,4 @@
 			where ${searchKey} like '%${searchWord}%'
 		</if>
 	</select>
-	
 </mapper>

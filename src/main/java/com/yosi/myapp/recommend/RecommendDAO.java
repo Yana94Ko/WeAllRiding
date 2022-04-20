@@ -18,4 +18,5 @@ public interface RecommendDAO {
 	public int totalRecord(RecommendPagingVO rPVO);
 	//추천코스목록
 	public List<RecommendVO> recommendList(RecommendPagingVO rPVO);
+
 }

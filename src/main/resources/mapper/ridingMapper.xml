@@ -7,7 +7,7 @@
 	<select id="ridingList" resultType="RidingVO">
 		select ridingNo, nickname, ridingKeyword, ridingSubject, 
 		ridingContent, applyUser, courseLevel, maxUser , 
-		startDate, endDate, ridingHit, ridingWriteDate, courseSendData
+		date_format(startDate, '%Y-%m-%d') as startDate , date_format(endDate, '%Y-%m-%d') as endDate , ridingHit, ridingWriteDate, courseSendData
 		from ridingBoard
 		<if test='searchWord != null'>
 			where ${searchKey} like '%${searchWord}%'
@@ -109,7 +109,9 @@
 	<!-- 라이딩 후기 -->
 	<insert id="ridingReviewWrite">
 		insert into ridingReview(ridingNo, nickname, ridingReviewComent)
-		values (#{ridingNo}, #{nickname}, #{ridingReviewComent}) 
+		select #{ridingNo}, #{nickname}, #{ridingReviewComent} from dual
+		where not exists
+		(select ridingNo from ridingReview where ridingNo=#{ridingNo} and nickname=#{nickname})
 	</insert>
 
 	<select resultType="RidingVO" id="ridingReviewList">
@@ -118,13 +120,17 @@
 		order by ridingReviewNo desc 
 	</select>
 
-	<update id="ridingScoreUp" parameterType="ridingVO">
-		update ridingMember set userScore=userScore+1
-		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
-	</update>
+	<insert id="ridingScoreUp">
+		insert into reviewScore(ridingNo, nickname, scored, userScore)
+		select #{ridingNo}, #{nickname}, #{scored}, 1 from dual
+		where not exists
+		(select ridingNo from reviewScore where ridingNo=#{ridingNo} and nickname=#{nickname} and scored=#{scored})
+	</insert>
 	<update id="ridingScoreDown" parameterType="ridingVO">
-		update ridingMember set userScore=userScore-1
-		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
+		insert into reviewScore(ridingNo, nickname, scored, userScore)
+		select #{ridingNo}, #{nickname}, #{scored}, -1 from dual
+		where not exists
+		(select ridingNo from reviewScore where ridingNo=#{ridingNo} and nickname=#{nickname} and scored=#{scored})
 	</update>
 	
 	 <update id="ridingApplicantCntUp" parameterType="ridingVO">
@@ -135,4 +141,10 @@
       update ridingBoard set applicantCnt= applicantCnt-1
       where ridingNo=#{ridingNo}
    </update>
+	<select id="availableRiding" resultType="String">
+		select count(ridingNo) from ridingBoard where endDate >= curdate();
+	</select>
+	<select id="todayRiding" resultType="String">
+		select count(ridingNo) from ridingBoard where date_format(ridingWriteDate, "%Y-%m-%d") = curdate();
+	</select>
 </mapper>
