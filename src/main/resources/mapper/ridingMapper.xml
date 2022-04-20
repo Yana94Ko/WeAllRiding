@@ -7,7 +7,7 @@
 	<select id="ridingList" resultType="RidingVO">
 		select ridingNo, nickname, ridingKeyword, ridingSubject, 
 		ridingContent, applyUser, courseLevel, maxUser , 
-		startDate, endDate, ridingHit, ridingWriteDate, courseSendData
+		startDate, endDate, ridingHit, ridingWriteDate, courseSendData,applicantCnt
 		from ridingBoard
 		<if test='searchWord != null'>
 			where ${searchKey} like '%${searchWord}%'
@@ -21,6 +21,8 @@
 			where ${searchKey} like '%${searchWord}%'
 		</if>
 	</select>
+	
+
 	
 	<!-- myRiding -->
 	<select id="myRidingJoinList" resultType="RidingVO">
@@ -74,6 +76,12 @@
 		insert into ridingMember (ridingNo, nickname) 
 		values(#{ridingNo}, #{nickname})
 	</insert>
+	
+	<!-- 참가신청여부 확인용 -->
+	<select id="resolveStatus" resultType="int">
+		select count(nickname) as cnt from ridingMember
+		where nickname=#{param1} and ridingNo=#{param2}
+	</select>
 	
 	<!-- 테이블 합치기 -->
 	<update id="ridingMemberUpdate">

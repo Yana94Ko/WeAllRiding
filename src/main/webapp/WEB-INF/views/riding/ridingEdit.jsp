@@ -36,37 +36,11 @@
 	</div>
 </div>
 <!-- parallax END -->
-<script type="text/javascript">
-	function ridingStateUpdate() {
-		event.preventDefault();//form 기본 이벤트 제거
-		if (confirm('승낙하시겠습니까? \n 승낙 후 취소는 어려우니 신중히 생각해주세요.')){
-			location.href = "/riding/ridingStateOk?ridingNo=${vo.ridingNo}";
-		}
-	}	
-	
-	function SetDefaultValue() {
-		const courseLevel = ${vo.courseLevel};
-		const maxUser = ${vo.maxUser};
-		const cl = document.getElementById("courseLevelsel");
-		const mu = document.getElementById("maxUsersel");
-		for(let i=0;i<cl.options.length;i++){
-			if(cl.options[i].value==courseLevel){
-				cl.options[i].selected = true;
-			}
-		}
-		for(let i=0;i<mu.options.length;i++) {
-			if (mu.options[i].value == maxUser) {
-				mu.options[i].selected = true;
-			}
-		}
-	}
-	document.addEventListener("DOMContentLoaded", function(){
-		SetDefaultValue();
-	});
-    
-</script>
+
 <main>
 	<div class="ridingViewContainer">
+		<input type="hidden" id="dbCourseLevelsel" value=${vo.courseLevel}/>
+		<input type="hidden" id="dbMaxUsersel" value=${vo.maxUser}>
 		<form method="post"
 			action="/riding/ridingEditOk?ridingNo=${vo.ridingNo}">
 			<ul>
@@ -136,4 +110,5 @@
 			</ul>
 		</form>
 	</div>
+	<script type="text/javascript" src="${url}/js/riding/ridingEdit.js"></script>
 </main>

@@ -14,6 +14,11 @@ public class RidingServiceImpl implements RidingService {
 	@Inject
 	RidingDAO dao;
 	
+	//참가 여부
+	public int resolveStatus(String nickName,int ridingNo) {
+		return dao.resolveStatus(nickName,ridingNo);
+	}
+	
 	@Override
 	public List<RidingVO> ridingList(RidingPagingVO pVO) {
 		return dao.ridingList(pVO);

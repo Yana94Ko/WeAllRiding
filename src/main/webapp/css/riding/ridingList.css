@@ -140,7 +140,6 @@ h1 {
 .icon-view_count {
 	width: 25px;
 	height: 17px;
-	background: url("images/eye.jpg") no-repeat;
 }
 
 .icon-comments_count {
@@ -313,7 +312,7 @@ h1 {
 	width: 10%;
 	color: black;
 }
-#eList>li:nth-child(7n+2) {
+#eList>li:nth-child(6n+2) {
 	width: 50%;
 	white-space: nowrap; /*줄 안바꿈*/
 	overflow: hidden; /*넘친내용 숨기기*/

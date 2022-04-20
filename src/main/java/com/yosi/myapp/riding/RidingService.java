@@ -6,6 +6,8 @@ import com.yosi.myapp.RidingPagingVO;
 
 
 public interface RidingService {
+	//참가 여부
+	public int resolveStatus(String nickName,int ridingNo);
 	public List<RidingVO> ridingList(RidingPagingVO pVO);
 	public int ridingInsert(RidingVO vo); 
 	public RidingVO ridingSelect(int ridingNo);
