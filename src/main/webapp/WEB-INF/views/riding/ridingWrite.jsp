@@ -40,7 +40,7 @@
          <h2>제목</h2>
          <li><input type="text" name="ridingSubject" id="ridingSubject" /></li><br>
          <h2>키워드</h2>
-         <li><input type="text" name="ridingKeyword" id="ridingKeyword" placeholder="ex)  #순천  #광양"/></li><br>
+         <li><input type="text" name="ridingKeyword" id="ridingKeyword" placeholder="ex)  #순천  #광양"/></li><br/>
          <li>
          <div class="btnContainer" id="courseMakeLst">
         	<a href="${url}/courseCreate" class="btn btn-1">나만의 코스 만들기</a>

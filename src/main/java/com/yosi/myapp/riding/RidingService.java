@@ -2,11 +2,11 @@ package com.yosi.myapp.riding;
 
 import java.util.List;
 
-import com.yosi.myapp.PagingVO;
+import com.yosi.myapp.RidingPagingVO;
 
 
 public interface RidingService {
-	public List<RidingVO> ridingList(PagingVO pVO);
+	public List<RidingVO> ridingList(RidingPagingVO pVO);
 	public int ridingInsert(RidingVO vo); 
 	public RidingVO ridingSelect(int ridingNo);
 	public int ridingUpdate(RidingVO vo);
@@ -14,7 +14,7 @@ public interface RidingService {
 	public void cntHit (int ridingNo);
 		
 	//총레코드수
-	public int totalRecord(PagingVO pVO);
+	public int totalRecord(RidingPagingVO pVO);
 	
 	public int ridingMemberInsert(RidingVO vo);
 	public int ridingMemberUpdate(RidingVO vo);

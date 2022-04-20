@@ -2,25 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link href="${url}/css/riding/myRiding.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- 탭메뉴 바꾸기 -->
-<script>
-    function openCity(evt, menu) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(menu).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
 
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-</script>
 <!-- parallax START -->
 <div class="home">
 	<div class="homeBackground parallaxWindow" data-parallax="scroll"
@@ -115,4 +97,5 @@
         </div>
     </section>
 </div>
+<script src="${url}/js/riding/myRidingList.js"></script>
 </main>

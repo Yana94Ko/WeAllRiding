@@ -4,7 +4,7 @@ package com.yosi.myapp.admin;
 
 
 import com.yosi.myapp.PagingVO;
-
+import com.yosi.myapp.RidingPagingVO;
 import com.yosi.myapp.aMemberPagingVO;
 import com.yosi.myapp.comty.ComtyService;
 import com.yosi.myapp.member.MemberController;
@@ -152,7 +152,7 @@ public class AdminController {
 
 	// 관리자 페이지 라이딩 리스트 출력
 	@GetMapping("adminRiding")
-	public ModelAndView AdminRiding(PagingVO pVO) {
+	public ModelAndView AdminRiding(RidingPagingVO pVO) {
 		ModelAndView mav = new ModelAndView();
 
 		pVO.setTotalRecord(ridingService.totalRecord(pVO));
