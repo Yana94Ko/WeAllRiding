@@ -69,7 +69,16 @@ public class RidingController {
 		mav.setViewName("riding/ridingWrite");
 		return mav;
 	}
-   	
+	//코스 정보 없이 ridingWriteOk 접근시
+	@GetMapping("/riding/ridingWrite")
+	public ModelAndView ridingWrite(RidingVO rVO) {
+		ModelAndView mav = new ModelAndView();
+		//System.out.println("데이터 잘 넘어왔어요..."+rVO.getStartPointName());	
+		mav.addObject("rVO", rVO );
+		mav.setViewName("riding/ridingWrite");
+		return mav;
+	}
+	//코스정보 받아서 ridingWriteOk 접근시
 	@PostMapping("/riding/ridingWriteOk")
     public ResponseEntity<String> ridingWriteOk(RidingVO vo, HttpServletRequest request){
 		vo.setNickname((String)request.getSession().getAttribute("nickName"));

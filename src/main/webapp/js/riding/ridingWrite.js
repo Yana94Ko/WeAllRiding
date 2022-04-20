@@ -185,3 +185,34 @@ if(!courseSendDataRecived.value){
 	plot(points);
 }
 //-------------------> courseCreate에서 전달받은 데이터 저장 End <--------------------------
+$('#ridingKeyword').on("keyup", function(event) {
+	let keyword = document.getElementById("ridingKeyword").value;
+	if (window.event.keyCode == 32) {
+		$('input[id=ridingKeyword]').val($('input[id=ridingKeyword]').val()+"#");
+	}
+	if(window.event.keyCode == 8){
+		if(keyword==""){
+			keyword.value="#"
+		}
+	}
+});
+$('#ridingKeyword').on("keyup", function(event) {
+	let keyword = document.getElementById("ridingKeyword").value;
+	if (keyword.substring(0,0)!="#" && keyword.length==0) {
+		$('input[id=ridingKeyword]').val("#");
+	}
+});
+$('#ridingKeyword').on("focus", function(event) {
+	if($('input[id=ridingKeyword]').val()!="#"){
+		$('input[id=ridingKeyword]').val($('input[id=ridingKeyword]').val( )+"#");
+	}
+});
+$('#ridingKeyword').on("focusout", function(event) {
+	let keyword = document.getElementById("ridingKeyword").value;
+	if($('input[id=ridingKeyword]').val()=="#"){
+		$('input[id=ridingKeyword]').val("");
+	}
+	if(keyword.substring(keyword.length-1)=='#'){
+		$('#ridingKeyword').val(keyword.substring(0,keyword.length-1));
+	}
+});
