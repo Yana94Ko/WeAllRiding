@@ -22,6 +22,9 @@ public interface RidingDAO {
 
 	//총레코드수
 	public int totalRecord(RidingPagingVO pVO);
+	public int totalRecord1(RidingVO vo, RidingPagingVO pVO);
+	public int totalRecord2(RidingVO vo, RidingPagingVO pVO);
+	public int totalRecord3(RidingVO vo, RidingPagingVO pVO);
 	
 	public int ridingMemberInsert(RidingVO vo);
 	public int ridingMemberUpdate(RidingVO vo);
@@ -32,9 +35,9 @@ public interface RidingDAO {
 	public int ridingStateDel(RidingVO vo);
 	
 	//마이라이딩
-	public List<RidingVO> myRidingJoinList(RidingVO vo);
-	public List<RidingVO> myRidingEndList(RidingVO vo);
-	public List<RidingVO> myRidingMadeList(RidingVO vo);
+	public List<RidingVO> myRidingJoinList(RidingVO vo, RidingPagingVO pVO);
+	public List<RidingVO> myRidingEndList(RidingVO vo, RidingPagingVO pVO);
+	public List<RidingVO> myRidingMadeList(RidingVO vo, RidingPagingVO pVO);
 
 	//후기등록
 	public int ridingReviewWrite(RidingVO vo);

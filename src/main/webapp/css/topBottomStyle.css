@@ -185,8 +185,8 @@ header a, li{
 	height: 3vh;
 	line-height: 3vh;
 	transition-property: height, opacity,visibility;
-  	transition-duration:0.5s,0.5s,0.5s;
-  	transition-delay:0s,0s,0.7s;
+  	transition-duration:0.5s,0.5s,0.4s;
+  	transition-delay:0s,0s,0.2s;
   	transition-timing-function:ease-in-out;
 }
 .logContainer{

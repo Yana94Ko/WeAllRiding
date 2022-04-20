@@ -31,7 +31,6 @@
 </div>
 <!-- parallax END -->
 <main>
-
 <div class="ridingContainer">
    <form method="post" action="/riding/ridingWriteOk" id="ridingFrm">
          <textarea style="display:none" id="courseSendData"name="courseSendData">${rVO.courseSendData}</textarea>
@@ -88,7 +87,10 @@
          </li>
          <br><br><br><br>
          <h2>내용</h2>
-         <li><input type="text" name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;"></input></li>
+         <li><textarea name="ridingContent" id="ridingContent"
+						style="min-height: 400px; width: 100%;">
+			</textarea>
+		</li>
          
          <li id="ridingwriteBTN">
             <button type="button" id="ridingwriteBtn">글 등록</button>
