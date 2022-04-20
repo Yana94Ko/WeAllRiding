@@ -94,7 +94,7 @@
 	
 	<!-- view페이지에 보여주기 -->
 	<select id="ridingMemberShow" resultType="ridingVO">
-		select ridingMemberNo, nickname, gender, ridingCount, userScore
+		select ridingMemberNo, nickname, gender, ridingCount, userScore,ridingState
 		from ridingMember where ridingNo=#{ridingNo}
 	</select>
 	<delete id="ridingMemberDelete">

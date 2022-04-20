@@ -25,7 +25,7 @@
 			<textarea style="display:none" id="courseSendData"name="courseSendData">${vo.courseSendData}</textarea>
 			<input type="hidden" name="applicantCnt" value="${vo.applicantCnt }"/>
 			<ul>
-				<h1 id="ridingViewTitle">라이딩 뷰${resolveStatus}</h1>
+				<h1 id="ridingViewTitle">라이딩 뷰${nickName}</h1>
 				<br>
 				<br>
 				<h2 id="ridingViewTitle"><input type="hidden" name="ridingSubject" value="${vo.ridingSubject }">${vo.ridingSubject }</h2>
@@ -84,7 +84,7 @@
 					<li id="eListFirst">승낙/거절</li>
 					<c:forEach var="vo" items="${lst2 }"  varStatus="st">
 						<c:if test="${vo.ridingNo == vo.ridingNo}">
-							<li><span id = "forWriterRidingState${st.index}"></</span><input type="hidden" id = "dbForWriterRidingState${st.index}" value="${vo.ridingState}"/></li>
+							<li><span id = "forWriterRidingState${st.index}">로그인후 확인하세요!</span><input type="hidden" id = "dbForWriterRidingState${st.index}" value="${vo.ridingState}"/></li>
 							<li>${vo.nickname }</li>
 							<li>${vo.gender }</li>
 							<li>${vo.ridingCount }</li>
@@ -106,7 +106,7 @@
 					<li id="vListFirst">유저 레벨</li>
 					<c:forEach var="vo" items="${lst2 }" varStatus="st">
 						<c:if test="${vo.ridingNo == vo.ridingNo}">
-							<li><span id = "ridingState${st.index}"></</span><input type="hidden" id = "dbRidingState${st.index}" value="${vo.ridingState}"/></li>
+							<li><span id = "ridingState${st.index}">로그인후 확인하세요!</</span><input type="hidden" id = "dbRidingState${st.index}" value="${vo.ridingState}"/></li>
 							<li>${vo.nickname }</li>
 							<li>${vo.gender }</li>
 							<li>${vo.ridingCount }</li>
@@ -122,6 +122,7 @@
 				<br><br><br> ${vo.applicantNickName}
 				<c:if test="${nickName != vo.nickname }">
 					<li>
+						<input type="hidden" id="loginNickName" value=${nickName}/>
 						<input type="button" id="ridingMemberBtn" onclick="ridingMember()" value="라이딩 신청하기"/>
 						<input type="button" id="ridingdelBtn" onclick="ridingMemberCancel()" value="라이딩 신청취소"/>
 					</li>
