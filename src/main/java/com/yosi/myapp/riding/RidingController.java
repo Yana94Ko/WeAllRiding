@@ -53,13 +53,19 @@ public class RidingController {
 		vo.setNickname((String)session.getAttribute("nickName"));
 		//System.out.println(vo.getNickname());
 		ModelAndView mav = new ModelAndView();
-		pVO.setTotalRecord(service.totalRecord(pVO));
-		mav.addObject("lst", service.ridingList(pVO));
-		mav.addObject("pVO", pVO);
+	
+		pVO.setTotalRecord1(service.totalRecord1(vo, pVO));
+		mav.addObject("myRidingJoinList", service.myRidingJoinList(vo, pVO));
+		mav.addObject("pVO1", pVO);
 		
-		mav.addObject("myRidingJoinList", service.myRidingJoinList(vo));
-		mav.addObject("myRidingEndList", service.myRidingEndList(vo));
-		mav.addObject("myRidingMadeList", service.myRidingMadeList(vo));
+		pVO.setTotalRecord2(service.totalRecord2(vo, pVO));
+		mav.addObject("myRidingEndList", service.myRidingEndList(vo, pVO));
+		mav.addObject("pVO2", pVO);
+		
+		pVO.setTotalRecord3(service.totalRecord3(vo, pVO));
+		mav.addObject("myRidingMadeList", service.myRidingMadeList(vo, pVO));
+		mav.addObject("pVO3", pVO);
+		
 		mav.setViewName("riding/myRidingList");
 		return mav;
 	}
