@@ -114,8 +114,7 @@
 		</ul>
 		<c:if test="${userId != null && userId != ''}">
 			<div id="writeBTN">
-				<button id="writeBtn" onclick="location.href='/comty/comtyWrite' ">글
-					작성하기</button>
+				<button id="writeBtn" onclick="location.href='/comty/comtyWrite' ">글 작성하기</button>
 			</div>
 		</c:if>
 		<br />
