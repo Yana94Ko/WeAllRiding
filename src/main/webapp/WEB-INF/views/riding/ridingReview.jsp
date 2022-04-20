@@ -30,27 +30,6 @@
 			});
 		}
 	}
-	/* 
-	function userScoreUp() {
-		event.preventDefault();
-		confirm("유저를 칭찬합니다");
-		$("#reviewImg1").on("click", function(event) {
-			var applicantNickName = $('input[name=applicantNickName]').val($(this).prev().val());
-			
-			$.ajax({
-				url : "/riding/ridingScoreOk?ridingNo=${vo.ridingNo}", 
-				type : "GET", 
-				data : applicantNickName, 
-				dataType: 'JSON', 
-				success : function(data){
-					alert(data);
-				},error : function(e){
-		               console.log(e.responseText);
-	            }
-			});
-		});
-	}
- */
 </script>
 
 <main>
@@ -132,7 +111,7 @@
 						}
 						axios.post("/riding/ridingScoreDownOk", body)
 						.then((res) => {
-							if(res.date==1){
+							if(res.data==1){
 								alert("평가 완료")
 							} else {
 								alert("이미 평가하셨습니다")

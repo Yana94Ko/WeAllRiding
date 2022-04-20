@@ -290,7 +290,7 @@ public class RidingController {
 	// (참가자)회원평가 - 비추
 	@ResponseBody
 	@PostMapping("/riding/ridingScoreDownOk")
-	public int ridingScoreDownOk(int ridingNo, RidingVO vo) {
+	public int ridingScoreDownOk(@RequestBody RidingVO vo) {
 		int result = service.ridingScoreDown(vo);
 		if(result==1){
 			return memberService.ScoreUpdate(vo.getNickname(), -1);
