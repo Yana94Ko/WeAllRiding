@@ -17,11 +17,6 @@ let ridingKeyword = document.getElementById("ridingKeyword").values;
 			location.href = "/riding/ridingEdit?ridingNo=${vo.ridingNo}";
 		}
 	}
-	function ridingStateOk() {
-		if (confirm('승낙 하시겠습니까?')) {
-			location.href = "/riding/ridingStateOk?ridingNo=${vo.ridingNo}";
-		}
-	}
 	
 	function ridingMember() {
 		event.preventDefault();//form 기본 이벤트 제거
@@ -81,7 +76,7 @@ let ridingKeyword = document.getElementById("ridingKeyword").values;
 						
 					// 	 'goguma'== goguma
 					if (vo.nickname == '${nickName}') {
-						tag += "<input type='button' value='삭제' id='ridingReplyListDel' title='"+vo.ridingReplyNo+"' onclick='ridingReplyListDel()' />";
+						tag += "<input type='button' value='삭제' title='"+vo.ridingReplyNo+"'/>";
 						tag += "<input type='button' value='수정' id='ridingReplyListEdit'/>";
 					}
 					tag += "<br/><div>" + vo.ridingReplyComent + "</div>";
@@ -289,36 +284,44 @@ let ridingKeyword = document.getElementById("ridingKeyword").values;
 				</c:if>
 				<script>
 					$(".applicantSave").on("click", function(event) {
-						var applicantNickName = $('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
-						
-						$.ajax({
-							url : "/riding/ridingStateOk?ridingNo=${vo.ridingNo}", 
-							type : "GET", 
-							data : applicantNickName, 
-							dataType: 'JSON', 
-							success : function(data){
-								alert("성공")
-							},error : function(e){
-								console.log(e.responseText);
-							}
-						});
+						if(confirm('같이 달리시겠습니까?')){
+							var applicantNickName = $('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
+							$.ajax({
+								url : "/riding/ridingStateOk?ridingNo=${vo.ridingNo}", 
+								type : "GET", 
+								data : applicantNickName, 
+								dataType: 'JSON', 
+								success : function(result){
+									alertSend(result);
+								},error : function(request, status, error){
+						               console.log("code="+request.status+"message="+request.responseText+"error="+errors);
+								}
+							});
+						}
 					});
 
 					$(".applicantDel").on("click", function(event) {
-						var applicantNickName = $('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
-						
-						$.ajax({
-							url : "/riding/ridingStateDel?ridingNo=${vo.ridingNo}", 
-							type : "GET", 
-							data : applicantNickName, 
-							dataType: 'JSON', 
-							success : function(data){
-								alert("성공")
-							},error : function(e){
-					               console.log(e.responseText);
-				            }
-						});
+						if(confirm('다음에 함께하시겠습니까?')){
+							var applicantNickName = $('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
+							
+							$.ajax({
+								url : "/riding/ridingStateDel?ridingNo=${vo.ridingNo}", 
+								type : "GET", 
+								data : applicantNickName, 
+								dataType: 'JSON', 
+								success : function(){
+									alert("다음에 함께달려요!");
+								},error : function(request, status, error){
+						               console.log("code="+request.status+"message="+request.responseText+"error="+errors);
+								}
+							});
+						}
 					});
+					function alertSend(result) {
+						if(result==true){
+							alert("유저와 라이딩을 함께합니다.");
+						}
+					}
 				</script>
 				
 				<form id="nicknameTest">
