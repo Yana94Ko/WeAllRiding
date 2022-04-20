@@ -127,5 +127,5 @@
 		</div>
 	</div>
 	<!-- mapWrap -->
-		<script type="text/javascript" src="${url}/js/recommend/recommendCreateScript.js"></script>
+		<script type="text/javascript" src="${url}/js/admin/adminRecommendCreate.js"></script>
 </main>

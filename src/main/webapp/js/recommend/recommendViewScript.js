@@ -5,12 +5,8 @@ for(var z = 0; z < 10;z++){
 	//===================================> 지도/차트/코스정보 생성 Start <====================================================
 	//-------------------> courseCreate에서 전달받은 데이터 저장 Start <--------------------------
 	var recommendSendDataRecived = document.getElementById("recommendSendData" + z);
-	console.log(z+"번째 조건문"+!(!recommendSendDataRecived));
 	if(recommendSendDataRecived.value){
-		console.log(z+"번째 들어옴")
 		var recommendSendData = JSON.parse(recommendSendDataRecived.value);
-
-		console.log(z+"번째 진행중")
 		var startPointName = recommendSendData.startPointName;
 		var endPointName = recommendSendData.endPointName;
 		var waypointNames = recommendSendData.wayPointNames;
