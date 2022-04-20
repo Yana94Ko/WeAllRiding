@@ -18,7 +18,7 @@
 		<label>해시태그</label>
 		<input type="text" id="recHashtag" name="recHashtag"/>
 		<label>설명</label>
-		<input type="text" id="recDescription" name="recDescription"/>
+		<textarea id="recDescription" name="recDescription"></textarea>
 		<select id="recLevel" name="recLevel" class="recLevel">
             <option value="1">1</option>
             <option value="2">2</option>
