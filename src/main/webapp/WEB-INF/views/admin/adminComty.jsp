@@ -383,6 +383,6 @@
     <script src="${url}css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="${url}js/admin/js/demo/datatables-demo.js"></script>
+    <script src="${url}/js/admin/js/demo/datatables-demo.js"></script>
 
 </main>

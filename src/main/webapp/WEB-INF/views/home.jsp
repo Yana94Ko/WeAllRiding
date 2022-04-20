@@ -6,7 +6,7 @@
 	      <p class="content-title">We All Riding</p>
 	      <p class="content-subtitle">라이더들이 라이딩을 즐길 수 있게 함께 돕는 공간입니다.</p>
 	      <p class="content-subtitle">참여 가능한 라이딩 : 1234개</p>
-	      <button class="w-btn-neon2" type="button" onclick="location.href='${url}/riding/ridingList'">
+	      <button class="w-btn-neon2 " type="button" onclick="location.href='${url}/riding/ridingList'">
 				라이딩 함께 하기
 			</button>
 	    </div>
@@ -52,6 +52,7 @@
 <!-- 메인페이지 start -->
 <link rel="stylesheet" type="text/css" href="${url}/css/home/homeStyle.css">
 <link rel="stylesheet" type="text/css" href="${url}/css/plugins/buttonStyle.css">
+
 <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js'></script>
 <script type="text/javascript" src="${url}/js/home/homeScript.js"></script>
 <!-- 메인페이지 스크립트 end -->

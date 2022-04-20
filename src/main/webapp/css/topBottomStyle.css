@@ -2,6 +2,17 @@
 /* As hex codes */
 
 :root{
+	
+	/* 메인컬러 */
+	/* 진한 회색 */
+	--color-theme-0 : #303841;
+	
+	/* 회색 */
+	--color-theme-1 : #3A4750;
+	
+	/* 노랑 */
+	--color-theme-2 : #F6C90E;
+	
 	--main-gray : #dddddd;
 	
 	/* 진한 회색 */
@@ -41,6 +52,8 @@
 	--rgba-gray-3:rgba( 30, 30, 28,1);
 	--rgba-gray-4:rgba( 22, 23, 20,1);
 	
+	--transperate-gray2-04:rgba( 41, 42, 39,0.4);
+	--transperate-gray2-08:rgba( 41, 42, 39,0.8);
 	--transperate-gray-05:rgba( 52, 53, 50,0.5);
 	--transperate-gray-08:rgba( 52, 53, 50,0.8);
 	
@@ -223,6 +236,38 @@ header a, li{
 }
 
 
+
+.sub{
+    right: 1vw;
+    width: 12vw;
+	position: relative;
+ 	z-index: 101;
+	background: var(--transperate-gray2-04);
+    color: #ffffff;
+    height: 0vh;
+	opacity:0;
+	visibility:hidden;
+    transition-property: height, opacity,visibility;
+  	transition-duration:0.4s,0.5s,0.5s;
+  	transition-timing-function:ease-in-out;
+   
+}
+
+#login:hover .sub{
+    height: 6.2vh;
+	opacity:1;
+	visibility: visible;
+}
+
+.sub>li{
+	transition-property: background-color;
+  	transition-duration:0.4s;
+  	transition-timing-function:ease-in-out;
+}
+.sub>li:hover{
+	background: var(--transperate-gray2-08);
+}
+
 .navBar{
 	display:flex;
 	position:absolue;
@@ -263,6 +308,9 @@ header a, li{
 .mainMenu.active{
 	height:auto;
 }
+
+
+
 /* 
 .mainMenu>ul>app{
 	padding-top:70px;

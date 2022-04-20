@@ -207,7 +207,7 @@ public class AdminController {
 	@GetMapping("adminRecommendDelete")
 	public ModelAndView recommendDelete(int recNo, ModelAndView mav) {
 		recommendService.recommendDelete(recNo);
-		mav.setViewName("redirect:/adminRecommend");
+		mav.setViewName("redirect:/admin/adminRecommend");
 		return mav;
 	}
 	

@@ -306,6 +306,7 @@
 											<th>출발지</th>
 											<th>도착지</th>
 											<th>작성일</th>
+											<th>옵션</th>
 										</tr>
 									</thead>
 									<c:forEach var="recommendVO" items="${list}" varStatus="st">
@@ -316,7 +317,7 @@
 											<td><span id="startPoint${st.index}"> </span></td>
 											<td><span id="endPoint${st.index}"> </span></td>
 											<td>${recommendVO.recWritedate}</td>
-											<%-- <th><button class="btn btn-danger" style="height:40px;" type="button" onclick="location.href='/admin/shopDelete?shopId=${shopPVO.shopId}';">삭제</button></th> --%>
+											<th><button class="btn btn-danger" style="height:40px;" type="button" onclick="location.href='/admin/adminRecommendDelete?recNo=${recommendVO.recNo}';">삭제</button></th>
 										</tr>
 									</c:forEach>
 								</table>
