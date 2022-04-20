@@ -189,6 +189,11 @@ function ridingViewEdit() {
 	}
 }
 function ridingMember() {
+	if($("#loginNickName").val()=="/" ) {
+		alert("로그인 후 참가신청 해주세요..!")
+		location.href = "/member/loginForm";
+		return false;
+	}
 	if (confirm('참가 신청하시겠습니까? \n ※단, 라이딩은 개설자에 의해 취소될 수 있습니다.※')) {
 		let url = "/riding/ridingMemberOk";
 		let params = "ridingNo=" + ridingNo;
@@ -218,7 +223,12 @@ if(document.getElementById('resolveStatus').value == 0){
 	$("#ridingdelBtn").css("display","none");
 }
 function ridingMemberCancel() {
-		if (confirm('신청 취소 하시겠습니까?')) {
+	if($("#loginNickName").val()=="/" ) {
+		alert("로그인 후 참가신청 해주세요..!")
+		location.href = "/member/loginForm";
+		return false;
+	}
+	if (confirm('신청 취소 하시겠습니까?')) {
 		let url = "/riding/ridingMemberCan";
 		let params = "ridingNo=" + ridingNo;
 		$.ajax({
@@ -235,25 +245,17 @@ function ridingMemberCancel() {
 	}
 }
 //참가신청 수락 거절 여부에 따라 참가상태 바꿔주기
-console.log("몇명 검사할거닝"+$('input[id^="dbRidingState"]').length)
-for(var z=0; z<$('input[id^="dbRidingState"]').length;z++){
-		console.log("귀엽넹")
-	if($("#dbRidingState"+z).val()==0){
-		console.log("귀엽넹")
-		$("#ridingState"+z).text("수락 대기중");
-	}else if($("#dbRidingState"+i).val()==1){
-		console.log("안귀엽넹")
-		$("#ridingState"+z).text("참가 확정");
+for(var aNum=0; aNum<60;aNum++){
+	if($("#dbRidingState"+aNum).val()==0){
+		$("#ridingState"+aNum).text("수락 대기중");
+	}else if($("#dbRidingState"+aNum).val()==1){
+		$("#ridingState"+aNum).text("참가 확정");
 	}
 }
-console.log("작성자 관점 : "+$('input[id^="dbForWriterRidingState"]').length)
-for(var x=0; x<$('input[id^="dbForWriterRidingState"]').length;x++){
-		console.log("귀엽넹 : "+$("#dbForWriterRidingState"+x).val())
+for(var x=0; x<60;x++){
 	if($("#dbForWriterRidingState"+x).val()==0){
-		console.log("귀엽넹")
 		$("#forWriterRidingState"+x).text("수락 대기중");
 	}else if($("#dbForWriterRidingState"+x).val()==1){
-		console.log("안귀엽넹")
 		$("#forWriterRidingState"+x).text("참가 확정");
 	}
 }

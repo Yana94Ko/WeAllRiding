@@ -109,11 +109,12 @@ public class RidingController {
 		}
 		return entity;
 	}
+
+	// 라이딩 신청
 	@ResponseBody
 	@GetMapping("/riding/ridingMemberOk")
 	public void ridingMemberOk (RidingVO vo, HttpServletRequest request) {
 		vo.setNickname((String)request.getSession().getAttribute("nickName"));
-		ModelAndView mav = new ModelAndView();
 		try {
 			service.ridingMemberInsert(vo);
 			service.ridingMemberUpdate(vo);
@@ -121,14 +122,10 @@ public class RidingController {
 			e.printStackTrace();
 		}
 	}
-	
 	// 라이딩 신청 삭제
 	@GetMapping("/riding/ridingMemberCan")
 	public void ridingMemberCan(RidingVO vo, HttpServletRequest request) {
 		vo.setNickname((String)request.getSession().getAttribute("nickName"));
-		ModelAndView mav = new ModelAndView();
-		System.out.println("1 "+vo.getRidingNo());
-		System.out.println("1 "+vo.getNickname());
 		try {
 			service.ridingStateCancle(vo);
 			service.ridingApplicantCntDown(vo);

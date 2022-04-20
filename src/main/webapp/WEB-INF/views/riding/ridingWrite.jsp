@@ -93,7 +93,7 @@
 		</li>
          
          <li id="ridingwriteBTN">
-            <button type="button" id="ridingwriteBtn">글 등록</button>
+            <button type="button" onclick=""id="ridingwriteBtn">글 등록</button>
          </li>
       </ul>
    </form>
