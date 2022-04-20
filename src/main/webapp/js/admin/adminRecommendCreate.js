@@ -436,6 +436,20 @@ function chagebikeType() {
 }
 //모든 경로 탐색 및 데이터 생성
 function searchAllCourse() {
+	if($("#startPoint").val()==""||$("#startCoordinate").val()==""){
+		alert("출발지를 입력하세요");
+		return;
+	}
+	if($("#endPoint").val()==""||$("#endCoordinate").val()==""){
+		alert("도착지를 입력하세요");
+		return;
+	}
+	for (var i = 0; i < $(".waypoints").children().length; i++) {
+		if($("input[name=pointCoordinate]").eq(i).val()==""){
+			alert("경유지 정보 입력을 완료해주세요");
+			return;
+		}
+	}
 	var cnt = 0;
 	clearAllPolylines();
 	$.each(preferences, function(routeNo, value) {
