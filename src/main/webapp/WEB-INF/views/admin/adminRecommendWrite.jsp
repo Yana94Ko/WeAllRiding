@@ -35,7 +35,7 @@
 		<div id="courseInput">
 				<div class="fromWrap">
 					<img src="${url}/images/course/fromIcon.png"> 
-					<input id="startPoint" type="text" value="남위례" placeholder="출발지를 입력하세요" class="placeInfoInsert" />
+					<input id="startPoint" type="text" placeholder="출발지를 입력하세요" class="placeInfoInsert" />
 						<input id="startCoordinate" type="hidden"> <input id="startAddr" type="hidden">
 				</div>
 				<button type="button" class="changeFromTo">
@@ -44,7 +44,7 @@
 				<div class="waypoints"></div>
 				<div class="toWrap">
 					<img src="${url}/images/course/toIcon.png"> 
-					<input id="endPoint" type="text" value="경포해변" placeholder="도착지를 입력하세요" />
+					<input id="endPoint" type="text" placeholder="도착지를 입력하세요" />
 					<input id="endCoordinate" type="hidden"> 
 					<input id="endAddr" type="hidden">
 				</div>

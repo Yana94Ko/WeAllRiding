@@ -10,10 +10,10 @@ var distance = "총 거리 : " + courseSendData.courseDistance;
 var duration = "예상 소요 시간 : " + courseSendData.courseDuration;
 var ascent = "상승 고도 : " + courseSendData.courseAscent;
 var descent = "/ 하강 고도 : " + courseSendData.courseDescent;
-var points=courseSendData.pointsChoiced;
-var position = new kakao.maps.LatLng(courseSendData.position.Ma,courseSendData.position.La);
+var points = courseSendData.pointsChoiced;
+var position = new kakao.maps.LatLng(courseSendData.position.Ma, courseSendData.position.La);
 var level = courseSendData.level;
-var markerPoditions=[];
+var markerPoditions = [];
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
@@ -44,28 +44,28 @@ for (var i = 0; i < courseSendData.markerPoditions.length; i++) {
 	markerPoditions.push(courseSendData.markerPoditions[i].replace("'", ""));
 	var markerX = markerPoditions[i].replace("[", "").replace("]", "").split(',')[0]
 	var markerY = markerPoditions[i].replace("[", "").replace("]", "").split(',')[1]
-	if(i==0){
+	if (i == 0) {
 		var startMarker = new kakao.maps.Marker({
 			position: new kakao.maps.LatLng(markerY, markerX),
 			image: startImage
 		});
 		startMarker.setMap(map);
-	}else if(i==1){
+	} else if (i == 1) {
 		var endMarker = new kakao.maps.Marker({
 			position: new kakao.maps.LatLng(markerY, markerX),
 			image: endImage
 		});
 		endMarker.setMap(map);
-	}else{
+	} else {
 		var wayPointMarker = new kakao.maps.Marker({
 			position: new kakao.maps.LatLng(markerY, markerX),
 			image: waypointImage
 		});
 		wayPointMarker.setMap(map);
 	}
-	boundsRoute.extend(new kakao.maps.LatLng(markerY,markerX));
+	boundsRoute.extend(new kakao.maps.LatLng(markerY, markerX));
 	map.setBounds(boundsRoute);
-} 
+}
 // 마커 위에 표시할 인포윈도우를 생성한다
 var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 function displayInfowindow(marker, placeNname) {
@@ -75,11 +75,11 @@ function displayInfowindow(marker, placeNname) {
 	infowindow.open(map, marker);
 }
 //경로 생성
-var linepath=[];
-function setCourseLine(points){
+var linepath = [];
+function setCourseLine(points) {
 	$.each(points, function(index, v) {
 		var p = new kakao.maps.LatLng(v[0], v[1]);
-		linepath[index]=p;
+		linepath[index] = p;
 	});
 	var polyline = new kakao.maps.Polyline({
 		path: linepath, // 선을 구성하는 좌표배열 입니다
@@ -94,9 +94,9 @@ setCourseLine(points);
 //데이터 입력
 $("#startPoint").text(startPointName);
 //경유지 정보 가공
-var waypointNamesSum="";
-for(var i = 0; i<waypointNames.length; i++){
-	waypointNamesSum+=waypointNames[i]+" - ";
+var waypointNamesSum = "";
+for (var i = 0; i < waypointNames.length; i++) {
+	waypointNamesSum += waypointNames[i] + " - ";
 }
 $("#waypoint").text(waypointNamesSum);
 $("#endPoint").text(endPointName);
@@ -176,3 +176,265 @@ function plot(points) {
 	);
 }
 plot(points);
+
+var ridingNo = $("#dbRidingNo").val();
+function ridingViewDel() {
+	if (confirm('글을 삭제시겠습니까?')) {
+		location.href = "/riding/ridingDel?ridingNo=" + ridingNo;
+	}
+}
+function ridingViewEdit() {
+	if (confirm('글을 수정하시겠습니까?')) {
+		location.href = "/riding/ridingEdit?ridingNo=" + ridingNo;
+	}
+}
+function ridingMember() {
+	if (confirm('참가 신청하시겠습니까? \n ※단, 라이딩은 개설자에 의해 취소될 수 있습니다.※')) {
+		let url = "/riding/ridingMemberOk";
+		let params = "ridingNo=" + ridingNo;
+		$.ajax({
+			url: url,
+			data: params,
+			success: function(result) {
+				reserved = result;
+				alert("라이딩 신청 완료! 안전한 라이딩 되세요!");
+				location.href = "/riding/ridingView?ridingNo=" + ridingNo;
+			},
+			error: function(e) {
+				reserved = result;
+				alert("라이딩 신청에 실패했어요..");
+			}
+		});
+	}
+}
+//참가신청 완료시, 신청하기 버튼 숨기기
+if(document.getElementById('resolveStatus').value != 0){
+	$("#ridingMemberBtn").css("display","none");
+	$("#ridingdelBtn").css("display","block");
+	
+}
+if(document.getElementById('resolveStatus').value == 0){
+	$("#ridingMemberBtn").css("display","block");
+	$("#ridingdelBtn").css("display","none");
+}
+function ridingMemberCancel() {
+		if (confirm('신청 취소 하시겠습니까?')) {
+		let url = "/riding/ridingMemberCan";
+		let params = "ridingNo=" + ridingNo;
+		$.ajax({
+			url: url,
+			data: params,
+			success: function(result) {
+				alert("라이딩 참가를 취소했어요, 다음 기회에 함께해요!");
+				location.href = "/riding/ridingView?ridingNo=" + ridingNo;
+			},
+			error: function(e) {
+				alert("라이딩 신청취소를 못 했어요.. \n조금 질척여볼게요...(에러 사유 찾는 중)");
+			}
+		});
+	}
+}
+//참가신청 수락 거절 여부에 따라 참가상태 바꿔주기
+console.log("몇명 검사할거닝"+$('input[id^="dbRidingState"]').length)
+for(var z=0; z<$('input[id^="dbRidingState"]').length;z++){
+		console.log("귀엽넹")
+	if($("#dbRidingState"+z).val()==0){
+		console.log("귀엽넹")
+		$("#ridingState"+z).text("수락 대기중");
+	}else if($("#dbRidingState"+i).val()==1){
+		console.log("안귀엽넹")
+		$("#ridingState"+z).text("참가 확정");
+	}
+}
+console.log("작성자 관점 : "+$('input[id^="dbForWriterRidingState"]').length)
+for(var x=0; x<$('input[id^="dbForWriterRidingState"]').length;x++){
+		console.log("귀엽넹 : "+$("#dbForWriterRidingState"+x).val())
+	if($("#dbForWriterRidingState"+x).val()==0){
+		console.log("귀엽넹")
+		$("#forWriterRidingState"+x).text("수락 대기중");
+	}else if($("#dbForWriterRidingState"+x).val()==1){
+		console.log("안귀엽넹")
+		$("#forWriterRidingState"+x).text("참가 확정");
+	}
+}
+// 리뷰---
+function ridingReviewListAll() { //현재글의 댓글을 모두 가져오기
+	var url = "/riding/ridingReviewList";
+	var params = "ridingNo=" + ridingNo; // 31번 글이면 no=31이 된다.
+
+	$.ajax({
+		url: url,
+		data: params,
+		success: function(result) {
+			var $result = $(result); // vo, vo, vo, ,,,
+			var tag = "<ul>";
+			$result.each(function(idx, vo) {
+				tag += "<li><div id='dddd' style='color:black;'><div id='NN'>" + vo.nickname + "</div>";
+				tag += "<br/><div>" + vo.ridingReviewComent + "</div>";
+				tag += "<div id='CRWD' style='color:lightgray;'>" + vo.ridingReviewWriteDate
+					+ "</div></div>";
+				tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
+			});
+			tag += "</ul>";
+			$("#ridingReviewList").html(tag);
+		},
+		error: function(e) {
+			console.log(e.responseText)
+		}
+
+	});
+}
+ridingReviewListAll();
+// 댓글----------------
+function ridingReplyListAll() { //현재글의 댓글을 모두 가져오기
+	var url = "/riding/ridingReplyList";
+	var params = "ridingNo=" + ridingNo; // 31번 글이면 no=31이 된다.
+
+	$.ajax({
+		url: url,
+		data: params,
+		success: function(result) {
+			var $result = $(result); // vo, vo, vo, ,,,
+			var tag = "<ul>";
+			$result.each(function(idx, vo) {
+				tag += "<li><div id='dddd' style='color:black;'><div id='NN'>" + vo.nickname + "</div>";
+
+				// 	 'goguma'== goguma
+				if (vo.nickname == '${nickName}') {
+					tag += "<input type='button' value='삭제' title='" + vo.ridingReplyNo + "'/>";
+					tag += "<input type='button' value='수정' id='ridingReplyListEdit'/>";
+				}
+				tag += "<br/><div>" + vo.ridingReplyComent + "</div>";
+				tag += "<div id='CRWD' style='color:lightgray;'>" + vo.ridingReplyWriteDate
+					+ "</div></div>";
+
+				//본인글일때 수정폼이 있어야 한다.
+				if (vo.nickname == '${nickName}') {
+					tag += "<div style='display:none' id='abcd'><form method='post'>";
+					tag += "<input type='hidden' name='ridingReplyNo' value='" + vo.ridingReplyNo + "'/>";
+					tag += "<textarea name='ridingReplyComent' style='width:500px; height:50px;'>"
+						+ vo.ridingReplyComent
+						+ "</textarea>";
+					tag += "<input type='submit' value='수정' id='ridingReplyListEditOk'/>";
+					tag += "</form></div>";
+				}
+				tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
+			});
+			tag += "</ul>";
+			$("#ridingReplyList").html(tag);
+		},
+		error: function(e) {
+			console.log(e.responseText)
+		}
+
+	});
+	// 댓글 수정(Edit)버튼 선택 시 해당폼 보여주기
+	$(document).on('click', '#ridingReplyList input[value=수정]',
+		function() {
+			$(this).parent().css("display", "none"); //숨기기
+			//보여주기
+			$(this).parent().next().css("display", "block");
+		});
+	// 댓글 수정(DB)
+	$(document).on('submit', '#ridingReplyList form', function() {
+		event.preventDefault();
+		//데이터 준비
+		var params = $(this).serialize();
+		var url = '/riding/ridingReplyEditOk';
+		$.ajax({
+			url: url,
+			data: params,
+			type: 'POST',
+			success: function(result) {
+				console.log(result);
+				ridingReplyListAll();
+			},
+			error: function() {
+				console.log('수정에러발생');
+			}
+		});
+	});
+	// 댓글 삭제
+	$(document).on('click', '#ridingReplyList input[value=삭제]', function() {
+		if (confirm('댓글을 삭제하시겠습니까?')) {
+			var params = "ridingReplyNo=" + $(this).attr("title");
+			$.ajax({
+				url: '/riding/ridingReplyDel',
+				data: params,
+				success: function(result) {
+					console.log(result);
+					ridingReplyListAll();
+				},
+				error: function() {
+					console.log("댓글삭제에러발생")
+				}
+			});
+		}
+	});
+}
+
+// 댓글등록
+function ridingReplyFrm() {
+	event.preventDefault();//form 기본 이벤트 제거
+	if ($("#ridingReplyComent").val() == "") {//댓글 안쓴경우
+		alert("댓글을 입력후 등록하세요");
+		return;
+	} else {//댓글 입력한경우
+		var params = $("#ridingReplyFrm").serialize();
+		$.ajax({
+			url: '/riding/ridingReplyWriteOk',
+			data: params,
+			type: 'POST',
+			success: function() {
+				//폼을초기화
+				$("#ridingReplyComent").val("");
+				//댓글 목록 refresh되어야 한다.
+				ridingReplyListAll();
+			},
+			error: function(e) {
+				console.log(e.responseText);
+			}
+		});
+	}
+}
+ridingReplyListAll();
+
+$(".applicantSave").on("click", function(event) {
+	if (confirm('같이 달리시겠습니까?')) {
+		var applicantNickName = $('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
+		$.ajax({
+			url: "/riding/ridingStateOk?ridingNo=${vo.ridingNo}",
+			type: "GET",
+			data: applicantNickName,
+			dataType: 'JSON',
+			success: function(result) {
+				alertSend(result);
+			}, error: function(request, status, error) {
+				console.log("code=" + request.status + "message=" + request.responseText + "error=" + errors);
+			}
+		});
+	}
+});
+
+$(".applicantDel").on("click", function(event) {
+	if (confirm('다음에 함께하시겠습니까?')) {
+		var applicantNickName = $('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
+
+		$.ajax({
+			url: "/riding/ridingStateDel?ridingNo=${vo.ridingNo}",
+			type: "GET",
+			data: applicantNickName,
+			dataType: 'JSON',
+			success: function() {
+				alert("다음에 함께달려요!");
+			}, error: function(request, status, error) {
+				console.log("code=" + request.status + "message=" + request.responseText + "error=" + errors);
+			}
+		});
+	}
+});
+function alertSend(result) {
+	if (result == true) {
+		alert("유저와 라이딩을 함께합니다.");
+	}
+}

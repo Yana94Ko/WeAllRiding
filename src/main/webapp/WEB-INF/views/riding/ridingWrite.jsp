@@ -91,7 +91,7 @@
          <li><input type="text" name="ridingContent" id="ridingContent" style="min-height:400px; width: 100%;"></input></li>
          
          <li id="ridingwriteBTN">
-            <button id="ridingwriteBtn">글 등록</button>
+            <button type="button" id="ridingwriteBtn">글 등록</button>
          </li>
       </ul>
    </form>

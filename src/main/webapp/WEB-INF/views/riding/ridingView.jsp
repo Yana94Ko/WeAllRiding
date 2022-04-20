@@ -1,184 +1,10 @@
-let ridingSubject = document.getElementById("ridingSubject").values;
-let ridingKeyword = document.getElementById("ridingKeyword").values;
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
 <link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
-<script type="text/javascript">
-	function ridingViewDel() {
-		if (confirm('글을 삭제시겠습니까?')) {
-			location.href = "/riding/ridingDel?ridingNo=${vo.ridingNo}";
-		}
-	}
-	function ridingViewEdit() {
-		if (confirm('글을 수정하시겠습니까?')) {
-			location.href = "/riding/ridingEdit?ridingNo=${vo.ridingNo}";
-		}
-	}
-	function ridingStateOk() {
-		if (confirm('승낙 하시겠습니까?')) {
-			location.href = "/riding/ridingStateOk?ridingNo=${vo.ridingNo}";
-		}
-	}
-	
-	function ridingMember() {
-		event.preventDefault();//form 기본 이벤트 제거
-		if (confirm('참가 신청하시겠습니까? \n 신청 후 취소는 어려우니 신중히 생각해주세요. \n ※단, 라이딩은 개설자에 의해 취소될 수 있습니다.※')){
-			location.href = "/riding/ridingMemberOk?ridingNo=${vo.ridingNo}";
-		}
-	}
-	
-	function ridingMemberCancel() {
-		event.preventDefault();//form 기본 이벤트 제거
-		if (confirm('신청 취소 하시겠습니까?')){
-			location.href = "/riding/ridingMemberCan?ridingNo=${vo.ridingNo}";
-		}
-	}
-
-	// 리뷰---
-	function ridingReviewListAll() { //현재글의 댓글을 모두 가져오기
-		var url = "/riding/ridingReviewList";
-		var params = "ridingNo=${vo.ridingNo}"; // 31번 글이면 no=31이 된다.
-				
-		$.ajax({
-			url : url,
-			data : params,
-			success : function(result) {
-				var $result = $(result); // vo, vo, vo, ,,,
-				var tag = "<ul>";
-				$result.each(function(idx, vo) {
-					tag += "<li><div id='dddd' style='color:black;'><div id='NN'>" + vo.nickname + "</div>";
-					tag += "<br/><div>" + vo.ridingReviewComent + "</div>";
-					tag += "<div id='CRWD' style='color:lightgray;'>" + vo.ridingReviewWriteDate
-							+ "</div></div>";
-					tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
-				});
-				tag += "</ul>";
-				$("#ridingReviewList").html(tag);
-			},
-			error : function(e) {
-				console.log(e.responseText)
-			}
-			
-		});
-	}
-	ridingReviewListAll();	
-	// 댓글----------------
-	function ridingReplyListAll() { //현재글의 댓글을 모두 가져오기
-		var url = "/riding/ridingReplyList";
-		var params = "ridingNo=${vo.ridingNo}"; // 31번 글이면 no=31이 된다.
-				
-		$.ajax({
-			url : url,
-			data : params,
-			success : function(result) {
-				var $result = $(result); // vo, vo, vo, ,,,
-				var tag = "<ul>";
-				$result.each(function(idx, vo) {
-					tag += "<li><div id='dddd' style='color:black;'><div id='NN'>" + vo.nickname + "</div>";
-						
-					// 	 'goguma'== goguma
-					if (vo.nickname == '${nickName}') {
-						tag += "<input type='button' value='삭제' title='"+vo.ridingReplyNo+"'/>";
-						tag += "<input type='button' value='수정' id='ridingReplyListEdit'/>";
-					}
-					tag += "<br/><div>" + vo.ridingReplyComent + "</div>";
-					tag += "<div id='CRWD' style='color:lightgray;'>" + vo.ridingReplyWriteDate
-							+ "</div></div>";
-								
-					//본인글일때 수정폼이 있어야 한다.
-					if (vo.nickname == '${nickName}') {
-						tag += "<div style='display:none' id='abcd'><form method='post'>";
-						tag += "<input type='hidden' name='ridingReplyNo' value='"+vo.ridingReplyNo+"'/>";
-						tag += "<textarea name='ridingReplyComent' style='width:500px; height:50px;'>"
-								+ vo.ridingReplyComent
-								+ "</textarea>";
-						tag += "<input type='submit' value='수정' id='ridingReplyListEditOk'/>";
-						tag += "</form></div>";
-					}
-					tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
-				});
-				tag += "</ul>";
-				$("#ridingReplyList").html(tag);
-			},
-			error : function(e) {
-				console.log(e.responseText)
-			}
-			
-		});
-		// 댓글 수정(Edit)버튼 선택 시 해당폼 보여주기
-		$(document).on('click', '#ridingReplyList input[value=수정]',
-			function() {
-				$(this).parent().css("display", "none"); //숨기기
-				//보여주기
-				$(this).parent().next().css("display", "block");
-			});
-		// 댓글 수정(DB)
-		$(document).on('submit', '#ridingReplyList form', function() {
-			event.preventDefault();
-			//데이터 준비
-			var params = $(this).serialize();
-			var url = '/riding/ridingReplyEditOk';
-			$.ajax({
-				url : url,
-				data : params,
-				type : 'POST',
-				success : function(result) {
-					console.log(result);
-					ridingReplyListAll();
-				},
-				error : function() {
-					console.log('수정에러발생');
-				}
-			});
-		});
-		// 댓글 삭제
-		$(document).on('click', '#ridingReplyList input[value=삭제]', function() {
-			if (confirm('댓글을 삭제하시겠습니까?')) {
-				var params = "ridingReplyNo=" + $(this).attr("title");
-				$.ajax({
-					url : '/riding/ridingReplyDel',
-					data : params,
-					success : function(result) {
-						console.log(result);
-						ridingReplyListAll();
-					},
-					error : function() {
-						console.log("댓글삭제에러발생")
-					}
-				});
-			}
-		});
-	}
-	
-	// 댓글등록
-	function ridingReplyFrm(){
-		event.preventDefault();//form 기본 이벤트 제거
-		if ($("#ridingReplyComent").val() == "") {//댓글 안쓴경우
-			alert("댓글을 입력후 등록하세요");
-			return;
-		} else {//댓글 입력한경우
-			var params = $("#ridingReplyFrm").serialize();
-			$.ajax({
-				url : '/riding/ridingReplyWriteOk',
-				data : params,
-				type : 'POST',
-				success : function() {
-					//폼을초기화
-					$("#ridingReplyComent").val("");
-					//댓글 목록 refresh되어야 한다.
-					ridingReplyListAll();
-				},
-				error : function(e) {
-					console.log(e.responseText);
-				}
-			});
-		}
-	}
-	ridingReplyListAll();
-	
+<script type="text/javascript">	
 </script>
 <!-- parallax START -->
 <div class="home">
@@ -197,14 +23,14 @@ let ridingKeyword = document.getElementById("ridingKeyword").values;
 			<textarea style="display:none" id="courseSendData"name="courseSendData">${vo.courseSendData}</textarea>
 			<input type="hidden" name="applicantCnt" value="${vo.applicantCnt }"/>
 			<ul>
-				<h1 id="ridingViewTitle">라이딩 뷰</h1>
+				<h1 id="ridingViewTitle">라이딩 뷰${resolveStatus}</h1>
 				<br>
 				<br>
 				<h2 id="ridingViewTitle"><input type="hidden" name="ridingSubject" value="${vo.ridingSubject }">${vo.ridingSubject }</h2>
 				
 				<br>
 				<ul>
-					<li id="ridingViewFrm">글 번호 : ${vo.ridingNo }&nbsp;&nbsp;&nbsp;&nbsp;
+					<li id="ridingViewFrm">글 번호 : ${vo.ridingNo }<input type="hidden" value=${vo.ridingNo} id="dbRidingNo"/><input type="hidden" value=${resolveStatus} id="resolveStatus"/>&nbsp;&nbsp;&nbsp;&nbsp;
 						작성자 : ${vo.nickname }&nbsp;&nbsp;&nbsp;&nbsp; 작성일 :
 						${vo.ridingWriteDate }&nbsp;&nbsp;&nbsp;&nbsp; 조회수 :
 						${vo.ridingHit }&nbsp;&nbsp;&nbsp;</li>
@@ -254,9 +80,9 @@ let ridingKeyword = document.getElementById("ridingKeyword").values;
 					<li id="eListFirst">모임 횟수</li>
 					<li id="eListFirst">유저 레벨</li>
 					<li id="eListFirst">승낙/거절</li>
-					<c:forEach var="vo" items="${lst2 }">
+					<c:forEach var="vo" items="${lst2 }"  varStatus="st">
 						<c:if test="${vo.ridingNo == vo.ridingNo}">
-							<li>${vo.ridingMemberNo }</li>
+							<li><span id = "forWriterRidingState${st.index}"></</span><input type="hidden" id = "dbForWriterRidingState${st.index}" value="${vo.ridingState}"/></li>
 							<li>${vo.nickname }</li>
 							<li>${vo.gender }</li>
 							<li>${vo.ridingCount }</li>
@@ -271,14 +97,14 @@ let ridingKeyword = document.getElementById("ridingKeyword").values;
 				</c:if>
 				<c:if test="${nickName != vo.nickname }">
 				<ul id="vList">
-					<li id="vListFirst">번호</li>
+					<li id="vListFirst">참가 상태</li>
 					<li id="vListFirst">닉네임</li>
 					<li id="vListFirst">성별</li>
 					<li id="vListFirst">모임 횟수</li>
 					<li id="vListFirst">유저 레벨</li>
-					<c:forEach var="vo" items="${lst2 }">
+					<c:forEach var="vo" items="${lst2 }" varStatus="st">
 						<c:if test="${vo.ridingNo == vo.ridingNo}">
-							<li>${vo.ridingMemberNo }</li>
+							<li><span id = "ridingState${st.index}"></</span><input type="hidden" id = "dbRidingState${st.index}" value="${vo.ridingState}"/></li>
 							<li>${vo.nickname }</li>
 							<li>${vo.gender }</li>
 							<li>${vo.ridingCount }</li>
@@ -287,39 +113,6 @@ let ridingKeyword = document.getElementById("ridingKeyword").values;
 					</c:forEach>
 				</ul>
 				</c:if>
-				<script>
-					$(".applicantSave").on("click", function(event) {
-						var applicantNickName = $('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
-						
-						$.ajax({
-							url : "/riding/ridingStateOk?ridingNo=${vo.ridingNo}", 
-							type : "GET", 
-							data : applicantNickName, 
-							dataType: 'JSON', 
-							success : function(data){
-								alert("성공")
-							},error : function(e){
-								console.log(e.responseText);
-							}
-						});
-					});
-
-					$(".applicantDel").on("click", function(event) {
-						var applicantNickName = $('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
-						
-						$.ajax({
-							url : "/riding/ridingStateDel?ridingNo=${vo.ridingNo}", 
-							type : "GET", 
-							data : applicantNickName, 
-							dataType: 'JSON', 
-							success : function(data){
-								alert("성공")
-							},error : function(e){
-					               console.log(e.responseText);
-				            }
-						});
-					});
-				</script>
 				
 				<form id="nicknameTest">
 					<input type="text" name="applicantNickName" id="applicantNickName" style="display:none;">

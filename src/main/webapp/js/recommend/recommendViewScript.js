@@ -1,6 +1,6 @@
 
 console.log($('textarea[id^=recommendSendData]').length+"개의 지도 생성 예정")
-for(var z = 0; z < 10;z++){
+for(var z = 0; z < $('textarea[id^=recommendSendData]').length;z++){
 	console.log(z+"번째 시작")
 	//===================================> 지도/차트/코스정보 생성 Start <====================================================
 	//-------------------> courseCreate에서 전달받은 데이터 저장 Start <--------------------------

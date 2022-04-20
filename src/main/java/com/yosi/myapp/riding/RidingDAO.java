@@ -10,6 +10,8 @@ import com.yosi.myapp.RidingPagingVO;
 @Mapper
 @Repository
 public interface RidingDAO {
+	//참가 여부
+	public int resolveStatus(String nickName,int ridingNo);
 	public List<RidingVO> ridingList(RidingPagingVO pVO);
 	public int ridingInsert(RidingVO vo); 
 	public RidingVO ridingSelect(int ridingNo);
