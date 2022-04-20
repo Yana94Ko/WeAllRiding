@@ -44,20 +44,8 @@
 		}
 	}
     function SetDefaultValue() {
-        const courseLevel = ${vo.courseLevel};
-        const maxUser = ${vo.maxUser};
-        const cl = document.getElementById("courseLevelsel");
-        const mu = document.getElementById("maxUsersel");
-        for(let i=0;i<cl.options.length;i++){
-            if(cl.options[i].value==courseLevel){
-                cl.options[i].selected = true;
-            }
-        }
-        for(let i=0;i<mu.options.length;i++) {
-            if (mu.options[i].value == maxUser) {
-                mu.options[i].selected = true;
-            }
-        }
+        document.getElementById("courseLevelsel").options[${vo.courseLevel}].selected = true;
+        document.getElementById("maxUsersel").options[${vo.maxUser}].selected = true;
     }
     document.addEventListener("DOMContentLoaded", function(){
        SetDefaultValue();
