@@ -121,6 +121,16 @@ public class RidingServiceImpl implements RidingService {
 	public int ridingStateCancle(RidingVO vo) {
 		return dao.ridingStateCancle(vo);
 	}
-	
+
+	@Override
+	public String availableRiding() {
+		return dao.availableRiding();
+	}
+
+	@Override
+	public String todayRiding() {
+		return dao.todayRiding();
+	}
+
 
 }

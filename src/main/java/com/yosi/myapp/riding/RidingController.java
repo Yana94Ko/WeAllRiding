@@ -7,17 +7,13 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.yosi.myapp.member.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.yosi.myapp.RidingPagingVO;
@@ -28,6 +24,8 @@ public class RidingController {
 	RidingService RidingService;
 	@Inject
 	RidingService service;
+	@Autowired
+	MemberService memberService;
 	
 	/*
 	 * @Inject RidingReplyService replyService;
@@ -308,38 +306,24 @@ public class RidingController {
 		
 	// (참가자)회원평가 - 추천
 	@ResponseBody
-	@RequestMapping(value="/riding/ridingScoreUpOk", method = RequestMethod.GET) 
-	public String ridingScoreUpOk(int ridingNo, RidingVO vo) { 
-		service.ridingSelect(ridingNo);
-		System.out.println(vo.getApplicantNickName());
-		System.out.println(vo.getUserScore());
-		
-		try { 
-			service.ridingScoreUp(vo);
-			
-		} catch (Exception e) { 
-			System.out.println(e);
-			e.printStackTrace();
-		} 
-		return "완료"; 
+	@PostMapping("/riding/ridingScoreUpOk")
+	public int ridingScoreUpOk(@RequestBody RidingVO vo) {
+		int result = service.ridingScoreUp(vo);
+		if(result==1){
+			return memberService.ScoreUpdate(vo.getNickname(), 1);
+		}
+		return result;
 	}
 	
 	// (참가자)회원평가 - 비추
 	@ResponseBody
-	@RequestMapping(value="/riding/ridingScoreDownOk", method = RequestMethod.GET) 
-	public String ridingScoreDownOk(int ridingNo, RidingVO vo) { 
-		service.ridingSelect(ridingNo);
-		System.out.println(vo.getApplicantNickName());
-		System.out.println(vo.getUserScore());
-		
-		try { 
-			service.ridingScoreDown(vo);
-			
-		} catch (Exception e) { 
-			System.out.println(e);
-			e.printStackTrace();
-		} 
-		return "완료"; 
+	@PostMapping("/riding/ridingScoreDownOk")
+	public int ridingScoreDownOk(int ridingNo, RidingVO vo) {
+		int result = service.ridingScoreDown(vo);
+		if(result==1){
+			return memberService.ScoreUpdate(vo.getNickname(), -1);
+		}
+		return result;
 	}
 	
 }

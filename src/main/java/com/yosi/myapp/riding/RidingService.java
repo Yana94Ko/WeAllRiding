@@ -45,4 +45,7 @@ public interface RidingService {
 	public int ridingApplicantCntUp(RidingVO vo);
 	public int ridingApplicantCntDown(RidingVO vo);
 	public int ridingStateCancle(RidingVO vo);
+
+    public String availableRiding();
+	public String todayRiding();
 }

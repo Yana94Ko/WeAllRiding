@@ -258,5 +258,20 @@ public class AdminController {
 		mav.setViewName("redirect:/adminRecommend");
 		return mav;
 	}
-	
+
+	@ResponseBody
+	@RequestMapping("/availableRiding")
+	public String availableRiding(){
+		return ridingService.availableRiding();
+	}
+	@ResponseBody
+	@RequestMapping("/todayRiding")
+	public String todayRiding(){
+		return ridingService.todayRiding();
+	}
+	@ResponseBody
+	@RequestMapping("/availableCourse")
+	public int availableCourse(RecommendPagingVO rPVO){
+		return recommendService.totalRecord(rPVO);
+	}
 }

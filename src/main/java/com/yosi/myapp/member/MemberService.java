@@ -33,4 +33,6 @@ public interface MemberService {
     public MemberVO AdminView(String userId);
     //관리자 페이지 회원 삭제
     public void AdminDelete(String userId);
+
+    public int ScoreUpdate(String nickname, int score);
 }
