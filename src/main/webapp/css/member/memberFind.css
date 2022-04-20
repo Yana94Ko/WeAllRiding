@@ -25,9 +25,9 @@ main{
 }
 .loginForm h1{
     font-size: 32px;
-    color: ivory;
-    text-align: center;
-    margin-bottom: 50px;
+    color: rgb(0, 215, 215);
+    position: relative;
+    left: 180px;
 }
 
 .memberId{

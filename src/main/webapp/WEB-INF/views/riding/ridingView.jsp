@@ -4,7 +4,6 @@
 <fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />
 <link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
-<script type="text/javascript">	
 </script>
 <!-- parallax START -->
 <div class="home">

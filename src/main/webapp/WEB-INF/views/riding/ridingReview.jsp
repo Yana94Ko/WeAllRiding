@@ -117,6 +117,9 @@
 								alert("이미 평가하셨습니다")
 							}
 						})
+						.catch((error) => {
+							alert(error);
+						})
 					});
 			</script>
 				<form id="nicknameTest">
