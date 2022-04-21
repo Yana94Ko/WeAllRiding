@@ -37,28 +37,52 @@
 				<!-- 카드 헤더 -->
 				<div class="card-header">
 					<div id="map${st.index}" style="height: 100%;"></div>
-					<div class="card-header-is_closed">
-						<div class="card-header-nNumbe">${vo.applicantCnt }/${vo.maxUser }</div>
-					</div>
+					
 				</div>
 				<!--  카드 바디 -->
-				<div class="card-body">
-					<!--  카드 바디 헤더 -->
-					<div class="card-body-header">
-						<h1>${vo.ridingSubject }</h1>
-						<p class="card-body-hashtag">${vo.ridingKeyword }</p>
-						<p class="card-body-nickname">${vo.nickname }</p>
+				<div class="cord-flex">
+					<div class="cord-flexBody">
+						<div class="card-body-header">
+							<div class="card-body-header-left">
+								<h1>${vo.ridingSubject }</h1>
+								<p class="card-body-hashtag">${vo.ridingKeyword }</p>
+								<p class="card-body-nickname">${vo.nickname }</p>
+							</div>
+							<div class="card-body-header-right">
+								<div class="card-header-is_closed">
+									<div class="card-header-nNumbe">${vo.applicantCnt }/${vo.maxUser }</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					<%-- <p class="card-body-description">${ridingSubject }</p> --%>
-					<!--  카드 바디 본문 -->
-					<!--  카드 바디 푸터 -->
+						<div class="cord-flexFooter">
+							<div class="cord-flexFooter2-1">
+								<div class="cord-footer-hr">
+									<hr	style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
+								</div>
+								
+								<div class="cord-flexFooter2-2">
+									<div class="cord-footer-Hit">
+										<i class="icon icon-view_count">${vo.ridingHit }</i> 
+									</div>
+									<div class="cord-footer-date">
+										<i class="reg_date">${vo.ridingWriteDate } </i>
+									</div>
+								</div>
+							</div>
+							<%-- <i class="reg_date">${vo.ridingWriteDate } </i> --%>
+						</div>	
+					<%-- <div class="card-body">
+						<p class="card-body-description">${ridingSubject }</p>
+						<!--  카드 바디 헤더 -->
+						<!--  카드 바디 본문 -->
+						<!--  카드 바디 푸터 -->
 					<div class="card-body-footer">
-						<hr	style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
-						<i class="icon icon-view_count">${vo.ridingHit }</i> 
-						<i class="reg_date">${vo.ridingWriteDate } </i>
 					</div>
-				</div>
+					</div> --%>
 			</div>
+			
+		</div>
 			</a>
 		<c:set var="num" value="${num + 1}" />
 		</c:forEach>
@@ -87,8 +111,7 @@
 				<!--  총 페이지수보다 출력할 페이지번호가 작을때 -->
 				<c:if test="${p <= pVO.totalPage}">
 					<c:if test="${p == pVO.pageNum}">
-						<li
-							style="background-color: lightgray; height: 25px; border-radius: 6px;">
+						<li class="active liTag">
 					</c:if>
 					<c:if test="${p != pVO.pageNum}">
 						<li>
@@ -116,12 +139,15 @@
 		<!-- 검색 -->
 		<div>
 			<form method="get" action="/riding/ridingList" id="searchFrm">
-				<select name="searchKey" id="searchKey">
-					<option value="ridingSubject">제목</option>
-					<option value="ridingContent">글내용</option>
-					<option value="nickname">글쓴이</option>
-				</select> <input type="text" name="searchWord" id="searchWord">
-				<button id="searchBtn">검색</button>
+				<div class="searcFlex">
+					<select class="searchKey" name="searchKey" id="searchKey">
+						<option value="ridingSubject">제목</option>
+						<option value="ridingContent">글내용</option>
+						<option value="nickname">글쓴이</option>
+					</select> 
+					<input class="serachBox" type="text" name="searchWord" id="searchWord">
+					<button class="searchBtn" id="searchBtn">검색</button>
+				</div>
 			</form>
 		</div>
 	</div>	

@@ -57,7 +57,7 @@ table {
 	-o-transition: 0.5s; /*오페라*/
 	transition: 0.5s;
 	width: 100%;
-	height: 270px;
+	height: 210px;
 	border-radius: 15px 15px 0 0;
 	background-size: 100% 280px;
 	background-repeat: no-repeat;
@@ -68,6 +68,148 @@ table {
 	height: 100px;
 }
  */
+ 
+ /* <-- ridingList */
+.cord-flex {
+ 	display:flex;
+	flex-direction:column;
+}
+.cord-flexBody {
+ 	display:flex;
+ 	flex-direction:column;
+ 	flex-grow : 1
+}
+.card-body-header {
+ 	display:flex;
+ 	flex-direction: row;
+}
+.card-body-header-left {
+ 	flex-grow : 3;
+}
+.card-body-header-right {
+ 	flex-grow : 1;
+}
+.cord-flexFooter {
+ 	display:flex;
+ 	flex-direction:column;
+ 	position: absolute;
+	bottom: 1vh;
+	width: 100%;
+}
+.cord-flexFooter2-1 {
+	flex-grow : 1;
+}
+.cord-flexFooter2-2 {
+	flex-grow : 1;
+	display:flex;
+ 	flex-direction: row;
+ 	margin: 0 1vw 0 1vw;
+}
+.cord-footer-Hit {
+	flex-grow : 1;
+}
+.cord-footer-date {
+	flex-grow : 3;
+}
+/*paging*/
+.paging-div {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    bottom: 20px;
+}
+
+.paging {
+    display: table;
+    margin: 0 auto;
+}
+
+
+.paging > li {
+    padding: 0.5vw;
+    margin: 0.5vw;
+    float: left;
+    border-radius: 12px;
+    width: 2vw;
+    height: 2vh;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.liTag{
+    transition: .3s ease-in-out;
+    box-shadow: 0 3px 5px 0 rgb(0 0 0 / 20%), 0 1px 0px 0 rgb(0 0 0 / 19%);
+    cursor: pointer;
+    border: 3px solid var(--color-theme-2);
+}
+.liTag:hover{
+    background: var(--color-theme-2-gra);
+
+}
+.liTag:hover a{
+    color: #FFFFFF;
+}
+.liTag.active {
+    font-weight: bold;
+    background: var(--color-theme-2-gra);
+    transition: .3s ease-in-out;
+    box-shadow: 0 3px 5px 0 rgb(0 0 0 / 20%), 0 1px 0px 0 rgb(0 0 0 / 19%);
+    cursor: pointer;
+    border: 2px solid var(--color-theme-2);
+}
+.liTag.active a{
+    color: #FFFFFF;
+}
+.liTag.active:hover {
+    background: rgba(255, 192, 0, 1);
+}
+
+.aTag {
+    width:100%;
+    color: var(--color-theme-0);
+}
+
+.aTag.active {
+    color: #ffffff;
+}
+
+
+.searcFlex {
+	display:flex;
+ 	flex-direction: row;
+ 	justify-content: center;
+ 	margin: 3vw 0vw 0 0vw;
+}
+.searchKey {
+	width: 7vw;
+    height: 3vh;
+}
+.serachBox {
+	width: 10vw;
+    height: 2.5vh;
+    margin: 0 0.5vw 0 0.5vw;
+}
+
+.searchBtn {
+	width: 7vw;
+    height: 3.2vh;
+    border-radius: 5px;
+    border:none;
+    /*버튼 색*/
+    background:var(--color-theme-1);
+    color:#ffffff;
+    font-size:1.5em;
+    cursor:pointer;
+    padding: 0 1vw 0 1vw;
+    font-weight: bold;
+}
+#searchBtn:hover{
+    /*마우스 오버시 버튼 색*/
+    background:var(--color-theme-0);
+    transition: .3s ease-in-out;
+}
+ /* ridingList --> */
 .card-header-is_closed {
 	background-color: #EF5A31;
 	color: #FFF;
@@ -248,15 +390,29 @@ h1 {
 	width: 100px;
 	height: 30px;
 }
-
+#ridingwriteBTN{
+	text-align: right;
+	margin-right: 50px;
+}
 
 #ridingwriteBtn {
-	background-color: rgba(255, 217, 102);
-	padding: 10px 50px;
-	margin: 0px;
-	border-radius: 6px;
-	border-color: rgba(204, 204, 204);
-	float: right;
+	width:auto;
+    height:4vh;
+    border-radius: 5px;
+    border:none;
+    /*버튼 색*/
+    background:var(--color-theme-2);
+    color:blcak;
+    font-size:1.5em;
+    cursor:pointer;
+    padding: 0 1vw 0 1vw;
+    color: white;
+    font-weight: bold;
+}
+.ridingwriteBtn:hover{
+	/*마우스 오버시 버튼 색*/
+	background: var(--color-theme-0);
+	transition: .3s ease-in-out;
 }
 
 /* ridingView */

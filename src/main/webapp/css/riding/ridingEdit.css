@@ -76,18 +76,42 @@ main {
 #listTitle {
 	font-size: 1.6em;
 	color: #777;
+	margin-bottom: 1vh;
+	
+}
+#ridingSubject, #ridingKeyword, #startDate, #endDate, #courseLevelsel, #maxUsersel {
+	width: 100%;
+	height: 30px;
+}
+#ridingBody {
+	margin: 20px;
+}
+#dateSet {
+	display: flex;
+}
+#startDate {
+	padding: 5px;
+}
+#endDate {
+	padding: 5px;
 }
 #date_Level_User {
 	display: flex;
+	justify-content: space-between;
 }
-
+#level_UserSet{
+	display: flex;
+}
 #courseLevel {
 	align-content: rigth;
 	display: inline-block;
 }
+#maxUserSet{
+	padding-left: 3vh;
+}
 .ridingEditBtn {
-	width: auto;
-	height: 4vh;
+	width: 100%;
+	height: 4.5vh;
 	border-radius: 5px;
 	border: none;
 	/*버튼 색*/
@@ -95,7 +119,7 @@ main {
 	color: #ffffff;
 	font-size: 1.5em;
 	cursor: pointer;
-	padding: 0 1vw 0 1vw;	
+	padding: 0 0vw 0 0vw;
 }
 .ridingEditBtn:hover{
 	/*마우스 오버시 버튼 색*/

@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+.container {
+	max-width: 75vw;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.containerWrap {
+	min-height: 800px;
+	height: auto;
+	background: var(--color-lightGray-1);
+	padding: 3vw 8vw;
+	margin: 0 auto;
+	
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.ridingViewContainer {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 auto;
+	line-height: 20px;
+}
+#comtySubject {
+	width: 99%;
+	height: 30px;
+}
+
+.flexDiv {
+	display:flex;
+	Flex-direction:column;
+	margin-bottom: 1vh;
+}
+h1 {
+	color: #313942;
+	font-weight: bold;
+}
+.flexTitle, .flexSubject, .flexCont {
+	margin-bottom: 1vh;
+}
+.flexBtn {
+	width: auto;
+	height: 4vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-2);
+	color: #fff;
+	font-size: 1.0em;
+	font-weight: bold;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+}
+.flexBtn:hover {
+	background: rgba(255, 192, 0, 1);
+	transition: .3s ease-in-out;
+}

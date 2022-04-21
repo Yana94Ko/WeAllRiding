@@ -134,7 +134,7 @@ main {
 	<div class="container">
 		<div class="containerWrap">
 			<div class="comtyContainer">
-				<h1 style="margin: 0 auto; padding: 40px;">커뮤니티</h1>
+				<h1 style="margin: 0 auto; padding: 40px;">커뮤니티${pVO.totalRecord}</h1>
 				<ul id="cList">
 					<li id="cListFirst">번호</li>
 					<li id="cListFirst">제목</li>

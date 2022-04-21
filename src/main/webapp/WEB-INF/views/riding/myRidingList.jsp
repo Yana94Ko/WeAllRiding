@@ -115,9 +115,6 @@
 			</div>
         </div>
         
-        
-        
-        
         <div id="community" class="tabcontent">
             <h3>마감 라이딩 및 후기</h3>총 레코드 수 : ${pVO2.totalRecord2 } / 총 페이지 수 : ${pVO2.totalPage2 }
             <table width="100%">
