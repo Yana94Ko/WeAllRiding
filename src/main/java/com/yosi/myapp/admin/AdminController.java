@@ -7,20 +7,15 @@ import com.yosi.myapp.PagingVO;
 import com.yosi.myapp.RidingPagingVO;
 import com.yosi.myapp.aMemberPagingVO;
 import com.yosi.myapp.comty.ComtyService;
-import com.yosi.myapp.member.MemberController;
 import com.yosi.myapp.member.MemberService;
 import com.yosi.myapp.member.MemberVO;
 import com.yosi.myapp.recommend.RecommendPagingVO;
 import com.yosi.myapp.recommend.RecommendService;
 import com.yosi.myapp.recommend.RecommendVO;
 import com.yosi.myapp.riding.RidingService;
-import com.yosi.myapp.riding.RidingVO;
 import com.yosi.myapp.shop.ShopPagingVO;
 import com.yosi.myapp.shop.ShopService;
-import com.yosi.myapp.shop.ShopVO;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,18 +27,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import java.nio.charset.Charset;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-
-import java.util.List;
 
 
 @RequestMapping("/admin/")
@@ -201,7 +189,7 @@ public class AdminController {
 	@GetMapping("adminRecommendWrite")
 	public ModelAndView adminRecommendWrite() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/adminRecommendWrite");
+		mav.setViewName("adminRecommendWrite_temp");
 		return mav;
 	}
 	

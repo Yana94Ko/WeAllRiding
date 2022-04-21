@@ -5,14 +5,16 @@
 	
 	/* 메인컬러 */
 	/* 진한 회색 */
-	--color-theme-0 : #303841;
+	--color-theme-0 : #313942;
 	
 	/* 회색 */
 	--color-theme-1 : #3A4750;
 	
 	/* 노랑 */
-	--color-theme-2 : #F6C90E;
-	
+	--color-theme-2 : #F6C90E;;
+	--color-theme-2-gra: linear-gradient(0deg, rgba(246,201,14,1) 1%, rgba(255,222,83,1) 100%);
+	--color-theme-3 : rgba(237, 237, 237, 1);
+
 	--main-gray : #dddddd;
 	
 	/* 진한 회색 */
