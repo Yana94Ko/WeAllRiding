@@ -2,28 +2,26 @@
 main {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 100;
-  font-size: 12px;
-  line-height: 30px;
+  font-size: 1vw;
+  line-height: 3vh;
   color: #777;
   background: #dddddd;
   width:100%;
-  padding: 3% 0 3% 0;
+  padding: 3vw 0 0 0;
 }
 
 .map_wrap {
   margin:0 auto;
   position: relative;
-  max-width:90%;
-  height:700px;	
+  width: 94vw;
+  height: 79vh;
   background: var(--color-lightGray-1);
-  padding: 25px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
 .map_wrap, .map_wrap * {
 	padding: 0;
 	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
-	font-size: 12px;
 }
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active {
 	color: #000;
@@ -42,10 +40,11 @@ main {
 	margin: 0;
 	padding: 0px;
 	overflow-y: auto;
-	background: rgba(255, 255, 255, 0.7);
+	background: var(--color-theme-3);
 	z-index: 1;
 	font-size: 12px;
-	border-radius: 10px;
+	var(--color-theme-3);
+	
 }
 .bg_white {
 	background: #fff;
@@ -58,24 +57,65 @@ main {
 	margin: 3px 0;
 }
 #menu_wrap .option {
-	text-align: center;
+	padding: 2vh 1vw;
+    height: 13vh;
+    background-color: var(--color-theme-2);
+	position: sticky;
+    z-index: 100;
+    top: 0vh;
+	box-shadow: 0.1vw 0.1vw 0.2vw 0.01vw var(--color-theme-0-05);
 }
-#menu_wrap .option p {
-	margin: 10px 0;
+#menu_wrap .option span{
+	color:#ffffff;
+	font-weight:600;
+	font-size:1.3vw;
+	position:relative;
+	left: 0.5vw;
 }
-#menu_wrap .option button {
-	margin-left: 5px;
+
+#menu_wrap .option .optionForm{
+	margin: 2vh 0.5vw;
+    background-color: #ffffff;
+    border-radius: 5px;
+    height: 3vh;
+    width: 14vw;
+    box-shadow: 0.1vw 0.1vw 0.2vw 0.01vw var(--color-theme-0-05);
+    padding: 0.4vw;
 }
+
+#menu_wrap .option .inputSearch {
+	border: none;
+    background-color: #ffffff;
+	width: 12.5vw;
+    height: 3vh;
+}
+
+#menu_wrap .option .btnSearch {
+	border: none;
+    background-color: #ffffff;
+    color: var(--color-lightGray-4);
+	cursor:pointer;
+	
+}
+#menu_wrap .option .btnSearch svg{
+	font-size:1vw;
+}
+
+
 #placesList li {
 	list-style: none;
 }
 #placesList .item {
+	background-color: #FFFFFF;
 	position: relative;
-	border-bottom: 1px solid #888;
 	overflow: hidden;
 	cursor: pointer;
+	box-shadow: 0vw 0.1vw 0.2vw 0.01vw var(--color-lightGray-3);
 	min-height: 65px;
+	margin: 0.7vh auto 0.8vh auto;
+    width: 17vw;
 }
+
 #placesList .item span {
 	display: block;
 	margin-top: 4px;
@@ -85,8 +125,11 @@ main {
 	overflow: hidden;
 	white-space: nowrap;
 }
+#placesList .item h5{
+	font-weight: bold;
+}
 #placesList .item .info {
-	padding: 10px 0 10px 55px;
+	padding: 1vh 0 1vh 3vw;
 }
 #placesList .info .gray {
 	color: #3d3d3d;
@@ -105,10 +148,10 @@ main {
 	position: absolute;
 	width: 36px;
 	height: 37px;
-	margin: 10px 0 0 10px;
+	margin: 1vh 0 0 1.7vh;
 	background:
-		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
-		no-repeat;
+	url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+	no-repeat;
 }
 #placesList .item .marker_1 {
 	background-position: 0 -10px;
@@ -166,10 +209,11 @@ main {
 #pagination .on {
 	font-weight: bold;
 	cursor: default;
-	color: #777;
+	color: var(--color-theme-0);
 }
 .info {
-	color:black;
+	color: var(--color-theme-0);
+	font-size: 0.8vw;
 }
 .wrap {
 	position: relative;
@@ -260,4 +304,7 @@ main {
     height: 6.25em;
     border: none;
     resize: none;
+}
+.shopInfo {
+	font-size : 0.5vw;
 }

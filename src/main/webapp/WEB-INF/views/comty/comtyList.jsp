@@ -107,12 +107,19 @@ main {
 	display: table;
 	margin-left: auto;
 	margin-right: auto;
+	display: table;
 }
-.paging>li {
+.paging > li {
+	padding: 0.5vw;
+	margin: 0.5vw;
 	float: left;
-	width: 30px;
+	border-radius: 12px;
+	width: 2vw;
+	height: 2vh;
+	line-height: 2.3vh;
 	text-align: center;
-	color: black;
+	vertical-align: middle;
+	text-decoration: none;
 }
 /*search*/
 #searchFrm {

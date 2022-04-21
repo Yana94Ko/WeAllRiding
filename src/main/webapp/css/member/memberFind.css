@@ -13,7 +13,7 @@ main{
 
 .loginForm{
     width: 600px;
-    height: 500px;
+    height: 490px;
     padding: 20px;
     padding-left: 40px;
     align-items: center;
@@ -21,13 +21,15 @@ main{
     background-color:rgba(255,255,255,0.6); 
     border-radius: 15px;
     position : relative;
-	top:400px;
+	top:250px;
 }
 .loginForm h1{
     font-size: 32px;
     color: rgb(0, 215, 215);
     position: relative;
     left: 180px;
+    margin-bottom: 20px;
+    top: 10px;
 }
 
 .memberId{
@@ -35,6 +37,15 @@ main{
     position: relative;
     margin-top: 20px;
     margin-left: 10px;
+}
+
+.input-area{
+    width: 370px;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 10px;
+    left: 80px;
+    top:10px;
 }
 
 .input-area:first-child{
@@ -46,9 +57,9 @@ main{
     padding: 20px 10px 10px;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid rgb(0, 200, 200);
     font-size: 18px;
-    color: #fff;
+    color: rgb(0, 200, 200);
     outline: none;
 }
 
@@ -57,7 +68,7 @@ main{
     left: 10px;
     top: 15px;
     font-size: 18px;
-    color: #999;
+    color: rgb(0, 200, 200);
     transition: all .5s ease;
 }
 
@@ -65,17 +76,33 @@ main{
 .input-area input:valid + label{
     top: -2px;
     font-size: 13px;
-    color: #166cea;
+    color: #C13827;
+
 }
 
-.login-btn{
-    margin-top: 30px;
+.bottom-menu{
+    position: relative;
+    right: 210px;
+    top: 70px;
 }
 
-.login-btn button{
-    width: 80%;
+.bottom-menu a {
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
+}
+
+.join-btn{
+    margin-top: 45px;
+    position: relative;
+    left: 35px;
+    top: 15px;
+}
+
+.join-btn button{
+    width: 65%;
     height: 50px;
-    background: dodgerblue;
+    background: #C13827;
     color: white;
     border: none;
     border-radius: 25px;
@@ -83,15 +110,6 @@ main{
     float: left;
     margin-bottom: 10px;
     margin-left: 30px;
-}
-
-.bottom-menu{
-    margin-top: 90px;
-    text-align: center;
-}
-
-.bottom-menu a {
-    font-size: 15px;
-    color: black;
-    text-decoration: none;
+    margin-right: 50px;
+    opacity: 80%;
 }

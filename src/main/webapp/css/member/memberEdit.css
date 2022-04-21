@@ -12,12 +12,12 @@ main{
 
 .memberForm{
     width: 700px;
-    height: 790px;
+    height: 710px;
     padding: 20px;
     padding-left: 40px;
     align-items: center;
     margin:0 auto;
-    background-color:rgba(255,255,255,0.6); 
+    background-color:rgba(255,255,255,0.6);
     position : relative;
     top:200px;
     border-radius: 15px;
@@ -25,8 +25,8 @@ main{
 
 .memberForm h3{
     position: relative;
-    left: 250px;
-    color: black;
+    left: 200px;
+    color: #999999;
 }
 
 .member-input{
@@ -135,18 +135,41 @@ main{
     font-size: 12px;
     color: #999999;
     position: relative;
-    left: 32px;
-    bottom: 120px;
+    left: 34px;
+    top: 45px;
 }
 
-.join-btn{
+.edit-btn{
     margin-top: 30px;
     margin-left: 50px;
     position: relative;
-    bottom: 2vh;
+    bottom: 3vh;
+    top: 65px;
 }
 
-.join-btn button{
+.edit-btn button{
+    width: 80%;
+    height: 50px;
+    background: rgb(0, 210, 210);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    opacity: 80%;
+}
+
+.exit-btn{
+    margin-top: 50px;
+    margin-left: 50px;
+    position: relative;
+    bottom: 3vh;
+    top: 65px;
+}
+
+.exit-btn button{
     width: 80%;
     height: 50px;
     background: #C13827;
@@ -158,6 +181,7 @@ main{
     margin-bottom: 10px;
     margin-left: 30px;
     opacity: 80%;
+    margin-top: 20px;
 }
 
 .push-number {

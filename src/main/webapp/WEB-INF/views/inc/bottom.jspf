@@ -8,7 +8,16 @@
 		</div>
 		<div class="footerContent">
 			<div class="footerText">
-				<p>Contact : WeAllRiding1@gmail.com</p>
+
+				<p>Developer :
+				<a style="text-decoration:none;color:var(--color-lightGray-1);" class="teamGitHub" href="https://github.com/Yana94Ko">Yana, </a>
+				<a style="text-decoration:none;color:var(--color-lightGray-1);"class="teamGitHub" href="https://github.com/DABIN222">Joy, </a>
+				<a style="text-decoration:none;color:var(--color-lightGray-1);"class="teamGitHub" href="https://github.com/98woo">Woo, </a>
+				<a style="text-decoration:none;color:var(--color-lightGray-1);"class="teamGitHub" href="https://github.com/badmaniacs">Tom, </a>
+				<a style="text-decoration:none;color:var(--color-lightGray-1);"class="teamGitHub" href="https://github.com/nexusgh12">Siri, </a>
+				<a style="text-decoration:none;color:var(--color-lightGray-1);"class="teamGitHub" href="https://github.com/suhyeon1032">Bari.</a></p>
+				<span style="line-height:0.5vw"><br></span>
+				<p>1:1 문의 [ WeAllRiding1@gmail.com ]</p>
 				<p>Copyright 2022. WeAllRiding All Rights reserved. </p>
 			</div>
 			

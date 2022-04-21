@@ -39,21 +39,19 @@
                     <div id="t1" class="tab-pane active"><!-- 메뉴당 내용 -->
                         <h1>아이디 찾기</h1>
                         <form id="logFrm">
-
-                                <div class="input-area">
-                                    <input type="text" name="userName" id="userName" autocomplete="off" required/>
-                                    <label for="userName">회원이름</label>
-                                </div>
-
                             <div class="input-area">
-                                <div class="userTel">
-                                    <label for="userTel">전화번호</label>
-                                    <input type="text" name="userTel" id="userTel" placeholder="-을 제외하고 입력해주세요" autocomplete="off" required>
-                                    <button class="btn" style="background-color: rgb(0, 215, 215)" type="button" value="아이디 찾기" onclick="FindUserId()">아이디 찾기</button>
-                                </div>
+                                <input type="text" name="userName" id="userName" style="width: 300px;" autocomplete="off" required/>
+                                <label for="userName">회원이름</label>
+                            </div>
+                            <div class="input-area">
+                                <input type="text" name="userTel" id="userTel" style="width: 300px; margin-right: 60px;" autocomplete="off" required>
+                                <label for="userTel">전화번호</label>
+                                <span id="showStateFindId" style="font-size: 0.5em; color: #ca2819">가입시 입력한 이름과 전화번호를 입력해주세요</span>
+                            </div>
+                            <div class="join-btn">
+                                <button class="btn" style="background-color: rgb(0, 215, 215);" type="button" value="아이디 찾기" onclick="FindUserId()">아이디 찾기</button>
                             </div>
                             <div class="showStateFindId">
-                                <span id="showStateFindId">가입시 입력한 이름과 전화번호를 입력해주세요</span>
                             </div>
                             <div class="bottom-menu">
                                 <a href ="${url}/member/memberForm">회원가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -63,17 +61,17 @@
                     <div id="t2" class="tab-pane"><!-- 메뉴당 내용 -->
                         <h1>비밀번호 찾기</h1>
                         <form id="logFrm">
-                            <div class="userId">
+                            <div class="input-area">
+                                <input type="text" name="userId" id="userId" style="width: 300px;" autocomplete="off" required/>
                                 <label for="userId">아이디</label>
-                                <input type="text" name="userId" id="userId" required/>
                             </div>
-                            <div class="userEmail">
+                            <div class="input-area">
+                                <input type="text" name="userEmail" id="userEmail" style="width: 300px; margin-right: 60px;" autocomplete="off" required>
                                 <label for="userEmail">이메일</label>
-                                <input type="text" name="userEmail" id="userEmail" autocomplete="off" required>
-                                <button id="findPwdButton" type="button" value="비밀번호 찾기" onclick="IsValidEmail()">비밀번호 찾기</button>
+                                <span id="showStateFindPwd" style="font-size: 0.5em; color: #ca2819">가입시 입력한 아이디와 이메일을 입력해주세요</span>
                             </div>
-                            <div class="showStateFindPwd">
-                                <span id="showStateFindPwd">가입시 입력한 아이디와 이메일을 입력해주세요</span>
+                            <div class="join-btn">
+                                <button id="findPwdButton" type="button" value="비밀번호 찾기" onclick="IsValidEmail()">비밀번호 찾기</button>
                             </div>
                             <div class="bottom-menu">
                                 <a href ="${url}/member/memberForm">회원가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

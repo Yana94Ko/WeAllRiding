@@ -54,6 +54,13 @@ public interface RidingService {
 	public int ridingApplicantCntDown(RidingVO vo);
 	public int ridingStateCancle(RidingVO vo);
 
+	//관리자 페이지 라이딩 삭제
+	public int adminRidingDel(int ridingNo);
+
+	//관리자 피이지 라이딩 리스트 오름차순
+	public List<RidingVO> ridingList2(RidingPagingVO pVO);
+
     public String availableRiding();
 	public String todayRiding();
+
 }

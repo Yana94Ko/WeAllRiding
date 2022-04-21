@@ -31,235 +31,236 @@
 <link href="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <main id="page-top">
 
-<!-- Page Wrapper -->
-<div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">WeAllRiding Admin <sup>TM</sup></div>
-        </a>
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            관리자
-        </div>
-
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-               aria-expanded="true" aria-controls="collapseTwo">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>관리</span>
-            </a>
-            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">관리자 메뉴</h6>
-                    <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
-                    <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
-                    <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로 관리</a>
-                    <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
-                    <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${url}/admin/adminMain">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
                 </div>
-            </div>
-        </li>
-
-        <!-- 통계 -->
-        <li class="nav-item">
-            <a class="nav-link" href="${url}/admin/adminMain">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>통계</span></a>
-        </li>
-
-        <!-- 선 나눔 -->
-        <hr class="sidebar-divider">
-
-        <!-- 사이드 메뉴 회원전용탭 -->
-        <div class="sidebar-heading">
-            회원 전용
-        </div>
-
-        <!-- 회원 전용 메뉴 -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-               aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>회원 메뉴 보기</span>
+                <div class="sidebar-brand-text mx-3">WeAllRiding Admin <sup></sup></div>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">회원 이용 메뉴</h6>
-                    <a class="collapse-item" href="${url}/recommendView">코스</a>
-                    <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
-                    <a class="collapse-item" href="${url}/shopView">장비샵</a>
-                    <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
-                    <a class="collapse-item" href="${url}/idealView">이상형 월드컵</a>
-                    <div class="collapse-divider"></div>
-<%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
-<%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
-<%--                    <a class="collapse-item" href="blank.html">Blank Page</a>--%>
-                </div>
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                관리자
             </div>
-        </li>
 
 
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>관리</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">관리자 메뉴</h6>
+                        <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천코스 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
+                    </div>
+                </div>
+            </li>
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
+            <!-- 통계 -->
+            <li class="nav-item">
+                <a class="nav-link" href="${url}/admin/adminMain">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>통계</span></a>
+            </li>
 
-    </ul>
-    <!-- End of Sidebar -->
+            <!-- 선 나눔 -->
+            <hr class="sidebar-divider">
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+            <!-- 사이드 메뉴 회원전용탭 -->
+            <div class="sidebar-heading">
+                회원 전용
+            </div>
 
-        <!-- Main Content -->
-        <div id="content">
+            <!-- 회원 전용 메뉴 -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                   aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>회원 메뉴 보기</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">회원 이용 메뉴</h6>
+                        <a class="collapse-item" href="${url}/">메인 페이지</a>
+                        <a class="collapse-item" href="${url}/recommendView">코스</a>
+                        <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
+                        <a class="collapse-item" href="${url}/shopView">장비샵</a>
+                        <a class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a>
+                        <a class="collapse-item" href="${url}/idealView">이상형 월드컵</a>
+                        <div class="collapse-divider"></div>
+                        <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
+                        <%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
+                        <%--                    <a class="collapse-item" href="blank.html">Blank Page</a>--%>
+                    </div>
+                </div>
+            </li>
 
-            <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                <!-- Sidebar Toggle (Topbar) -->
-                <form class="form-inline">
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                </form>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <form class="form-inline">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </form>
 
 
-                <!-- Topbar Navbar -->
-                <ul class="navbar-nav ml-auto">
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
 
-                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                    <li class="nav-item dropdown no-arrow d-sm-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <!-- Dropdown - Messages -->
-                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                             aria-labelledby="searchDropdown">
-                            <form class="form-inline mr-auto w-100 navbar-search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small"
-                                           placeholder="Search for..." aria-label="Search"
-                                           aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">
-                                            <i class="fas fa-search fa-sm"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-
-                    <div class="topbar-divider d-none d-sm-block"></div>
-
-                    <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">${nickName}</span>
-                            <img class="img-profile rounded-circle"
-                                 src="${url}/css/admin/img/undraw_profile.svg">
-                        </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
                             </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                 aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                               placeholder="Search for..." aria-label="Search"
+                                               aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${nickName}</span>
+                                <img class="img-profile rounded-circle"
+                                     src="${url}/css/admin/img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                 aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- 메인 페이지 통계 띄우기 -->
+                    <h1 class="h3 mb-2 text-gray-800">통계</h1>
+                    <p class="mb-4">회원 성별 통계와 이용자의 연령대 분포를 확인할 수 있습니다.</p>
+
+                    <!-- 통계 그래프 출력 -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">통계 그래프</h6>
                         </div>
-                    </li>
-
-                </ul>
-
-            </nav>
-
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
-
-                <!-- 메인 페이지 통계 띄우기 -->
-                <h1 class="h3 mb-2 text-gray-800">통계</h1>
-                <p class="mb-4">회원 성별 통계와 이용자의 연령대 분포를 확인할 수 있습니다.</p>
-
-                <!-- 통계 그래프 출력 -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">통계 그래프</h6>
-                    </div>
-                    <div class="card-body">
-                        <main>
-                            <div class="st">
-                                <div class="statisticsContainer" >
-                                    <div id="gender" class="gender">
-                                        <canvas id="genderChart" width="400px" height="400px"></canvas>
-                                    </div>
-                                    <div id="age" class="age">
-                                        <canvas id="ageChart" width="400px" height="400px"></canvas>
-                                    </div>
-                                    <div id="ariding">
-                                        <span id="ridingCount"></span>
-                                    </div>
-                                    <div id="triding">
-                                        <span id="todayRiding"></span>
-                                    </div>
-                                    <div id="acourse">
-                                        <span id="courseCount"></span>
+                        <div class="card-body">
+                            <main id="inside">
+                                <div class="st">
+                                    <div class="statisticsContainer" >
+                                        <div id="gender" class="chart">
+                                            <canvas id="genderChart" width="400px" height="400px"></canvas>
+                                        </div>
+                                        <div id="age" class="chart">
+                                            <canvas id="ageChart" width="400px" height="400px"></canvas>
+                                        </div>
+                                        <div id="ariding">
+                                            <span id="ridingCount"></span>
+                                        </div>
+                                        <div id="triding">
+                                            <span id="todayRiding"></span>
+                                        </div>
+                                        <div id="acourse">
+                                            <span id="courseCount"></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </main>
+                            </main>
+                        </div>
                     </div>
+
                 </div>
+                <!-- /.container-fluid -->
 
             </div>
-            <!-- /.container-fluid -->
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+
+            <!-- End of Footer -->
 
         </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-
-        <!-- End of Footer -->
+        <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
 
-</div>
-<!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+    <!-- Bootstrap core JavaScript-->
+    <script src="${url}/css/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="${url}/css/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Bootstrap core JavaScript-->
-<script src="${url}/css/admin/vendor/jquery/jquery.min.js"></script>
-<script src="${url}/css/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="${url}/css/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="${url}/css/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="${url}/js/admin/js/sb-admin-2.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="${url}/js/admin/js/sb-admin-2.min.js"></script>
+    <!-- Page level plugins -->
+    <script src="${url}/css/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<!-- Page level plugins -->
-<script src="${url}/css/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="${url}/js/admin/js/demo/datatables-demo.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="${url}/js/admin/js/demo/datatables-demo.js"></script>
 
 </main>

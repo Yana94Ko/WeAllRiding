@@ -6,7 +6,9 @@ button {
     width:auto;
     margin:0 auto;
     margin-top:20px;
+    padding: 2vh 1vw;
 }
+
 
 .w-btn {
     position: relative;

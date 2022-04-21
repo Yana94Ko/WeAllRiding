@@ -197,8 +197,8 @@ function getListItem(index, places) {
 	}
 
 	itemStr += '  <span class="tel">' + places.phone + '</span>';
-	itemStr += '<a href ="https://map.kakao.com/link/to/'+places.id+'"target="_blank"><button> 길찾기 </button></a>'
-		+ '</div>';
+	/*itemStr += '<a href ="https://map.kakao.com/link/to/'+places.id+'"target="_blank"><button> 길찾기 </button></a>'*/
+	itemStr += '</div>';
 
 	el.innerHTML = itemStr;
 	el.className = 'item';

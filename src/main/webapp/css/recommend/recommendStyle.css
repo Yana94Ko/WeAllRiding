@@ -58,7 +58,7 @@ div, h1, p, a, i {
 }
 
 h1 {
-    font-size: 22px;
+    font-size: 1.5vw;
     font-weight: bold;
 }
 
@@ -68,7 +68,8 @@ h1 {
 
 /* 제목 */
 .cardBodyHeader {
-    line-height: 25px;
+    line-height: 2vw;
+    font-size: 1vw;
 }
 
 .cardBodyHeader h1 {
@@ -122,8 +123,9 @@ h1 {
     width: 35vw;
     height: 30vh;
     flex-grow: 1;
-    margin-top: 3vh;
-
+    margin-top: 2vh;
+    font-size: 1vw;
+    line-height: 1vh;
 }
 
 .cardBodyDescription::-webkit-scrollbar {
@@ -210,10 +212,10 @@ h1 {
 /* 푸터 */
 .cardBodyFooter {
     position: absolute;
-    bottom: 10px;
-    width: 96%;
-    height: 15%;
-    font-size: 14px;
+    bottom: 1vh;
+    width: 35vw;
+    height: 10vh;
+    font-size: 1vw;
     color: #9FA5A8;
     margin: 0 auto;
 }
@@ -221,13 +223,12 @@ h1 {
 .footerLeft {
     position: relative;
     float: left;
-    width: 30%;
-    height: 70%;
-
+    width: 17vw;
+    height: 7vh;
 }
 
 .footerLeft i {
-    line-height: 70px;
+    line-height: 10vh;
     position: relative;
     left: 0.2vw;
     bottom: 2vh;
@@ -236,8 +237,8 @@ h1 {
 .footerRight {
     position: relative;
     float: right;
-    width: 30%;
-    height: 70%;
+    width: 10vw;
+    height: 7vh;
 }
 
 /* 라이딩 개설 버튼 */
@@ -249,7 +250,7 @@ h1 {
     /*버튼 색*/
     background: var(--color-theme-2);
     color: #ffffff;
-    font-size: 1.5em;
+    font-size: 1vw;
     cursor: pointer;
     padding: 0 1vw 0 1vw;
     position: relative;

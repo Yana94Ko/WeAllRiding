@@ -54,6 +54,7 @@
                     $("#suspendDate").val(result.suspendDate);
                     $("#isAdmin").val(result.isAdmin);
                     $("#userPwd").val(result.userPwd);
+
                 }
             });
         });
@@ -68,7 +69,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${url}/">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -97,7 +98,7 @@
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천코스 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                     </div>
@@ -129,6 +130,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">회원 이용 메뉴</h6>
+                        <a class="collapse-item" href="${url}/">메인 페이지</a>
                         <a class="collapse-item" href="${url}/recommendView">코스</a>
                         <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
                         <a class="collapse-item" href="${url}/shopView">장비샵</a>
@@ -321,58 +323,61 @@
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="memberDeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="">회원 상세정보</h5>
+                                                <h5 class="modal-title">회원 상세정보</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body" style="width: 900px; height: 660px; left: 55px; top: 40px;">
                                                 <form name="form1" method="post" action="/admin/adminMemberEdit">
 
                                                         <table id="userInfo${status.count}" border="1">
                                                             <tr>
                                                                 <td>아이디</td>
-                                                                <td><input name="userId" id="userId" value="" readonly="readonly"></td>
+                                                                <td><input style="margin-bottom: 10px;" name="userId" id="userId" value="" readonly="readonly"></td>
                                                             </tr>
                                                             <tr>
                                                                 <th>이름</th>
-                                                                <td><input name="userName" id="userName" value="${av.userName}"></td>
+                                                                <td><input style="margin-bottom: 10px;" name="userName" id="userName" value="${av.userName}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <th>닉네임</th>
-                                                                <td><input type="text" id="nickname" name="nickname" value="${av.nickname}"></td>
+                                                                <td><input style="margin-bottom: 10px;" type="text" id="nickname" name="nickname" value="${av.nickname}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>연락처</td>
-                                                                <td><input name="userTel1" id="userTel1" value="${av.userTel1}" readonly="readonly"></td>
-                                                                <td><input name="userTel2" id="userTel2" value="${av.userTel2}" readonly="readonly"></td>
+                                                                <td><input style="margin-bottom: 10px;" name="userTel1" id="userTel1" value="${av.userTel1}" readonly="readonly"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><input style="margin-bottom: 10px;" name="userTel2" id="userTel2" value="${av.userTel2}" readonly="readonly"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>이메일</td>
-                                                                <td><input type="text" name="userEmail" id="userEmail" value="${av.userEmail}"></td>
+                                                                <td><input style="margin-bottom: 10px;" type="text" name="userEmail" id="userEmail" value="${av.userEmail}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>생년월일</td>
-                                                                <td><input type="date" name="birth" id="birth" value="${av.birth}"></td>
+                                                                <td><input style="margin-bottom: 10px; width: 228px" type="date" name="birth" id="birth" value="${av.birth}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>회원정지일</td>
-                                                                <td><input type="datetime-local" id="suspend" name="suspendDate" value="${av.suspendDate}"></td>
+                                                                <td><input style="margin-bottom: 10px; width: 228px" type="datetime-local" id="suspend" name="suspendDate" value="${av.suspendDate}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>관리자 권한</td>
-                                                                <td><input type="text" id="isAdmin" name="isAdmin">${av.isAdmin}</td>
+                                                                <td><input style="margin-bottom: 10px;" type="text" id="isAdmin" name="isAdmin">${av.isAdmin}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>비밀번호</td>
                                                                 <td><input type="password" id="userPwd" name="userPwd" value="${av.userPwd}"></td>
                                                             </tr>
                                                         </table>
-                                                        <div class="modal-footer">
-                                                            <button type="button" onclick="AdminMemberDelete()" class="btn btn-primary">삭제하기</button>
+                                                        <div class="modal-footer" style="position: relative; right: 25px; width: 365px; top: 32px; ">
+                                                            <button type="button" onclick="AdminMemberDelete()" class="btn btn-danger">삭제하기</button>
                                                             <button type="submit"  class="btn btn-primary">수정하기</button>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
                                                         </div>
@@ -422,7 +427,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="${url}/member/logout">Logout</a>
                 </div>
             </div>
         </div>
