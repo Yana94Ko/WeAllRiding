@@ -321,6 +321,7 @@ h1 {
 }
 
 .aTag {
+    width:100%;
     color: var(--color-theme-0);
 }
 

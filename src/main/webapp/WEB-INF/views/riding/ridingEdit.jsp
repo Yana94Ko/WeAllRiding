@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
+<link href="${url}/css/riding/ridingEdit.css" rel="stylesheet" type="text/css">
 <style>
 .ridingContainer{
 	width: 80%;
@@ -37,77 +38,77 @@
 </div>
 <!-- parallax END -->
 <main>
-	<div class="ridingViewContainer">
-		<input type="hidden" id="dbCourseLevelsel" value=${vo.courseLevel}/>
-		<input type="hidden" id="dbMaxUsersel" value=${vo.maxUser}>
-		<form method="post"
-			action="/riding/ridingEditOk?ridingNo=${vo.ridingNo}">
-			<ul>
-				<h1 id="ridingViewTitle"></h1><br><br>
-				<h2>제목</h2>
-				<li>
-					<input type="text" name="ridingSubject" id="ridingSubject"
-						value="${vo.ridingSubject }" />
-				</li>
-				<br>
-				
-				<h2>키워드</h2>
-				<li>
-					<input type="text" name="ridingKeyword" id="ridingKeyword"
-						value="${vo.ridingKeyword }"></input>
-				</li>
-				<br><br>
-				
-				<h2 id="ridingViewTitle">키워드</h2>
-				<li style="color: black;">${vo.ridingKeyword }</li><br>
-
-				<li id="dateAll" style="color: black;">
-					<h2 id="ridingViewTitle">일정</h2>
-					<input type="date"
-						name="startDate" id="startDate" value="${vo.startDate }"> -
-					<input type="date" name="endDate" id="endDate"
-						value="${vo.endDate }">
-				</li><br><br><br><br>
-				
-				<li id=courseLevel style="color: black">
-					<h2>난이도</h2> 
-					<select id="courseLevelsel" name="courseLevel"
-						class="courseLevelsel">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
-				</li>
-
-				<li id="maxUser" style="color: black">
-					<h2>참가인원</h2> 
-					<select id="maxUsersel" name="maxUsersel"
-						class="maxUsersel">
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-					</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				</li>
-				<br><br><br><br>
-				
-				<h2 id="ridingViewTitle">내용</h2>
-				<li>
-					<textarea name="ridingContent" id="ridingContent"
-						style="min-height: 400px; width: 100%;">${vo.ridingContent }
-					</textarea>
-				</li><br><br>
-				
-				<li id="ridingEditBTN">
-					<input type="submit" id="ridingwriteBtn"value="글 수정" />
-				</li>
-			</ul>
-		</form>
+<div class="container">
+	<div class="containerWrap">
+		<div class="ridingViewContainer">
+			<input type="hidden" id="dbCourseLevelsel" value=${vo.courseLevel}/>
+			<input type="hidden" id="dbMaxUsersel" value=${vo.maxUser}>
+			<form method="post"
+				action="/riding/ridingEditOk?ridingNo=${vo.ridingNo}">
+				<ul>
+					<h1 id="ridingViewTitle"></h1><br><br>
+					<div id="listTitle">제목</div>
+					<li>
+						<input type="text" name="ridingSubject" id="ridingSubject"
+							value="${vo.ridingSubject }" />
+					</li>
+					<br>
+					
+					<div id="listTitle">키워드</div>
+					<li>
+						<input type="text" name="ridingKeyword" id="ridingKeyword"
+							value="${vo.ridingKeyword }"></input>
+					</li>
+					<br>
+					<li id="dateAll">
+						<div id="listTitle">일정</div>
+						<input type="date"
+							name="startDate" id="startDate" value="${vo.startDate }"> -
+						<input type="date" name="endDate" id="endDate"
+							value="${vo.endDate }">
+					</li><br><br><br><br>
+					
+					<li id=courseLevel style="color: black">
+						<div id="listTitle">난이도</div>
+						<select id="courseLevelsel" name="courseLevel"
+							class="courseLevelsel">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+					</li>
+	
+					<li id="maxUser" style="color: black">
+						<div id="listTitle">참가인원</div>
+						<select id="maxUsersel" name="maxUsersel"
+							class="maxUsersel">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+						</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					</li>
+					<br><br><br><br>
+					
+					<div id="listTitle">내용</div>
+					<li>
+						<textarea name="ridingContent" id="ridingContent"
+							style="min-height: 400px; width: 100%;">${vo.ridingContent }
+						</textarea>
+					</li><br><br>
+					
+					<li id="ridingViewBtn">
+						<input type="submit" id="ridingwriteBtn" class="ridingEditBtn" value="글 수정" />
+					</li>
+				</ul>
+			</form>
+		</div>
 	</div>
+</div>
 	<script type="text/javascript" src="${url}/js/riding/ridingEdit.js"></script>
 </main>

@@ -230,7 +230,7 @@ public class AdminController {
 		return ridingService.todayRiding();
 	}
 	@ResponseBody
-	@RequestMapping("/availableCourse")
+		@RequestMapping("/availableCourse")
 	public int availableCourse(RecommendPagingVO rPVO){
 		return recommendService.totalRecord(rPVO);
 	}
