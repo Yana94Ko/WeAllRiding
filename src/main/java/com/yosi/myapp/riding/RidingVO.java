@@ -23,7 +23,9 @@ public class RidingVO {
 	private String ridingReviewWriteDate;
 	private String applicantNickName;
 	private int applicantCnt;
-	
+	private String scored;
+
+
 	public int getApplicantCnt() {
 		return applicantCnt;
 	}
@@ -175,5 +177,11 @@ public class RidingVO {
         this.courseSendData = courseSendData;
     }
     //course에서 받은 데이터 <--//
-	
+	public String getScored() {
+		return scored;
+	}
+
+	public void setScored(String scored) {
+		this.scored = scored;
+	}
 }

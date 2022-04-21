@@ -1,33 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<link rel = "stylesheet" href="/css/admin/adminMain.css" type="text/css"/>
-<link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
+<link rel="stylesheet" href="/css/admin/adminMain.css" type="text/css" />
+<link rel="shortcut icon" href="${url}/images/icon.png"
+	type="image/x-icon">
 <link rel="icon" href="${url}/images/icon.png" type="image/x-icon">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <!-- 탭메뉴 바꾸기 -->
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
 <title>SB Admin 2 - Tables</title>
 
 <!-- Custom fonts for this template -->
-<link href="${url}/css/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="${url}/css/admin/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
 <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
 
 <!-- Custom styles for this template -->
 <link href="${url}/css/admin/sb-admin-2.min.css" rel="stylesheet">
 
 <!-- Custom styles for this page -->
-<link href="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link
+	href="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet">
 <main id="page-top">
+
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -161,278 +169,156 @@
                         </div>
                     </form>
 
-                    <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                 aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                               placeholder="Search for..." aria-label="Search"
-                                               aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter"></span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                 aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    알림창
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">April 18, 2022</div>
-                                        <span class="font-weight-bold">알림이 없습니다</span>
-                                    </div>
-                                </a>
-
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter"></span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                 aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    메세지
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <i class="fas fa-fw fa-cog"></i>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">메세지 기능 점검 중</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">운영자</span>
+
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${nickName}</span>
+
                                 <img class="img-profile rounded-circle"
                                      src="${url}/css/admin/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
                             </div>
                         </li>
+				</nav>
+				<!-- End of Topbar -->
 
-                    </ul>
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+					<!-- 회원관리 설명 -->
+					<h1 class="h3 mb-2 text-gray-800">추천 코스 관리</h1>
+					<p class="mb-4">추천코스 관리 페이지입니다. 추천 코스를 생성, 수정, 삭제 할 수 있습니다.</p>
 
-                </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <!-- 회원관리 설명 -->
-                    <h1 class="h3 mb-2 text-gray-800">추천 코스 관리</h1>
-                    <p class="mb-4">추천코스 관리 페이지입니다. 추천 코스를 생성, 수정, 삭제 할 수 있습니다.</p>
-
-                    <!-- 데이터 테이블 -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">추천 코스 목록</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                    <tr>
-                                        <th>번호</th>
-                                        <th>제목</th>
-                                        <th>출발지</th>
-                                        <th>도착지</th>
-                                        <th>작성일</th>
-                                    </tr>
-                                    </thead>
-                                    <c:forEach var="recommendVO" items="${list}" varStatus="st">
-                                        <tr>
-                                            <td>${recommendVO.recNo}</td>
-                                            <td>${recommendVO.recTitle}</td>
-                                            <td><span id="startPoint${st.index}"></span></td>
-                                            <td><span id="endPoint${st.index}"></span></td>
-                                            <td>${recommendVO.recWritedate}</td>
-                                            <%-- <th><button class="btn btn-danger" style="height:40px;" type="button" onclick="location.href='/admin/shopDelete?shopId=${shopPVO.shopId}';">삭제</button></th> --%>
-                                        </tr>
-                                    </c:forEach>
-                                </table>
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                        	<c:if test="${rPVO.pageNum==1}">
-												<a class="page-link" aria-label="Previous">
-                                                	<span aria-hidden="true">&laquo;</span>
-                                            	</a>
-											</c:if>
-                                        	<c:if test="${rPVO.pageNum>1}">
-												<li>
-													<a class="page-link" aria-label="Previous" href="${url}/admin/adminShop?pageNum=${rPVO.pageNum-1}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
+					<!-- 데이터 테이블 -->
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">추천 코스 목록</h6>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
+									<thead>
+										<tr>
+											<th>번호</th>
+											<th>제목</th>
+											<th>출발지</th>
+											<th>도착지</th>
+											<th>작성일</th>
+											<th>옵션</th>
+										</tr>
+									</thead>
+									<c:forEach var="recommendVO" items="${list}" varStatus="st">
+										<tr>
+											<td>${recommendVO.recNo}<textarea style="display: none"
+											id="adminRecommendSendData${st.index}">${recommendVO.recommendSendData}</textarea></td>
+											<td>${recommendVO.recTitle}</td>
+											<td><span id="startPoint${st.index}"> </span></td>
+											<td><span id="endPoint${st.index}"> </span></td>
+											<td>${recommendVO.recWritedate}</td>
+											<th><button class="btn btn-danger" style="height:40px;" type="button" onclick="location.href='/admin/adminRecommendDelete?recNo=${recommendVO.recNo}';">삭제</button></th>
+										</tr>
+									</c:forEach>
+								</table>
+								<nav aria-label="Page navigation example">
+									<ul class="pagination">
+										<li class="page-item"><c:if test="${rPVO.pageNum==1}">
+												<a class="page-link" aria-label="Previous"> <span
+													aria-hidden="true">&laquo;</span>
+												</a>
+											</c:if> <c:if test="${rPVO.pageNum>1}">
+												<li><a class="page-link" aria-label="Previous"
+													href="${url}/admin/adminShop?pageNum=${rPVO.pageNum-1}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
 														<span aria-hidden="true">&laquo;</span>
-													</a>
-												</li>
-											</c:if>
-                                        </li>
-                                        <!--  페이지 번호                 1,5      6,10         11,15-->
+												</a></li>
+											</c:if></li>
+										<!--  페이지 번호                 1,5      6,10         11,15-->
 										<c:forEach var="p" begin="${rPVO.startPage}"
 											end="${rPVO.startPage+rPVO.onePageCount-1}">
 											<!--  총 페이지수보다 출력할 페이지번호가 작을때 -->
 											<c:if test="${p <= rPVO.totalPage}">
 												<c:if test="${p == rPVO.pageNum}">
-												<li class="page-item">
+													<li class="page-item">
 												</c:if>
 												<c:if test="${p != rPVO.pageNum}">
 													<li class="page-item">
 												</c:if>
-												<a class="page-link" href="${url}/admin/adminRecommend?pageNum=${p}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
-													${p}
-												</a>
+												<a class="page-link"
+													href="${url}/admin/adminRecommend?pageNum=${p}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
+													${p} </a>
 												</li>
 											</c:if>
 										</c:forEach>
 										<c:if test="${rPVO.pageNum==rPVO.totalPage}">
-											<li class="page-item">
-												<a class="page-link" aria-label="Next">
-													<span aria-hidden="true">&raquo;</span>
-												</a>
-											</li>
+											<li class="page-item"><a class="page-link"
+												aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+											</a></li>
 										</c:if>
 										<c:if test="${rPVO.pageNum<rPVO.totalPage}">
-											<li class="page-item">
-												<a class="page-link" aria-label="Next" href="${url}/admin/adminShop?pageNum=${rPVO.pageNum+1}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
+											<li class="page-item"><a class="page-link"
+												aria-label="Next"
+												href="${url}/admin/adminShop?pageNum=${rPVO.pageNum+1}<c:if test='${rPVO.searchWord != null}'>&searchKey=${rPVO.searchKey }&searchWord=${rPVO.searchWord }</c:if>">
 													<span aria-hidden="true">&raquo;</span>
-												</a>
-											</li>
+											</a></li>
 										</c:if>
-                                    </ul>
-                                    <a href="${url}/admin/adminRecommendWrite">
-                                    	<button type="button" class="btn btn-primary">추천코스 생성</button>
-									</a>		
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
+									</ul>
+									<a href="${url}/admin/adminRecommendWrite">
+										<button type="button" class="btn btn-primary">추천코스 생성</button>
+									</a>
+								</nav>
+							</div>
+						</div>
+					</div>
 
-                </div>
-                <!-- /.container-fluid -->
+				</div>
+				<!-- /.container-fluid -->
 
-            </div>
-            <!-- End of Main Content -->
+			</div>
+			<!-- End of Main Content -->
 
-            <!-- Footer -->
+			<!-- Footer -->
 
-            <!-- End of Footer -->
+			<!-- End of Footer -->
 
-        </div>
-        <!-- End of Content Wrapper -->
+		</div>
+		<!-- End of Content Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+	</div>
+	<!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="${url}/member/logout">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- Bootstrap core JavaScript-->
+	<script src="${url}/css/admin/vendor/jquery/jquery.min.js"></script>
+	<script
+		src="${url}/css/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="${url}/css/admin/vendor/jquery/jquery.min.js"></script>
-    <script src="${url}/css/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script
+		src="${url}/css/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="${url}/css/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="${url}/js/admin/js/sb-admin-2.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="${url}/js/admin/js/sb-admin-2.min.js"></script>
+	<!-- Page level plugins -->
+	<script
+		src="${url}/css/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+	<script
+		src="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+	<!-- Page level custom scripts -->
+	<script src="${url}/js/admin/js/demo/datatables-demo.js"></script>
+	<script src="${url}/js/admin/adminRecommendView.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="${url}/css/admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="${url}/css/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <!-- Page level custom scripts -->
-    <script src="${url}/js/admin/js/demo/datatables-demo.js"></script>
 </main>

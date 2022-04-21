@@ -13,7 +13,7 @@
     </insert>
     <!-- 관리자 페이지 회원 목록 -->
     <select id = "memberList" resultType="com.yosi.myapp.member.MemberVO">
-        SELECT userId, userPwd, userName, userEmail, nickname, date_format(joinDate, '%y-%m-%d') FROM member
+        SELECT userId, userPwd, userName, userEmail, nickname, joinDate FROM member
         <if test = 'searchWord != null'>
             WHERE ${searchKey} like '%${searchWord}%'
         </if>
@@ -97,4 +97,8 @@
     </select>
     <resultMap id="ageMap" type="map">
     </resultMap>
+    <update id="ScoreUpdate">
+        update member set userScore = userScore + #{score}
+        where nickname=#{nickname}
+    </update>
 </mapper>

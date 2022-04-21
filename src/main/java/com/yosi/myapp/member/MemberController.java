@@ -2,6 +2,7 @@ package com.yosi.myapp.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -15,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.security.SecureRandom;
@@ -38,7 +41,7 @@ public class MemberController {
     }
 
     @PostMapping("loginOk")
-    public ResponseEntity<String> loginOk(MemberVO vo, HttpSession session) throws ParseException {
+    public ResponseEntity<String> loginOk(MemberVO vo, HttpSession session, HttpServletRequest request) throws ParseException {
         ResponseEntity<String> entity = null;
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "text/html; charset=utf-8");
@@ -56,7 +59,9 @@ public class MemberController {
                     msg="<script>location.href='/admin/adminMain';</script>";
                 }
                 else { // 일반회원
-                    msg="<script>location.href='/';</script>";
+                    String dest = (String)session.getAttribute("dest");
+                    String redirect = (dest == null) ? "/" : dest;
+                    msg="<script>location.href='" + redirect + "';</script>";
                 }
                 entity = new ResponseEntity<String> (msg, headers, HttpStatus.OK);
             } else if (suspendDate.compareTo(new Date()) > 0) { // 정지일 > 현재날짜 로그인 실패

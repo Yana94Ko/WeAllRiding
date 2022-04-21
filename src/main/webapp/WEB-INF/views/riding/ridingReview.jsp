@@ -15,40 +15,21 @@
 				url : '/riding/ridingReviewWriteOk?ridingNo=${vo.ridingNo}',
 				data : params,
 				type : 'POST',
-				success : function() {
-					//폼을초기화
-					alert("후기 등록이 완료되었습니다.");
-					$("#ridingReviewComent").val("");
-					//댓글 목록 refresh되어야 한다.
-					ridingReviewListAll();
+				success : function(res) {
+					if(res==0){
+						alert("이미 후기를 등록하셨습니다")
+					} else{
+						alert("후기 등록이 완료되었습니다.");
+						$("#ridingReviewComent").val("");
+						// ridingReviewListAll();
+					}
 				},
 				error : function(e) {
-					console.log(e.responseText);
+					alert("에러");
 				}
 			});
 		}
 	}
-	/* 
-	function userScoreUp() {
-		event.preventDefault();
-		confirm("유저를 칭찬합니다");
-		$("#reviewImg1").on("click", function(event) {
-			var applicantNickName = $('input[name=applicantNickName]').val($(this).prev().val());
-			
-			$.ajax({
-				url : "/riding/ridingScoreOk?ridingNo=${vo.ridingNo}", 
-				type : "GET", 
-				data : applicantNickName, 
-				dataType: 'JSON', 
-				success : function(data){
-					alert(data);
-				},error : function(e){
-		               console.log(e.responseText);
-	            }
-			});
-		});
-	}
- */
 </script>
 
 <main>
@@ -103,40 +84,44 @@
 			
 			<script>
 					$(".reviewImg1").on("click", function(event) {
-						confirm("좋았어요!");
-						console.log("들어오는")
-						var applicantNickName = $('input[name=applicantNickName]').val($(this).prev().val());
-						
-						$.ajax({
-							url : "/riding/ridingScoreUpOk?ridingNo=${vo.ridingNo}", 
-							type : "GET", 
-							data : applicantNickName, 
-							dataType: 'JSON', 
-							success : function(data){
-								this.next().style("display:none");
-							},error : function(e){
-								console.log(e.responseText);
+						const nickname = $(this).prev().val();
+						const body = {
+							nickname: nickname,
+							scored: "${nickName}",
+							ridingNo: ${vo.ridingNo}
+						}
+						axios.post("/riding/ridingScoreUpOk" , body)
+						.then((res) => {
+							if(res.data==1){
+								alert("평가 완료")
+							} else {
+								alert("이미 평가하셨습니다");
 							}
-						});
+						})
+						.catch((error) => {
+							alert(error);
+						})
 					});
 					$(".reviewImg2").on("click", function(event) {
-						confirm("아쉬웠어요!");
-						console.log("들어오는")
-						var applicantNickName = $('input[name=applicantNickName]').val($(this).prev().prev().val());
-						
-						$.ajax({
-							url : "/riding/ridingScoreDownOk?ridingNo=${vo.ridingNo}", 
-							type : "GET", 
-							data : applicantNickName, 
-							dataType: 'JSON', 
-							success : function(data){
-								this.next().style("display:none");
-							},error : function(e){
-								console.log(e.responseText);
+						const nickname = $(this).prev().prev().val();
+						const body = {
+							nickname: nickname,
+							scored: "${nickName}",
+							ridingNo: ${vo.ridingNo}
+						}
+						axios.post("/riding/ridingScoreDownOk", body)
+						.then((res) => {
+							if(res.data==1){
+								alert("평가 완료")
+							} else {
+								alert("이미 평가하셨습니다")
 							}
-						});
+						})
+						.catch((error) => {
+							alert(error);
+						})
 					});
-				</script>		
+			</script>
 				<form id="nicknameTest">
 		         	<input type="text" name="applicantNickName" id="applicantNickName" style="display:none;" >
 		         </form>

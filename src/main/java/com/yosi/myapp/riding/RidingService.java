@@ -6,6 +6,8 @@ import com.yosi.myapp.RidingPagingVO;
 
 
 public interface RidingService {
+	//참가 여부
+	public int resolveStatus(String nickName,int ridingNo);
 	public List<RidingVO> ridingList(RidingPagingVO pVO);
 	public int ridingInsert(RidingVO vo); 
 	public RidingVO ridingSelect(int ridingNo);
@@ -15,6 +17,9 @@ public interface RidingService {
 		
 	//총레코드수
 	public int totalRecord(RidingPagingVO pVO);
+	public int totalRecord1(RidingVO vo, RidingPagingVO pVO);
+	public int totalRecord2(RidingVO vo, RidingPagingVO pVO);
+	public int totalRecord3(RidingVO vo, RidingPagingVO pVO);
 	
 	public int ridingMemberInsert(RidingVO vo);
 	public int ridingMemberUpdate(RidingVO vo);
@@ -25,9 +30,9 @@ public interface RidingService {
 	public int ridingStateDel(RidingVO vo);
 	
 	//마이라이딩
-	public List<RidingVO> myRidingJoinList(RidingVO vo);
-	public List<RidingVO> myRidingEndList(RidingVO vo);
-	public List<RidingVO> myRidingMadeList(RidingVO vo);
+	public List<RidingVO> myRidingJoinList(RidingVO vo, RidingPagingVO pVO);
+	public List<RidingVO> myRidingEndList(RidingVO vo, RidingPagingVO pVO);
+	public List<RidingVO> myRidingMadeList(RidingVO vo, RidingPagingVO pVO);
 	
 	//후기등록
 	public int ridingReviewWrite(RidingVO vo);
@@ -51,4 +56,8 @@ public interface RidingService {
 
 	//관리자 피이지 라이딩 리스트 오름차순
 	public List<RidingVO> ridingList2(RidingPagingVO pVO);
+
+    public String availableRiding();
+	public String todayRiding();
+
 }

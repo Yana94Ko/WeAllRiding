@@ -59,7 +59,6 @@
 					</div>
 				</div>
 			</div>
-			</a>
 		<c:set var="num" value="${num + 1}" />
 		</c:forEach>
 		<c:if test="${userId != null && userId != ''}">
@@ -67,7 +66,6 @@
 				<button id="ridingwriteBtn" onclick="location.href='/riding/ridingWrite' ">글 작성하기</button>
 			</div>
 		</c:if>
-		<br>
 		<!-- 페이징 -->
 		<ul class="paging">
 			<!--  이전페이지 -->

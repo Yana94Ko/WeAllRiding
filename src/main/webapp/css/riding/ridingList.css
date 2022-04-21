@@ -104,7 +104,7 @@ h1 {
 	height: 180px;
 	margin: 5px 20px;
 } */
-@
+
 /* .card:hover .card-body-description {
     opacity: 1;
     -webkit-transition: .5s ease-in-out;
@@ -140,7 +140,6 @@ h1 {
 .icon-view_count {
 	width: 25px;
 	height: 17px;
-	background: url("images/eye.jpg") no-repeat;
 }
 
 .icon-comments_count {
@@ -313,7 +312,7 @@ h1 {
 	width: 10%;
 	color: black;
 }
-#eList>li:nth-child(7n+2) {
+#eList>li:nth-child(6n+2) {
 	width: 50%;
 	white-space: nowrap; /*줄 안바꿈*/
 	overflow: hidden; /*넘친내용 숨기기*/
@@ -431,5 +430,25 @@ h1 {
 }
 .btn-1 {
   background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+}
+
+
+.paging {
+	display: table;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+.paging > li {
+	padding: 0.5vw;
+	margin: 0.5vw;
+	float: left;
+	border-radius: 12px;
+	width: 2vw;
+	height: 2vh;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
 }
 

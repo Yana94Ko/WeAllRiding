@@ -1,17 +1,4 @@
 @charset "UTF-8";
-
-main {
-  font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-weight: 100;
-  font-size: 12px;
-  line-height: 30px;
-  color: #777;
-  background: #dddddd;
-  width:100%;
-  min-height: 79%;
-  height: 60%;
-  padding: 3% 0 0% 0;
-}
 .map_wrap, .map_wrap * {
 	margin: 0;
 	padding: 0;
@@ -26,20 +13,20 @@ main {
 .map_wrap {
 	position: relative;
 	overflow: hidden;
-	max-width:90%;
-	height:700px;	
+	max-width: 65vw;
+	height: 75vh;
 	background: var(--color-lightGray-1);
 	padding: 0;
 	margin: 0 auto;
-	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	border: 1px solid #dddddd;
 }
 
 /*--> 출발지 도착지 입력 폼*/
 #courseInput {
 	position: absolute;
-    width: 21%;
-    height: 96%;
-    margin: 15px;
+	width: 15vw;
+	height: 73vh;
+	margin: 0.5vw;
     overflow: scroll;
     
 }
@@ -81,11 +68,11 @@ main {
 	margin: 1.2px;
 	display: inline-block;
 	border: 1px solid black;
-	height: 40px;
+	height: 4vh;
 	line-height: 40px;
 	padding-left: 10px;
 	padding-right: 40px;
-	width: 180px;
+	width: 12.2vw;
 	position: relative;
 }
 .btnAddWaypoint{
@@ -120,7 +107,51 @@ main {
     background-color: #6aafe6;
     color: #d4dfe6;
 }
+#card-body{
+	flex: 1 1 auto;
+	min-height: 1px;
+	padding: 2.25rem 9rem;
+}
 
+.formDiv{
+	display:flex;
+	flex-direction : column;
+}
+
+.formItem{
+	display: flex;
+	flex-direction: row;
+	margin: 1vh 0 1vh 0;
+}
+.itemTitle {
+	flex-basis:16vw;
+	font-weight: bold;
+}
+#recTitle, #recHashtag, #recDescription{
+	flex-grow: 1;
+	margin: 0 auto;
+}
+
+#recLevel{
+	position: relative;
+	width: 6vw;
+	height: auto;
+	font-size: 1em;
+	line-height: 1em;
+	border-radius: 4px;
+}
+input[id=endPoint]::-ms-input-placeholder { /* 인터넷 익스플로러 */
+	font-size: 0.7375em;
+}
+input[id=endPoint]::placeholder {
+	font-size: 0.7375em;
+}
+input[id=startPoint]::-ms-input-placeholder { /* 인터넷 익스플로러 */
+	font-size: 0.7375em;
+}
+input[id=startPoint]::placeholder {
+	font-size: 0.7375em;
+}
 
 .w-btn {
 	width: 150px;

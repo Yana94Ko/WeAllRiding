@@ -7,20 +7,15 @@ import com.yosi.myapp.PagingVO;
 import com.yosi.myapp.RidingPagingVO;
 import com.yosi.myapp.aMemberPagingVO;
 import com.yosi.myapp.comty.ComtyService;
-import com.yosi.myapp.member.MemberController;
 import com.yosi.myapp.member.MemberService;
 import com.yosi.myapp.member.MemberVO;
 import com.yosi.myapp.recommend.RecommendPagingVO;
 import com.yosi.myapp.recommend.RecommendService;
 import com.yosi.myapp.recommend.RecommendVO;
 import com.yosi.myapp.riding.RidingService;
-import com.yosi.myapp.riding.RidingVO;
 import com.yosi.myapp.shop.ShopPagingVO;
 import com.yosi.myapp.shop.ShopService;
-import com.yosi.myapp.shop.ShopVO;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,18 +27,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import java.nio.charset.Charset;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-
-import java.util.List;
 
 
 @RequestMapping("/admin/")
@@ -214,7 +202,7 @@ public class AdminController {
 		rPVO.setTotalRecord(recommendService.totalRecord(rPVO));
 		mav.addObject("list", recommendService.recommendList(rPVO));
 		mav.addObject("rPVO", rPVO);
-		mav.addObject("RecommendVO", shopService.shopAllSelect());
+		mav.addObject("RecommendVO", recommendService.recommendAllSelect());
 		mav.setViewName("admin/adminRecommend");
 		return mav;
 	}
@@ -223,7 +211,7 @@ public class AdminController {
 	@GetMapping("adminRecommendWrite")
 	public ModelAndView adminRecommendWrite() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/adminRecommendWrite");
+		mav.setViewName("adminRecommendWrite_temp");
 		return mav;
 	}
 	
@@ -244,41 +232,28 @@ public class AdminController {
 		}
 		return entity;
 	} 
-	
-	// 추천 경로 수정 폼
-	@GetMapping("adminRecommendEdit")
-	public ModelAndView adminRecommendEdit(int recNo) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("recommendVO", recommendService.recommendSelect(recNo));
-		mav.setViewName("admin/adminRecommendEdit");
-		return mav;
-	}
-	
-	// recommendWrite에서 입력받은 정보 recommend DB에 추가
-	@PostMapping("adminRecommendEditOk")
-	public ResponseEntity<String> adminRecommendEditOk(RecommendVO recommendVO, HttpSession session) {
-		ResponseEntity<String> entity = null;
-		HttpHeaders headers = new HttpHeaders();
-		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
-		try {// 추천 경로 수정 성공
-			recommendService.recommendUpdate(recommendVO);
-			String msg = "<script>alert('추천경로가 수정되었습니다.');location.href='/recommendView';</script>";
-			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-
-		} catch (Exception e) {// 추천경로 등록 실패
-			e.printStackTrace();
-			String msg = "<script>alert('추천경로 수정을 실패하였습니다.');history.back();</script>";
-			entity = new ResponseEntity<String>(msg, headers, HttpStatus.BAD_REQUEST);
-		}
-		
-		return entity;
-	} 
+	//recommendEdit : 추후 업데이트시 반영
 	
 	@GetMapping("adminRecommendDelete")
 	public ModelAndView recommendDelete(int recNo, ModelAndView mav) {
 		recommendService.recommendDelete(recNo);
-		mav.setViewName("redirect:/adminRecommend");
+		mav.setViewName("redirect:/admin/adminRecommend");
 		return mav;
 	}
-	
+
+	@ResponseBody
+	@RequestMapping("/availableRiding")
+	public String availableRiding(){
+		return ridingService.availableRiding();
+	}
+	@ResponseBody
+	@RequestMapping("/todayRiding")
+	public String todayRiding(){
+		return ridingService.todayRiding();
+	}
+	@ResponseBody
+		@RequestMapping("/availableCourse")
+	public int availableCourse(RecommendPagingVO rPVO){
+		return recommendService.totalRecord(rPVO);
+	}
 }

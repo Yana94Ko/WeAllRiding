@@ -7,7 +7,7 @@
 	<select id="ridingList" resultType="RidingVO">
 		select ridingNo, nickname, ridingKeyword, ridingSubject, 
 		ridingContent, applyUser, courseLevel, maxUser , 
-		startDate, endDate, ridingHit, ridingWriteDate, courseSendData
+		date_format(startDate, '%Y-%m-%d') as startDate , date_format(endDate, '%Y-%m-%d') as endDate , ridingHit, ridingWriteDate, courseSendData
 		from ridingBoard
 		<if test='searchWord != null'>
 			where ${searchKey} like '%${searchWord}%'
@@ -35,28 +35,75 @@
 		</if>
 	</select>
 	
+
+	
 	<!-- myRiding -->
 	<select id="myRidingJoinList" resultType="RidingVO">
 		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit, 
 		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate
 		FROM ridingBoard A
 		INNER JOIN ridingMember B
-		ON A.ridingNo = B.ridingNo WHERE B.nickname=#{nickname};
+		ON A.ridingNo = B.ridingNo WHERE B.nickname=#{param1.nickname}
+		<if test='param2.searchWord != null'>
+			and ${param2.searchKey} like '%${param2.searchWord}%'
+		</if>
+		order by ridingNo desc
+		limit ${param2.onePageRecord} offset ${param2.offsetIndex}
+	</select>
+	
+	<!-- totalRecord 1,2,3 쿼리문 -->
+	<select id="totalRecord1" resultType="int">
+		select count(A.ridingNo) as cnt 
+		from ridingBoard A
+		JOIN ridingMember B
+		ON A.ridingNo = B.ridingNo WHERE B.nickname=#{param1.nickname}
+		<if test='param2.searchWord != null'>
+			and ${param2.searchKey} like '%${param2.searchWord}%'
+		</if>
+	</select>
+	<select id="totalRecord2" resultType="int">
+		select count(A.ridingNo) as cnt
+		from ridingBoard A
+		JOIN ridingMember B
+		ON A.ridingNo = B.ridingNo WHERE (B.nickname=#{param1.nickname} and now() > A.endDate) or 
+		(A.nickname=#{param1.nickname} and now() > A.endDate)
+		<if test='param2.searchWord != null'>
+			and ${param2.searchKey} like '%${param2.searchWord}%'
+		</if>
+	</select>
+	<select id="totalRecord3" resultType="int">
+		select count(A.ridingNo) as cnt
+		from ridingBoard A
+		JOIN ridingMember B
+		ON B.nickname=A.nickname WHERE B.nickname=#{param1.nickname}
+		<if test='param2.searchWord != null'>
+			and ${param2.searchKey} like '%${param2.searchWord}%'
+		</if>
 	</select>
 	<select id="myRidingEndList" resultType="RidingVO">
 		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit,
 		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate
 		FROM ridingBoard A
 		INNER JOIN ridingMember B
-		ON A.ridingNo = B.ridingNo WHERE (B.nickname=#{nickname} and now() > A.endDate) or 
-		(A.nickname=#{nickname} and now() > A.endDate);
+		ON A.ridingNo = B.ridingNo WHERE (B.nickname=#{param1.nickname} and now() > A.endDate) or 
+		(A.nickname=#{param1.nickname} and now() > A.endDate)
+		<if test='param2.searchWord != null'>
+			and ${param2.searchKey} like '%${param2.searchWord}%'
+		</if>
+		order by ridingNo desc
+		limit ${param2.onePageRecord} offset ${param2.offsetIndex}
 	</select>
 	<select id="myRidingMadeList" resultType="RidingVO">
 		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit,
 		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate
 		FROM ridingBoard A
 		INNER JOIN ridingMember B
-		ON B.nickname=A.nickname WHERE B.nickname=#{nickname};
+		ON B.nickname=A.nickname WHERE B.nickname=#{param1.nickname}
+		<if test='param2.searchWord != null'>
+			and ${param2.searchKey} like '%${param2.searchWord}%'
+		</if>
+		order by ridingNo desc
+		limit ${param2.onePageRecord} offset ${param2.offsetIndex}
 	</select>
 	
 	<!-- ridingWrite -->
@@ -92,6 +139,12 @@
 		values(#{ridingNo}, #{nickname})
 	</insert>
 	
+	<!-- 참가신청여부 확인용 -->
+	<select id="resolveStatus" resultType="int">
+		select count(nickname) as cnt from ridingMember
+		where nickname=#{param1} and ridingNo=#{param2}
+	</select>
+	
 	<!-- 테이블 합치기 -->
 	<update id="ridingMemberUpdate">
 		UPDATE ridingMember rm
@@ -103,7 +156,7 @@
 	
 	<!-- view페이지에 보여주기 -->
 	<select id="ridingMemberShow" resultType="ridingVO">
-		select ridingMemberNo, nickname, gender, ridingCount, userScore
+		select ridingMemberNo, nickname, gender, ridingCount, userScore,ridingState
 		from ridingMember where ridingNo=#{ridingNo}
 	</select>
 	<delete id="ridingMemberDelete">
@@ -127,7 +180,9 @@
 	<!-- 라이딩 후기 -->
 	<insert id="ridingReviewWrite">
 		insert into ridingReview(ridingNo, nickname, ridingReviewComent)
-		values (#{ridingNo}, #{nickname}, #{ridingReviewComent}) 
+		select #{ridingNo}, #{nickname}, #{ridingReviewComent} from dual
+		where not exists
+		(select ridingNo from ridingReview where ridingNo=#{ridingNo} and nickname=#{nickname})
 	</insert>
 
 	<select resultType="RidingVO" id="ridingReviewList">
@@ -136,13 +191,17 @@
 		order by ridingReviewNo desc 
 	</select>
 
-	<update id="ridingScoreUp" parameterType="ridingVO">
-		update ridingMember set userScore=userScore+1
-		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
-	</update>
+	<insert id="ridingScoreUp">
+		insert into reviewScore(ridingNo, nickname, scored, userScore)
+		select #{ridingNo}, #{nickname}, #{scored}, 1 from dual
+		where not exists
+		(select ridingNo from reviewScore where ridingNo=#{ridingNo} and nickname=#{nickname} and scored=#{scored})
+	</insert>
 	<update id="ridingScoreDown" parameterType="ridingVO">
-		update ridingMember set userScore=userScore-1
-		where ridingNo=#{ridingNo} and nickname=#{applicantNickName}
+		insert into reviewScore(ridingNo, nickname, scored, userScore)
+		select #{ridingNo}, #{nickname}, #{scored}, -1 from dual
+		where not exists
+		(select ridingNo from reviewScore where ridingNo=#{ridingNo} and nickname=#{nickname} and scored=#{scored})
 	</update>
 	
 	 <update id="ridingApplicantCntUp" parameterType="ridingVO">
@@ -153,4 +212,10 @@
       update ridingBoard set applicantCnt= applicantCnt-1
       where ridingNo=#{ridingNo}
    </update>
+	<select id="availableRiding" resultType="String">
+		select count(ridingNo) from ridingBoard where endDate >= curdate();
+	</select>
+	<select id="todayRiding" resultType="String">
+		select count(ridingNo) from ridingBoard where date_format(ridingWriteDate, "%Y-%m-%d") = curdate();
+	</select>
 </mapper>

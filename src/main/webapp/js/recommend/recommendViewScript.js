@@ -1,23 +1,19 @@
 
 console.log($('textarea[id^=recommendSendData]').length+"개의 지도 생성 예정")
-for(var z = 0; z < 10;z++){
+for(var z = 0; z < $('textarea[id^=recommendSendData]').length;z++){
 	console.log(z+"번째 시작")
 	//===================================> 지도/차트/코스정보 생성 Start <====================================================
 	//-------------------> courseCreate에서 전달받은 데이터 저장 Start <--------------------------
 	var recommendSendDataRecived = document.getElementById("recommendSendData" + z);
-	console.log(z+"번째 조건문"+!(!recommendSendDataRecived));
 	if(recommendSendDataRecived.value){
-		console.log(z+"번째 들어옴")
 		var recommendSendData = JSON.parse(recommendSendDataRecived.value);
-
-		console.log(z+"번째 진행중")
 		var startPointName = recommendSendData.startPointName;
 		var endPointName = recommendSendData.endPointName;
 		var waypointNames = recommendSendData.wayPointNames;
-		var distance = "총 거리 : " + recommendSendData.courseDistance;
-		var duration = "예상 소요 시간 : " + recommendSendData.courseDuration;
-		var ascent = "상승 고도 : " + recommendSendData.courseAscent;
-		var descent = "/ 하강 고도 : " + recommendSendData.courseDescent;
+		var distance = recommendSendData.courseDistance;
+		var duration = recommendSendData.courseDuration;
+		var ascent = recommendSendData.courseAscent;
+		var descent = recommendSendData.courseDescent;
 		var points = recommendSendData.pointsChoiced;
 		var firstPosition = new kakao.maps.LatLng(recommendSendData.position.Ma, recommendSendData.position.La);
 		var level = recommendSendData.level;
