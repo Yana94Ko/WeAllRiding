@@ -8,7 +8,7 @@ input:checked[type='checkbox'] {background-color:#666; -webkit-appearance:checkb
 button,input[type='button'],input[type='submit'],input[type='reset'],input[type='file'] {-webkit-appearance:button; border-radius:0}
 input[type='search']::-webkit-search-cancel-button {-webkit-appearance:none}
 a {color:#333;text-decoration:none}
-a:active, a:hover {text-decoration:none}
+a:active, a:hover,a:visited {text-decoration:none}
 address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal}
 
 main *{
@@ -39,10 +39,9 @@ main {
   line-height: 200px;
 }
 .containerWrap {
-  min-height:800px;
-  height:auto;	
+  height: 80vh;
   background: var(--color-lightGray-1);
-  padding: 3vw 8vw;
+  padding: 1vw 1vw;
   margin: 0 auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -55,16 +54,18 @@ main {
 	height:50px;
 }
 
-#cancel{
-	margin:auto auto 0 0 ;
+#retry{
+  margin: auto 0 0 auto;
+  width: 10vw;
 } 
 #prev{
-	margin: auto 0  0 auto;
+	margin: auto 0  0 0;
 } 
 
 #roundTitle {
   display: block;
-  font-size: 35px;
+  font-size: 4vh;
+  line-height: 5vh;
   font-weight: 300;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -78,17 +79,17 @@ main {
   display:flex;
   justify-content:center;
   align-items:center;
-  min-height:300px;
+  min-height: 50vh;
   background:var(--color-lightGray-1);
   border-radius:10px;
   -webkit-border-radius:10px;
 }
 .content.in_game {padding: 30px 0}
 .list_ideal {
-	display:flex;justify-content:space-evenly;position: relative;
+	display:flex;justify-content:space-evenly;position: relative;height: 47vh;
     }
 .list_ideal li {
-  width:35%;
+  width: 100%;
   position: relative;
   display: -ms-flexbox;
   display: flex;
@@ -107,14 +108,14 @@ main {
 .list_ideal li span {text-align: center;height: 500px; line-height:500px; width:100%; display:block;overflow:hidden;border:none;}
 .list_ideal li span img {
 	margin:0 auto;
-	max-width:100%;
+	max-width:90%;
 	max-height:100%;
 	vertical-align: middle;
 	border: 1px solid #ddd;
     border-radius: 10px;
 }
-.list_ideal li strong {display:block;text-align:center}
-.list_ideal li a[hover="true"] strong {text-decoration:underline}
+.list_ideal li strong {display:block;text-align:center; font-size: 1.3vw; line-height: 8vh;text-decoration:none}
+.list_ideal li a[hover="true"] strong {text-decoration:none}
 
 /* button */
 
@@ -122,9 +123,11 @@ main {
 
 /* footer */
 .footer {
+  width: 76vw;
   display: flex;
   justify-content: space-between;
   background:var(--color-lightGray-1);
+  margin-top: 4vh;
 }
 
 .soff{display:none;}

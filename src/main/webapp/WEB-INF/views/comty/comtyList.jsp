@@ -29,59 +29,84 @@ main {
   line-height: 200px;
 }
 .containerWrap {
-  min-height:800px;
-  height:auto;
-  background: var(--color-lightGray-1);
-  padding: 25px;
-  margin: 0 auto;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-.comtyContainer {
+	height: 78.5vh;
+	background: var(--color-lightGray-1);
+	padding: 25px;
 	margin: 0 auto;
-	padding: 0 auto;
-	width: 80%;
-	height: 100%;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+.comtyContainer {
+	margin: 0 auto 0 auto;
+	padding: 0 auto;
+	width: 80%;
+	height: 60vh;
+}
+.comtyTitle{
+	margin: 1vh 0 0 0;
+	padding: 0;
+	font-size: 3vh;
+	font-weight: 700;
+	line-height: 9vh;
+	color:var(--color-theme-0)
+}
 #cList {
 	overflow: auto;
+	padding-top: 1vh;
+	padding-bottom: 1vh;
+	border-bottom: var(--color-theme-0) solid 3px;
+	border-top: var(--color-theme-0) solid 3px;
+}
+#cListFirst {
+	font-weight: bold;
 }
 #cList>li {
 	float: left;
-	height: 40px;
-	line-height: 40px;
+	height: 4vh;
+	line-height: 4vh;
+	font-size: 0.8vw;
 	border-bottom: 1px solid #ddd;
 	width: 10%;
 	color: black;
+	text-align: center;
 }
 #cList>li:nth-child(5n+2) {
 	width: 50%;
 	white-space: nowrap; /*줄 안바꿈*/
 	overflow: hidden; /*넘친내용 숨기기*/
 	text-overflow: ellipsis; /*넘침시 ...표시*/
+	text-align: left;
 }
 
 #cList>li:nth-child(5n) {
 	width: 20%;
 }
 
-#cListFirst {
-	background-color: rgba(234, 234, 234);
-}
 #writeBtn {
-	background-color: rgba(255, 217, 102);
+	position: relative;
+	background-color: var(--color-theme-2);
 	padding: 10px 50px;
 	margin: 0px;
 	border-radius: 6px;
 	border-color: rgba(204, 204, 204);
 	float: right;
+	bottom: -6vh;
 }
 /*paging*/
 .paging {
-	margin: 0px auto;
-	padding: 0px 50%;
-	width: 100%;
-	height: 30px;
+	position: relative;
+	bottom: 17vh;
+	/* margin: 0px auto; */
+	padding: 0px auto 0px auto;
+	/* width: 21vh; */
+	height: 4vh;
+	/* text-align: center; */
+	line-height: 4vh;
+	/* display: block; */
+	/* align-content: center; */
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
 }
 .paging>li {
 	float: left;
@@ -91,20 +116,29 @@ main {
 }
 /*search*/
 #searchFrm {
-	padding: 20px 200px;
+	padding: 5vh -3vh;
 	text-align: center;
+	position: relative;
+	bottom: 25vh;
+	width: 37vh;
+	margin: 1vh auto;
+	height: 0vh;
 }
 #searchWord {
-	height: 24px;
-	border-radius: 6px;
+	height: 3.5vh;
+	width: 11vw;
+	border-radius: 9px;
 }
 #searchKey {
-	height: 30px;
+	height: 3.5vh;
+	width: 4vw;
 	border-radius: 6px;
+	font-size: 0.8vw;
 }
 #searchBtn {
-	height: 30px;
-	border-radius: 6px;
+	height: 3.5vh;
+	width: 3vw;
+	border-radius: 8px;
 }
 </style>
 <script>
@@ -134,7 +168,7 @@ main {
 	<div class="container">
 		<div class="containerWrap">
 			<div class="comtyContainer">
-				<h1 style="margin: 0 auto; padding: 40px;">커뮤니티</h1>
+				<h1 class="comtyTitle">글목록보기</h1>
 				<ul id="cList">
 					<li id="cListFirst">번호</li>
 					<li id="cListFirst">제목</li>
@@ -157,6 +191,7 @@ main {
 				</c:if>
 				<br />
 				<!-- 페이징 -->
+				<div class=""pagingWrap>
 				<ul class="paging">
 					<!--  이전페이지 -->
 					<c:if test="${pVO.pageNum==1}">
@@ -176,7 +211,7 @@ main {
 						<c:if test="${p <= pVO.totalPage}">
 							<c:if test="${p == pVO.pageNum}">
 								<li
-									style="background-color: lightgray; height: 25px; border-radius: 6px;">
+									style="background-color: var(--color-theme-2); height: 4vh; border-radius: 6px;">
 							</c:if>
 							<c:if test="${p != pVO.pageNum}">
 								<li>
@@ -201,6 +236,7 @@ main {
 								&searchWord=${pVO.searchWord }</c:if>">&nbsp;&nbsp;next</a></li>
 					</c:if>
 				</ul>
+				</div>
 				<!-- 검색 -->
 				<div>
 					<form method="get" action="/comty/comtyList" id="searchFrm">

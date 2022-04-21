@@ -24,8 +24,8 @@
 					</button>
 				</div>
 				<footer class="footer soff" id="footer">
-					<button class="w-btn-outline w-btn-blue-outline"  id="cancel" onclick="idealView.Event.clickCancel()">취소</button>
 					<button class="w-btn-outline w-btn-blue-outline" id="prev" onclick="idealView.Event.clickPrev()">이전</button>
+					<button class="w-btn-outline w-btn-blue-outline"  id="retry" onclick="idealView.Event.clickCancel()">다시하기</button>
 				</footer>
 			</div>
 			<script src="${url}/js/ideal/idealView.js?ver=2" async defer></script>
