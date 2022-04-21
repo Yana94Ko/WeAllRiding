@@ -102,8 +102,8 @@ body{
 /* parallax 플러그인 */
 .parallaxWindow
 {
-	max-height:465px; /* parallaxWindow 최대 높이 변경 */
-    min-height:400px;
+	max-height: 43vh; /* parallaxWindow 최대 높이 변경 */
+    min-height: 43vh;
     background: transparent;
 }
 
@@ -112,15 +112,15 @@ body{
 /* parallax 플러그인 */
 .parallaxWindow
 {
-	max-height:465px; /* parallaxWindow 최대 높이 변경 */
-    min-height:400px;
+	max-height: 43vh; /* parallaxWindow 최대 높이 변경 */
+    min-height: 43vh;
     background: transparent;
 }
 
 .home
 {
-	width: 100%;
-	height: 465px;
+	width: 100vw;
+	height: 43vh;
 	background: transparent;
 }
 
@@ -140,8 +140,8 @@ body{
 .homeContent
 {
 	position: absolute;
-	top: 300px;
-	left: 50%;
+	top: 34vh;
+	left: 50vw;
 	-webkit-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);
@@ -153,11 +153,10 @@ body{
 /* homeTitle 텍스트 */
 .homeTitle
 {
-	font-size: 72px;
+	font-size: 6vh;
 	font-weight: 800;
 	color: #FFFFFF;
 	text-transform: uppercase;
-	top:100px;
 }
 /*  Home <- */
 

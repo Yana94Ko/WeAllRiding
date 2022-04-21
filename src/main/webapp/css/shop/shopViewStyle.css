@@ -7,16 +7,15 @@ main {
   color: #777;
   background: #dddddd;
   width:100%;
-  padding: 3% 0 3% 0;
+  padding: 1vw 0 0 0;
 }
 
 .map_wrap {
   margin:0 auto;
   position: relative;
-  max-width:90%;
-  height:700px;	
+  width: 173vh;
+  height: 79vh;
   background: var(--color-lightGray-1);
-  padding: 25px;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
