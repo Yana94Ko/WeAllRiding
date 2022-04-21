@@ -2,7 +2,7 @@ package com.yosi.myapp;
 
 public class RidingPagingVO {
 	// 페이징
-	private int onePageRecord = 6; // 한 페이지당 출력 할 페이지 수
+	private int onePageRecord = 9; // 한 페이지당 출력 할 페이지 수
 	private int pageNum = 1; // 현재 페이지
 	private int totalRecord; // 총 레코드 수
 	private int totalPage; // 총 페이지 수

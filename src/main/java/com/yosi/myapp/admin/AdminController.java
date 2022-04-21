@@ -98,11 +98,13 @@ public class AdminController {
 		return mav;
 	}
 
+	// 관리자 페이지 ajax 회원정보 가져오기
 	@RequestMapping("adminMember2")
 	@ResponseBody
 	public MemberVO adminView2(@RequestParam String userId){
 		return memberService.AdminView(userId);
 	}
+
 	// 관리자 커뮤니티관리 페이지
 	@GetMapping("adminComty")
 	public ModelAndView allSelect(PagingVO pVO) {
@@ -168,7 +170,17 @@ public class AdminController {
 		mav.setViewName("redirect:/admin/adminShop");
 		return mav;
 	}
-	
+
+	//관리자 페이지 라이딩 리스트 상세보기
+	@RequestMapping("adminRidingView")
+	public ModelAndView adminRidingView(@RequestParam("ridingNo") int ridingNo) {
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("rLst", ridingService.ridingSelect(ridingNo));
+		mav.setViewName("admin/adminRidingView");
+
+		return mav;
+	}
 
 	// 관리자 페이지 라이딩 리스트 출력
 	@GetMapping("adminRiding")
@@ -177,12 +189,22 @@ public class AdminController {
 
 		pVO.setTotalRecord(ridingService.totalRecord(pVO));
 
-		mav.addObject("ridingList", ridingService.ridingList(pVO));
+		mav.addObject("ridingList2", ridingService.ridingList2(pVO));
 		mav.addObject("pVO", pVO);
 		mav.setViewName("admin/adminRiding");
 
 		return mav;
 
+	}
+
+	// 관리자 페이지 라이딩 리스트 삭제
+	@GetMapping("adminRidingDel")
+	public ModelAndView adminRidingDel(int ridingNo, ModelAndView mav) {
+
+		ridingService.adminRidingDel(ridingNo);
+		mav.setViewName("redirect:/admin/adminRiding");
+
+		return mav;
 	}
 	
 	// 관리자 페이지 정비샵 리스트 출력

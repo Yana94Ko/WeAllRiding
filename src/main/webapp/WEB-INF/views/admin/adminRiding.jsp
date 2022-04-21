@@ -35,7 +35,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${url}/">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -47,7 +47,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="${url}/admin/adminMain">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -72,7 +72,7 @@
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천코스 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                     </div>
@@ -104,6 +104,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">회원 이용 메뉴</h6>
+                        <a class="collapse-item" href="${url}/">메인 페이지</a>
                         <a class="collapse-item" href="${url}/recommendView">코스</a>
                         <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
                         <a class="collapse-item" href="${url}/shopView">장비샵</a>
@@ -256,7 +257,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">운영자</span>
                                 <img class="img-profile rounded-circle"
                                      src="${url}/css/admin/img/undraw_profile.svg">
                             </a>
@@ -293,7 +294,10 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">라이딩 리스트</h1>
-                    <p class="mb-4">라이딩 리스트를 확인하고 삭제할 수 있습니다.</p>
+                    <p class="mb-4">
+                        라이딩 리스트를 확인하고 삭제할 수 있습니다.<br/>
+                        제목을 클릭하여 상세 정보를 확인할 수 있습니다.
+                    </p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -305,34 +309,22 @@
                                 <table class="table table-bordered" id="dataTable" width="" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th style="width: 130px">라이딩 번호</th>
-                                        <th style="width: 130px">닉네임</th>
-                                        <th style="width: 130px">키워드</th>
-                                        <th style="width: 130px">주제</th>
-                                        <th style="width: 130px">콘텐츠</th>
-                                        <th style="width: 130px">참여 유저</th>
-                                        <th style="width: 130px">코스 레벨</th>
-                                        <th style="width: 130px">최대인원</th>
-                                        <th style="width: 130px">시작일</th>
-                                        <th style="width: 130px">마감일</th>
-                                        <th style="width: 130px">조회수</th>
-                                        <th style="width: 130px">작성날짜</th>
+                                        <th>라이딩 번호</th>
+                                        <th>개설자</th>
+                                        <th>제목</th>
+                                        <th>키워드</th>
+                                        <th>코스 레벨</th>
+                                        <th>옵션</th>
                                     </tr>
                                     </thead>
-                                    <c:forEach var="rLst" items="${ridingList}">
+                                    <c:forEach var="rLst" items="${ridingList2}">
                                         <tr>
                                             <td>${rLst.ridingNo}</td>
                                             <td>${rLst.nickname}</td>
+                                            <td><a href="/admin/adminRidingView?ridingNo=${rLst.ridingNo}">${rLst.ridingSubject}</a></td>
                                             <td>${rLst.ridingKeyword}</td>
-                                            <td>${rLst.ridingSubject}</td>
-                                            <td>${rLst.ridingContent}</td>
-                                            <td>${rLst.applyUser}</td>
                                             <td>${rLst.courseLevel}</td>
-                                            <td>${rLst.maxUser}</td>
-                                            <td>${rLst.startDate}</td>
-                                            <td>${rLst.endDate}</td>
-                                            <td>${rLst.ridingHit}</td>
-                                            <td>${rLst.ridingWriteDate}</td>
+                                            <td><button class="btn btn-danger" style="height: 40px;" type="button" onclick="location.href='/admin/adminRidingDel?ridingNo=${rLst.ridingNo}';" >삭제</button></td>
                                         </tr>
                                     </c:forEach>
                                 </table>
@@ -346,7 +338,7 @@
                                             </c:if>
                                             <c:if test="${pVO.pageNum>1}">
                                         <li>
-                                            <a class="page-link" aria-label="Previous" href="${url}/admin/adminComty?pageNum=${pVO.pageNum-1}<c:if test='${pVO.searchWord != null}'>&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>">
+                                            <a class="page-link" aria-label="Previous" href="${url}/admin/adminRiding?pageNum=${pVO.pageNum-1}<c:if test='${pVO.searchWord != null}'>&searchKey=${pVO.searchKey }&searchWord=${pVO.searchWord }</c:if>">
                                                 <span aria-hidden="true">&laquo;</span>
                                             </a>
                                         </li>
@@ -424,7 +416,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="${url}/member/logout">Logout</a>
                 </div>
             </div>
         </div>

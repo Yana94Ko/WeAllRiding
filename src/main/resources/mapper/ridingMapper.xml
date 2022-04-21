@@ -15,6 +15,19 @@
 		order by ridingNo desc
 		limit ${onePageRecord} offset ${offsetIndex}
 	</select>
+	<!-- 관리자 페이지 라이팅 리스트 오름차순 -->
+	<select id="ridingList2" resultType="RidingVO">
+		select ridingNo, nickname, ridingKeyword, ridingSubject,
+		ridingContent, applyUser, courseLevel, maxUser ,
+		startDate, endDate, ridingHit, ridingWriteDate, courseSendData
+		from ridingBoard
+		<if test='searchWord != null'>
+			where ${searchKey} like '%${searchWord}%'
+		</if>
+		order by ridingNo
+		limit ${onePageRecord} offset ${offsetIndex}
+	</select>
+
 	<select id="totalRecord" resultType="int">
 		select count(ridingNo) as cnt from ridingBoard
 		<if test='searchWord != null'>
@@ -68,6 +81,10 @@
 	<delete id="ridingDelete">
 		delete from ridingBoard where ridingNo=#{param1} and nickname=#{param2}
 	</delete>
+	<!-- 관리자 페이지 라이딩 삭제 -->
+	<delete id="adminRidingDel">
+		DELETE FROM ridingBoard WHERE ridingNo=#{param1}
+	</delete>
 	
 	<!-- 라이딩 참가 신청 -->
 	<insert id="ridingMemberInsert">
@@ -92,6 +109,7 @@
 	<delete id="ridingMemberDelete">
 		delete from ridingMember where ridingNo=#{ridingNo} and nickname=#{nickname}
 	</delete>
+
 	
 	<!-- ridingMember 승낙시 Update -->
 	<update id="ridingStateUpdate" parameterType="ridingVO">

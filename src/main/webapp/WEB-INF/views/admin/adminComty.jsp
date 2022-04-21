@@ -36,7 +36,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${url}/">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -48,7 +48,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="${url}/admin/adminMain">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -73,7 +73,7 @@
                         <h6 class="collapse-header">관리자 메뉴</h6>
                         <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티 관리</a>
-                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRecommend">추천코스 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminRiding">라이딩 관리</a>
                         <a class="collapse-item" href="${url}/admin/adminShop">정비샵 관리</a>
                     </div>
@@ -105,6 +105,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">회원 이용 메뉴</h6>
+                        <a class="collapse-item" href="${url}/">메인 페이지</a>
                         <a class="collapse-item" href="${url}/recommendView">코스</a>
                         <a class="collapse-item" href="${url}/riding/ridingList">라이딩</a>
                         <a class="collapse-item" href="${url}/shopView">장비샵</a>
@@ -257,7 +258,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">운영자</span>
                                 <img class="img-profile rounded-circle"
                                      src="${url}/css/admin/img/undraw_profile.svg">
                             </a>
@@ -416,7 +417,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="${url}/member/logout">Logout</a>
                 </div>
             </div>
         </div>
