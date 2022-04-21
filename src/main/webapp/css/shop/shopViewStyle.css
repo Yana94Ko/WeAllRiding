@@ -13,7 +13,7 @@ main {
 .map_wrap {
   margin:0 auto;
   position: relative;
-  width: 95vw;
+  width: 94vw;
   height: 79vh;
   background: var(--color-lightGray-1);
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -41,9 +41,10 @@ main {
 	margin: 0;
 	padding: 0px;
 	overflow-y: auto;
-	background: rgba(255, 255, 255, 0.7);
+	background: var(--color-theme-3);
 	z-index: 1;
 	font-size: 12px;
+	var(--color-theme-3);
 	
 }
 .bg_white {
@@ -58,31 +59,63 @@ main {
 }
 #menu_wrap .option {
 	padding: 2vh 1vw;
-	height: 14vh;
+    height: 13vh;
     background-color: var(--color-theme-2);
+	position: sticky;
+    z-index: 100;
+    top: 0vh;
+	box-shadow: 0.1vw 0.1vw 0.2vw 0.01vw var(--color-theme-0-05);
 }
 #menu_wrap .option span{
 	color:#ffffff;
 	font-weight:600;
 	font-size:1.3vw;
+	position:relative;
+	left: 0.5vw;
 }
 
 #menu_wrap .option .optionForm{
-	margin:1vh 1vw;
+	margin: 2vh 0.5vw;
+    background-color: #ffffff;
+    border-radius: 5px;
+    height: 3vh;
+    width: 14vw;
+    box-shadow: 0.1vw 0.1vw 0.2vw 0.01vw var(--color-theme-0-05);
+    padding: 0.4vw;
 }
 
-#menu_wrap .option button {
+#menu_wrap .option .inputSearch {
+	border: none;
+    background-color: #ffffff;
+	width: 12.5vw;
+    height: 3vh;
 }
+
+#menu_wrap .option .btnSearch {
+	border: none;
+    background-color: #ffffff;
+    color: var(--color-lightGray-4);
+	cursor:pointer;
+	
+}
+#menu_wrap .option .btnSearch svg{
+	font-size:1vw;
+}
+
 #placesList li {
 	list-style: none;
 }
 #placesList .item {
+	background-color: #FFFFFF;
 	position: relative;
-	border-bottom: 1px solid #888;
 	overflow: hidden;
 	cursor: pointer;
+	box-shadow: 0vw 0.1vw 0.2vw 0.01vw var(--color-lightGray-3);
 	min-height: 65px;
+	margin: 0.7vh auto 0.8vh auto;
+    width: 17vw;
 }
+
 #placesList .item span {
 	display: block;
 	margin-top: 4px;
@@ -92,8 +125,11 @@ main {
 	overflow: hidden;
 	white-space: nowrap;
 }
+#placesList .item h5{
+	font-weight: bold;
+}
 #placesList .item .info {
-	padding: 10px 0 10px 55px;
+	padding: 1vh 0 1vh 3vw;
 }
 #placesList .info .gray {
 	color: #3d3d3d;
@@ -112,10 +148,10 @@ main {
 	position: absolute;
 	width: 36px;
 	height: 37px;
-	margin: 10px 0 0 10px;
+	margin: 1vh 0 0 1.7vh;
 	background:
-		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
-		no-repeat;
+	url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+	no-repeat;
 }
 #placesList .item .marker_1 {
 	background-position: 0 -10px;
@@ -173,10 +209,10 @@ main {
 #pagination .on {
 	font-weight: bold;
 	cursor: default;
-	color: #777;
+	color: var(--color-theme-0);
 }
 .info {
-	color:black;
+	color: var(--color-theme-0);
 }
 .wrap {
 	position: relative;

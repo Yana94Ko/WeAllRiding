@@ -2,20 +2,36 @@
 /* As hex codes */
 
 :root{
-	
-	/* 메인컬러 */
-	/* 진한 회색 */
-	--color-theme-0 : #313942;
-	
-	/* 회색 */
-	--color-theme-1 : #3A4750;
-	
-	/* 노랑 */
-	--color-theme-2 : #F6C90E;;
-	--color-theme-2-05:rgba(246,201,14,0.5);
-	--color-theme-2-08:rgba(246,201,14,0.8);
-	--color-theme-2-gra: linear-gradient(0deg, rgba(246,201,14,1) 1%, rgba(255,222,83,1) 100%);
 
+	/* 메인컬러 /
+    / 진한남색 */
+	--color-theme-0 : #313942;
+
+	/* 남색 */
+	--color-theme-1 : #3A4750;
+
+	/* 노랑 */
+	--color-theme-2 : #F6C90E;
+
+
+	/* 진한 남색 투명도조절 05 */
+	/* 노랑 색상값 : rgba(49, 57, 66, 1)*/
+	--color-theme-0-rgba:rgba(49, 57, 66,  1);
+	--color-theme-0-05:rgba(49, 57, 66, 0.5);
+	--color-theme-0-08:rgba(49, 57, 66, 0.8);
+
+
+	/* 남색 투명도조절 */
+	/* 남색 색상값 : rgba(58, 71, 80, 1)*/
+	--color-theme-1-rgba:rgba(58, 71, 80, 14,1);
+	--color-theme-1-05:rgba(58, 71, 80, 0.5);
+	--color-theme-1-08:rgba(58, 71, 80, 0.8);
+
+	/* 노랑 투명도조절 */
+	/* 노랑 색상값 : rgba(246,201, 14, 1)*/
+	--color-theme-2-rgba:rgba(246,201, 14, 1);
+	--color-theme-2-05:rgba(246,201, 14, 0.5);
+	--color-theme-2-08:rgba(246,201, 14, 0.8);
 	--color-theme-3 : rgba(237, 237, 237, 1);
 
 	--main-gray : #dddddd;

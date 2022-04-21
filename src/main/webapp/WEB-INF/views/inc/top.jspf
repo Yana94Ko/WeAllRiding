@@ -11,6 +11,7 @@
 	<link rel="shortcut icon" href="${url}/images/icon.png" type="image/x-icon">
 	<link rel="stylesheet" href="${url}/css/topBottomStyle.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<script src="https://kit.fontawesome.com/1628c03f6a.js" crossorigin="anonymous"></script>
 	<script src="https://www.google.com/jsapi"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <%--ajax 라이브러리 추가 (Tom)--%>
@@ -19,7 +20,7 @@
 	
 	<!-- 네비바  -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	<script src="https://kit.fontawesome.com/1628c03f6a.js" crossorigin="anonymous"></script>
+<%--	<script src="https://kit.fontawesome.com/1628c03f6a.js" crossorigin="anonymous"></script>--%>
 	<link rel="stylesheet" href="${url}/css/home/navStyle.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 		
