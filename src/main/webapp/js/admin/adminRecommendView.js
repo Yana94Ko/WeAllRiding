@@ -6,10 +6,10 @@ for(var z = 0; z < 10;z++){
 
 		var startPointName = adminRecommendSendData.startPointName;
 		var endPointName = adminRecommendSendData.endPointName;
-		
+
 		console.log(adminRecommendSendData.startPointName)
 		//데이터 입력
 		$("#startPoint" + z).text(startPointName);
 		$("#endPoint" + z).text(endPointName);
 	}
-}
+} 

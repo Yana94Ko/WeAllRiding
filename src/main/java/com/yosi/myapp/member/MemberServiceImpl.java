@@ -63,6 +63,11 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public int ScoreUpdate(String nickname, int score) {
+        return dao.ScoreUpdate(nickname, score);
+    }
+
+    @Override
     public MemberVO findUserId(MemberVO vo) {
         return dao.findUserId(vo);
     }

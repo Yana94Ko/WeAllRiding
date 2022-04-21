@@ -7,20 +7,15 @@ import com.yosi.myapp.PagingVO;
 import com.yosi.myapp.RidingPagingVO;
 import com.yosi.myapp.aMemberPagingVO;
 import com.yosi.myapp.comty.ComtyService;
-import com.yosi.myapp.member.MemberController;
 import com.yosi.myapp.member.MemberService;
 import com.yosi.myapp.member.MemberVO;
 import com.yosi.myapp.recommend.RecommendPagingVO;
 import com.yosi.myapp.recommend.RecommendService;
 import com.yosi.myapp.recommend.RecommendVO;
 import com.yosi.myapp.riding.RidingService;
-import com.yosi.myapp.riding.RidingVO;
 import com.yosi.myapp.shop.ShopPagingVO;
 import com.yosi.myapp.shop.ShopService;
-import com.yosi.myapp.shop.ShopVO;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,18 +27,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import java.nio.charset.Charset;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-
-import java.util.List;
 
 
 @RequestMapping("/admin/")
@@ -97,6 +85,7 @@ public class AdminController {
 		mav.setViewName("admin/adminMember");
 		return mav;
 	}
+
 	@RequestMapping("adminMember2")
 	@ResponseBody
 	public MemberVO adminView2(@RequestParam String userId){
@@ -137,6 +126,25 @@ public class AdminController {
 		mav.addObject("sPVO", sPVO);
 		mav.addObject("shopVO", shopService.shopAllSelect());
 		mav.setViewName("admin/adminShop");
+		return mav;
+	}
+
+	//관리자 페이지 커뮤니티 글 삭제하기
+	@GetMapping("adminComtyDelete")
+	public ModelAndView adminComtyDelete(int comtyNo, ModelAndView mav) {
+		comtyService.adminComtyDelete(comtyNo);
+		mav.setViewName("redirect:/admin/adminComty");
+		return mav;
+	}
+
+	//관리자 페이지 커뮤니티 글 상세 보기
+	@RequestMapping("adminComtyView")
+	public ModelAndView adminComtyView(@RequestParam("comtyNo") int comtyNo) {
+		ModelAndView mav = new ModelAndView();
+
+		mav.addObject("vo", comtyService.comtySelect(comtyNo));
+		mav.setViewName("admin/adminComtyView");
+
 		return mav;
 	}
 	
@@ -181,7 +189,7 @@ public class AdminController {
 	@GetMapping("adminRecommendWrite")
 	public ModelAndView adminRecommendWrite() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("admin/adminRecommendWrite");
+		mav.setViewName("adminRecommendWrite_temp");
 		return mav;
 	}
 	
@@ -207,8 +215,23 @@ public class AdminController {
 	@GetMapping("adminRecommendDelete")
 	public ModelAndView recommendDelete(int recNo, ModelAndView mav) {
 		recommendService.recommendDelete(recNo);
-		mav.setViewName("redirect:/adminRecommend");
+		mav.setViewName("redirect:/admin/adminRecommend");
 		return mav;
 	}
-	
+
+	@ResponseBody
+	@RequestMapping("/availableRiding")
+	public String availableRiding(){
+		return ridingService.availableRiding();
+	}
+	@ResponseBody
+	@RequestMapping("/todayRiding")
+	public String todayRiding(){
+		return ridingService.todayRiding();
+	}
+	@ResponseBody
+	@RequestMapping("/availableCourse")
+	public int availableCourse(RecommendPagingVO rPVO){
+		return recommendService.totalRecord(rPVO);
+	}
 }

@@ -10,10 +10,10 @@ for(var z = 0; z < $('textarea[id^=recommendSendData]').length;z++){
 		var startPointName = recommendSendData.startPointName;
 		var endPointName = recommendSendData.endPointName;
 		var waypointNames = recommendSendData.wayPointNames;
-		var distance = "총 거리 : " + recommendSendData.courseDistance;
-		var duration = "예상 소요 시간 : " + recommendSendData.courseDuration;
-		var ascent = "상승 고도 : " + recommendSendData.courseAscent;
-		var descent = "/ 하강 고도 : " + recommendSendData.courseDescent;
+		var distance = recommendSendData.courseDistance;
+		var duration = recommendSendData.courseDuration;
+		var ascent = recommendSendData.courseAscent;
+		var descent = recommendSendData.courseDescent;
 		var points = recommendSendData.pointsChoiced;
 		var firstPosition = new kakao.maps.LatLng(recommendSendData.position.Ma, recommendSendData.position.La);
 		var level = recommendSendData.level;

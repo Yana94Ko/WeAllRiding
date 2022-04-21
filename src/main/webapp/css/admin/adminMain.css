@@ -5,4 +5,10 @@ header {
 footer {
     display: none;
 }
+main{
+    width: 100vw;
+    min-height: 1000px;
+    padding: 0;
+    background-color:var(--color-lightGray-1);
+}
 

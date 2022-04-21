@@ -45,4 +45,9 @@
 		FROM comty
 		ORDER BY comtyWriteDate
 	</select>
+	<!-- 관리자 페이지 커뮤니티 글 목록 삭제 -->
+	<delete id="adminComtyDelete">
+		DELETE FROM comty where comtyNo=#{param1}
+	</delete>
+
 </mapper>

@@ -36,7 +36,6 @@
 	</div>
 </div>
 <!-- parallax END -->
-
 <main>
 	<div class="ridingViewContainer">
 		<input type="hidden" id="dbCourseLevelsel" value=${vo.courseLevel}/>

@@ -12,26 +12,28 @@ main{
 
 .memberForm{
     width: 700px;
-    height: 900px;
+    height: 790px;
     padding: 20px;
     padding-left: 40px;
     align-items: center;
     margin:0 auto;
     background-color:rgba(255,255,255,0.6); 
     position : relative;
-    top:100px;
+    top:200px;
     border-radius: 15px;
 }
 
-.memberForm h1{
-    text-align: center;
+.memberForm h3{
+    position: relative;
+    left: 250px;
+    color: black;
 }
 
 .member-input{
     width: 250px;
     position: relative;
     margin-top: 20px;
-    margin-left: 50px;
+    margin-left: 30px;
     margin-right: 20px;
     display: inline-block;
 }
@@ -64,7 +66,7 @@ main{
 .member-input input:valid + label{
     top: -2px;
     font-size: 7px;
-    color: #166cea;
+    color: rgb(0, 210, 210);
 }
 
 .radio{
@@ -78,24 +80,23 @@ main{
 
 .date{
     position: relative;
-    left:385px;
-    bottom:50px;
+    left:335px;
+    bottom:120px;
     font-size: 15px;
     color: #999999;
 }
 
 .userTel1{
     position: relative;
-    left: 49px;
-    bottom: 150px;
+    left: 27px;
+    bottom: -5px;
 }
 
 .tel{
-    width: 200px;
+    width: 196px;
     position: relative;
-    margin-top: 20px;
-    margin-left: 50px;
-    margin-right: 20px;
+    left: 85px;
+    bottom: 44px;
     display: inline-block;
 }
 
@@ -127,28 +128,28 @@ main{
 .tel input:valid + label{
     top: -2px;
     font-size: 7px;
-    color: #166cea;
+    color: rgb(0, 210, 210);
 }
 
 .bikeType{
     font-size: 12px;
     color: #999999;
     position: relative;
-    left: 58px;
-    top: 60px;
+    left: 32px;
+    bottom: 120px;
 }
 
 .join-btn{
     margin-top: 30px;
     margin-left: 50px;
     position: relative;
-    top: 80px;
+    bottom: 3vh;
 }
 
 .join-btn button{
     width: 80%;
     height: 50px;
-    background: dodgerblue;
+    background: #C13827;
     color: white;
     border: none;
     border-radius: 25px;
@@ -156,4 +157,60 @@ main{
     float: left;
     margin-bottom: 10px;
     margin-left: 30px;
+    opacity: 80%;
+}
+
+.push-number {
+    position: relative;
+    bottom: 82px;
+    left: 355px;
+}
+
+.push-number:hover {
+    color: white;
+}
+
+.confirm-number {
+    position: relative;
+    left: 220px;
+    bottom: 95px;
+}
+
+.tel-2{
+    width: 196px;
+    position: relative;
+    bottom: 35px;
+    left: 26px;
+    display: inline-block;
+}
+
+.tel-2:first-child{
+    margin-top: 0;
+}
+
+.tel-2 input{
+    width: 100%;
+    padding: 20px 10px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 12px;
+    color: #fff;
+    outline: none;
+}
+
+.tel-2 label{
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    font-size: 12px;
+    color: #999;
+    transition: all .5s ease;
+}
+
+.tel-2 input:focus + label,
+.tel-2 input:valid + label{
+    top: -2px;
+    font-size: 7px;
+    color: rgb(0, 210, 210);
 }

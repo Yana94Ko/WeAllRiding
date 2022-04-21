@@ -36,7 +36,7 @@
         </div>
 		
         <div id="member" class="tabcontent">
-            <h3>참여 라이딩</h3>
+            <h3>참여 라이딩</h3> 총 레코드 수 : ${pVO1.totalRecord1 } / 총 페이지 수 : ${pVO1.totalPage1 }
             <table width="100%">
                 <tr id="ridingTop">
                     <td>번호</td>
@@ -60,55 +60,66 @@
 			<!-- 페이징 -->
 			<ul class="paging">
 				<!--  이전페이지 -->
-				<c:if test="${pVO.pageNum==1}">
+				<c:if test="${pVO1.pageNum==1}">
 					<li>prev</li>
 				</c:if>
-				<c:if test="${pVO.pageNum>1}">
+				<c:if test="${pVO1.pageNum>1}">
 					<li><a
-						href="/riding/myRidingList?pageNum=${pVO.pageNum-1}
-						<c:if test='${pVO.searchWord != null}'>
-							&searchKey=${pVO.searchKey }
-							&searchWord=${pVO.searchWord }</c:if>">prev&nbsp;&nbsp;</a></li>
+						href="/riding/myRidingList?pageNum=${pVO1.pageNum-1}
+						<c:if test='${pVO1.searchWord != null}'>
+							&searchKey=${pVO1.searchKey }
+							&searchWord=${pVO1.searchWord }</c:if>">prev&nbsp;&nbsp;</a></li>
 				</c:if>
 				<!--  페이지 번호                 1,5      6,10         11,15-->
-				<c:forEach var="p" begin="${pVO.startPage}"
-					end="${pVO.startPage+pVO.onePageCount-1}">
+				<c:forEach var="p" begin="${pVO1.startPage}"
+					end="${pVO1.startPage+pVO1.onePageCount-1}">
 					<!--  총 페이지수보다 출력할 페이지번호가 작을때 -->
-					<c:if test="${p <= pVO.totalPage}">
-						<c:if test="${p == pVO.pageNum}">
+					<c:if test="${p <= pVO1.totalPage1}">
+						<c:if test="${p == pVO1.pageNum}">
 							<li
 								style="background-color: lightgray; height: 25px; border-radius: 6px;">
 						</c:if>
-						<c:if test="${p != pVO.pageNum}">
+						<c:if test="${p != pVO1.pageNum}">
 							<li>
 						</c:if>
 						<a
 							href="/riding/myRidingList?pageNum=${p}
-							<c:if test='${pVO.searchWord != null}'>
-								&searchKey=${pVO.searchKey }
-								&searchWord=${pVO.searchWord }
+							<c:if test='${pVO1.searchWord != null}'>
+								&searchKey=${pVO1.searchKey }
+								&searchWord=${pVO1.searchWord }
 							</c:if>">
 						${p}</a></li>
 						</c:if>
 				</c:forEach>
-				<c:if test="${pVO.pageNum==pVO.totalPage}">
+				<c:if test="${pVO1.pageNum==pVO1.totalPage1}">
 					<li>next</li>
 				</c:if>
-				<c:if test="${pVO.pageNum<pVO.totalPage}">
+				<c:if test="${pVO1.pageNum<pVO1.totalPage1}">
 					<li><a
-						href="/riding/myRidingList?pageNum=${pVO.pageNum+1}
-						<c:if test='${pVO.searchWord != null}'>
-							&searchKey=${pVO.searchKey }
-							&searchWord=${pVO.searchWord }</c:if>">&nbsp;&nbsp;next</a></li>
+						href="/riding/myRidingList?pageNum=${pVO1.pageNum+1}
+						<c:if test='${pVO1.searchWord != null}'>
+							&searchKey=${pVO1.searchKey }
+							&searchWord=${pVO1.searchWord }</c:if>">&nbsp;&nbsp;next</a></li>
 				</c:if>
 			</ul>
+			<!-- 검색 -->
+			<div>
+				<form method="get" action="/riding/myRidingList" id="searchFrm">
+					<select name="searchKey" id="searchKey">
+						<option value="ridingSubject">제목</option>
+						<option value="nickname">글쓴이</option>
+						<option value="startDate">여정 시작일</option>
+					</select> <input type="text" name="searchWord" id="searchWord">
+					<button id="searchBtn">검색</button>
+				</form>
+			</div>
         </div>
         
         
         
         
         <div id="community" class="tabcontent">
-            <h3>마감 라이딩 및 후기</h3>
+            <h3>마감 라이딩 및 후기</h3>총 레코드 수 : ${pVO2.totalRecord2 } / 총 페이지 수 : ${pVO2.totalPage2 }
             <table width="100%">
                 <tr id="ridingTop">
                     <td>번호</td>
@@ -129,9 +140,65 @@
                     </tr>
                 </c:forEach>
             </table>
+            <!-- 페이징 -->
+			<ul class="paging">
+				<!--  이전페이지 -->
+				<c:if test="${pVO2.pageNum==1}">
+					<li>prev</li>
+				</c:if>
+				<c:if test="${pVO2.pageNum>1}">
+					<li><a
+						href="/riding/myRidingList?pageNum=${pVO2.pageNum-1}
+						<c:if test='${pVO2.searchWord != null}'>
+							&searchKey=${pVO2.searchKey }
+							&searchWord=${pVO2.searchWord }</c:if>">prev&nbsp;&nbsp;</a></li>
+				</c:if>
+				<!--  페이지 번호                 1,5      6,10         11,15-->
+				<c:forEach var="p" begin="${pVO2.startPage}"
+					end="${pVO2.startPage+pVO2.onePageCount-1}">
+					<!--  총 페이지수보다 출력할 페이지번호가 작을때 -->
+					<c:if test="${p <= pVO2.totalPage2}">
+						<c:if test="${p == pVO2.pageNum}">
+							<li
+								style="background-color: lightgray; height: 25px; border-radius: 6px;">
+						</c:if>
+						<c:if test="${p != pVO2.pageNum}">
+							<li>
+						</c:if>
+						<a
+							href="/riding/myRidingList?pageNum=${p}
+							<c:if test='${pVO2.searchWord != null}'>
+								&searchKey=${pVO2.searchKey }
+								&searchWord=${pVO2.searchWord }
+							</c:if>">
+						${p}</a></li>
+						</c:if>
+				</c:forEach>
+				<c:if test="${pVO2.pageNum==pVO2.totalPage2}">
+					<li>next</li>
+				</c:if>
+				<c:if test="${pVO2.pageNum<pVO2.totalPage2}">
+					<li><a
+						href="/riding/myRidingList?pageNum=${pVO2.pageNum+1}
+						<c:if test='${pVO2.searchWord != null}'>
+							&searchKey=${pVO2.searchKey }
+							&searchWord=${pVO2.searchWord }</c:if>">&nbsp;&nbsp;next</a></li>
+				</c:if>
+			</ul>
+			<!-- 검색 -->
+			<div>
+				<form method="get" action="/riding/myRidingList" id="searchFrm">
+					<select name="searchKey" id="searchKey">
+						<option value="ridingSubject">제목</option>
+						<option value="nickname">글쓴이</option>
+						<option value="startDate">여정 시작일</option>
+					</select> <input type="text" name="searchWord" id="searchWord">
+					<button id="searchBtn">검색</button>
+				</form>
+			</div>
         </div>
         <div id="course" class="tabcontent">
-            <h3>개설 라이딩</h3>
+            <h3>개설 라이딩</h3>총 레코드 수 : ${pVO3.totalRecord3 } / 총 페이지 수 : ${pVO3.totalPage3 }
 			<table width="100%">
                 <tr id="ridingTop">
                     <td>번호</td>
@@ -152,6 +219,62 @@
                     </tr>
                 </c:forEach>
             </table>
+           <!-- 페이징 -->
+			<ul class="paging">
+				<!--  이전페이지 -->
+				<c:if test="${pVO3.pageNum==1}">
+					<li>prev</li>
+				</c:if>
+				<c:if test="${pVO3.pageNum>1}">
+					<li><a
+						href="/riding/myRidingList?pageNum=${pVO3.pageNum-1}
+						<c:if test='${pVO3.searchWord != null}'>
+							&searchKey=${pVO3.searchKey }
+							&searchWord=${pVO3.searchWord }</c:if>">prev&nbsp;&nbsp;</a></li>
+				</c:if>
+				<!--  페이지 번호                 1,5      6,10         11,15-->
+				<c:forEach var="p" begin="${pVO3.startPage}"
+					end="${pVO3.startPage+pVO3.onePageCount-1}">
+					<!--  총 페이지수보다 출력할 페이지번호가 작을때 -->
+					<c:if test="${p <= pVO3.totalPage3}">
+						<c:if test="${p == pVO3.pageNum}">
+							<li
+								style="background-color: lightgray; height: 25px; border-radius: 6px;">
+						</c:if>
+						<c:if test="${p != pVO3.pageNum}">
+							<li>
+						</c:if>
+						<a
+							href="/riding/myRidingList?pageNum=${p}
+							<c:if test='${pVO3.searchWord != null}'>
+								&searchKey=${pVO3.searchKey }
+								&searchWord=${pVO3.searchWord }
+							</c:if>">
+						${p}</a></li>
+						</c:if>
+				</c:forEach>
+				<c:if test="${pVO3.pageNum==pVO3.totalPage3}">
+					<li>next</li>
+				</c:if>
+				<c:if test="${pVO3.pageNum<pVO3.totalPage3}">
+					<li><a
+						href="/riding/myRidingList?pageNum=${pVO3.pageNum+1}
+						<c:if test='${pVO3.searchWord != null}'>
+							&searchKey=${pVO3.searchKey }
+							&searchWord=${pVO3.searchWord }</c:if>">&nbsp;&nbsp;next</a></li>
+				</c:if>
+			</ul>
+			<!-- 검색 -->
+			<div>
+				<form method="get" action="/riding/myRidingList" id="searchFrm">
+					<select name="searchKey" id="searchKey">
+						<option value="ridingSubject">제목</option>
+						<option value="nickname">글쓴이</option>
+						<option value="startDate">여정 시작일</option>
+					</select> <input type="text" name="searchWord" id="searchWord">
+					<button id="searchBtn">검색</button>
+				</form>
+			</div>
         </div>
  
     </section>

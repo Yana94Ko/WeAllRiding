@@ -13,7 +13,7 @@
     </insert>
     <!-- 관리자 페이지 회원 목록 -->
     <select id = "memberList" resultType="com.yosi.myapp.member.MemberVO">
-        SELECT userId, userPwd, userName, userEmail, joinDate FROM member
+        SELECT userId, userPwd, userName, userEmail, nickname, joinDate FROM member
         <if test = 'searchWord != null'>
             WHERE ${searchKey} like '%${searchWord}%'
         </if>
@@ -29,12 +29,12 @@
     </select>
     <!-- 관리자 페이지 회원정보 수정 및 정리 -->
     <update id="AdminUpdate">
-        update member set userName=#{userName}, nickname=#{nickname}, userEmail=#{userEmail}, userPwd=#{userPwd}, userTel=#{userTel}, userEmail=#{userEmail}, birth=#{birth}, suspendDate=#{suspendDate}
+        update member set userName=#{userName}, nickname=#{nickname}, userEmail=#{userEmail}, userPwd=#{userPwd}, userTel=#{userTel}, userEmail=#{userEmail}, birth=#{birth}, suspendDate=#{suspendDate}, isAdmin=#{isAdmin}
         where userId=#{userId}
     </update>
     <!--관리자 페이지 회원정보 상세보기 -->
     <select id = "AdminView" resultType="com.yosi.myapp.member.MemberVO">
-        SELECT userId, userName, userTel, birth, nickname, userEmail, suspendDate, userPwd FROM member
+        SELECT userId, userName, userTel, birth, nickname, userEmail, suspendDate, userPwd, isAdmin FROM member
         where userId=#{userId}
     </select>
     <!-- 관리자 페이지 회원 삭제 -->
@@ -97,4 +97,8 @@
     </select>
     <resultMap id="ageMap" type="map">
     </resultMap>
+    <update id="ScoreUpdate">
+        update member set userScore = userScore + #{score}
+        where nickname=#{nickname}
+    </update>
 </mapper>
