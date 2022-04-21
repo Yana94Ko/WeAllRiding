@@ -214,3 +214,12 @@ main{
     font-size: 7px;
     color: rgb(0, 210, 210);
 }
+
+.state{
+    font-size: 0.5em;
+    color: #ca2819
+}
+.stateOk{
+    font-size: 0.5em;
+    color: 	#0000CD
+}

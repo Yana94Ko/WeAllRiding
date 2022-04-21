@@ -46,7 +46,7 @@
                             <div class="input-area">
                                 <input type="text" name="userTel" id="userTel" style="width: 300px; margin-right: 60px;" autocomplete="off" required>
                                 <label for="userTel">전화번호</label>
-                                <span id="showStateFindId" style="font-size: 0.5em; color: #ca2819">가입시 입력한 이름과 전화번호를 입력해주세요</span>
+                                <span id="showStateFindId" class="state">가입시 입력한 이름과 전화번호를 입력해주세요</span>
                             </div>
                             <div class="join-btn">
                                 <button class="btn" style="background-color: rgb(0, 215, 215);" type="button" value="아이디 찾기" onclick="FindUserId()">아이디 찾기</button>
@@ -68,7 +68,7 @@
                             <div class="input-area">
                                 <input type="text" name="userEmail" id="userEmail" style="width: 300px; margin-right: 60px;" autocomplete="off" required>
                                 <label for="userEmail">이메일</label>
-                                <span id="showStateFindPwd" style="font-size: 0.5em; color: #ca2819">가입시 입력한 아이디와 이메일을 입력해주세요</span>
+                                <span id="showStateFindPwd" class="state">가입시 입력한 아이디와 이메일을 입력해주세요</span>
                             </div>
                             <div class="join-btn">
                                 <button id="findPwdButton" type="button" value="비밀번호 찾기" onclick="IsValidEmail()">비밀번호 찾기</button>

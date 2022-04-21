@@ -39,12 +39,12 @@
             <div class="member-input">
                 <input type="text" name="userId" id="userId" onkeyup="CheckId()" required/>
                 <label>아이디</label>
-                <span id="stateIdChk" class="stateIdChk" style="font-size: 0.5em; color: #ca2819">아이디를 입력하세요</span>
+                <span id="stateIdChk" class="state">아이디를 입력하세요</span>
             </div>
             <div class="member-input">
                 <input type="text" name="nickname" id="nickname" onkeyup="CheckNick()" required/>
                 <label>닉네임</label>
-                <span id="stateNickChk" class="stateNickChk" style="font-size: 0.5em; color: #ca2819">닉네임을 입력하세요</span>
+                <span id="stateNickChk" class="state">닉네임을 입력하세요</span>
             </div>
             <div class="member-input">
                 <input type="password" name="userPwd" id="userPwd" required/>
@@ -82,7 +82,7 @@
             <div class="tel-2">
                 <input id="certNo" type="text" name="certNo" title="인증번호 입력" required/>
                 <label>인증번호 입력</label>
-                <span id="statePhoneChk" class="statePhoneChk" style="font-size: 0.5em; color: #ca2819">번호 입력 후 인증번호 보내기를 해주십시오.</span>
+                <span id="statePhoneChk" class="state" >번호 입력 후 인증번호 보내기를 해주십시오.</span>
             </div>
             <div class="confirm-number">
                 <button class="btn"style="opacity: 70%; background-color: rgb(0, 238, 238); width: 5vm; height: 30px; font-size: 0.4em;"  id="certChk" class="certChk" type="button" onclick="CheckCode()">본인인증</button>
