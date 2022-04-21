@@ -168,7 +168,7 @@ function plot(points) {
 						// the data minimum used for determining the ticks is Math.min(dataMin, suggestedMin)
 						suggestedMin: 30,
 						// the data maximum used for determining the ticks is Math.max(dataMax, suggestedMax)
-						suggestedMax: 300,
+						suggestedMax: 10,
 					},
 				}
 			},
@@ -327,7 +327,6 @@ function ridingReplyListAll() { //현재글의 댓글을 모두 가져오기
 		error: function(e) {
 			console.log(e.responseText)
 		}
-
 	});
 	// 댓글 수정(Edit)버튼 선택 시 해당폼 보여주기
 	$(document).on('click', '#ridingReplyList input[value=수정]',

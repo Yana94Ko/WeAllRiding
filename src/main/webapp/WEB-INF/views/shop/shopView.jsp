@@ -19,12 +19,17 @@
 		<div id="map" style="width: 80%; height: 100%; position: relative; left:20%; overflow: hidden;"></div>
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
-				<div>
-					<form onsubmit="searchPlaces(); return false;">
-						<input type="text" value="" id="keyword" size="25" placeholder="검색할 지역을 입력해주세요..">
-						<button type="submit">검색</button>
-					</form>
+				<div class="optionTitle">
+					<span>정비샵 찾기</span>
 				</div>
+
+				<form onsubmit="searchPlaces(); return false;">
+					<div class="optionForm">
+							<input type="text" class="inputSearch" value="" id="keyword" size="25" placeholder="검색할 지역을 입력해주세요..">
+							<button class="btn btnSearch" type="submit">검색</button>
+					</div>
+				</form>
+
 			</div>
 			<hr>
 			<ul id="placesList"></ul>

@@ -152,5 +152,21 @@ public class RidingServiceImpl implements RidingService {
 		return dao.todayRiding();
 	}
 
+	@Override
+	public int ridingCountUp(RidingVO vo) {
+		return dao.ridingCountUp(vo);
+	}
 
+
+	//관리자 페이지 라이딩 삭제
+	@Override
+	public int adminRidingDel(int ridingNo) {
+		return dao.adminRidingDel(ridingNo);
+	}
+
+	//관리자 피이지 라이딩 리스트 오름차순
+	@Override
+	public List<RidingVO> ridingList2(RidingPagingVO pVO) {
+		return dao.ridingList2(pVO);
+	}
 }

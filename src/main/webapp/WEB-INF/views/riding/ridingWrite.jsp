@@ -1,24 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
 <script src="https://cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$("#ridingFrm").submit(function() {
-			if ($("#ridingSubject").val() == '') {
-				alert("글 제목을 입력하세요");
-				return false;
-			}
-			if ($("#ridingContent").val() == '') {
-				alert("글내용을 입력하세요");
-				return false;
-			}
-			if ($("#courseSendData").val() == '') {
-				alert("코스를 입력하세요");
-				return false;
-			}
-		});
-	});
-</script>
 <!-- parallax START -->
 <div class="home">
 	<div class="homeBackground parallaxWindow" data-parallax="scroll"
@@ -91,9 +73,9 @@
 						style="min-height: 400px; width: 100%;">
 			</textarea>
 		</li>
-         
+
          <li id="ridingwriteBTN">
-            <button type="button" onclick=""id="ridingwriteBtn">글 등록</button>
+            <button type="button" onclick="submitRidingFrm()" id="ridingwriteBtn">글 등록</button>
          </li>
       </ul>
    </form>
