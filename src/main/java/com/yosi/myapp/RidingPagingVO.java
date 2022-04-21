@@ -40,8 +40,6 @@ public class RidingPagingVO {
 		startPage = ((pageNum - 1) / onePageCount * onePageCount) + 1;
 	}
 
-
-	
 	//
 	public int getTotalRecord() {
 		return totalRecord;

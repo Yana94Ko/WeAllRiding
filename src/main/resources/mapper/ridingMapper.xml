@@ -6,7 +6,7 @@
 <mapper namespace = "com.yosi.myapp.riding.RidingDAO">
 	<select id="ridingList" resultType="RidingVO">
 		select ridingNo, nickname, ridingKeyword, ridingSubject, 
-		ridingContent, applyUser, courseLevel, maxUser , 
+		ridingContent, applyUser, courseLevel, maxUser , applicantCnt,
 		date_format(startDate, '%Y-%m-%d') as startDate , date_format(endDate, '%Y-%m-%d') as endDate , ridingHit, ridingWriteDate, courseSendData
 		from ridingBoard
 		<if test='searchWord != null'>
@@ -81,11 +81,11 @@
 		</if>
 	</select>
 	<select id="myRidingEndList" resultType="RidingVO">
-		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit,
+		SELECT DISTINCT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit,
 		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate
 		FROM ridingBoard A
 		INNER JOIN ridingMember B
-		ON A.ridingNo = B.ridingNo WHERE (B.nickname=#{param1.nickname} and now() > A.endDate) or 
+		ON A.ridingNo = B.ridingNo WHERE (B.nickname=#{param1.nickname} and now() > A.endDate) or
 		(A.nickname=#{param1.nickname} and now() > A.endDate)
 		<if test='param2.searchWord != null'>
 			and ${param2.searchKey} like '%${param2.searchWord}%'
@@ -94,7 +94,7 @@
 		limit ${param2.onePageRecord} offset ${param2.offsetIndex}
 	</select>
 	<select id="myRidingMadeList" resultType="RidingVO">
-		SELECT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit,
+		SELECT DISTINCT A.ridingNo, A.ridingSubject, A.nickname, A.ridingHit,
 		DATE_FORMAT(startDate, '%Y-%m-%d') AS startDate  , DATE_FORMAT(endDate,'%Y-%m-%d') as endDate
 		FROM ridingBoard A
 		INNER JOIN ridingMember B
@@ -191,6 +191,17 @@
 		order by ridingReviewNo desc 
 	</select>
 
+	
+	<!-- 라이딩 참가 횟수 -->
+	<update id="ridingCountUp" parameterType="ridingVO">
+		update ridingMember A
+		join ridingBoard B
+		on A.ridingNo = B.ridingNo
+		set A.ridingCount = A.ridingCount+1
+		where ( A.ridingNo=${ridingNo} and A.ridingState = 1 and now() > B.endDate)
+	</update>
+	
+	<!-- 라이딩 유저 평가 -->
 	<insert id="ridingScoreUp">
 		insert into reviewScore(ridingNo, nickname, scored, userScore)
 		select #{ridingNo}, #{nickname}, #{scored}, 1 from dual

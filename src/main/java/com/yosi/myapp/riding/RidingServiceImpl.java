@@ -152,6 +152,11 @@ public class RidingServiceImpl implements RidingService {
 		return dao.todayRiding();
 	}
 
+	@Override
+	public int ridingCountUp(RidingVO vo) {
+		return dao.ridingCountUp(vo);
+	}
+
 
 	//관리자 페이지 라이딩 삭제
 	@Override

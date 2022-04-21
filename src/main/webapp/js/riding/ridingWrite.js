@@ -216,3 +216,22 @@ $('#ridingKeyword').on("focusout", function(event) {
 		$('#ridingKeyword').val(keyword.substring(0,keyword.length-1));
 	}
 });
+function submitRidingFrm(){
+	document.getElementById('ridingFrm').submit()
+}
+$(function() {
+	$("#ridingFrm").submit(function() {
+		if ($("#ridingSubject").val() == '') {
+			alert("글 제목을 입력하세요");
+			return false;
+		}
+		if ($("#ridingContent").val() == '') {
+			alert("글내용을 입력하세요");
+			return false;
+		}
+		if ($("#courseSendData").val() == '') {
+			alert("코스를 입력하세요");
+			return false;
+		}
+	});
+});
