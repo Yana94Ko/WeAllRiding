@@ -10,8 +10,9 @@ import java.util.List;
 
 @Component
 public class AdminInterceptor implements HandlerInterceptor {
-    public String onlyAdmin = "/admin/*";
-
+    public String onlyAdmin = "/admin/**";
+    public List<String> exPatterns
+            = Arrays.asList("/admin/availableRiding", "/admin/todayRiding", "/admin/availableCourse");
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object Handler) throws Exception {
         String isAdmin = (String)request.getSession().getAttribute("isAdmin") == null ? "0" : (String)request.getSession().getAttribute("isAdmin");
