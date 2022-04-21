@@ -283,7 +283,6 @@ function ridingReviewListAll() { //현재글의 댓글을 모두 가져오기
 		error: function(e) {
 			console.log(e.responseText)
 		}
-
 	});
 }
 ridingReviewListAll();
@@ -403,14 +402,15 @@ ridingReplyListAll();
 
 $(".applicantSave").on("click", function(event) {
 	if (confirm('같이 달리시겠습니까?')) {
-		var applicantNickName = $('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
+		$('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
+		let applicantNickName = $('input[name=applicantNickName]').val();
 		$.ajax({
-			url: "/riding/ridingStateOk?ridingNo=${vo.ridingNo}",
+			url: "/riding/ridingStateOk",
 			type: "GET",
-			data: applicantNickName,
-			dataType: 'JSON',
+			data:  "ridingNo="+ridingNo+"&applicantNickName="+applicantNickName,
 			success: function(result) {
-				alertSend(result);
+				alert("유저와 라이딩을 함께합니다.");
+				location.href = "/riding/ridingView?ridingNo=" + ridingNo;
 			}, error: function(request, status, error) {
 				console.log("code=" + request.status + "message=" + request.responseText + "error=" + errors);
 			}
@@ -420,23 +420,31 @@ $(".applicantSave").on("click", function(event) {
 
 $(".applicantDel").on("click", function(event) {
 	if (confirm('다음에 함께하시겠습니까?')) {
-		var applicantNickName = $('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
-
+		$('input[name=applicantNickName]').val($(this).parent().prev().prev().prev().prev().text());
+		let applicantNickName = $('input[name=applicantNickName]').val();
 		$.ajax({
-			url: "/riding/ridingStateDel?ridingNo=${vo.ridingNo}",
+			url: "/riding/ridingStateDel",
 			type: "GET",
-			data: applicantNickName,
-			dataType: 'JSON',
-			success: function() {
-				alert("다음에 함께달려요!");
+			data:  "ridingNo="+ridingNo+"&applicantNickName="+applicantNickName,
+			success: function(result) {
+				alert(applicantNickName+"님의 라이딩 신청을 거절했습니다.");
+				location.href = "/riding/ridingView?ridingNo=" + ridingNo;
 			}, error: function(request, status, error) {
 				console.log("code=" + request.status + "message=" + request.responseText + "error=" + errors);
 			}
 		});
 	}
 });
-function alertSend(result) {
-	if (result == true) {
-		alert("유저와 라이딩을 함께합니다.");
+
+//참가신청 완료시, 신청하기 버튼 숨기기
+for(let indexA=0; indexA<100; indexA++){
+	if(document.getElementById('dbForWriterRidingState'+indexA)!=null){
+		if(document.getElementById('dbForWriterRidingState'+indexA).value != 0){
+			$("#ridingStateUpdateBtn"+indexA).css("display","none");
+			$("#ridingStateDeleteBtn"+indexA).css("display","none");
+			$("#togetherRiding"+indexA).text("참가 확정 완료");
+			console.log(document.getElementById('dbForWriterRidingState'+indexA).value)
+		}
 	}
+
 }

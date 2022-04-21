@@ -76,7 +76,7 @@
 				<h1 style="margin:0 auto; padding:40px;">라이딩 참가자</h1>
 				<c:if test="${nickName == vo.nickname }">
 				<ul id="eList">
-					<li id="eListFirst">번호</li>
+					<li id="eListFirst">참가 상태</li>
 					<li id="eListFirst">닉네임</li>
 					<li id="eListFirst">성별</li>
 					<li id="eListFirst">모임 횟수</li>
@@ -84,14 +84,15 @@
 					<li id="eListFirst">승낙/거절</li>
 					<c:forEach var="vo" items="${lst2 }"  varStatus="st">
 						<c:if test="${vo.ridingNo == vo.ridingNo}">
-							<li><span id = "forWriterRidingState${st.index}">로그인후 확인하세요!</span><input type="hidden" id = "dbForWriterRidingState${st.index}" value="${vo.ridingState}"/></li>
+							<li><span id = "forWriterRidingState${st.index}"><a href = "/member/loginForm">열람하기</a></span><input type="hidden" id = "dbForWriterRidingState${st.index}" value="${vo.ridingState}"/></li>
 							<li>${vo.nickname }</li>
 							<li>${vo.gender }</li>
 							<li>${vo.ridingCount }</li>
 							<li>${vo.userScore }</li>
 								<li>
-									<input type='button' id="ridingStateUpdateBtn" class="applicantSave" value="승낙">
-							 		<input type='button' id="ridingStateDeleteBtn" class="applicantDel" value="거절">
+									<input type='button' id="ridingStateUpdateBtn${st.index}" class="applicantSave" value="승낙">
+							 		<input type='button' id="ridingStateDeleteBtn${st.index}" class="applicantDel" value="거절">
+									<span id = "togetherRiding${st.index}"></span>
 							 	</li> 
 						</c:if>
 					</c:forEach>
@@ -106,7 +107,7 @@
 					<li id="vListFirst">유저 레벨</li>
 					<c:forEach var="vo" items="${lst2 }" varStatus="st">
 						<c:if test="${vo.ridingNo == vo.ridingNo}">
-							<li><span id = "ridingState${st.index}">로그인후 확인하세요!</</span><input type="hidden" id = "dbRidingState${st.index}" value="${vo.ridingState}"/></li>
+							<li><span id = "ridingState${st.index}"><a href = "/member/loginForm">열람하기</a></span><input type="hidden" id = "dbRidingState${st.index}" value="${vo.ridingState}"/></li>
 							<li>${vo.nickname }</li>
 							<li>${vo.gender }</li>
 							<li>${vo.ridingCount }</li>
@@ -117,7 +118,7 @@
 				</c:if>
 				
 				<form id="nicknameTest">
-					<input type="text" name="applicantNickName" id="applicantNickName" style="display:none;">
+					<input type="text" name="applicantNickName" id="applicantNickName" style="display:block;">
 				</form>
 				<br><br><br> ${vo.applicantNickName}
 				<c:if test="${nickName != vo.nickname }">
