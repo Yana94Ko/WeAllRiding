@@ -22,7 +22,7 @@
 			<textarea style="display:none" id="courseSendData"name="courseSendData">${vo.courseSendData}</textarea>
 			<input type="hidden" name="applicantCnt" value="${vo.applicantCnt }"/>
 			<ul>
-				<h1 id="ridingViewTitle">라이딩 뷰${nickName}</h1>
+				<h1 id="ridingViewTitle">라이딩 뷰</h1>
 				<br>
 				<br>
 				<h2 id="ridingViewTitle"><input type="hidden" name="ridingSubject" value="${vo.ridingSubject }">${vo.ridingSubject }</h2>
@@ -115,7 +115,7 @@
 				</c:if>
 				
 				<form id="nicknameTest">
-					<input type="text" name="applicantNickName" id="applicantNickName" style="display:block;">
+					<input type="text" name="applicantNickName" id="applicantNickName" style="display:none;">
 				</form>
 				<br><br><br> ${vo.applicantNickName}
 				<c:if test="${nickName != vo.nickname }">
