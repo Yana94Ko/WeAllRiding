@@ -67,7 +67,7 @@ main {
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.ridingViewContainer {
+.ridingEditContainer {
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 auto;
@@ -75,6 +75,15 @@ main {
 }
 #listTitle {
 	font-size: 1.6em;
+	color: #777;
+}
+#date_Level_User {
+	display: flex;
+}
+
+#courseLevel {
+	align-content: rigth;
+	display: inline-block;
 }
 .ridingEditBtn {
 	width: auto;

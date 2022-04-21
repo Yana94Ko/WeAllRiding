@@ -2,11 +2,7 @@
 <link href="${url}/css/riding/ridingList.css" rel="stylesheet" type="text/css">
 <link href="${url}/css/riding/ridingEdit.css" rel="stylesheet" type="text/css">
 <style>
-.ridingContainer{
-	width: 80%;
-	margin: 0 auto;
-	padding: 0 auto;
-}
+
 #ridingSubject {
 	width: 99%;
 	height: 30px;
@@ -40,7 +36,7 @@
 <main>
 <div class="container">
 	<div class="containerWrap">
-		<div class="ridingViewContainer">
+		<div class="ridingEditContainer">
 			<input type="hidden" id="dbCourseLevelsel" value=${vo.courseLevel}/>
 			<input type="hidden" id="dbMaxUsersel" value=${vo.maxUser}>
 			<form method="post"
@@ -60,39 +56,41 @@
 							value="${vo.ridingKeyword }"></input>
 					</li>
 					<br>
-					<li id="dateAll">
-						<div id="listTitle">일정</div>
-						<input type="date"
-							name="startDate" id="startDate" value="${vo.startDate }"> -
-						<input type="date" name="endDate" id="endDate"
-							value="${vo.endDate }">
-					</li><br><br><br><br>
-					
-					<li id=courseLevel style="color: black">
-						<div id="listTitle">난이도</div>
-						<select id="courseLevelsel" name="courseLevel"
-							class="courseLevelsel">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-					</li>
-	
-					<li id="maxUser" style="color: black">
-						<div id="listTitle">참가인원</div>
-						<select id="maxUsersel" name="maxUsersel"
-							class="maxUsersel">
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-							<option value="6">6</option>
-							<option value="7">7</option>
-						</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					</li>
+					<div id="date_Level_User">
+						<li id="dateAll">
+							<div id="listTitle">일정</div>
+							<input type="date"
+								name="startDate" id="startDate" value="${vo.startDate }"> -
+							<input type="date" name="endDate" id="endDate"
+								value="${vo.endDate }">
+						</li>
+						
+						<li id=courseLevel style="color: black">
+							<div id="listTitle">난이도</div>
+							<select id="courseLevelsel" name="courseLevel"
+								class="courseLevelsel">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+						</li>
+		
+						<li id="maxUser" style="color: black">
+							<div id="listTitle">참가인원</div>
+							<select id="maxUsersel" name="maxUsersel"
+								class="maxUsersel">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+							</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</li>
+					</div>
 					<br><br><br><br>
 					
 					<div id="listTitle">내용</div>
@@ -102,7 +100,7 @@
 						</textarea>
 					</li><br><br>
 					
-					<li id="ridingViewBtn">
+					<li id="ridingViewBtn" class="ridingEditBtn">
 						<input type="submit" id="ridingwriteBtn" class="ridingEditBtn" value="글 수정" />
 					</li>
 				</ul>
