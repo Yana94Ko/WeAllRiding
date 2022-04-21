@@ -78,20 +78,23 @@ main {
 }
 /*paging*/
 .paging {
-	margin: 0px auto;
-	padding: 0px 50%;
-	width: 100%;
-	height: 30px;
+	display: table;
+	margin: 0 auto;
 }
-.paging>li {
+.paging > li {
+	padding: 0.5vw;
+	margin: 0.5vw;
 	float: left;
-	width: 30px;
+	border-radius: 12px;
+	width: 2vw;
+	height: 2vh;
 	text-align: center;
-	color: black;
+	vertical-align: middle;
+	text-decoration: none;
 }
 /*search*/
 #searchFrm {
-	padding: 20px 200px;
+	padding: 20px;
 	text-align: center;
 }
 #searchWord {

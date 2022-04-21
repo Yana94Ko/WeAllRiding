@@ -200,13 +200,13 @@
                         <h6 class="m-0 font-weight-bold text-primary">통계 그래프</h6>
                     </div>
                     <div class="card-body">
-                        <main>
+                        <main id="inside">
                             <div class="st">
                                 <div class="statisticsContainer" >
-                                    <div id="gender" class="gender">
+                                    <div id="gender" class="chart">
                                         <canvas id="genderChart" width="400px" height="400px"></canvas>
                                     </div>
-                                    <div id="age" class="age">
+                                    <div id="age" class="chart">
                                         <canvas id="ageChart" width="400px" height="400px"></canvas>
                                     </div>
                                     <div id="ariding">

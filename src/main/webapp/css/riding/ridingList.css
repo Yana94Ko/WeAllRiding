@@ -432,3 +432,23 @@ h1 {
   background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
 }
 
+
+.paging {
+	display: table;
+	margin: 0 auto;
+	position: relative;
+}
+
+
+.paging > li {
+	padding: 0.5vw;
+	margin: 0.5vw;
+	float: left;
+	border-radius: 12px;
+	width: 2vw;
+	height: 2vh;
+	text-align: center;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
