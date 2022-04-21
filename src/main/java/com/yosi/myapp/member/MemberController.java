@@ -142,10 +142,11 @@ public class MemberController {
         vo.setUserPwd(tempPwd); //난수화된 임시 비밀번호를 vo에 넣고
         int result = service.findUserPwd(vo); //회원정보를 업데이트한다.
         SimpleMailMessage message = new SimpleMailMessage();
+        String htmlStr = "<p>o"+tempPwd+"</p>";
         message.setTo(vo.getUserEmail());
         message.setFrom("weallriding@gmail.com");
         message.setSubject("[WeAllRidng] 임시 비밀번호 발송");
-        message.setText("임시 비밀번호는 " + tempPwd + "입니다");
+        message.setText(htmlStr, "UTF-8", "html");
         mailSender.send(message);
         return result;
     }
