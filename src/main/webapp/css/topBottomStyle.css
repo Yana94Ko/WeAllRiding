@@ -12,7 +12,10 @@
 	
 	/* 노랑 */
 	--color-theme-2 : #F6C90E;;
+	--color-theme-2-05:rgba(246,201,14,0.5);
+	--color-theme-2-08:rgba(246,201,14,0.8);
 	--color-theme-2-gra: linear-gradient(0deg, rgba(246,201,14,1) 1%, rgba(255,222,83,1) 100%);
+
 	--color-theme-3 : rgba(237, 237, 237, 1);
 
 	--main-gray : #dddddd;

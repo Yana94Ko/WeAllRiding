@@ -2,18 +2,18 @@
 main {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 100;
-  font-size: 12px;
-  line-height: 30px;
+  font-size: 1vw;
+  line-height: 3vh;
   color: #777;
   background: #dddddd;
   width:100%;
-  padding: 1vw 0 0 0;
+  padding: 3vw 0 0 0;
 }
 
 .map_wrap {
   margin:0 auto;
   position: relative;
-  width: 173vh;
+  width: 95vw;
   height: 79vh;
   background: var(--color-lightGray-1);
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -22,7 +22,7 @@ main {
 .map_wrap, .map_wrap * {
 	padding: 0;
 	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
-	font-size: 12px;
+	font-size: 0.8vw;
 }
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active {
 	color: #000;
@@ -44,7 +44,7 @@ main {
 	background: rgba(255, 255, 255, 0.7);
 	z-index: 1;
 	font-size: 12px;
-	border-radius: 10px;
+	
 }
 .bg_white {
 	background: #fff;
@@ -57,13 +57,21 @@ main {
 	margin: 3px 0;
 }
 #menu_wrap .option {
-	text-align: center;
+	padding: 2vh 1vw;
+	height: 14vh;
+    background-color: var(--color-theme-2);
 }
-#menu_wrap .option p {
-	margin: 10px 0;
+#menu_wrap .option span{
+	color:#ffffff;
+	font-weight:600;
+	font-size:1.3vw;
 }
+
+#menu_wrap .option .optionForm{
+	margin:1vh 1vw;
+}
+
 #menu_wrap .option button {
-	margin-left: 5px;
 }
 #placesList li {
 	list-style: none;
