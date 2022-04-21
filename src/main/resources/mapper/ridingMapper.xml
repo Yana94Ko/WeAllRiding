@@ -173,6 +173,17 @@
 		order by ridingReviewNo desc 
 	</select>
 
+	
+	<!-- 라이딩 참가 횟수 -->
+	<update id="ridingCountUp" parameterType="ridingVO">
+		update ridingMember A
+		join ridingBoard B
+		on A.ridingNo = B.ridingNo
+		set A.ridingCount = A.ridingCount+1
+		where ( A.ridingNo=${ridingNo} and A.ridingState = 1 and now() > B.endDate)
+	</update>
+	
+	<!-- 라이딩 유저 평가 -->
 	<insert id="ridingScoreUp">
 		insert into reviewScore(ridingNo, nickname, scored, userScore)
 		select #{ridingNo}, #{nickname}, #{scored}, 1 from dual

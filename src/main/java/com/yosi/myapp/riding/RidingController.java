@@ -263,6 +263,7 @@ public class RidingController {
 	public int ridingReviewWriteOk (RidingVO vo, HttpSession session) {
 		System.out.println(vo.getRidingReviewComent());
 		vo.setNickname((String)session.getAttribute("nickName"));
+		service.ridingCountUp(vo); // 참가 수 증가
 		return service.ridingReviewWrite(vo);
 	}
 	// 리뷰목록

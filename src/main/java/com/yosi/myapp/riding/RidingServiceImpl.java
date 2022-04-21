@@ -152,5 +152,10 @@ public class RidingServiceImpl implements RidingService {
 		return dao.todayRiding();
 	}
 
+	@Override
+	public int ridingCountUp(RidingVO vo) {
+		return dao.ridingCountUp(vo);
+	}
+
 
 }
