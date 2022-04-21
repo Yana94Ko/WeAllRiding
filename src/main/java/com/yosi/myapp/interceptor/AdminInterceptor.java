@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 public class AdminInterceptor implements HandlerInterceptor {
-    public String onlyAdmin = "/admin/**";
+    public String onlyAdmin = "/admin/*";
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object Handler) throws Exception {
