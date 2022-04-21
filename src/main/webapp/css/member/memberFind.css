@@ -113,3 +113,11 @@ main{
     margin-right: 50px;
     opacity: 80%;
 }
+.state{
+    font-size: 0.5em;
+    color: #ca2819
+}
+.stateOk{
+    font-size: 0.5em;
+    color: #0000CD;
+}

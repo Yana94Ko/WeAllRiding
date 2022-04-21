@@ -100,7 +100,6 @@ function SendPhoneCheck() {
     axios.get('/member/phoneCheck?userTel='+userTel) //get 요청 보내기
         .then((res) => {
             code = res.data; //서버에서 생성된(입력된 번호로 발송된) 인증번호를 브라우저에 넣는다
-            console.log(code); //확인용
             document.getElementById("statePhoneChk").innerText = "인증번호를 입력한 뒤 본인인증을 눌러주십시오";
         })
         .catch((error) => {
@@ -111,6 +110,7 @@ function CheckCode () {
     const certNo = document.getElementById("certNo").value;
     if(certNo == code && code!="") {
         document.getElementById("statePhoneChk").innerText = "인증번호가 일치합니다";
+        document.getElementById("statePhoneChk").className = "stateOk";
         certPass = true; //입력된 인증번호가 서버에서 받은 인증번호와 일치할시 회원가입이 가능하게 한다.
         document.getElementById("certNo").readOnly = true;
         document.getElementById("userTel1").readOnly = true;
@@ -127,7 +127,7 @@ function CheckId () {
     idPass = false;
     if(!idCheck.test(userid)){
         document.getElementById("stateIdChk").innerText = "아이디는 영문, 숫자 조합 6~15자를 입력해야 합니다.";
-        console.log(idPass)
+        document.getElementById("stateIdChk").className = "state"
         return;
     }
     const body = {
@@ -137,34 +137,10 @@ function CheckId () {
         .then((res) => {
             if(res.data!==""){
                 document.getElementById("stateIdChk").innerText = "이미 사용중인 아이디입니다.";
-                console.log(idPass)
+                document.getElementById("stateIdChk").className = "state";
             } else {
                 document.getElementById("stateIdChk").innerText = "사용 가능한 아이디입니다.";
-                idPass = true;
-                console.log(idPass);
-            }
-        })
-        .catch((error) => {
-            console.log(error)
-        })
-}
-function CheckNick () {
-    const userid = document.getElementById("userId").value;
-    const idCheck =  /^[A-za-z0-9]{6,15}$/g;
-    idPass = false;
-    if(!idCheck.test(userid)){
-        document.getElementById("stateIdChk").innerText = "아이디는 영문, 숫자 조합 6~15자를 입력해야 합니다.";
-        return;
-    }
-    const body = {
-        userId : userid
-    }
-    axios.post("/member/checkId", body)
-        .then((res) => {
-            if(res.data!==""){
-                document.getElementById("stateIdChk").innerText = "이미 사용중인 아이디입니다.";
-            } else {
-                document.getElementById("stateIdChk").innerText = "사용 가능한 아이디입니다.";
+                document.getElementById("stateIdChk").className = "stateOk";
                 idPass = true;
             }
         })
@@ -175,8 +151,15 @@ function CheckNick () {
 function CheckNick() {
     const nickname = document.getElementById("nickname").value;
     nickPass = false;
+    if(!nickname){
+        document.getElementById("stateNickChk").innerText = "닉네임을 입력하세요";
+        document.getElementById("stateNickChk").className = "state";
+        return;
+    }
     if(nickname.length>10){
         document.getElementById("stateNickChk").innerText = "닉네임은 최대 10글자까지 사용가능합니다.";
+        document.getElementById("stateNickChk").className = "state";
+        return;
     }
     const body = {
         nickname : nickname
@@ -185,8 +168,10 @@ function CheckNick() {
         .then((res) => {
             if(res.data!==""){
                 document.getElementById("stateNickChk").innerText = "이미 사용중인 닉네임입니다.";
+                document.getElementById("stateNickChk").className = "state";
             } else {
                 document.getElementById("stateNickChk").innerText = "사용 가능한 닉네임입니다.";
+                document.getElementById("stateNickChk").className = "stateOk";
                 nickPass = true;
             }
         })

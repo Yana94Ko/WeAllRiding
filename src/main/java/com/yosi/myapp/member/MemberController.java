@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 
+import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -141,11 +144,12 @@ public class MemberController {
         String tempPwd = sb.toString();
         vo.setUserPwd(tempPwd); //난수화된 임시 비밀번호를 vo에 넣고
         int result = service.findUserPwd(vo); //회원정보를 업데이트한다.
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(vo.getUserEmail());
+        MimeMessage message = mailSender.createMimeMessage();
+        message.addRecipient(Message.RecipientType.TO, new InternetAddress(vo.getUserEmail(),vo.getUserName(),"UTF-8"));
         message.setFrom("weallriding@gmail.com");
         message.setSubject("[WeAllRidng] 임시 비밀번호 발송");
-        message.setText("임시 비밀번호는 " + tempPwd + "입니다");
+        String htmlStr = "이메일 내용";
+        message.setText(htmlStr, "utf-8","html");
         mailSender.send(message);
         return result;
     }

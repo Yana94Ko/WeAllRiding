@@ -25,11 +25,14 @@ function FindUserId() {
         .then((res) =>{
             if(res.data ==='') {
                 document.getElementById("showStateFindId").innerText = "일치하는 회원정보가 없습니다";
+                document.getElementById("showStateFindId").className ="state";
             } else {
                 const encryptionUserId = res.data.userId.replace(/(?<=.{3})./gi, "*");
-                document.getElementById("showStateFindId").innerText = `찾으시는 아이디는 ${encryptionUserId} 입니다`
+                document.getElementById("showStateFindId").innerText = `찾으시는 아이디는 ${encryptionUserId} 입니다`;
+                document.getElementById("showStateFindId").className ="stateOk";
             }
             document.getElementById("showStateFindPwd").innerText = "가입시 입력한 아이디와 이메일을 입력해주세요";
+            document.getElementById("showStateFindPwd").className ="state";
             document.getElementById("findPwdButton").disabled = false;
         })
         .catch((res) => {
@@ -57,6 +60,7 @@ function IsValidEmail() {
         .then((res) =>{
             if(res.data ==='') {
                 document.getElementById("showStateFindPwd").innerText = "유효하지 않은 회원정보입니다";
+                document.getElementById("showStateFindPwd").className ="state";
                 document.getElementById("findPwdButton").disabled = false;
             } else {
                 FindUserPwd();
@@ -78,6 +82,7 @@ function FindUserPwd() {
         .then((res) => {
             console.log(res);
             document.getElementById("showStateFindPwd").innerText = "이메일로 임시 비밀번호가 전송되었습니다";
+            document.getElementById("showStateFindPwd").className ="stateOk";
         })
         .catch((res) => {
             console.log("error");
