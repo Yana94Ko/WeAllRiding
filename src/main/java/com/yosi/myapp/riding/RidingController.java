@@ -214,10 +214,10 @@ public class RidingController {
 		ResponseEntity<String> entity =null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "text/html; charset=UTF-8");
-		
 		try {
 			service.ridingUpdate(vo);
-			
+			System.out.println(vo.getMaxUser());
+			System.out.println(vo.getCourseLevel());
 			String msg="<script>alert('글이 수정되었습니다.');location.href='/riding/ridingView?ridingNo="+vo.getRidingNo()+"';</script>";
 			entity=new ResponseEntity<String>(msg, headers, HttpStatus.OK);
 			

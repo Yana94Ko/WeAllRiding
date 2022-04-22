@@ -75,7 +75,7 @@
 							<div id="maxUserSet">
 								<li id="maxUser" style="color: black">
 									<div id="listTitle">참가인원</div>
-									<select id="maxUsersel" name="maxUsersel"class="maxUsersel">
+									<select id="maxUsersel" name="maxUser"class="maxUsersel">
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>

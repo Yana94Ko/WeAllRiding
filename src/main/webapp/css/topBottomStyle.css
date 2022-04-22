@@ -414,3 +414,6 @@ footer{
 .footerContent p{
 	color:var(--color-lightGray-1);
 }
+input[type=text]{
+	background: rdba(255,255,255);
+}

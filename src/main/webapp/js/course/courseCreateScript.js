@@ -691,7 +691,7 @@ function plot(chartLabel, chartData, routeNo) {
 						// the data minimum used for determining the ticks is Math.min(dataMin, suggestedMin)
 						suggestedMin: 30,
 						// the data maximum used for determining the ticks is Math.max(dataMax, suggestedMax)
-						suggestedMax: 300,
+						suggestedMax: 10,
 					},
 				}
 			},

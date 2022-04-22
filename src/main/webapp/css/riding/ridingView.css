@@ -295,7 +295,7 @@ main {
 }
 
 #vList>li:nth-child(5n+2) {
-	width: 50%;
+	width: 60%;
 	white-space: nowrap; /*줄 안바꿈*/
 	overflow: hidden; /*넘친내용 숨기기*/
 	text-overflow: ellipsis; /*넘침시 ...표시*/
@@ -310,7 +310,8 @@ main {
 	float: right;
 }
 /* 남색 버튼 */
-#ridingMemberBtn{
+
+#ridingdelBtn{
 	width:auto;
 	height:3vh;
 	border-radius: 5px;
@@ -322,25 +323,25 @@ main {
 	cursor:pointer;
 	padding: 0 1vw 0 1vw;
 }
-#ridingMemberBtn:hover{
+#ridingdelBtn:hover{
 	/*마우스 오버시 버튼 색*/
 	background:var(--color-theme-0);
 	transition: .3s ease-in-out;
 }
 /* 노란색 버튼 */
-#ridingdelBtn{
+#ridingMemberBtn{
 	width:auto;
 	height:3vh;
 	border-radius: 5px;
 	border:none;
-	/*버튼 색*/
+	/*버튼 색*
 	background:var(--color-theme-2);
 	color:blcak;
 	font-size:1.5em;
 	cursor:pointer;
 	padding: 0 1vw 0 1vw;
 }
-#ridingdelBtn:hover{
+#ridingMemberBtn:hover{
 	/*마우스 오버시 버튼 색*/
 	background:rgba(255, 192, 0, 1);
 	transition: .3s ease-in-out;
@@ -357,12 +358,6 @@ main {
 	cursor: pointer;
 	padding: 0 1vw 0 1vw;
 }
-#ridingMemberBtn:hover{
-	/*마우스 오버시 버튼 색*/
-	background: var(--color-theme-0);
-	transition: .3s ease-in-out;
-}
-
 .courseInfoLst {
 	height: 21vh;
 	display: flex;
@@ -489,6 +484,21 @@ main {
 	transition: .3s ease-in-out;
 }
 /* 노란색 버튼 */
+.btnEdit3{
+	width: 6vw;
+	height: 10vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-2);
+	color: black;
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+	margin-right: 0.4vw;
+}
+
 .btnEdit2{
 	width: auto;
 	height: 4vh;
@@ -538,4 +548,37 @@ main {
 	cursor: pointer;
 	padding: 0 1vw 0 1vw;
 	float: right;
+}
+.memberOkbtn {
+	width: 4vw;
+	height: 2vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-2);
+	color: blcak;
+	font-size: 1em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+	margin-right: 0.4vw;
+}
+.memberDelbtn {
+	width: 4vw;
+	height: 2vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-1);
+	color: #ffffff;
+	font-size: 1em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+}
+#ridingReplyComent {
+	width:48vw;
+	height:10vh;
+	border-radius: 5px;
+	border-color: #ddd;
 }

@@ -79,8 +79,8 @@
 
                     // 	 'goguma'== goguma
                     if (vo.nickname == '${nickName}') {
-                        tag += "<input type='button' value='삭제' id='ridingReplyListDel' title='"+vo.ridingReplyNo+"' onclick='ridingReplyListDel()' />";
-                        tag += "<input type='button' value='수정' id='ridingReplyListEdit'/>";
+                        tag += "<input type='button' value='삭제' class='memberDelbtn' id='ridingReplyListDel' title='"+vo.ridingReplyNo+"' onclick='ridingReplyListDel()' />";
+                        tag += "<input type='button' value='수정' class='memberOkbtn' id='ridingReplyListEdit'/>";
                     }
                     tag += "<br/><div>" + vo.ridingReplyComent + "</div>";
                     tag += "<div id='CRWD' style='color:lightgray;'>" + vo.ridingReplyWriteDate
@@ -90,10 +90,10 @@
                     if (vo.nickname == '${nickName}') {
                         tag += "<div style='display:none' id='abcd'><form method='post'>";
                         tag += "<input type='hidden' name='ridingReplyNo' value='"+vo.ridingReplyNo+"'/>";
-                        tag += "<textarea name='ridingReplyComent' style='width:500px; height:50px;'>"
+                        tag += "<textarea name='ridingReplyComent' id='ridingReplyComent'>"
                             + vo.ridingReplyComent
                             + "</textarea>";
-                        tag += "<input type='submit' value='수정' id='ridingReplyListEditOk'/>";
+                        tag += "<input type='submit' value='수정' class='btnEdit3' id='ridingReplyListEditOk'/>";
                         tag += "</form></div>";
                     }
                     tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
@@ -373,16 +373,16 @@
 
                 <div>
                     <!-- 댓글 쓰기 폼 -->
-					<c:if test="${logStatus=='Y' }">
-						<form method='post' id="ridingReplyFrm">
-							<input type="hidden" name="ridingNo" value="${vo.ridingNo }" />
-							<textarea name="ridingReplyComent" id="ridingReplyComent"
-								style="width: 100%; height: 100px;"></textarea>
-							<br> <input type="button" value="댓글등록" id="replyBtn" onclick="ridingReplyFrm()">
-						</form>
-					</c:if>
-					<!-- 댓글목록이 나올 자리 -->
-					<div id="ridingReplyList"></div>
+                    <c:if test="${logStatus=='Y' }">
+                        <form method='post' id="ridingReplyFrm">
+                            <input type="hidden" name="ridingNo" value="${vo.ridingNo }" />
+                            <textarea name="ridingReplyComent" id="ridingReplyComent"></textarea>
+                            <input type="button" value="댓글등록" id="replyBtn" class="btnEdit3" onclick="ridingReplyFrm()">
+                        </form>
+                    </c:if>
+                    <br><br>
+                    <!-- 댓글목록이 나올 자리 -->
+                    <div id="ridingReplyList"></div>
                 </div>
             </div>
         </div>
