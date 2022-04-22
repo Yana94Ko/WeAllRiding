@@ -20,7 +20,7 @@
 		WHERE shopId = #{shopId}
 	</update>
 	<select id="shopList" resultType="ShopVO">
-		select shopId, shopName, shopInfo, shopAuthors
+		select shopId, shopName, shopInfo, shopAuthors, shopNo
 		from shop
 		<if test='searchWord != null'>
 			where ${searchKey} like '%${searchWord}%'

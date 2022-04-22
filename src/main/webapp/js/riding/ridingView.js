@@ -1,3 +1,4 @@
+
 //===================================> 지도/차트/코스정보 생성 Start <====================================================
 //-------------------> courseCreate에서 전달받은 데이터 저장 Start <--------------------------
 var courseSendDataRecived = document.getElementById("courseSendData");

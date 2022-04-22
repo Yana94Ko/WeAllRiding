@@ -184,7 +184,7 @@
                                     <tr>
                                         <th>번호</th>
                                         <th>매장명</th>
-                                        <th>매장정보</th>
+                                        <th style="width:700px;">매장정보</th>
                                         <th>작성자</th>
                                         <th>옵션</th>
                                     </tr>

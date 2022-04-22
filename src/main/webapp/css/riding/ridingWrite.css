@@ -26,7 +26,6 @@ article, aside, details, figcaption, figure, header, hgroup, menu, nav,
 blockquote, q {
     quotes: none;
 }
-
 main * {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
