@@ -142,9 +142,9 @@
 					<c:if test="${logStatus=='Y' }">
 						<form method='post'>
 							<input type="hidden" name="ridingNo" value="${vo.ridingNo }" />
-							<textarea name="ridingReplyComent"
+							<textarea id="ridingReplyComent" name="ridingReplyComent"
 									  style="width: 100%; height: 100px;"></textarea><br>
-							<input id="ridingReplyBtn" type="button" value="댓글등록" id="replyBtn" onclick="ridingReplyFrm()">
+							<input id="ridingReplyBtn" type="button" value="댓글등록" id="replyBtn" onclick="ridingReplyFrm('${nickName}', ${vo.ridingNo})">
 						</form>
 					</c:if>
 					<!-- 댓글목록이 나올 자리 -->
