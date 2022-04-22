@@ -18,7 +18,7 @@ main{
     padding-left: 40px;
     align-items: center;
     margin:0 auto;
-    background-color:rgba(255,255,255,0.6);
+    background-color:rgba(255,255,255, 0.9);
     border-radius: 15px;
     position: relative;
     top: 45px;
@@ -26,17 +26,18 @@ main{
 
 .loginForm h1{
     font-size: 32px;
-    color: #7B7673;
+    color: #313942;
     margin-bottom: 50px;
     position: relative;
     left: 170px;
 }
 
 .input-area{
-    width: 370px;
+    width: 320px;
     position: relative;
     margin-top: 20px;
-    margin-left: 10px;
+    left: 1.7vw;
+    bottom: 0.5vh;
 }
 
 .input-area:first-child{
@@ -48,9 +49,9 @@ main{
     padding: 20px 10px 10px;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid rgb(0, 200, 200);
+    border-bottom: 1px solid #313942;
     font-size: 18px;
-    color: rgb(0, 200, 200);
+    color: #313942;
     outline: none;
 }
 
@@ -59,7 +60,7 @@ main{
     left: 10px;
     top: 15px;
     font-size: 18px;
-    color: rgb(0, 200, 200);
+    color: #313942;
     transition: all .5s ease;
 }
 
@@ -67,7 +68,8 @@ main{
 .input-area input:valid + label{
     top: -2px;
     font-size: 13px;
-    color: rgb(0, 200, 200);
+    color: #313942;
+
 
 }
 
@@ -78,10 +80,10 @@ main{
 .login-btn button{
     width: 80%;
     height: 50px;
-    background: #C13827;
+    background: #F6C90E;
     color: white;
     border: none;
-    border-radius: 25px;
+    border-radius: 7px;
     cursor: pointer;
     float: left;
     margin-bottom: 10px;

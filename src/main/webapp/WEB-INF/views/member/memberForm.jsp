@@ -65,7 +65,7 @@
                 <label><input type="radio" name="gender" value="여" required>여</label>
             </div>
             <div class="userTel1">
-                <select class="selectpicker" id="userTel1" name="userTel1">
+                <select class="selectpicker" id="userTel1" name="userTel1" style="font-size: 0.72em;">
                     <option value="010">010</option>
                     <option value="02">02</option>
                     <option value="031">031</option>
@@ -77,7 +77,7 @@
                 <label>연락처</label>
             </div>
             <div class="push-number">
-                <button class="btn"style="opacity: 70%; background-color: rgb(0, 238, 238); width: 200px; height: 40px; font-size: 0.8em;" id="phoneChk" class="phoneChk" type="button" onclick="CheckTel()">인증번호 보내기</button>
+                <button class="btn"style="opacity: 70%; color: ivory; background-color: rgba(58, 71, 80, 1); width: 200px; height: 40px; font-size: 0.8em;" id="phoneChk" class="phoneChk" type="button" onclick="CheckTel()">인증번호 보내기</button>
             </div>
             <div class="tel-2">
                 <input id="certNo" type="text" name="certNo" title="인증번호 입력" required/>
@@ -85,7 +85,7 @@
                 <span id="statePhoneChk" class="state" >번호 입력 후 인증번호 보내기를 해주십시오.</span>
             </div>
             <div class="confirm-number">
-                <button class="btn"style="opacity: 70%; background-color: rgb(0, 238, 238); width: 5vm; height: 30px; font-size: 0.4em;"  id="certChk" class="certChk" type="button" onclick="CheckCode()">본인인증</button>
+                <button class="btn"style="opacity: 70%; color: ivory; background-color: rgba(58, 71, 80, 1); width: 5vm; height: 30px; font-size: 0.4em;"  id="certChk" class="certChk" type="button" onclick="CheckCode()">본인인증</button>
             </div>
             <div class="date">
                 <label>생년월일: </label>

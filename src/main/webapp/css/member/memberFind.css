@@ -12,22 +12,22 @@ main{
 }
 
 .loginForm{
-    width: 600px;
+    width: 550px;
     height: 490px;
     padding: 20px;
     padding-left: 40px;
     align-items: center;
     margin:0 auto;
-    background-color:rgba(255,255,255,0.6); 
+    background-color:rgba(255,255,255,0.9);
     border-radius: 15px;
     position : relative;
 	top:250px;
 }
 .loginForm h1{
     font-size: 32px;
-    color: rgb(0, 215, 215);
+    color: #313942;
     position: relative;
-    left: 180px;
+    left: 160px;
     margin-bottom: 20px;
     top: 10px;
 }
@@ -44,7 +44,7 @@ main{
     position: relative;
     margin-top: 20px;
     margin-left: 10px;
-    left: 80px;
+    left: 70px;
     top:10px;
 }
 
@@ -57,9 +57,9 @@ main{
     padding: 20px 10px 10px;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid rgb(0, 200, 200);
+    border-bottom: 1px solid #313942;
     font-size: 18px;
-    color: rgb(0, 200, 200);
+    color: #313942;
     outline: none;
 }
 
@@ -68,21 +68,21 @@ main{
     left: 10px;
     top: 15px;
     font-size: 18px;
-    color: rgb(0, 200, 200);
+    color: #313942;
     transition: all .5s ease;
 }
 
 .input-area input:focus + label,
 .input-area input:valid + label{
     top: -2px;
-    font-size: 13px;
-    color: #C13827;
+    font-size: 17px;
+    color: #313942;
 
 }
 
 .bottom-menu{
     position: relative;
-    right: 210px;
+    right: 200px;
     top: 70px;
 }
 
@@ -95,17 +95,17 @@ main{
 .join-btn{
     margin-top: 45px;
     position: relative;
-    left: 35px;
+    left: 45px;
     top: 15px;
 }
 
 .join-btn button{
     width: 65%;
     height: 50px;
-    background: #C13827;
+    background: #F6C90E;
     color: white;
     border: none;
-    border-radius: 25px;
+    border-radius: 7px;
     cursor: pointer;
     float: left;
     margin-bottom: 10px;

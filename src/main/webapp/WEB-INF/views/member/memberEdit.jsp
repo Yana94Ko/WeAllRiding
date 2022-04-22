@@ -43,7 +43,7 @@
     <h3>회원정보 수정</h3>
     <form method="post" action="/member/memberEditOk" id="mFrm" onsubmit="return MemberEditCheck()">
       <div class="member-input">
-        <input type="text" name="userId" id="userId" value="${vo.userId}" style="color: #ca2819" readonly/>
+        <input type="text" name="userId" id="userId" value="${vo.userId}" style="color: #F6C90E;" readonly/>
 
       </div>
       <div class="member-input">
@@ -59,16 +59,16 @@
         <label>비밀번호확인</label>
       </div>
       <div class="member-input">
-        <input type="text" name="userName" id="userName" value="${vo.userName}" style="color: rgb(0, 210,210);" readonly/>
+        <input type="text" name="userName" id="userName" value="${vo.userName}" style="color: #F6C90E;" readonly/>
       </div>
         <div class="member-input">
-          <input type="text" name="userTel" id="userTel" value="${vo.userTel}" style="color: #ca2819" readonly/>
+          <input type="text" name="userTel" id="userTel" value="${vo.userTel}" style="color: #F6C90E;" readonly/>
         </div>
       <div class="member-input">
-        <input type='text' name='birth' value="${vo.birth}" style="color: #ca2819" readonly/>
+        <input type='text' name='birth' value="${vo.birth}" style="color: #F6C90E;" readonly/>
       </div>
       <div class="member-input">
-        <input type="text" name="gender" value="${vo.gender}" style="color: #ca2819" readonly>
+        <input type="text" name="gender" value="${vo.gender}" style="color: #F6C90E;" readonly>
       </div>
       <div class="member-input">
         <input type="text" name="userEmail" id="userEmail" value="${vo.userEmail}" required/>

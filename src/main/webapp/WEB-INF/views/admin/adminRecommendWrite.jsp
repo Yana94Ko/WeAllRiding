@@ -40,41 +40,42 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul
-                class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-                id="accordionSidebar">
+        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #F6C90E;">
 
             <!-- Sidebar - Brand -->
-            <a
-                    class="sidebar-brand d-flex align-items-center justify-content-center"
+            <a class="sidebar-brand d-flex align-items-center justify-content-center"
                     href="/admin/adminMain">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon rotate-n-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bicycle" viewBox="0 0 16 16" style="color:#313942;">
+                        <path d="M4 4.5a.5.5 0 0 1 .5-.5H6a.5.5 0 0 1 0 1v.5h4.14l.386-1.158A.5.5 0 0 1 11 4h1a.5.5 0 0 1 0 1h-.64l-.311.935.807 1.29a3 3 0 1 1-.848.53l-.508-.812-2.076 3.322A.5.5 0 0 1 8 10.5H5.959a3 3 0 1 1-1.815-3.274L5 5.856V5h-.5a.5.5 0 0 1-.5-.5zm1.5 2.443-.508.814c.5.444.85 1.054.967 1.743h1.139L5.5 6.943zM8 9.057 9.598 6.5H6.402L8 9.057zM4.937 9.5a1.997 1.997 0 0 0-.487-.877l-.548.877h1.035zM3.603 8.092A2 2 0 1 0 4.937 10.5H3a.5.5 0 0 1-.424-.765l1.027-1.643zm7.947.53a2 2 0 1 0 .848-.53l1.026 1.643a.5.5 0 1 1-.848.53L11.55 8.623z"/>
+                    </svg>
                 </div>
-                <div class="sidebar-brand-text mx-3">
-                    WeAllRiding Admin <sup>TM</sup>
+                <div class="sidebar-brand-text mx-3" style="color: #313942;">
+                    WeAllRiding Admin <sup></sup>
                 </div>
             </a>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
             <!-- Heading -->
-            <div class="sidebar-heading">관리자</div>
+            <div class="sidebar-heading" style="color: #313942;">관리자</div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item"><a class="nav-link collapsed" href="#"
                                     data-toggle="collapse" data-target="#collapseTwo"
-                                    aria-expanded="true" aria-controls="collapseTwo"> <i
-                    class="fas fa-fw fa-cog"></i> <span>관리</span>
+                                    aria-expanded="true" aria-controls="collapseTwo" style="color: #313942;"> <i
+                    class="fas fa-fw fa-cog"></i> <span style="color: #313942;">관리</span>
             </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                      data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
+                    <div class="bg-gray-900 py-2 collapse-inner rounded">
                         <h6 class="collapse-header">관리자 메뉴</h6>
-                        <a class="collapse-item" href="${url}/admin/adminMember">회원 관리</a>
-                        <a class="collapse-item" href="${url}/admin/adminComty">커뮤니티
-                            관리</a> <a class="collapse-item" href="${url}/admin/adminRecommend">추천경로
-                        관리</a> <a class="collapse-item" href="${url}/admin/adminRiding">라이딩
-                        관리</a> <a class="collapse-item" href="${url}/admin/adminShop">정비샵
-                        관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminMember" style="color:#999999;">회원 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminComty" style="color:#999999;">커뮤니티 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRecommend" style="color:#999999;">추천코스 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminRiding" style="color:#999999;">라이딩 관리</a>
+                        <a class="collapse-item" href="${url}/admin/adminShop" style="color:#999999;">정비샵 관리</a>
                     </div>
                 </div>
             </li>
@@ -82,29 +83,31 @@
             <!-- 통계 -->
             <li class="nav-item"><a class="nav-link"
                                     href="${url}/admin/adminMain"> <i
-                    class="fas fa-fw fa-chart-area"></i> <span>통계</span></a></li>
+                    class="fas fa-fw fa-chart-area" style="color: #313942;"></i>
+                <span style="color: #313942;">통계</span></a></li>
 
             <!-- 선 나눔 -->
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider" style="border: 1px solid #313942">
 
             <!-- 사이드 메뉴 회원전용탭 -->
-            <div class="sidebar-heading">회원 전용</div>
+            <div class="sidebar-heading" style="color: #313942;">회원 전용</div>
 
             <!-- 회원 전용 메뉴 -->
             <li class="nav-item"><a class="nav-link collapsed" href="#"
                                     data-toggle="collapse" data-target="#collapsePages"
                                     aria-expanded="true" aria-controls="collapsePages"> <i
-                    class="fas fa-fw fa-folder"></i> <span>회원 메뉴 보기</span>
+                    class="fas fa-fw fa-folder" style="color: #313942;"></i>
+                <span style="color: #313942;">회원 메뉴 보기</span>
             </a>
                 <div id="collapsePages" class="collapse"
                      aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
+                    <div class="bg-gray-900 py-2 collapse-inner rounded">
                         <h6 class="collapse-header">회원 이용 메뉴</h6>
-                        <a class="collapse-item" href="${url}/courseCreate">코스</a> <a
-                            class="collapse-item" href="${url}/riding/ridingList">라이딩</a> <a
-                            class="collapse-item" href="${url}/shopView">장비샵</a> <a
-                            class="collapse-item" href="${url}/comty/comtyList">커뮤니티</a> <a
-                            class="collapse-item" href="${url}/idealView">이상형 월드컵</a>
+                        <a class="collapse-item" href="${url}/courseCreate" style="color:#999999;">코스</a> <a
+                            class="collapse-item" href="${url}/riding/ridingList" style="color:#999999;">라이딩</a> <a
+                            class="collapse-item" href="${url}/shopView" style="color:#999999;">장비샵</a> <a
+                            class="collapse-item" href="${url}/comty/comtyList" style="color:#999999;">커뮤니티</a> <a
+                            class="collapse-item" href="${url}/idealView" style="color:#999999;">이상형 월드컵</a>
                         <div class="collapse-divider"></div>
                         <%--                    <h6 class="collapse-header">Other Pages:</h6>--%>
                         <%--                    <a class="collapse-item" href="404.html">404 Page</a>--%>
@@ -115,7 +118,7 @@
 
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider d-none d-md-block" style="border: 1px solid #313942">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -155,12 +158,13 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="${url}/member/logout">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
                             </div>
                         </li>
+                    </ul>
                 </nav>
                 <!-- End of Topbar -->
 
@@ -210,7 +214,7 @@
                                     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>
                             <div class="map_wrap">
                                 <div id="courseInput">
-                                    <div class="fromWrap">
+                                    <div class="fromWrap" style="margin-bottom: 1vh; height: 5.1vh;">
                                         <img src="${url}/images/course/fromIcon.png">
                                         <input id="startPoint" type="text" placeholder="출발지를 입력하세요"
                                                class="placeInfoInsert"/>
@@ -220,7 +224,7 @@
                                         <img src="${url}/images/course/swap.png">
                                     </button>
                                     <div class="waypoints"></div>
-                                    <div class="toWrap">
+                                    <div class="toWrap" style="height: 5.1vh; margin-bottom: 1vh;">
                                         <img src="${url}/images/course/toIcon.png">
                                         <input id="endPoint" type="text" placeholder="도착지를 입력하세요"/>
                                         <input id="endCoordinate" type="hidden">

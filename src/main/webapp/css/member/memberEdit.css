@@ -17,7 +17,7 @@ main{
     padding-left: 40px;
     align-items: center;
     margin:0 auto;
-    background-color:rgba(255,255,255,0.6);
+    background-color:rgba(255,255,255,0.9);
     position : relative;
     top:200px;
     border-radius: 15px;
@@ -25,8 +25,8 @@ main{
 
 .memberForm h3{
     position: relative;
-    left: 200px;
-    color: #999999;
+    left: 220px;
+    color: #313942;
 }
 
 .member-input{
@@ -47,9 +47,9 @@ main{
     padding: 20px 10px 10px;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #999;
-    font-size: 12px;
-    color: #fff;
+    border-bottom: 1px solid#313942;
+    font-size: 14px;
+    color: #313942;
     outline: none;
 }
 
@@ -57,16 +57,16 @@ main{
     position: absolute;
     left: 10px;
     top: 15px;
-    font-size: 12px;
-    color: #999;
+    font-size: 14px;
+    color: #313942;
     transition: all .5s ease;
 }
 
 .member-input input:focus + label,
 .member-input input:valid + label{
     top: -2px;
-    font-size: 7px;
-    color: rgb(0, 210, 210);
+    font-size: 13px;
+    color: #313942;
 }
 
 .radio{
@@ -109,9 +109,9 @@ main{
     padding: 20px 10px 10px;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #999;
-    font-size: 12px;
-    color: #fff;
+    border-bottom: 1px solid #313942;
+    font-size: 14px;
+    color: #313942;
     outline: none;
 }
 
@@ -119,21 +119,21 @@ main{
     position: absolute;
     left: 10px;
     top: 15px;
-    font-size: 12px;
-    color: #999;
+    font-size: 14px;
+    color: #313942;
     transition: all .5s ease;
 }
 
 .tel input:focus + label,
 .tel input:valid + label{
     top: -2px;
-    font-size: 7px;
-    color: rgb(0, 210, 210);
+    font-size: 13px;
+    color: #313942;
 }
 
 .bikeType{
     font-size: 12px;
-    color: #999999;
+    color: #313942;
     position: relative;
     left: 34px;
     top: 45px;
@@ -150,10 +150,10 @@ main{
 .edit-btn button{
     width: 80%;
     height: 50px;
-    background: rgb(0, 210, 210);
-    color: white;
+    background: #F6C90E;
+    color:#313942;
     border: none;
-    border-radius: 25px;
+    border-radius: 7px;
     cursor: pointer;
     float: left;
     margin-bottom: 10px;
@@ -175,7 +175,7 @@ main{
     background: #C13827;
     color: white;
     border: none;
-    border-radius: 25px;
+    border-radius: 7px;
     cursor: pointer;
     float: left;
     margin-bottom: 10px;
@@ -217,9 +217,9 @@ main{
     padding: 20px 10px 10px;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #999;
-    font-size: 12px;
-    color: #fff;
+    border-bottom: 1px solid #313942;
+    font-size: 14px;
+    color: #313942;
     outline: none;
 }
 
@@ -227,14 +227,14 @@ main{
     position: absolute;
     left: 10px;
     top: 15px;
-    font-size: 12px;
-    color: #999;
+    font-size: 14px;
+    color: #313942;
     transition: all .5s ease;
 }
 
 .tel-2 input:focus + label,
 .tel-2 input:valid + label{
     top: -2px;
-    font-size: 7px;
-    color: rgb(0, 210, 210);
+    font-size: 13px;
+    color: #313942;
 }

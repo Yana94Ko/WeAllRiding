@@ -30,9 +30,9 @@
     <section class="loginForm">
         <div id="log">
                 <!-- 메뉴 -->
-                <ul class="nav nav-tabs" style="width: 285px; position: relative; left: 100px; margin-bottom: 25px;">
-                    <li class="nav-item"><a href="#t1" class="nav-link active" data-toggle="tab" style="color: #ca2819">아이디 찾기</a></li>
-                    <li class="nav-item"><a href="#t2" class="nav-link"  data-toggle="tab" style="color: #ca2819">비밀번호 찾기</a></li>
+                <ul class="nav nav-pills" style="width: 285px; position: relative; left: 100px; margin-bottom: 25px;">
+                    <li class="nav-item"><a href="#t1" class="nav-link active" data-toggle="tab" style="color: #313942; border-radius: 7px">아이디 찾기</a></li>
+                    <li class="nav-item"><a href="#t2" class="nav-link"  data-toggle="tab" style="color: #313942; border-radius: 7px">비밀번호 찾기</a></li>
                 </ul>
                 <!-- 콘텐츠 -->
                 <div class="tab-content">
@@ -49,7 +49,7 @@
                                 <span id="showStateFindId" class="state">가입시 입력한 이름과 전화번호를 입력해주세요</span>
                             </div>
                             <div class="join-btn">
-                                <button class="btn" style="background-color: rgb(0, 215, 215);" type="button" value="아이디 찾기" onclick="FindUserId()">아이디 찾기</button>
+                                <button class="btn" style="background-color: #3A4750;" type="button" value="아이디 찾기" onclick="FindUserId()">아이디 찾기</button>
                             </div>
                             <div class="showStateFindId">
                             </div>

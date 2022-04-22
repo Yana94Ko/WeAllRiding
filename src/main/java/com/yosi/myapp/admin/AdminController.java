@@ -170,6 +170,7 @@ public class AdminController {
 		return mav;
 	}
 
+
 	// 관리자 페이지 라이딩 리스트 출력
 	@GetMapping("adminRiding")
 	public ModelAndView AdminRiding(RidingPagingVO pVO) {
@@ -211,7 +212,8 @@ public class AdminController {
 	@GetMapping("adminRecommendWrite")
 	public ModelAndView adminRecommendWrite() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("adminRecommendWrite_temp");
+
+		mav.setViewName("/admin/adminRecommendWrite");
 		return mav;
 	}
 	
