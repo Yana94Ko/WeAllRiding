@@ -30,8 +30,8 @@
                                 <a href="${url}/recommendView" class="btn btn-4">추천 코스로 라이딩 만들기</a>
                             </div>
                         </li>
-                        <h2>코스 정보</h2>
-                        <div class="item2" id="courseInfoLst1" >
+                        <h2 class="hiddenIfNone2">코스 정보</h2>
+                        <div class="item2 hiddenIfNone2" >
                             <div class="item2-1 ">코스</div>
                             <div class="item2-2 ">
                                 <span id="startPoint"></span>&nbsp;-&nbsp;
@@ -41,7 +41,7 @@
                         </div>
 
                         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>
-                        <div><div id="map" style="width:100%;height:400px;"></div><br>
+                        <div class="hiddenIfNone"><div id="map" style="width:100%;height:400px;"></div><br>
                             <li class="courseInfoLst">
                                 <div class="item">
                                     <div class="item-1">

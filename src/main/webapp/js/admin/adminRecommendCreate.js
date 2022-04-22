@@ -1025,3 +1025,34 @@ function recommendDataSend(routeNo){
 }
 
 //====================================> 코스 정보 표시 및 라이딩 개설 관련 End <======================================
+$('#recHashtag').on("keyup", function(event) {
+	let keyword = document.getElementById("recHashtag").value;
+	if (window.event.keyCode == 32) {
+		$('input[id=recHashtag]').val(keyword.substr(0, keyword.length - 1)+"#");
+	}
+	if(window.event.keyCode == 8){
+		if(keyword==""){
+			keyword.value="#"
+		}
+	}
+});
+$('#recHashtag').on("keyup", function(event) {
+	let keyword = document.getElementById("recHashtag").value;
+	if (keyword.substring(0,0)!="#" && keyword.length==0) {
+		$('input[id=recHashtag]').val("#");
+	}
+});
+$('#recHashtag').on("focus", function(event) {
+	if($('input[id=recHashtag]').val()!="#"){
+		$('input[id=recHashtag]').val($('input[id=recHashtag]').val( )+"#");
+	}
+});
+$('#recHashtag').on("focusout", function(event) {
+	let keyword = document.getElementById("recHashtag").value;
+	if($('input[id=recHashtag]').val()=="#"){
+		$('input[id=recHashtag]').val("");
+	}
+	if(keyword.substring(keyword.length-1)=='#'){
+		$('#recHashtag').val(keyword.substring(0,keyword.length-1));
+	}
+})

@@ -30,7 +30,7 @@
     <section class="loginForm">
         <div id="log">
                 <!-- 메뉴 -->
-                <ul class="nav nav-pills" style="width: 285px; position: relative; left: 100px; margin-bottom: 25px;">
+                <ul class="nav nav-pills" style="width: 312px; position: relative; left: 80px; margin-bottom: 25px;">
                     <li class="nav-item"><a href="#t1" class="nav-link active" data-toggle="tab" style="color: #313942; border-radius: 7px">아이디 찾기</a></li>
                     <li class="nav-item"><a href="#t2" class="nav-link"  data-toggle="tab" style="color: #313942; border-radius: 7px">비밀번호 찾기</a></li>
                 </ul>

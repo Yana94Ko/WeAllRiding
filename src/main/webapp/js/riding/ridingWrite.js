@@ -5,8 +5,8 @@
 var courseSendDataRecived = document.getElementById("courseSendData");
 console.log(!courseSendDataRecived.value);
 if(!courseSendDataRecived.value){
-	document.getElementById("courseInfoLst").style.display="none";
-	document.getElementById("courseInfoLst1").style.display="none";
+	$(".hiddenIfNone").css("display","none");
+	$(".hiddenIfNone2").css("display","none");
 }else{
 	console.log("들어왔냐")
 	document.getElementById("courseMakeLst").style.display="none";
@@ -190,7 +190,7 @@ if(!courseSendDataRecived.value){
 $('#ridingKeyword').on("keyup", function(event) {
 	let keyword = document.getElementById("ridingKeyword").value;
 	if (window.event.keyCode == 32) {
-		$('input[id=ridingKeyword]').val($('input[id=ridingKeyword]').val()+"#");
+		$('input[id=ridingKeyword]').val(keyword.substr(0, keyword.length - 1)+"#");
 	}
 	if(window.event.keyCode == 8){
 		if(keyword==""){
@@ -217,7 +217,7 @@ $('#ridingKeyword').on("focusout", function(event) {
 	if(keyword.substring(keyword.length-1)=='#'){
 		$('#ridingKeyword').val(keyword.substring(0,keyword.length-1));
 	}
-});
+})
 function submitRidingFrm(){
 	document.getElementById('ridingFrm').submit()
 }

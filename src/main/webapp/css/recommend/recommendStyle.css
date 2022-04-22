@@ -299,25 +299,28 @@ h1 {
     border: 3px solid var(--color-theme-2);
 }
 .liTag:hover{
-    background: var(--color-theme-2-gra);
-
+    background: var(--color-theme-2);
 }
 .liTag:hover a{
     color: #FFFFFF;
 }
 .liTag.active {
     font-weight: bold;
-    background: var(--color-theme-2-gra);
+    background: var(--color-theme-2);
     transition: .3s ease-in-out;
     box-shadow: 0 3px 5px 0 rgb(0 0 0 / 20%), 0 1px 0px 0 rgb(0 0 0 / 19%);
     cursor: pointer;
     border: 2px solid var(--color-theme-2);
+    color: #FFFFFF;
+
 }
 .liTag.active a{
-    color: #FFFFFF;
+    color: var(--color-theme-0);
+
 }
 .liTag.active:hover {
     background: rgba(255, 192, 0, 1);
+    color: #ffffff;
 }
 
 .aTag {
@@ -326,7 +329,7 @@ h1 {
 }
 
 .aTag.active {
-    color: #ffffff;
+    color: var(--color-theme-0);
 }
 
 

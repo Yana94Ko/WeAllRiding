@@ -333,8 +333,8 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body" style="width: 400px; height: 660px; left: 80px; top: 40px; text-align: center;">
-                                                <form name="form1" method="post" action="/admin/adminMemberEdit" style="position: relative; left: 85px;">
+                                            <div class="modal-body" style="width: 600px; height: 660px; left: 80px; top: 40px; text-align: center;">
+                                                <form name="form1" method="post" action="/admin/adminMemberEdit" style="position: relative; left: 60px;">
 
                                                         <table id="userInfo${status.count}" border="1">
                                                             <tr>
@@ -363,11 +363,11 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>생년월일</td>
-                                                                <td><input style="margin-bottom: 10px; width: 228px" type="date" name="birth" id="birth" value="${av.birth}"></td>
+                                                                <td><input style="margin-bottom: 10px; width: 251px" type="date" name="birth" id="birth" value="${av.birth}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>회원정지일</td>
-                                                                <td><input style="margin-bottom: 10px; width: 228px" type="datetime-local" id="suspend" name="suspendDate" value="${av.suspendDate}"></td>
+                                                                <td><input style="margin-bottom: 10px; width: 251px" type="datetime-local" id="suspend" name="suspendDate" value="${av.suspendDate}"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>관리자 권한</td>
@@ -378,7 +378,7 @@
                                                                 <td><input type="password" id="userPwd" name="userPwd" value="${av.userPwd}"></td>
                                                             </tr>
                                                         </table>
-                                                        <div class="modal-footer" style="position: relative; right: 25px; width: 365px; top: 32px; ">
+                                                        <div class="modal-footer" style="position: relative; right: 25px; width: 400px; top: 32px; ">
                                                             <button type="button" onclick="AdminMemberDelete()" class="btn btn-danger">삭제하기</button>
                                                             <button type="submit"  class="btn btn-primary">수정하기</button>
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
