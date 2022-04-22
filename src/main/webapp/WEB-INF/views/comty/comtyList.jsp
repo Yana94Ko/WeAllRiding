@@ -175,7 +175,6 @@ main {
 	<div class="container">
 		<div class="containerWrap">
 			<div class="comtyContainer">
-				<h1 class="comtyTitle">글목록보기</h1>
 				<ul id="cList">
 					<li id="cListFirst">번호</li>
 					<li id="cListFirst">제목</li>

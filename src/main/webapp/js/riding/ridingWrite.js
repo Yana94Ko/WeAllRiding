@@ -3,8 +3,10 @@
 //===================================> 지도/차트/코스정보 생성 Start <====================================================
 //-------------------> courseCreate에서 전달받은 데이터 저장 Start <--------------------------
 var courseSendDataRecived = document.getElementById("courseSendData");
+console.log(!courseSendDataRecived.value);
 if(!courseSendDataRecived.value){
 	document.getElementById("courseInfoLst").style.display="none";
+	document.getElementById("courseInfoLst1").style.display="none";
 }else{
 	console.log("들어왔냐")
 	document.getElementById("courseMakeLst").style.display="none";
@@ -13,10 +15,10 @@ if(!courseSendDataRecived.value){
 	var startPointName = courseSendData.startPointName;
 	var endPointName = courseSendData.endPointName;
 	var waypointNames = courseSendData.wayPointNames;
-	var distance = "총 거리 : " + courseSendData.courseDistance;
-	var duration = "예상 소요 시간 : " + courseSendData.courseDuration;
-	var ascent = "상승 고도 : " + courseSendData.courseAscent;
-	var descent = "/ 하강 고도 : " + courseSendData.courseDescent;
+	var distance = courseSendData.courseDistance;
+	var duration =  courseSendData.courseDuration;
+	var ascent = courseSendData.courseAscent;
+	var descent =  courseSendData.courseDescent;
 	var points=courseSendData.pointsChoiced;
 	var position = new kakao.maps.LatLng(courseSendData.position.Ma,courseSendData.position.La);
 	var level = courseSendData.level;

@@ -93,7 +93,7 @@
 								</c:forEach>
 							</ul>
 						</c:if>
-						<c:if test="${nickName != vo.nickname }">
+						<c:if test="${nickName != vo.nickname}">
 							<ul id="vList">
 								<li id="vListFirst">참가 상태</li>
 								<li id="vListFirst">닉네임</li>

@@ -5,7 +5,7 @@
 	
 <mapper namespace = "com.yosi.myapp.riding.RidingDAO">
 	<select id="ridingList" resultType="RidingVO">
-		select ridingNo, nickname, ridingKeyword, ridingSubject, 
+		select ridingNo, nickname, ridingKeyword, ridingSubject,
 		ridingContent, applyUser, courseLevel, maxUser , applicantCnt,
 		date_format(startDate, '%Y-%m-%d') as startDate , date_format(endDate, '%Y-%m-%d') as endDate , ridingHit, ridingWriteDate, courseSendData
 		from ridingBoard

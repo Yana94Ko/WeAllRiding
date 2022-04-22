@@ -211,7 +211,7 @@ public class AdminController {
 	@GetMapping("adminRecommendWrite")
 	public ModelAndView adminRecommendWrite() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("adminRecommendWrite_temp");
+		mav.setViewName("admin/adminRecommendWrite");
 		return mav;
 	}
 	
