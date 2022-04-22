@@ -489,6 +489,20 @@ main {
 	transition: .3s ease-in-out;
 }
 /* 노란색 버튼 */
+.btnEdit3{
+	width: auto;
+	height: 10vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-2);
+	color: black;
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+	margin-right: 0.4vw;
+}
 .btnEdit2{
 	width: auto;
 	height: 4vh;
@@ -538,4 +552,37 @@ main {
 	cursor: pointer;
 	padding: 0 1vw 0 1vw;
 	float: right;
+}
+.memberOkbtn {
+	width: 4vw;
+	height: 2vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-2);
+	color: blcak;
+	font-size: 1em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+	margin-right: 0.4vw;
+}
+.memberDelbtn {
+	width: 4vw;
+	height: 2vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-1);
+	color: #ffffff;
+	font-size: 1em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+}
+#ridingReplyComent {
+	width:48vw;
+	height:10vh;
+	border-radius: 5px;
+	border-color: #ddd;
 }
