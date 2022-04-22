@@ -87,7 +87,7 @@
                         + "</div></div>";
                     let subscriber = $("#subscriber").val()
                     //본인글일때 수정폼이 있어야 한다.
-                    if (subscriber == '${nickName}') {
+                    if (vo.nickname == '${nickName}') {
                         tag += "<div style='display:none' id='abcd'><form method='post'>";
                         tag += "<input type='hidden' name='ridingReplyNo' value='"+vo.ridingReplyNo+"'/>";
                         tag += "<textarea name='ridingReplyComent' style='width:500px; height:50px;'>"
@@ -126,6 +126,7 @@
                 success : function(result) {
                     console.log(result);
                     ridingReplyListAll();
+                    location.href="/riding/ridingView?ridingNo=" + ridingNo;
                 },
                 error : function() {
                     console.log('수정에러발생');
@@ -142,6 +143,7 @@
                     success : function(result) {
                         console.log(result);
                         ridingReplyListAll();
+                        location.href="/riding/ridingView?ridingNo=" + ridingNo;
                     },
                     error : function() {
                         console.log("댓글삭제에러발생")
@@ -168,6 +170,7 @@
                     $("#ridingReplyComent").val("");
                     //댓글 목록 refresh되어야 한다.
                     ridingReplyListAll();
+                    location.href="/riding/ridingView?ridingNo=" + ridingNo;
                 },
                 error : function(e) {
                     console.log(e.responseText);
@@ -368,19 +371,18 @@
                 <hr>
                 <br>
 
-                <div id="listHeader">
+                <div>
                     <!-- 댓글 쓰기 폼 -->
-                    <c:if test="${logStatus=='Y' }">
-                        <form method='post'>
-                            <input type="hidden" name="ridingNo" value="${vo.ridingNo }"/>
-                            <textarea id="ridingReplyComent" name="ridingReplyComent"
-                                      style="width: 100%; height: 100px;"></textarea><br>
-                            <input id="ridingReplyBtn" type="button" value="댓글등록" id="replyBtn"
-                                   onclick="ridingReplyFrm('${nickName}', ${vo.ridingNo})">
-                        </form>
-                    </c:if>
-                    <!-- 댓글목록이 나올 자리 -->
-                    <div id="ridingReplyList"></div>
+					<c:if test="${logStatus=='Y' }">
+						<form method='post' id="ridingReplyFrm">
+							<input type="hidden" name="ridingNo" value="${vo.ridingNo }" />
+							<textarea name="ridingReplyComent" id="ridingReplyComent"
+								style="width: 100%; height: 100px;"></textarea>
+							<br> <input type="button" value="댓글등록" id="replyBtn" onclick="ridingReplyFrm()">
+						</form>
+					</c:if>
+					<!-- 댓글목록이 나올 자리 -->
+					<div id="ridingReplyList"></div>
                 </div>
             </div>
         </div>
