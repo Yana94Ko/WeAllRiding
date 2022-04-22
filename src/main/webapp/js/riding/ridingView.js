@@ -298,14 +298,14 @@ function ridingReplyListAll() { //현재글의 댓글을 모두 가져오기
 			var $result = $(result); // vo, vo, vo, ,,,
 			var tag = "<ul>";
 			$result.each(function(idx, vo) {
-				tag += "<li><div id='dddd' style='color:black;'><div id='NN'>" + vo.nickname + "</div>";
+				tag += "<li id='replySet'><div id='replyView' style='color:black;'><div id='NN'>" + vo.nickname + "</div>";
 
 				// 	 'goguma'== goguma
 				if (vo.nickname == '${nickName}') {
 					tag += "<input type='button' value='삭제' title='" + vo.ridingReplyNo + "'/>";
 					tag += "<input type='button' value='수정' id='ridingReplyListEdit'/>";
 				}
-				tag += "<br/><div>" + vo.ridingReplyComent + "</div>";
+				tag += "<div>" + vo.ridingReplyComent + "</div>";
 				tag += "<div id='CRWD' style='color:lightgray;'>" + vo.ridingReplyWriteDate
 					+ "</div></div>";
 
@@ -319,7 +319,7 @@ function ridingReplyListAll() { //현재글의 댓글을 모두 가져오기
 					tag += "<input type='submit' value='수정' id='ridingReplyListEditOk'/>";
 					tag += "</form></div>";
 				}
-				tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
+				tag += "</li><div id='replyDiv'>";
 			});
 			tag += "</ul>";
 			$("#ridingReplyList").html(tag);

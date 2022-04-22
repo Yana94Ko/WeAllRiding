@@ -2,90 +2,209 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-.comtyContainer {
-	width: 80%;
-	margin: 0 auto;
-	padding: 0 auto;
-}
-ul{
-	margin: 0px;
-	padding: 0px;
-}
-#comtyFrm {
-	background-color: rgba(234, 234, 234);
-	font-size:0.8em;
-	width: 100%;
-	height: 25px;
-	color: black;
-	text-align: right;
-	padding: 10px 0 10px;
-}
-#comtyViewContent {
-	min-height: 400px;
-	height: 100%;
-	color: black;
-}
-#editBtn {
-	background-color: rgba(255, 217, 102);
-	padding: 10px 50px;
-	margin: 0px;
-	border-radius: 6px;
-	border-color: rgba(204, 204, 204);
-	float: right;
-}
-#delBtn {
-	background-color: rgba(231, 76, 60);
-	padding: 10px 50px;
-	margin: 0px 20px;
-	border-radius: 6px;
-	border-color: rgba(204, 204, 204);
-	float: right;
-}
-#replyBtn {
-	background-color: rgba(234, 234, 234);
-	padding: 10px 50px;
-	border-radius: 6px;
-	border-color: rgba(204, 204, 204);
-	float: center;
-	width: 100%;
-}
-#comtyReplyList ul{
-	padding: 10px;
-	margin: 0px auto;
-	padding-bottom: 50px;
-}
-#comtyReplyList ul>li {
-	color: black;
-}
-#comtyReplyList input {
-	background-color: none;
-	padding: 2px 2px;
-	border-radius: 6px;
-	border-color: rgba(204, 204, 204);
-	float: right;
-	size: 20px;
-	margin: 1px;
-}
-#comtyReplyListEdit {
-	background-color: rgba(255, 255, 255);
-	padding: 10px 50px;
-	margin: 0px;
-	border: none;
-	float: right;
-}
-#comtyReplyListDel {
-	background-color: rgba(255, 255, 255);
-	padding: 10px 50px;
-	margin: 0px;
-	border: none;
-	float: right;
-}
-#NN {
-	font-weight: bold;
-}
-#CRWD {
-	font-size: 0.5em;
-}
+	main *{
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-font-smoothing: antialiased;
+		-moz-font-smoothing: antialiased;
+		-o-font-smoothing: antialiased;
+		font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+	main {
+		font-family: "Roboto", Helvetica, Arial, sans-serif;
+		font-weight: 100;
+		font-size: 12px;
+		line-height: 30px;
+		color: #777;
+		background: #dddddd;
+		width:100%;
+	}
+	.comtyContainer {
+		margin: 0 auto 0 auto;
+		padding: 0 auto;
+		width: 80%;
+	}
+	.container {
+		max-width: 1500px;
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+	}
+	.containerWrap {
+		min-height: 78.5vh;
+		background: var(--color-lightGray-1);
+		padding: 25px;
+		margin: 0 auto;
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	}
+	.comtySubject{
+		font-size: 1.5vw;
+		font-weight: 800;
+		padding-bottom: 1vh;
+		line-height: 2vw;
+	}
+	.comtyTitle{
+		margin: 1vh 0 2vh 0;
+		padding: 0;
+		font-size: 2.5vw;
+		font-weight: 700;
+		line-height: 9vh;
+		color: var(--color-theme-0);
+	}
+	ul{
+		margin: 0px;
+		padding: 0px;
+	}
+	#comtyFrm{
+		border-bottom: #3a47509e 1px solid;
+		padding: -0.5vw 0 0.5vw;
+		line-height: 1vw;
+	}
+	#comtyFrm >span {
+		height: 2vw;
+		line-height: 2vw;
+		color: darkgray;
+		font-size: 1vw;
+		text-align: left;
+	}
+	#comtyFrm >span:nth-child(2){
+		float:right;
+		padding: 0.5vw 0 0.7vw;
+		line-height: 1vw;
+	}
+	.commentsWrap{
+		font-size: 1vw;
+		line-height: 1vw;
+		border-bottom: var(--color-theme-0) solid 0.5px;
+	}
+	.comments{
+		display: flex;
+	}
+	#NN{
+		font-weight: bold;
+		width: 5vw;
+	}
+	#comtyReplyComentwriten {
+		width: 39vw;
+	}
+	.cmtreplyWrite{
+		padding:2vh;
+		display: flex;
+		line-height: 2vw;
+	}
+	.cmtreplyWrite> div {
+		line-height: 10vh;
+	}
+	#comtyReplyComent{
+		width: 42vw;
+		height: 10vh;
+	}
+	.comtyReplyComentWrap{
+		background: #6f9fd540;
+		font-size: 1vw;
+		line-height: 1vw;
+		margin-top: 2vh;
+	}
+	.replyRightTitle{
+		width: 8vw;
+		line-height: 2vw;
+	}
+	.comments > div{
+		line-height: 2vw;
+	}
+	#comtyViewContent {
+		min-height: 21vh;
+		/* height: 100%; */
+		padding-top: 2vh;
+		font-size: 1vw;
+		line-height: 1vw;
+		color: #000000e0;
+	}
+	#replyTitle{
+		font-size: 1.3vw;
+		font-weight: 800;
+		padding: 4vh 0 1.2vh 0;
+		border-bottom: var(--color-theme-1) 2px solid;
+	}
+	#editBtn {
+		background-color: rgba(255, 217, 102);
+		padding: 10px 50px;
+		margin: 0px;
+		border-radius: 6px;
+		border-color: rgba(204, 204, 204);
+		float: right;
+	}
+	#delBtn {
+		background-color: rgba(231, 76, 60);
+		padding: 10px 50px;
+		margin: 0px 20px;
+		border-radius: 6px;
+		border-color: rgba(204, 204, 204);
+		float: right;
+	}
+	#replyBtn {
+		background-color: var(--color-theme-0);
+		border-radius: 6px;
+		border-color: rgba(204, 204, 204);
+		float: center;
+		margin: 1px;
+		text-align: center;
+		width: 8vw;
+		color:white;
+		height: 10vh;
+		margin-left:1vw;
+	}
+	#comtyReplyList ul{
+		padding-top: 2vh;
+		margin: 0px auto;
+		padding-bottom: 2vh;
+	}
+	#comtyReplyList ul>li {
+		color: black;
+	}
+	#comtyReplyList input {
+		background-color: var(--color-theme-2);
+		border-radius: 6px;
+		border-color: rgba(204, 204, 204);
+		float: center;
+		margin: 1px;
+		text-align: center;
+		width: 4vw;
+		height: 2vw;
+	}
+	.comtyReplyEdit{
+		width: 58vw;
+		height: 9vh;
+	}
+	.comtyReplyEditWrap{
+		padding: 1vw;
+		background: #3a47502e;
+	}
+	.replyEdit{
+		position: relative;
+		top: 1vh;
+		left: 53vw;
+	}
+	#comtyReplyListEdit {
+		padding: 0px 0px;
+		margin: 0px;
+		border: none;
+	}
+	#comtyReplyListDel {
+		padding: 0px 0px;
+		margin: 0px;
+		border: none;
+	}
+	#NN {
+		font-weight: bold;
+	}
+	#CRWD {
+		font-size: 0.7vw;
+		padding-right: 0.5vw;
+		padding-left: 0.5vw;
+	}
 </style>
 <script>
 	function del() {
@@ -110,30 +229,29 @@ ul{
 						data : params,
 						success : function(result) {
 							var $result = $(result); // vo, vo, vo, ,,,
-							var tag = "<ul>";
+							var tag = "<ul class='commentsWrap'>";
 							$result
 									.each(function(idx, vo) {
-										tag += "<li><div><div id='NN'>" + vo.nickname + "</div>";
+										tag += "<li><div class='comments'><div id='NN'>" + vo.nickname + "</div>";
 										// 	 'goguma'== goguma
+										tag += "<div id='comtyReplyComentwriten' >" + vo.comtyReplyComent + "</div>";
+										tag += "<div id='CRWD' style='color:lightgray;'>" + vo.comtyReplyWriteDate
+												+ "</div>";
 										if (vo.nickname == '${nickName}') {
 											tag += "<input type='button' value='삭제' id='comtyReplyListDel' title='"+vo.comtyReplyNo+"' />";
-											tag += "<input type='button' value='수정' id='comtyReplyListEdit'/>";
+											tag += "<input type='button' value='수정' id='comtyReplyListEdit'/></div>";
 										}
-										tag += "<br/><div>" + vo.comtyReplyComent + "</div>";
-										tag += "<div id='CRWD' style='color:lightgray;'>" + vo.comtyReplyWriteDate
-												+ "</div></div>";
 										
 										//본인글일때 수정폼이 있어야 한다.
 										if (vo.nickname == '${nickName}') {
 											tag += "<div style='display:none'><form method='post'>";
 											tag += "<input type='hidden' name='comtyReplyNo' value='"+vo.comtyReplyNo+"'/>";
-											tag += "<textarea name='comtyReplyComent' style='width:500px; height:50px;'>"
+											tag += "<div class='comtyReplyEditWrap'><textarea class='comtyReplyEdit'name='comtyReplyComent'>"
 													+ vo.comtyReplyComent
 													+ "</textarea>";
-											tag += "<input type='submit' value='수정'/>";
+											tag += "<input type='submit' class='replyEdit' value='수정'/></div>";
 											tag += "</form></div>";
 										}
-										tag += "</li><br/><hr style='backgrond-color:lightgray;'>";
 									});
 							tag += "</ul>";
 							$("#comtyReplyList").html(tag);
@@ -226,36 +344,47 @@ ul{
 </div>
 <!-- parallax END -->
 <main>
-	<div class="comtyContainer">
-		<h2>${vo.comtySubject }</h2>
-		<ul>
-			<li id="comtyFrm">글 번호 : ${vo.comtyNo }&nbsp;&nbsp;&nbsp;&nbsp;
-				작성자 : ${vo.nickname }&nbsp;&nbsp;&nbsp;&nbsp; 작성일 :
-				${vo.comtyWriteDate }&nbsp;&nbsp;&nbsp;&nbsp; 조회수 : ${vo.comtyHit }&nbsp;&nbsp;&nbsp;
-			</li>
-		</ul>
-		<ul>
-			<li id="comtyViewContent">${vo.comtyContent }</li>
-		</ul>
-		<hr>
-		<c:if test="${userId == vo.nickname }">
-			<div id="viewBTN">
-				<button id="delBtn" onclick="javascript:del()">글 삭제</button>
-				<button id="editBtn" onclick="javascript:edit()">글 수정</button>
+	<div class="container">
+		<div class="containerWrap">
+			<div class="comtyContainer">
+				<h1 class="comtyTitle">게시글</h1>
+				<h2 class="comtySubject">${vo.comtySubject }</h2>
+				<ul id="comtyFrm">
+					<span>글 번호 : ${vo.comtyNo }&nbsp;&nbsp;&nbsp;&nbsp;
+						작성자 : ${vo.nickname }&nbsp;&nbsp;&nbsp;&nbsp; 작성일 :
+						${vo.comtyWriteDate }&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+					</span>
+					<span>
+						조회수 : ${vo.comtyHit }&nbsp;&nbsp
+					</span>
+				</ul>
+				<ul>
+					<li id="comtyViewContent">${vo.comtyContent }</li>
+				</ul>
+				<c:if test="${userId == vo.nickname }">
+					<div id="viewBTN">
+						<button id="delBtn" onclick="javascript:del()">글 삭제</button>
+						<button id="editBtn" onclick="javascript:edit()">글 수정</button>
+					</div>
+				</c:if>
+				<!-- 댓글목록이 나올 자리 -->
+				<h2 id="replyTitle">전체 댓글</h2>
+				<div id="comtyReplyList"></div>
+				<!-- 댓글 쓰기 폼 -->
+				<c:if test="${logStatus=='Y' }">
+					<form method='post' id="comtyReplyFrm">
+						<input type="hidden" name="comtyNo" value="${vo.comtyNo }" />
+						<div class='comtyReplyComentWrap'>
+							<div class="cmtreplyWrite">
+								<div class="replyRightTitle">댓글 작성</div>
+								<textarea name="comtyReplyComent" id="comtyReplyComent"></textarea>
+								<input type="submit" value="댓글등록" id="replyBtn">
+							</div>
+						</div>
+
+					</form>
+				</c:if>
 			</div>
-		</c:if>
-		<br/><br/><br/><br/>
-		<!-- 댓글 쓰기 폼 -->
-		<c:if test="${logStatus=='Y' }">
-			<form method='post' id="comtyReplyFrm">
-				<input type="hidden" name="comtyNo" value="${vo.comtyNo }" />
-				<textarea name="comtyReplyComent" id="comtyReplyComent"
-					style="width: 100%; height: 100px;"></textarea>
-				<br>
-				<input type="submit" value="댓글등록" id="replyBtn">
-			</form>
-		</c:if>
-		<!-- 댓글목록이 나올 자리 -->
-		<div id="comtyReplyList"></div>
+		</div>
 	</div>
 </main>

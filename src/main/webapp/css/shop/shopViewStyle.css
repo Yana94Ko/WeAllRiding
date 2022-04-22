@@ -22,7 +22,6 @@ main {
 .map_wrap, .map_wrap * {
 	padding: 0;
 	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
-	font-size: 0.8vw;
 }
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active {
 	color: #000;
@@ -101,6 +100,7 @@ main {
 #menu_wrap .option .btnSearch svg{
 	font-size:1vw;
 }
+
 
 #placesList li {
 	list-style: none;
@@ -213,6 +213,7 @@ main {
 }
 .info {
 	color: var(--color-theme-0);
+	font-size: 0.8vw;
 }
 .wrap {
 	position: relative;
@@ -303,4 +304,7 @@ main {
     height: 6.25em;
     border: none;
     resize: none;
+}
+.shopInfo {
+	font-size : 0.5vw;
 }

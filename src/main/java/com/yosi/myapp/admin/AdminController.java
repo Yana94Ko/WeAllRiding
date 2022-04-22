@@ -213,7 +213,7 @@ public class AdminController {
 	public ModelAndView adminRecommendWrite() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("/admin/adminRecommendWrite");
+		mav.setViewName("admin/adminRecommendWrite");
 		return mav;
 	}
 	

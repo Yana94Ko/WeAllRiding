@@ -148,8 +148,6 @@ if(!window['idealView']) {
           if(_O.Vars.curRound > 1 && _O.Vars.curStage > 0) footerObj.className = 'footer';
           else footerObj.className = 'footer soff';
         } else {
-          if(_O.Vars.curRound > 1) footerObj.className = 'footer';
-          else footerObj.className = 'footer soff';
         }
       }
     };
@@ -160,7 +158,15 @@ if(!window['idealView']) {
         const idx = obj.id.split('_')[1];
         v.gameHistory[v.curRound.toString()][idx].selected = true;
         if(v.curStage < v.curRound/2) v.curStage++;
-        if(v.curStage === v.curRound/2) _O.Ctrl.nextRound();
+        if(v.curStage === v.curRound/2) {
+          _O.Ctrl.nextRound();
+          if(v.curRound!=1){
+            alert((v.curRound*2)+"강 끝!");
+          }else if(v.curRound==1){
+            alert("최종 선택 완료!");
+            $("#cancel").css("visibility:visible");
+          }
+        }
         _O.Html.setItem();
         _O.Ctrl.prevCancelOnOff();
       },
@@ -175,7 +181,7 @@ if(!window['idealView']) {
         obj.setAttribute('hover', 'false');
       },
       clickCancel() {
-        _O.start();
+        location="/idealView";
       },
       clickPrev() {
         const v = _O.Vars;
@@ -230,7 +236,7 @@ if(!window['idealView']) {
       },
       setRoundTitle() {
         if(_O.Vars.curRound > 1) document.getElementById('roundTitle').innerText = `${_O.Vars.curRound}강 선택`;
-        else document.getElementById('roundTitle').innerText = `축하합니다. 최종 이상형이 선정되었습니다.`;
+        else document.getElementById('roundTitle').innerHTML = `당신이 좋아하는 자전거 타입은!`;
       },
       setItem() {
         const s = _O.Html.getItem();
@@ -245,7 +251,7 @@ if(!window['idealView']) {
           s += `
           <li>
             <a class="item ${_O.Vars.curRound === 1 ? 'final' : ''}" id="item_${i}" hover="false" href="javascript:void(0);" onclick="idealView.Event.clickItem(this);" onmouseover="idealView.Event.overItem(this);" onmouseout="idealView.Event.outItem(this);">
-              <span class="thumb"><img src="${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['imgSrc']}" alt="여자 연예인 사진"></span>
+              <span class="thumb"><img src="${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['imgSrc']}" alt="자전거 사진"></span>
               <strong> ${_O.Vars.gameHistory[_O.Vars.curRound.toString()][i]['name']}</strong>
             </a>
           </li>

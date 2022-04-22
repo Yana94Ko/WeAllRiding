@@ -406,9 +406,11 @@ footer{
 
 .footerContent{
 	flex-grow: 1;
+	text-align:left;
+	font-size: 0.9vw;
+	line-height: 1.4vw;
 }
 
 .footerContent p{
-	text-align:left;
 	color:var(--color-lightGray-1);
 }
