@@ -40,7 +40,7 @@
                             </div>
                         </div>
 
-                        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>
+                        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e64eaba2814e008a1cac47f2ab1c9005&libraries=services,clusterer,drawing"></script>
                         <div class="hiddenIfNone"><div id="map" style="width:100%;height:400px;"></div><br>
                             <li class="courseInfoLst">
                                 <div class="item">

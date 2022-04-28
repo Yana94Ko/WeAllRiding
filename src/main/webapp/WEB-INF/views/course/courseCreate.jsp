@@ -18,7 +18,7 @@
 <main>
 	<!-- kakao map API 불러오기(키 입력) -->
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d541fce355c305835dd7871d26048357&libraries=services,clusterer,drawing"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e64eaba2814e008a1cac47f2ab1c9005&libraries=services,clusterer,drawing"></script>
 	<div class="map_wrap">
 		<form style="display:none" id="courseSendDataFrm" method="post" action="/riding/ridingWrite">
 			<textarea name="courseSendData"></textarea>
