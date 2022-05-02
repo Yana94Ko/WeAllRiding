@@ -1,0 +1,21 @@
+header {
+    display: none;
+}
+
+footer {
+    display: none;
+}
+main{
+    width: 100vw;
+    min-height: 1000px;
+    padding: 0;
+    margin: 0;
+    background-color:var(--color-lightGray-1);
+}
+#inside{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+
+}
+

@@ -1,6 +1,6 @@
 package com.yosi.myapp.member;
 
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
+import com.yosi.myapp.aMemberPagingVO;
 import net.nurigo.sdk.NurigoApp;
 import net.nurigo.sdk.message.model.Message;
 import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
@@ -8,11 +8,15 @@ import net.nurigo.sdk.message.response.SingleMessageSentResponse;
 import net.nurigo.sdk.message.service.DefaultMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class MemberServiceImpl implements MemberService {
     @Autowired
     MemberDAO dao;
+
+
     @Override
     public MemberVO loginCheck(MemberVO vo) {
         return dao.loginCheck(vo);
@@ -32,7 +36,90 @@ public class MemberServiceImpl implements MemberService {
         message.setText("[WeAllRiding] 인증번호는 " +randomNumber+ "입니다.");
         SingleMessageSentResponse response = messageService.sendOne(new SingleMessageSendingRequest(message));
         System.out.println(response);
+    }
 
+    // 관리자 페이지 회원 목록
+    @Override
+    public List<MemberVO> memberList(aMemberPagingVO mVO) {
+        return dao.memberList(mVO);
+    }
+    public int totalRecord(aMemberPagingVO mVO) { return dao.totalRecord(mVO); }
+
+    //관리자 페이지 회원수정 및 정지
+    @Override
+    public void AdminUpdate(MemberVO vo) throws Exception {
+        dao.AdminUpdate(vo);
+    }
+
+    //관리자 페이지 회원정보 상세보기
+    @Override
+    public MemberVO AdminView(String userId) {
+        return dao.AdminView(userId);
+    }
+    //관리자 페이지 회원 삭제
+    @Override
+    public void AdminDelete(String userId) {
+
+    }
+
+    @Override
+    public int ScoreUpdate(String nickname, int score) {
+        return dao.ScoreUpdate(nickname, score);
+    }
+
+    @Override
+    public MemberVO findUserId(MemberVO vo) {
+        return dao.findUserId(vo);
+    }
+
+    @Override
+    public MemberVO isValidEmail(MemberVO vo) {
+        return dao.isValidEmail(vo);
+    }
+
+    @Override
+    public int findUserPwd(MemberVO vo) {
+        return dao.findUserPwd(vo);
+    }
+
+    @Override
+    public MemberVO memberSelect(String UserId) {
+        return dao.memberSelect(UserId);
+    }
+
+    @Override
+    public int memberUpdate(MemberVO vo) {
+        return dao.memberUpdate(vo);
+    }
+
+    @Override
+    public int memberDelete(MemberVO vo) {
+        return dao.memberDelete(vo);
+    }
+
+    @Override
+    public MemberVO checkId(MemberVO vo) {
+        return dao.checkId(vo);
+    }
+
+    @Override
+    public MemberVO checkNick(MemberVO vo) {
+        return dao.checkNick(vo);
+    }
+
+    @Override
+    public MemberVO checkTel(MemberVO vo) {
+        return dao.checkTel(vo);
+    }
+
+    @Override
+    public List<Map<String,String>> genderCount() {
+        return dao.genderCount();
+    }
+
+    @Override
+    public Map<String,String> ageCount() {
+        return dao.ageCount();
     }
 
 }

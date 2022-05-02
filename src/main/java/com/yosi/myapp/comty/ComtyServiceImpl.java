@@ -1,13 +1,8 @@
 package com.yosi.myapp.comty;
-
 import java.util.List;
-
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Service;
-
 import com.yosi.myapp.PagingVO;
-
 @Service
 public class ComtyServiceImpl implements ComtyService {
 	@Inject
@@ -30,7 +25,6 @@ public class ComtyServiceImpl implements ComtyService {
 	}
 	@Override
 	public int comtyDelete(int comtyNo, String nickname) {
-
 		return dao.comtyDelete(comtyNo, nickname);
 	}
 	@Override
@@ -44,5 +38,16 @@ public class ComtyServiceImpl implements ComtyService {
 	public int totalRecord(PagingVO pVO) {
 		return dao.totalRecord(pVO);
 	}
+
+	//관리자 페이지 커뮤니티 글 목록
+	@Override
+	public List<ComtyVO> comtyList() {
+		return dao.comtyList();
+	}
+
+	//관리자 페이지 커뮤니티 글 삭제
+	@Override
+	public int adminComtyDelete(int comtyNO) { return dao.adminComtyDelete(comtyNO); }
+
 
 }

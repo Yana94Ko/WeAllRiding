@@ -1,4 +1,112 @@
 @charset "UTF-8";
+/* As hex codes */
+
+:root{
+
+	/* 메인컬러 /
+    / 진한남색 */
+	--color-theme-0 : #313942;
+
+	/* 남색 */
+	--color-theme-1 : #3A4750;
+
+	/* 노랑 */
+	--color-theme-2 : #F6C90E;
+
+
+	/* 진한 남색 투명도조절 05 */
+	/* 노랑 색상값 : rgba(49, 57, 66, 1)*/
+	--color-theme-0-rgba:rgba(49, 57, 66,  1);
+	--color-theme-0-05:rgba(49, 57, 66, 0.5);
+	--color-theme-0-08:rgba(49, 57, 66, 0.8);
+
+
+	/* 남색 투명도조절 */
+	/* 남색 색상값 : rgba(58, 71, 80, 1)*/
+	--color-theme-1-rgba:rgba(58, 71, 80, 14,1);
+	--color-theme-1-05:rgba(58, 71, 80, 0.5);
+	--color-theme-1-08:rgba(58, 71, 80, 0.8);
+
+	/* 노랑 투명도조절 */
+	/* 노랑 색상값 : rgba(246,201, 14, 1)*/
+	--color-theme-2-rgba:rgba(246,201, 14, 1);
+	--color-theme-2-05:rgba(246,201, 14, 0.5);
+	--color-theme-2-08:rgba(246,201, 14, 0.8);
+	--color-theme-3 : rgba(237, 237, 237, 1);
+
+	--main-gray : #dddddd;
+	
+	/* 진한 회색 */
+	--color-gray-0: #343532;
+	--color-gray-1: #4F5046;
+	--color-gray-2: #292A27;
+	--color-gray-3: #1E1E1C;
+	--color-gray-4: #161714;
+	
+	/* 연한 회색 */
+	--color-lightGray-0: #B7B6B7;
+	--color-lightGray-1: #FBFBFB;
+	--color-lightGray-2: #D6D6D6;
+	--color-lightGray-3: #A09FA1;
+	--color-lightGray-4: #908E91;
+	
+	/* 진한 노랑 */
+	--color-yellow-0: #FF9808;
+	--color-yellow-1: #E1AA5C;
+	--color-yellow-2: #F7A838;
+	--color-yellow-3: #FF9500;
+	
+	/* 진한 파랑 */
+	--color-blue-0: #093A67;
+	--color-blue-1: #124572;
+	--color-blue-2: #0D3F6D;
+	--color-blue-3: #063661;
+	--color-blue-4: #05325A;
+	
+	/* ============= rgba ============= */
+	
+
+	/* 진한 */
+	--rgba-gray-0:rgba( 52, 53, 50,1);
+	--rgba-gray-1:rgba( 79, 80, 70,1);
+	--rgba-gray-2:rgba( 41, 42, 39,1);
+	--rgba-gray-3:rgba( 30, 30, 28,1);
+	--rgba-gray-4:rgba( 22, 23, 20,1);
+	
+	--transperate-gray2-04:rgba( 41, 42, 39,0.4);
+	--transperate-gray2-08:rgba( 41, 42, 39,0.8);
+	--transperate-gray-05:rgba( 52, 53, 50,0.5);
+	--transperate-gray-08:rgba( 52, 53, 50,0.8);
+	
+	/* 연한회색 */
+	--rgba-lightGray-0:rgba(183,182,183,1);
+	--rgba-lightGray-1:rgba(251,251,251,1);
+	--rgba-lightGray-2:rgba(214,214,214,1);
+	--rgba-lightGray-3:rgba(160,159,161,1);
+	--rgba-lightGray-4:rgba(144,142,145,1);
+	
+	--transperate-lightGray-05:rgba(183,182,183,0.5);
+	--transperate-lightGray-08:rgba(183,182,183,0.8);
+	
+	/* 진한 노랑 */
+	--rgba-yellow-0:rgba(255,152,  8,1);
+	--rgba-yellow-1:rgba(225,170, 92,1);
+	--rgba-yellow-2:rgba(247,168, 56,1);
+	--rgba-yellow-3:rgba(255,149,  0,1);
+	
+	--transperate-yellow-05:rgba(255,152,  8,0.5);
+	--transperate-yellow-08:rgba(255,152,  8,0.8);
+	
+	/* 진한 파랑 */
+	--rgba-blue-0:rgba(  9, 58,103,1);
+	--rgba-blue-1:rgba( 18, 69,114,1);
+	--rgba-blue-2:rgba( 13, 63,109,1);
+	--rgba-blue-3:rgba( 6, 54, 97, 1);
+	--rgba-blue-4:rgba(  5, 50, 90,1);
+	
+	--transperate-blue-05:rgba( 9, 58,103,0.5);
+	--transperate-blue-08:rgba( 9, 58,103,0.8);
+}
 
 /*--> 페이지 전체 공통 설정*/
 
@@ -9,10 +117,73 @@ body{
 	padding:0;
 }
 
+/* -> Home */
+/* parallax 플러그인 */
+.parallaxWindow
+{
+	max-height: 43vh; /* parallaxWindow 최대 높이 변경 */
+    min-height: 43vh;
+    background: transparent;
+}
+
+
+/* -> Home */
+/* parallax 플러그인 */
+.parallaxWindow
+{
+	max-height: 43vh; /* parallaxWindow 최대 높이 변경 */
+    min-height: 43vh;
+    background: transparent;
+}
+
+.home
+{
+	width: 100vw;
+	height: 43vh;
+	background: transparent;
+}
+
+.homeBackground
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+/* homeTitle 담고 있는 박스  */
+.homeContent
+{
+	position: absolute;
+	top: 34vh;
+	left: 50vw;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+	z-index:0;
+}
+
+/* homeTitle 텍스트 */
+.homeTitle
+{
+	font-size: 6vh;
+	font-weight: 800;
+	color: #FFFFFF;
+	text-transform: uppercase;
+}
+/*  Home <- */
+
+
 /* 텍스트 강조효과 초기화*/
 a{text-decoration:none;color:black;}
 a:hover{text-decoration:none;color:black;}
-a:visited{text-decoration:none;	color:black;}
+/* a:visited{text-decoration:none;	color:black;} */
 a:linked{text-decoration:none;color:black;}
 
 /*페이지 전체 공통 설정 <--*/
@@ -21,71 +192,155 @@ a:linked{text-decoration:none;color:black;}
 header{
 	width : 100%;
 	position:fixed;
+	z-index:100;
 }
 header a, li{
 	color : #ffffff;
 }
-header>img{
-	height:10px; 
-	width: 15px;
-}
-.top{
-	font-size:20px;
-	width:100%;
-	height:100%;
+
+.top{  
+	width:100vw;
 	text-align:right;
-	padding-right:150px;
-	background:rgba(255, 192, 0, 1);
-	height:25px;
-	line-height:25px;
+	background:var(--transperate-gray-08);
+	height: 3vh;
+	line-height: 3vh;
 	transition-property: height, opacity,visibility;
-  	transition-duration:0.3s,0.5s,0.5s;
-  	transition-delay:0s,0s,0.7s;
+  	transition-duration:0.5s,0.5s,0.4s;
+  	transition-delay:0s,0s,0.2s;
   	transition-timing-function:ease-in-out;
 }
-.top.active{
-	height: 0;
-	opacity:0;
-	visibility:none;
+.logContainer{
+	position:absolute;
+	display:flex;
+	justify-content: right;
+	width:30vw;
+    height: 3vh;
+	float:right;
+	right: 4vw;
 }
-.nav{
+.top.active{
+	height: 0vh;
+	opacity:0;
+	visibility:hidden;
+}
+
+
+
+ #login, #logout, #admin {
+	width: 33.3%;
+ 	padding-left:1vw;
+ 	padding-right:1vw;
+	opacity:1;
+	transition-property: height, opacity,visibility, background-color;
+  	transition-duration:0.5s,0.5s,0.5s, 0.2s;
+  	transition-timing-function:ease-in-out;
+  	text-align: center;
+	color:#fff;
+	font-size:1vw;
+} 
+
+
+#login i, #logout i, #admin i{
+	text-decoration: none;
+	color:#fff;
+	font-size:1.2vw;
+}
+#login:hover, #logout:hover, #admin:hover{
+	background-color:var(--color-gray-0);
+}
+
+
+#login a:visited, #logout a:visited, #admin a:visited{
+	text-decoration: none;
+	color:#fff;
+}
+
+
+
+.sub{
+    right: 1vw;
+    width: 12vw;
+	position: relative;
+ 	z-index: 101;
+	background: var(--transperate-gray2-04);
+    color: #ffffff;
+    height: 0vh;
+	opacity:0;
+	visibility:hidden;
+    transition-property: height, opacity,visibility;
+  	transition-duration:0.4s,0.5s,0.5s;
+  	transition-timing-function:ease-in-out;
+   
+}
+
+#login:hover .sub{
+    height: 6.2vh;
+	opacity:1;
+	visibility: visible;
+}
+
+.sub>li{
+	transition-property: background-color;
+  	transition-duration:0.4s;
+  	transition-timing-function:ease-in-out;
+}
+.sub>li:hover{
+	background: var(--transperate-gray2-08);
+}
+
+.navBar{
+	display:flex;
+	position:absolue;
+	flex-wrap: wrap;
 	font-size:1.5em;
-	width:100%;	
-	height:140px;
-	background:rgba(63, 63, 63, 0.7);
+	width:100vw;	
+	height:auto;
+	background:var(--transperate-gray-05);
 	transition-property:background, height;
-  	transition-duration:0.3s;
+  	transition-duration:0.5s;
   	transition-timing-function:ease-in-out;
 
 }
-.nav.active{
+.navBar.active{
 	top:0;
 	z-index:100;
-	height:100px;
-	background:rgba(63, 63, 63, 0.9);
+	height:auto;
+	background:var(--transperate-gray-08);
 }
 .logo{
-	font-size: 25px;
-    font-weight: 800;
-    float:left;
+	margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top:1vh;
+    margin-bottom:1vh;
+    flex-shrink: 0;
+    width: 19vw;
 }
-.logo>img{
-	width: 35px;
-	height: 47px;
+.logo>a>img{
+	width:100%
 }
 .mainMenu{
-	margin-left:25%;
-	/* line-height: 140px;
-	height:140px; */
+	/* line-height: 140px;*/
+	height:auto;
+    flex-shrink: 0;
+    width: 71vw;
 }
-.mainMenu>ul{
+
+.mainMenu.active{
+	height:auto;
+}
+
+
+
+/* 
+.mainMenu>ul>app{
 	padding-top:70px;
+	height:100%; 
 	transition-property: padding-top;
-  	transition-duration:0.3s;
+  	transition-duration:0.5s;
   	transition-timing-function:ease-in-out;
 }
 .mainMenu>ul.active{
-	padding-top:-70px;
+	padding-top:-80px;
 }
 .mainMenu li{
 	text-align: center;
@@ -109,22 +364,56 @@ ul[id^=topMenu]>li{
 	line-height:50px;
 	width:150px;
 	text-align: center;
-}
+} */
 /*top.jspf <-*/
-
+/* --> 상단 이미지 효과 */
+.parallax-window
+{
+    min-height: 400px;
+    background: transparent;
+}
+/* 상단 이미지 효과 <-- */
 /* -> main*/
 main{
-	min-height: 800px;
-	padding-top: 165px;/*상단 메뉴와 컨텐츠가 겹치지 않게 padding부여*/
-
+	width:100%;
+	min-height: 1000px;
+  	padding: 1% 0 1% 0;
+	background-color:var(--color-lightGray-1);
 }
 /* main <-*/
 
 /*bottom*/
 footer{
-	background:rgba(255, 192, 0, 0.6);
-	width: 100%;
-	height: 80px;
+	background: var(--color-gray-0);
+    width: 100vw;
+    height: 12vh;
 	text-align: center;
-	line-height: 80px;
+}
+.footerContainer{
+	display:flex;
+}
+.footerLogo{
+	margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top:1vh;
+    margin-bottom:1vh;
+    flex-shrink: 0;
+    width: 19vw;
+}
+.footerLogo>a>img{
+	width:100%
+}
+
+.footerContent{
+	flex-grow: 1;
+	text-align:left;
+	font-size: 0.9vw;
+	line-height: 1.4vw;
+}
+
+.footerContent p{
+	color:var(--color-lightGray-1);
+}
+input[type=text]{
+	background: rdba(255,255,255);
 }

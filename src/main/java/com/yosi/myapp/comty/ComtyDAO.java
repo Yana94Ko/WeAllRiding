@@ -1,12 +1,8 @@
 package com.yosi.myapp.comty;
-
 import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
 import com.yosi.myapp.PagingVO;
-
 @Mapper
 @Repository
 public interface ComtyDAO {
@@ -22,5 +18,10 @@ public interface ComtyDAO {
 	//총레코드수
 	public int totalRecord(PagingVO pVO);
 
+	//관리자 페이지 커뮤니티 글 목록
+	public List<ComtyVO> comtyList();
+
+	//관리자 페이지 커뮤니티 글 삭제
+	public int adminComtyDelete(int comtyNo);
 
 }

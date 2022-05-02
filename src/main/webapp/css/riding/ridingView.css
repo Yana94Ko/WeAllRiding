@@ -1,0 +1,584 @@
+@charset "UTF-8";
+
+html, body, div, span, applet, object, iframes, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr, acronym, address, big, quotes, code, del,
+dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, u,
+i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table,
+caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+details, embed, figure, figcaption, header, hgroup, menu, nav, output,
+ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	do: inherit;
+	vertical-align: baseline;
+}
+h1 {
+	font-weight: bold;
+	font-size: 3.5em;
+	color: black;
+	margin-top: 5vh;
+}
+h2 {
+	font-weight: bold;
+	font-size: 2em;
+	color: black;
+}
+h3 {
+	font-weight: bold;
+	font-size: 1.5em;
+	color: black;
+	margin: 1vh 0vw 1vh 0vw;
+}
+li {
+	color: black;
+}
+
+article, aside, details, figcaption, figure, header, hgroup, menu, nav,
+section {
+	display: block;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+main * {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-o-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+main {
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	font-weight: 100;
+	font-size: 12px;
+	line-height: 30px;
+	color: #777;
+	background: #dddddd;
+	width: 100%;
+}
+
+.container {
+	max-width: 75vw;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+	line-height: 200px;
+}
+
+.containerWrap {
+	min-height: 1000px;
+	height: auto;
+	background: var(--color-lightGray-1);
+	padding: 3vw 10vw;
+	margin: 0 auto;
+
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.ridingViewContainer {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 auto;
+	line-height: 20px;
+}
+#riding_header {
+	padding-bottom: 5px;
+	border-bottom: 2px solid #303841;
+	margin-bottom: 10px;
+}
+#titleHeader {
+	font-size: 1.5em;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-bottom: 2px solid #BDBDBD;
+}
+#ridingViewFrm {
+	background-color: #EDEDED;
+	font-size: 0.9em;
+	width: 100%;
+	height: 35px;
+	color: black;
+	text-align: right;
+	padding: 0;
+}
+#ridingViewFrm div {
+	padding: 8px 10px;
+}
+#ridingBody {
+	margin: 20px;
+}
+#ridingMap {
+	margin: 3px;
+}
+#map {
+	width: 100%;
+	height: 500px;
+}
+#mapBox {
+	border: 1px solid rgba(0,0,0,0.15);
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 15px;
+}
+#ridingDate_Level {
+	background-color: #EDEDED;
+	font-size: 1.2em;
+	width: 100%;
+	height: 45px;
+	color: black;
+	text-align: left;
+	padding: 3px;
+	/* display: flex; */
+}
+#ridingConten {
+	font-size: 1.2em;
+	width: 100%;
+	color: black;
+	padding: 3px;
+	margin-top: 20px;
+}
+#keyword {
+	position: relative;
+	min-height: 33px;
+	margin: 0px 3px 0 5px;
+	padding: 10;
+}
+#keywordSubject{
+	color: #4374D9;
+	font-size: 1.0em;
+}
+#ridingDiv {
+	padding-bottom: 5px;
+	padding-top: 5px;
+	border-top: 1px solid #ddd;
+}
+#ridingViewBtn {
+	width: 100%;
+	height: 45px;
+	text-align: right;
+	padding: 3px;
+	align-content: rigth;
+}
+.ridingContent {
+	font-size: 1.5em;
+}
+/* 남색 버튼 */
+.btnDel {
+	width: auto;
+	height: 4vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-1);
+	color: #ffffff;
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+}
+.btnDel:hover{
+	/*마우스 오버시 버튼 색*/
+	background:var(--color-theme-0);
+	transition: .3s ease-in-out;
+}
+/* 노란색 버튼 */
+.btnEdit{
+	width: auto;
+	height: 4vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-2);
+	color: blcak;
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+}
+.btnEdit:hover{
+	/*마우스 오버시 버튼 색*/
+	background: rgba(255, 192, 0, 1);
+	transition: .3s ease-in-out;
+}
+#listHeader {
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+#listTitle {
+	font-size: 1.6em;
+}
+#eList {
+	overflow: auto;
+	border-top: 2px solid #BDBDBD;
+}
+
+#eList>li {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	width: 10%;
+	color: black;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#eList>li:nth-child(6n+2) {
+	width: 40%;
+	white-space: nowrap; /*줄 안바꿈*/
+	overflow: hidden; /*넘친내용 숨기기*/
+	text-overflow: ellipsis; /*넘침시 ...표시*/
+}
+
+#eList>li:nth-child(6n) {
+	width: 20%;
+	text-align: center;
+}
+
+#eListFirst {
+	background-color: rgba(234, 234, 234);
+}
+
+#ridingStateUpdateBtn {
+	width: 4vh;
+	height: 3vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-1);
+	color: #ffffff;
+	font-size: 1.0em;
+	cursor: pointer;
+}
+#ridingStateUpdateBtn:hover{
+	background: var(--color-theme-0);
+	transition: .3s ease-in-out;
+}
+#ridingStateDeleteBtn {
+	width: 4vh;
+	height: 3vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-2);
+	color: blcak;
+	font-size: 1.0em;
+	cursor: pointer;
+}
+#ridingStateDeleteBtn:hover{
+	/*마우스 오버시 버튼 색*/
+	background:rgba(255, 192, 0, 1);
+	transition: .3s ease-in-out;
+}
+#vList {
+	overflow: auto;
+	border-top: 2px solid #BDBDBD;
+}
+
+#vList>li {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #ddd;
+	width: 10%;
+	color: black;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#vList>li:nth-child(5n+2) {
+	width: 60%;
+	white-space: nowrap; /*줄 안바꿈*/
+	overflow: hidden; /*넘친내용 숨기기*/
+	text-overflow: ellipsis; /*넘침시 ...표시*/
+}
+
+#vListFirst {
+	background-color: rgba(234, 234, 234);
+}
+#ridingViewMemnerBtn{
+	height: 45px;
+	padding-top: 10px;
+	float: right;
+}
+/* 남색 버튼 */
+
+#ridingdelBtn{
+	width:auto;
+	height:3vh;
+	border-radius: 5px;
+	border:none;
+	/*버튼 색*/
+	background:var(--color-theme-1);
+	color:#ffffff;
+	font-size:1.5em;
+	cursor:pointer;
+	padding: 0 1vw 0 1vw;
+}
+#ridingdelBtn:hover{
+	/*마우스 오버시 버튼 색*/
+	background:var(--color-theme-0);
+	transition: .3s ease-in-out;
+}
+/* 노란색 버튼 */
+#ridingMemberBtn{
+	width:auto;
+	height:3vh;
+	border-radius: 5px;
+	border:none;
+	/*버튼 색*
+	background:var(--color-theme-2);
+	color:blcak;
+	font-size:1.5em;
+	cursor:pointer;
+	padding: 0 1vw 0 1vw;
+}
+#ridingMemberBtn:hover{
+	/*마우스 오버시 버튼 색*/
+	background:rgba(255, 192, 0, 1);
+	transition: .3s ease-in-out;
+}
+#ridingReplyBtn {
+	width: 100%;
+	height: 3vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-1);
+	color: #ffffff;
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+}
+.courseInfoLst {
+	height: 21vh;
+	display: flex;
+}
+.item2 {
+	display: flex;
+}
+.item2-1 {
+	flex-basis: 3vw;
+	font-size: 1.6em;
+	margin-top: 1vh;
+	font-weight: bold;
+	color: black;
+}
+.item2-2 {
+	flex-grow: 1;
+	font-size: 1.2em;
+	margin-top: 1vh;
+	margin-bottom: 2vh;
+}
+.item {
+	flex-basis: 50%;
+	width: 50%;
+}
+.item-1 {
+	display: flex;
+}
+.item-1-1 {
+	flex-basis: 8vw;
+	font-size: 1.5em;
+	margin-top: 1vh;
+	font-weight: bold;
+}
+.item-1-2 {
+	flex-grow: 1;
+	font-size: 1.4em;
+	margin-top: 1vh;
+}
+.dateAll {
+	float: left;
+}
+.ridingDate {
+	width: 10vw;
+	height: 4vh;
+	padding: 1vh 1vw;
+	margin: 0px;
+	border-radius: 6px;
+	border-color: rgba(204, 204, 204);
+	font-size: 1.5em;
+}
+.courseLevel {
+	float: left;
+	padding: 0 auto;
+	margin: 0 auto;
+}
+.ridinglevel {
+	width: 4vw;
+	height: 4vh;
+	padding: 0 auto;
+	margin: 0 auto;
+	border-radius: 6px;
+	border-color: rgba(204, 204, 204);
+	font-size: 1.5em;
+	text-align: center;
+}
+.flexDiv-1 {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	line-height: 3vh;
+	font-size: 1vw;
+}
+
+.flexDiv-1-1 {
+	font-weight: bold;
+	font-size: 1.5vw;
+	flex-basis: 1vh;
+	color: black;
+}
+
+.flexDiv-1-2 {
+	flex-basis: 1vh;
+	display: flex;
+	border-bottom: 1px solid var(--color-lightGray-0);
+}
+
+.flexDiv-1-2-1 {
+	flex-basis: 14vw;
+	color: black;
+}
+
+.flexDiv-1-2-2 {
+	flex-grow: 1;
+}
+
+.flexDiv-1-2-3 {
+	flex-grow: 3;
+	text-align: right;
+	color: black;
+}
+
+.keyword {
+	color: rgba(26, 115, 232);
+	font-size: 1.5em;
+}
+/* 남색 버튼 */
+.btnDel2 {
+	width: auto;
+	height: 4vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-1);
+	color: #ffffff;
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+}
+.btnDel2:hover{
+	/*마우스 오버시 버튼 색*/
+	background:var(--color-theme-0);
+	transition: .3s ease-in-out;
+}
+/* 노란색 버튼 */
+.btnEdit3{
+	width: 6vw;
+	height: 10vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-2);
+	color: black;
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+	margin-right: 0.4vw;
+}
+
+.btnEdit2{
+	width: auto;
+	height: 4vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-2);
+	color: blcak;
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+	margin-right: 0.4vw;
+}
+.btnEdit2:hover{
+	/*마우스 오버시 버튼 색*/
+	background: rgba(255, 192, 0, 1);
+	transition: .3s ease-in-out;
+}
+
+#listTitle{
+	margin-top: 2vw;
+}
+.applicantSave {
+	width: 4vw;
+	height: 4vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-2);
+	color: blcak;
+	font-size: 1em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+	margin-right: 0.4vw;
+}
+.applicantDel {
+	width: 4vw;
+	height: 4vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-1);
+	color: #ffffff;
+	font-size: 1em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+}
+.memberOkbtn {
+	width: 4vw;
+	height: 2vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-2);
+	color: blcak;
+	font-size: 1em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+	margin-right: 0.4vw;
+}
+.memberDelbtn {
+	width: 4vw;
+	height: 2vh;
+	border-radius: 5px;
+	border: none;
+	/*버튼 색*/
+	background: var(--color-theme-1);
+	color: #ffffff;
+	font-size: 1em;
+	cursor: pointer;
+	padding: 0 1vw 0 1vw;
+	float: right;
+}
+#ridingReplyComent {
+	width:48vw;
+	height:10vh;
+	border-radius: 5px;
+	border-color: #ddd;
+}

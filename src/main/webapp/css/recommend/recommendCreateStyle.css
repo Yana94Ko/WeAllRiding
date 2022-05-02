@@ -1,0 +1,423 @@
+@charset "UTF-8";
+.map_wrap, .map_wrap * {
+	margin: 0;
+	padding: 0;
+	font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+}
+
+.map_wrap a, .map_wrap a:hover, .map_wrap a:active {
+	color: #000;
+	text-decoration: none;
+}
+
+.map_wrap {
+	position: relative;
+	overflow: hidden;
+	max-width: 65vw;
+	height: 75vh;
+	background: var(--color-lightGray-1);
+	padding: 0;
+	margin: 0 auto;
+	border: 1px solid #dddddd;
+}
+
+/*--> 출발지 도착지 입력 폼*/
+#courseInput {
+	position: absolute;
+	width: 15vw;
+	height: 73vh;
+	margin: 0.5vw;
+    overflow: scroll;
+    
+}
+#courseInput::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+#courseInput img {
+	position: absolute;
+	height: 20px;
+	top:10px;
+	left:10px;
+}
+
+#courseInput input {
+	border: none;
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
+	box-sizing:border-box;
+	position: absolute;
+	top:5px;
+	left: 40px;
+}
+
+.hihi{
+	position: absolute;
+	margin-top:3px;
+	left: 230px;
+}
+
+#courseInput button:first-of-type{
+	position: absolute;
+	margin-top:3px;
+	left: 230px;
+}
+
+.fromWrap, .toWrap, .waypoints div{
+	margin: 1.2px;
+	display: inline-block;
+	border: 1px solid black;
+	height: 4vh;
+	line-height: 40px;
+	padding-left: 10px;
+	padding-right: 40px;
+	width: 12.2vw;
+	position: relative;
+}
+.btnAddWaypoint{
+	margin-left:-35px;
+	z-index: 800;
+}
+
+.ridingWriteBtn{
+    color: #6e6e6e;
+	width: 60px;
+    height: 40px;
+    line-height: 10px;
+    font-size: 15px;
+    padding:0;	
+    cursor: pointer;
+    position: relative;
+    left:0;
+    top:0;
+    display: inline-block;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    margin-left: 10px;
+    background:#fff;
+    border: 2px solid #6aafe6;
+    color: #6e6e6e;
+}
+
+.ridingWriteBtn:hover {
+    background-color: #6aafe6;
+    color: #d4dfe6;
+}
+#card-body{
+	flex: 1 1 auto;
+	min-height: 1px;
+	padding: 2.25rem 9rem;
+}
+
+.formDiv{
+	display:flex;
+	flex-direction : column;
+}
+
+.formItem{
+	display: flex;
+	flex-direction: row;
+	margin: 1vh 0 1vh 0;
+}
+.itemTitle {
+	flex-basis:16vw;
+	font-weight: bold;
+}
+#recTitle, #recHashtag, #recDescription{
+	flex-grow: 1;
+	margin: 0 auto;
+}
+
+#recLevel{
+	position: relative;
+	width: 6vw;
+	height: auto;
+	font-size: 1em;
+	line-height: 1em;
+	border-radius: 4px;
+}
+input[id=endPoint]::-ms-input-placeholder { /* 인터넷 익스플로러 */
+	font-size: 0.7375em;
+}
+input[id=endPoint]::placeholder {
+	font-size: 0.7375em;
+}
+input[id=startPoint]::-ms-input-placeholder { /* 인터넷 익스플로러 */
+	font-size: 0.7375em;
+}
+input[id=startPoint]::placeholder {
+	font-size: 0.7375em;
+}
+
+.w-btn {
+	width: 150px;
+    height: 35px;
+    line-height: 10px;
+    font-size: 15px;
+    padding:0;	
+    cursor: pointer;
+    position: relative;
+    border: none;
+    display: inline-block;
+    border-radius: 5px;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    margin-left: 10px;
+}
+.w-btn-blue {
+    background-color: #6aafe6;
+    color: #d4dfe6;
+}
+
+.w-btn-blue {
+    background-color: #6aafe6;
+    color: aliceblue;
+}
+.w-btn:hover {
+
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.w-btn:active {
+    transform: scale(1.02);
+}
+
+select{
+  -moz-appearance: none;
+-webkit-appearance: none;
+appearance: none;
+font-family: "Noto Sansf KR", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #444;
+  background-color: #fff;
+
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  margin: 0;
+
+  border: 1px solid #aaa;
+  border-radius: 0.5em;
+  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+  width:70px;
+  height:35.7px;
+  margin-right:5px;
+  text-align: center;
+}
+
+div[id^="routeInfo"]{
+	display: none;
+	width: 275px;
+	position: relative;
+	border: 2px solid #c1c1c1;
+	height: 140px;
+	margin:0 auto;
+	margin-top:10px;
+	text-align: center;
+	overflow: hidden;
+}
+canvas {
+	bottom:0;
+}
+.routeInfoLeft{
+	float: left;
+	width:200px;
+	height: 60px;
+}
+.routeInfoRgt{
+	padding-right: 30px;
+}
+/* 출발지 도착지 입력 폼 <--*/
+
+#map{
+	width:87%;
+	height:100%;
+	position:relative; 
+	left : 300px; 
+	overflow:hidden;
+}
+
+#menu_wrap {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 300px;
+	bottom: 0;
+/* 	width: 300px; */
+	margin: 0;
+	overflow-y: auto;
+	background: rgba(255, 255, 255, 0.7);
+	z-index: 1;
+	font-size: 12px;
+	border-radius: 10px;
+}
+
+.bg_white {
+	background: #fff;
+}
+
+#menu_wrap hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 2px solid #5F5F5F;
+	margin: 3px 0;
+}
+
+#menu_wrap .option {
+	display: none;
+}
+
+#menu_wrap .option {
+	text-align: center;
+}
+
+#menu_wrap .option p {
+	margin: 10px 0;
+}
+
+#menu_wrap .option button {
+	margin-left: 5px;
+}
+
+#placesList li {
+	list-style: none;
+}
+
+#placesList .item {
+	position: relative;
+	border-bottom: 1px solid #888;
+	overflow: hidden;
+	cursor: pointer;
+	min-height: 65px;
+}
+
+#placesList .item span {
+	display: block;
+	margin-top: 4px;
+}
+
+#placesList .item h5, #placesList .item .info {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#placesList .item .info {
+	padding: 10px 0 10px 55px;
+}
+
+#placesList .info .gray {
+	color: #8a8a8a;
+}
+
+#placesList .info .jibun {
+	padding-left: 26px;
+	background:
+		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png)
+		no-repeat;
+}
+
+#placesList .info .tel {
+	color: #009900;
+}
+
+#placesList .item .markerbg {
+	float: left;
+	position: absolute;
+	width: 36px;
+	height: 37px;
+	margin: 10px 0 0 10px;
+	background:
+		url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png)
+		no-repeat;
+}
+
+#placesList .item .marker_1 {
+	background-position: 0 -10px;
+}
+
+#placesList .item .marker_2 {
+	background-position: 0 -56px;
+}
+
+#placesList .item .marker_3 {
+	background-position: 0 -102px
+}
+
+#placesList .item .marker_4 {
+	background-position: 0 -148px;
+}
+
+#placesList .item .marker_5 {
+	background-position: 0 -194px;
+}
+
+#placesList .item .marker_6 {
+	background-position: 0 -240px;
+}
+
+#placesList .item .marker_7 {
+	background-position: 0 -286px;
+}
+
+#placesList .item .marker_8 {
+	background-position: 0 -332px;
+}
+
+#placesList .item .marker_9 {
+	background-position: 0 -378px;
+}
+
+#placesList .item .marker_10 {
+	background-position: 0 -423px;
+}
+
+#placesList .item .marker_11 {
+	background-position: 0 -470px;
+}
+
+#placesList .item .marker_12 {
+	background-position: 0 -516px;
+}
+
+#placesList .item .marker_13 {
+	background-position: 0 -562px;
+}
+
+#placesList .item .marker_14 {
+	background-position: 0 -608px;
+}
+
+#placesList .item .marker_15 {
+	background-position: 0 -654px;
+}
+
+#pagination {
+	margin: 10px auto;
+	text-align: center;
+}
+
+#pagination a {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#pagination .on {
+	font-weight: bold;
+	cursor: default;
+	color: #777;
+}
+
+.info {
+	color: black;
+}
+/*지도 부분 <--*/

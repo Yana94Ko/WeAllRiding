@@ -1,0 +1,16 @@
+header {
+    display: none;
+}
+
+footer {
+
+
+}
+
+main{
+    width: 100vw;
+    min-height: 1000px;
+    padding: 0;
+    margin: 0;
+    background-color:var(--color-lightGray-1);
+}

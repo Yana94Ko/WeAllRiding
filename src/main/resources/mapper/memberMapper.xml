@@ -11,4 +11,94 @@
         insert into member(userId, userPwd, userName, userTel, userEmail, birth, nickname, gender, experience, bicycleType)
         values(#{userId}, #{userPwd}, #{userName}, #{userTel}, #{userEmail}, #{birth}, #{nickname}, #{gender}, #{experience}, #{bicycleType})
     </insert>
+    <!-- 관리자 페이지 회원 목록 -->
+    <select id = "memberList" resultType="com.yosi.myapp.member.MemberVO">
+        SELECT userId, userPwd, userName, userEmail, nickname, joinDate FROM member
+        <if test = 'searchWord != null'>
+            WHERE ${searchKey} like '%${searchWord}%'
+        </if>
+        ORDER BY joinDate DESC
+        LIMIT ${onePageRecord} OFFSET ${offsetIndex}
+    </select>
+    <!-- 관리자 페이지 회원 목록 페이지 수 -->
+    <select id="totalRecord" resultType="int">
+        select count(joinDate) as cnt from member
+        <if test='searchWord != null'>
+            where ${searchKey} like '%${searchWord}%'
+        </if>
+    </select>
+    <!-- 관리자 페이지 회원정보 수정 및 정리 -->
+    <update id="AdminUpdate">
+        update member set userName=#{userName}, nickname=#{nickname}, userEmail=#{userEmail}, userPwd=#{userPwd}, userTel=#{userTel}, userEmail=#{userEmail}, birth=#{birth}, suspendDate=#{suspendDate}, isAdmin=#{isAdmin}
+        where userId=#{userId}
+    </update>
+    <!--관리자 페이지 회원정보 상세보기 -->
+    <select id = "AdminView" resultType="com.yosi.myapp.member.MemberVO">
+        SELECT userId, userName, userTel, birth, nickname, userEmail, suspendDate, userPwd, isAdmin FROM member
+        where userId=#{userId}
+    </select>
+    <!-- 관리자 페이지 회원 삭제 -->
+    <delete id="AdminDelete">
+        DELETE FROM member
+        WHERE userId = #{userId}
+    </delete>
+    <select id="findUserId" resultType="com.yosi.myapp.member.MemberVO">
+        select userId from member
+        where userName=#{userName} and userTel=#{userTelP}
+    </select>
+    <select id="isValidEmail" resultType="com.yosi.myapp.member.MemberVO">
+        select userId from member
+        where userId=#{userId} and userEmail=#{userEmail}
+    </select>
+    <update id="findUserPwd">
+        update member set userPwd=#{userPwd}
+        where userId=#{userId} and userEmail=#{userEmail}
+    </update>
+    <select id="memberSelect" resultType="com.yosi.myapp.member.MemberVO">
+        select * from member
+        where userId=#{param1}
+    </select>
+    <update id="memberUpdate">
+        update member set nickname=#{nickname}, userEmail=#{userEmail}, userPwd=#{userPwd}, experience=#{experience}, bicycleType=#{bicycleType}
+        where userId=#{userId}
+    </update>
+    <delete id="memberDelete">
+        delete from member
+        where userId=#{userId} and userPwd=#{userPwd}
+    </delete>
+    <select id="checkId" resultType="com.yosi.myapp.member.MemberVO">
+        select userId from member
+        where userId=#{userId}
+    </select>
+    <select id="checkNick" resultType="com.yosi.myapp.member.MemberVO">
+        select nickname from member
+        where nickname=#{nickname}
+    </select>
+    <select id="checkTel" resultType="com.yosi.myapp.member.MemberVO">
+        select userTel from member
+        where userTel=#{userTel}
+    </select>
+    <select id="genderCount" resultMap="genderMap">
+        select gender, count(*) from member group by gender;
+    </select>
+    <resultMap id="genderMap" type="map">
+        <result column="gender" property="gender"/>
+        <result column="count(*)" property="count"/>
+    </resultMap>
+    <select id="ageCount" resultMap="ageMap">
+        select
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 0 and 19 , 1, 0)) as under_20,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 20 and 29 , 1, 0)) as age_20,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 30 and 39 , 1, 0)) as age_30,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 40 and 49 , 1, 0)) as age_40,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 50 and 59 , 1, 0)) as age_50,
+            sum(if(date_format(now(),'%Y')-substring(BIRTH,1,4) between 60 and 69 , 1, 0)) as over_60
+        from member
+    </select>
+    <resultMap id="ageMap" type="map">
+    </resultMap>
+    <update id="ScoreUpdate">
+        update member set userScore = userScore + #{score}
+        where nickname=#{nickname}
+    </update>
 </mapper>

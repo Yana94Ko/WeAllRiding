@@ -14,11 +14,11 @@ public interface ComtyReplyDAO {
 	 */
 
 	//댓글등록
-	public int replyWrite(ComtyReplyVO vo);
+	public int comtyReplyWrite(ComtyReplyVO vo);
 	//댓글목록
-	public List<ComtyReplyVO> replyList(int comtyNo);
+	public List<ComtyReplyVO> comtyReplyList(int comtyNo);
 	//댓글수정
-	public int replyEdit(ComtyReplyVO vo);
+	public int comtyReplyEdit(ComtyReplyVO vo);
 	//댓글삭제
-	public int replyDel(int comtyReplyNo, String nickname);
+	public int comtyReplyDel(int comtyReplyNo, String nickname);
 }

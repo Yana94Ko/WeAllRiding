@@ -25,9 +25,12 @@ public class ShopController {
 
 	// 정비샵 검색
 	@GetMapping("/shopView")
-	public ModelAndView shopView() {
+	public ModelAndView shopView(ShopPagingVO sPVO) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("shopVO", service.shopSelect(0));
+		mav.addObject("allSelect", service.shopAllSelect());
+		mav.addObject("list", service.shopList(sPVO));
+		mav.addObject("sPVO", sPVO);
 		mav.setViewName("/shop/shopView");
 		return mav;
 	}
@@ -63,6 +66,7 @@ public class ShopController {
 		model.addAttribute("shopName", shopName);
 		model.addAttribute("shopRoadAddress", shopRoadAddress);
 		model.addAttribute("shopPhone", shopPhone);
+		
 		mav.setViewName("shop/shopWrite");
 		return mav;
 	}
@@ -71,7 +75,7 @@ public class ShopController {
 	@PostMapping("/shopWriteOk")
 	public ResponseEntity<String> shopWriteOk(ShopVO shopVO, HttpServletRequest request) {
 		shopVO.setShopAuthors((String) request.getSession().getAttribute("nickName"));
-
+		System.out.println(shopVO.getShopAuthors()+shopVO.getShopInfo()+shopVO.getShopId()+shopVO.getShopName());
 		ResponseEntity<String> entity = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
@@ -113,7 +117,7 @@ public class ShopController {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(new MediaType("text", "html", Charset.forName("UTF-8")));
 
-		try {// 정비샵 정보 업데이트 성공
+		try {// 정비샵 정보 업데이트 성공 
 			service.shopUpdate(shopVO);
 			String msg = "<script>alert('정비샵 정보가 수정되었습니다.');location.href='/shopView';</script>";
 			entity = new ResponseEntity<String>(msg, headers, HttpStatus.OK);
@@ -130,4 +134,6 @@ public class ShopController {
 	public ShopVO shopInfoLoad(int shopId) {
 		return service.shopSelect(shopId);
 	}
+	
+	
 }
